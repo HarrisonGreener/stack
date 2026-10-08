@@ -1228,6 +1228,7 @@ html.touch .phone.full~.demo-fab,html.touch .demo-fab{display:none!important}
 .crate-tools{justify-content:flex-end;align-items:center}
 .crate-hint{font-size:12.5px;color:var(--muted);margin-right:auto}
 .searching .controls-row,.searching #spinesView,.searching #crateView,.searching #listMine,.searching #giftSlot,.searching .liked-card{display:none!important}
+.crate{-webkit-mask-image:linear-gradient(#000 calc(100% - 70px),transparent);mask-image:linear-gradient(#000 calc(100% - 70px),transparent)}
 </style>
 <style>[hidden]{display:none!important}body{margin:0}</style>
 </head>
@@ -1306,9 +1307,9 @@ html.touch .phone.full~.demo-fab,html.touch .demo-fab{display:none!important}
             <div class="caption" id="capMine"></div>
           </div>
           <div id="crateView" hidden>
-            <div class="crate-tools"><span class="crate-hint">Sort the crate</span>
+            <div class="crate-tools"><span class="crate-hint" id="crateCount"></span>
               <select id="crateSort" aria-label="Sort"><option value="artist">Artist A–Z</option><option value="title">Title A–Z</option><option value="recent">Recently added</option><option value="year">Year</option></select></div>
-            <div class="crate" id="crate" tabindex="0" aria-label="Crate of records. Swipe or scroll to flick through."><div class="crate-items" id="crateItems"></div><div class="crate-front"><i></i><span id="crateCount"></span></div></div>
+            <div class="crate" id="crate" tabindex="0" aria-label="Crate of records. Swipe or scroll to flick through."><div class="crate-items" id="crateItems"></div></div>
             <div class="caption crate-cap" id="crateCap"></div>
           </div>
           <div class="listv" id="listMine" hidden></div>
@@ -2288,9 +2289,9 @@ const Crate=(()=>{let items=[],cur=0,sort='artist',q='',built=false;const DVC=['
     let ni=items.findIndex(x=>x.a&&x.a.id===prevId);if(ni<0)ni=items.findIndex(x=>x.a);cur=Math.max(0,ni);
     box.innerHTML=items.length?items.map((x,i)=>x.a?`<div class="ck${x.a.f==='CD'?' cd':''}" data-ci="${i}">${artHTML(x.a,'',true)}<div class="ck-t">${x.a.t} <em>· ${x.a.a}</em></div></div>`
       :`<div class="ck dv" data-ci="${i}" style="--dvc:${x.c};--tabx:calc(54% + ${(x.div.charCodeAt(0)*29)%70}px)"><b>${x.div}</b><span>${x.n} ${x.n===1?'RECORD':'RECORDS'}</span></div>`).join(''):'<div class="crate-empty">Nothing in your Stack matches that.</div>';
-    const n=items.filter(x=>x.a).length;$('#crateCount').textContent=`${n} ${n===1?'RECORD':'RECORDS'} IN THE CRATE`;layout(true);if(!built)bind()}
+    const n=items.filter(x=>x.a).length;$('#crateCount').textContent=`${n} ${n===1?'record':'records'}`;layout(true);if(!built)bind()}
   function geo(){const c=$('#crate');const cw=c?c.clientWidth:390;const W=Math.round(Math.min(320,Math.max(220,cw*.74)));const TOP=92,STRIP=27;
-    if(c){c.style.setProperty('--cw',W+'px');c.style.height=(TOP+W+6+STRIP*5+96)+'px'}return{W,TOP,STRIP}}
+    if(c){c.style.setProperty('--cw',W+'px');c.style.height=(TOP+W+6+STRIP*5+40)+'px'}return{W,TOP,STRIP}}
   function layout(instant){const {W,TOP,STRIP}=geo(),els=$$('#crateItems .ck');els.forEach(el=>{const i=+el.dataset.ci,d=i-cur;let y,z,o=1,f='none',sc=1;
       if(d===0){y=TOP;z=500}
       else if(d<0){const k=-d;y=TOP-STRIP*k;z=500-k;o=k>3?0:1;f=`brightness(${1-.07*k})`;sc=1-.02*k}
@@ -2607,7 +2608,7 @@ function openAbout(){const slot=$('#sheetSlot');
     <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18v-6a8 8 0 0 1 16 0v6"/><rect x="3" y="15" width="4" height="6" rx="1.5"/><rect x="17" y="15" width="4" height="6" rx="1.5"/></svg><b>Stream</b>Play them anywhere</div>
    </div>
    <div class="about-bot"><span class="bh" style="--s:52px"><span class="bh-band"></span><span class="bh-cup l"></span><span class="bh-cup r"></span><span class="bh-head"><span class="bh-stripes"></span><span class="bh-face"><i class="bh-eye l"></i><i class="bh-eye r"></i><i class="bh-vu"><b></b><b></b><b></b><b></b><b></b></i></span></span></span><div><b>Meet DJ Selector</b><span>Your own crate-digging DJ. Tell him a mood, a moment or an artist, like "rainy Sunday", "cooking dinner" or "some Fleetwood Mac", and he digs through every record you and your family own to build a mix in seconds.</span></div></div>
-   <ul class="about-sel"><li><b>Only music you own.</b> Every song comes from a real record in your Stack, so every mix rewards collecting.</li><li><b>Mixes the whole family.</b> On Duo and Family plans he digs through everyone's records, not just yours.</li><li><b>Keep the good ones.</b> Play the mix straight away, shuffle again, or save it as a mixtape to send to a friend.</li></ul><p class="mono" style="font-size:10.5px;color:var(--muted);text-align:center;margin:14px 0 0;letter-spacing:.06em">PROTOTYPE BUILD · 8 OCT · 17:30</p>
+   <ul class="about-sel"><li><b>Only music you own.</b> Every song comes from a real record in your Stack, so every mix rewards collecting.</li><li><b>Mixes the whole family.</b> On Duo and Family plans he digs through everyone's records, not just yours.</li><li><b>Keep the good ones.</b> Play the mix straight away, shuffle again, or save it as a mixtape to send to a friend.</li></ul><p class="mono" style="font-size:10.5px;color:var(--muted);text-align:center;margin:14px 0 0;letter-spacing:.06em">PROTOTYPE BUILD · 8 OCT · 17:35</p>
    <div class="about-foot">STACK 1.0 · FOR PEOPLE WHO STILL BUY RECORDS</div></div></div>`;
   $('#abSc').onclick=$('#abX').onclick=closeSheet;
 }
