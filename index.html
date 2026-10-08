@@ -1734,7 +1734,11 @@ function tick(dt){if(!st.cur)return;audSync();const tr=tracksOf(st.cur)[st.track
   $('#barFill').style.width=Math.min(100,t/d*100)+'%';$('#tNow').textContent=fmtT(t);$('#tLen').textContent=live?fmtT(d)+' · preview':fmtT(tracksOf(a)[i].d);if(st.playing)setArm(false)}
 setInterval(()=>tick(.25),250);
 /* real audio: 30-second previews from Apple Music, looked up live by artist + title */
-const AUD={A:new Audio(),B:new Audio()},DS={A:{},B:{}};AUD.A.preload=AUD.B.preload='auto';
+const AUD={A:new Audio(),B:new Audio()},DS={A:{},B:{}};AUD.A.preload=AUD.B.preload='auto';AUD.A.crossOrigin=AUD.B.crossOrigin='anonymous';
+['A','B'].forEach(D=>{AUD[D].setAttribute('playsinline','')});
+const MIX={ctx:null,g:{}};
+function mixGraph(){if(MIX.ctx||MIX.failed)return MIX.ctx;try{const c=MIX.ctx=new (window.AudioContext||window.webkitAudioContext)();
+  ['A','B'].forEach(D=>{const src=c.createMediaElementSource(AUD[D]),g=c.createGain();g.gain.value=D==='A'?1:0;src.connect(g);g.connect(c.destination);MIX.g[D]=g;AUD[D].volume=1})}catch(e){MIX.failed=true;MIX.ctx=null}return MIX.ctx}
 let PV={};try{PV=JSON.parse(localStorage.getItem('stack-pv2'))||{}}catch(e){}
 const pvNorm=x=>String(x).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/&/g,'and').replace(/[^a-z0-9 ]/g,' ').replace(/^the /,'').replace(/\s+/g,' ').trim();
 function jsonp(url,timeout=6000){return new Promise((res,rej)=>{const cb='_pv'+Math.random().toString(36).slice(2),sc=document.createElement('script');let done=false;
@@ -1767,9 +1771,10 @@ function pressFx(on){if(on===PFX.on)return;PFX.on=on;
     clearInterval(PFX.wow);PFX.wow=setInterval(()=>{PFX.ph+=.05;try{AUD.A.playbackRate=1+.0045*Math.sin(PFX.ph*2*Math.PI*.55)+.0015*Math.sin(PFX.ph*2*Math.PI*2.1)}catch(e){}},50)}
   else{clearInterval(PFX.wow);try{AUD.A.playbackRate=1}catch(e){}
     if(PFX.src&&PFX.ac){const t=PFX.ac.currentTime,g=PFX.g,sr=PFX.src;g.gain.cancelScheduledValues(t);g.gain.setValueAtTime(g.gain.value,t);g.gain.linearRampToValueAtTime(0,t+.3);setTimeout(()=>{try{sr.stop()}catch(e){}},400);PFX.src=null}}}
-function audApply(){const t=(st.xf||0)/100;
+function audApply(){const t=(st.xf||0)/100;if(st.playing){const c=mixGraph();if(c&&c.state==='suspended')c.resume().catch(()=>{})}
   pressFx(!!(st.playing&&!st.deck2&&st.cur&&st.cur.rec&&st.cur.f!=='CD'&&st.src==='mine'&&pvLive('A')&&!AUD.A.paused));
-  ['A','B'].forEach(D=>{const au=AUD[D],s=DS[D];au.volume=st.deck2?Math.max(0,Math.min(1,D==='A'?Math.cos(t*Math.PI/2):Math.sin(t*Math.PI/2))):(D==='A'?1:0);
+  ['A','B'].forEach(D=>{const au=AUD[D],s=DS[D],vol=st.deck2?Math.max(0,Math.min(1,D==='A'?Math.cos(t*Math.PI/2):Math.sin(t*Math.PI/2))):(D==='A'?1:0);
+    if(MIX.ctx&&MIX.g[D]){MIX.g[D].gain.setTargetAtTime(vol<.01?0:vol,MIX.ctx.currentTime,.03);au.volume=1}else au.volume=vol;
     if(st.playing&&s.ready&&s.key){if(au.paused)au.play().catch(()=>{})}else if(!au.paused)au.pause()})}
 function audSync(){['A','B'].forEach(D=>{const w=deckWant(D),au=AUD[D],s=DS[D];
   if(!w){if(s.key){au.pause();s.key=null;s.ready=false;s.wait=false}return}
@@ -1781,6 +1786,7 @@ function audSync(){['A','B'].forEach(D=>{const w=deckWant(D),au=AUD[D],s=DS[D];
   let nx;if(D==='A'&&st.queue&&!st.deck2&&st.queue.length)nx=st.queue[(st.qi+1)%st.queue.length].split(':');else nx=[w[0].id,(w[1]+1)%tracksOf(w[0]).length];
   const na=byId(nx[0]);if(na)setTimeout(()=>pvLookup(na,+nx[1]),1500)});
   audApply()}
+['A','B'].forEach(D=>{AUD[D].addEventListener('error',()=>{if(AUD[D].crossOrigin&&AUD[D].src&&!AUD[D]._retry){AUD[D]._retry=1;const u=AUD[D].src;AUD[D].removeAttribute('crossorigin');AUD[D].src=u;audApply()}})});
 AUD.A.onended=()=>{if(!DS.A.ready)return;st.queue&&!st.deck2?qStep(1):setTrack(st.track+1)};
 AUD.B.onended=()=>{if(DS.B.ready&&st.deck2)setTrackB(st.trackB+1)};
 {const wrap=f=>function(...x){const r=f.apply(this,x);try{audSync()}catch(e){}return r};
@@ -2383,11 +2389,11 @@ function saveCovers(){try{localStorage.setItem('stack-covers',JSON.stringify(cov
   const use=(a,url)=>{if(!url||a.img)return;a.img=url;dirty=true;redraw()};
   const look=async a=>{if(a.id in ART){use(a,ART[a.id]);return}
     const nt=pvNorm(a.t.replace(/[“”"]/g,'')),na=pvNorm(a.a),term=encodeURIComponent(a.a+' '+a.t.replace(/[“”"]/g,'')),url=`https://itunes.apple.com/search?term=${term}&media=music&entity=album&limit=10&country=GB`;
-    let j=null;try{j=await (await fetch(url)).json()}catch(e){try{j=await jsonp(url)}catch(e2){return}}
+    let j=null;for(let k=0;k<3&&!j;k++){try{const r=await fetch(url);if(r.ok)j=await r.json()}catch(e){}if(!j){try{j=await jsonp(url)}catch(e2){}}if(!j)await new Promise(r=>setTimeout(r,2500*(k+1)))}if(!j)return;
     const ok=(j.results||[]).filter(r=>r.artworkUrl100&&pvNorm(r.artistName).includes(na.slice(0,8)));
     const r=ok.find(r=>pvNorm(r.collectionName)===nt)||ok.find(r=>pvNorm(r.collectionName).startsWith(nt))||ok.find(r=>pvNorm(r.collectionName).includes(nt));
     const art=r?r.artworkUrl100.replace(/\/\d+x\d+bb\./,'/600x600bb.'):null;ART[a.id]=art;try{localStorage.setItem('stack-art2',JSON.stringify(ART))}catch(e){}use(a,art)};
-  (async()=>{for(const a of all){await look(a);await new Promise(r=>setTimeout(r,120))}})();
+  (async()=>{for(const a of all){await look(a);await new Promise(r=>setTimeout(r,400))}})();
 })();
 let editing=null;
 function pickCover(a){editing=a;const inp=$('#coverIn');inp.value='';inp.click()}
