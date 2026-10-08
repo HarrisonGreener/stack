@@ -1229,6 +1229,7 @@ html.touch .phone.full~.demo-fab,html.touch .demo-fab{display:none!important}
 .crate-hint{font-size:12.5px;color:var(--muted);margin-right:auto}
 .searching .controls-row,.searching #spinesView,.searching #crateView,.searching #listMine,.searching #giftSlot,.searching .liked-card{display:none!important}
 .crate{-webkit-mask-image:linear-gradient(#000 calc(100% - 70px),transparent);mask-image:linear-gradient(#000 calc(100% - 70px),transparent)}
+.wish-row .tx .faces-sm{display:inline-flex;margin-top:0;overflow:visible}
 </style>
 <style>[hidden]{display:none!important}body{margin:0}</style>
 </head>
@@ -1953,7 +1954,7 @@ const PACKS=[
 const COLOURS=[['Black','#1d1c1a'],['Chalk','#E7E3DC'],['Orange','#EE9A2E']];
 let puckCol=0;
 function renderPacks(){$('#packs').innerHTML=PACKS.map((p,i)=>`<button class="pack${p.best?' best':''}" data-pack="${i}"><span class="pk-img${p.n===1?' one':''}">${'<i></i>'.repeat(p.n)}</span><span class="tx">${p.best?'<span class="tag">MOST POPULAR</span>':''}<b>${p.name}</b><span>${p.desc}</span></span><span class="price"><b>£${p.price}</b><span>Buy</span></span></button>`).join('')}
-function openShop(i){const slot=$('#sheetSlot');let pk=i,col=puckCol,q=1;
+function openShop(i){const slot=$('#sheetSlot');let pk=(i==null||isNaN(i))?0:i,col=puckCol,q=1;
   const draw=()=>{const p=PACKS[pk],sub=p.price*q;
    slot.querySelector('#shopBody').innerHTML=`
     <div class="set-h" style="margin-top:0">Pack</div><div class="opt-row">${PACKS.map((x,k)=>`<button class="opt" data-pk="${k}" aria-pressed="${k===pk}">${x.name}<span style="font-weight:500;color:var(--muted)">£${x.price}</span></button>`).join('')}</div>
