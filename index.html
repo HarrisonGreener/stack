@@ -1174,7 +1174,9 @@ input[type=range]::-moz-range-thumb{width:22px;height:30px;border-radius:6px;bac
 .pull-sel.hang.tug .hangbot{animation:hgtug2 .55s cubic-bezier(.3,.7,.3,1)}
 @keyframes hgtug2{30%{translate:0 -10px}}
 /* real phones: locked full screen, no zoom, notch- and keyboard-safe */
-.phone.full{height:var(--vh,100dvh)!important;top:var(--vt,0px)!important;bottom:auto!important;--sat:env(safe-area-inset-top,0px)}
+.phone.full{top:0!important;bottom:0!important;height:auto!important;--sat:env(safe-area-inset-top,0px)}
+html.kb .phone.full{height:var(--vh,100dvh)!important;top:var(--vt,0px)!important;bottom:auto!important}
+html.touch,html.touch body{height:100%;min-height:100vh;min-height:-webkit-fill-available}
 .phone.full .screen{padding-top:calc(20px + var(--sat))!important}
 .phone.full .pl-scroll{padding-top:calc(12px + var(--sat))!important}
 .phone.full .ai-sheet{max-height:calc(100% - var(--sat) - 16px)}
@@ -2205,8 +2207,8 @@ $('#aiTab').onclick=openAI;
   const vv=window.visualViewport,root=document.documentElement;
   const sync=()=>{const h=vv?vv.height:innerHeight,t=vv?vv.offsetTop:0;root.style.setProperty('--vh',h+'px');root.style.setProperty('--vt',t+'px');window.scrollTo(0,0)};
   if(vv){vv.addEventListener('resize',sync);vv.addEventListener('scroll',sync)}addEventListener('orientationchange',()=>setTimeout(sync,300));sync();
-  document.addEventListener('focusin',e=>{if(e.target.matches('input,textarea'))setTimeout(()=>{sync();const t=$('#aiThread');if(t)t.scrollTop=t.scrollHeight},300)});
-  document.addEventListener('focusout',()=>setTimeout(sync,120));
+  document.addEventListener('focusin',e=>{if(e.target.matches('input,textarea')){root.classList.add('kb');setTimeout(()=>{sync();const t=$('#aiThread');if(t)t.scrollTop=t.scrollHeight},300)}});
+  document.addEventListener('focusout',()=>setTimeout(()=>{if(!document.activeElement||!document.activeElement.matches('input,textarea'))root.classList.remove('kb');sync()},150));
 })();
 
 /* elastic snap-back + pop for the overscroll */
