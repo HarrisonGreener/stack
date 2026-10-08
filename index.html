@@ -1230,6 +1230,26 @@ html.touch .phone.full~.demo-fab,html.touch .demo-fab{display:none!important}
 .searching .controls-row,.searching #spinesView,.searching #crateView,.searching #listMine,.searching #giftSlot,.searching .liked-card{display:none!important}
 .crate{-webkit-mask-image:linear-gradient(#000 calc(100% - 70px),transparent);mask-image:linear-gradient(#000 calc(100% - 70px),transparent)}
 .wish-row .tx .faces-sm{display:inline-flex;margin-top:0;overflow:visible}
+/* plans: clean cards in the app's own style */
+.plan-card{border:1.5px solid var(--line);border-radius:18px;padding:16px;margin-bottom:10px;background:var(--surface);font-family:var(--font)}
+.plan-card.cur{border-color:var(--rose);box-shadow:0 0 0 1px var(--rose)}
+.plan-card .plan-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.plan-card .plan-top b{display:flex;align-items:center;gap:8px;font-size:19px;font-weight:650;letter-spacing:-.02em}
+.plan-card .cur-badge{font-size:11px;font-weight:600;letter-spacing:0;padding:3px 8px;border-radius:999px;background:var(--rose);color:var(--on-rose)}
+.plan-card .pr{font-size:20px;font-weight:700;font-variant-numeric:tabular-nums}
+.plan-card .pr small{font-size:12.5px;font-weight:500;color:var(--muted)}
+.plan-card .who{font-size:13.5px;color:var(--muted);margin-top:2px}
+.plan-card ul{margin:12px 0 14px;padding:0;list-style:none;font-size:14px;line-height:1.35}
+.plan-card li{padding:4px 0 4px 24px;position:relative}
+.plan-card li::before{content:"";position:absolute;left:2px;top:9px;width:12px;height:7px;border-left:2px solid var(--rose);border-bottom:2px solid var(--rose);transform:rotate(-45deg)}
+.plan-card .cur-tag{display:block;text-align:center;font-size:13px;font-weight:500;color:var(--muted);padding:6px 0 2px}
+.plan-card .btn{padding:12px;font-size:14.5px;border-radius:12px}
+.plan-card .plan-warn{font-size:13.5px;margin:0 0 10px;padding:11px 12px;border-radius:12px;background:color-mix(in srgb,var(--mustard) 22%,var(--surface))}
+/* Home Screen app on iPhone: fill the whole screen down to the home bar */
+html.standalone,html.standalone body{height:var(--sh,100vh)!important;min-height:var(--sh,100vh)!important}
+html.standalone .phone.full{top:0!important;bottom:auto!important;height:var(--sh,100vh)!important}
+html.standalone.kb .phone.full{height:var(--vh)!important}
+@media (display-mode: standalone){html.touch,html.touch body{height:100vh;min-height:100vh}.phone.full{bottom:auto!important;height:100vh!important}}
 </style>
 <style>[hidden]{display:none!important}body{margin:0}</style>
 </head>
@@ -2335,6 +2355,7 @@ const Crate=(()=>{let items=[],cur=0,sort='artist',q='',built=false;const DVC=['
 
 /* phone mode: stop pinch/double-tap zoom and page dragging, follow the visible viewport (keyboard, browser bars) */
 (function(){const touch=matchMedia('(pointer:coarse)').matches||'ontouchstart' in window;if(!touch)return;document.documentElement.classList.add('touch');
+  if(navigator.standalone||matchMedia('(display-mode: standalone)').matches){const r=document.documentElement;r.classList.add('standalone');const setSH=()=>r.style.setProperty('--sh',Math.max(screen.height,innerHeight)+'px');setSH();addEventListener('orientationchange',()=>setTimeout(()=>r.style.setProperty('--sh',(matchMedia('(orientation: landscape)').matches?Math.min(screen.width,screen.height):Math.max(screen.width,screen.height))+'px'),300))}
   ['gesturestart','gesturechange','gestureend'].forEach(t=>document.addEventListener(t,e=>e.preventDefault(),{passive:false}));
   document.addEventListener('touchmove',e=>{if(e.touches.length>1){e.preventDefault();return}
     let el=e.target;while(el&&el!==document.body){if(el.matches&&el.matches('input,textarea,.cf,[data-scroll]'))return;const cs=getComputedStyle(el);if(/(auto|scroll)/.test(cs.overflowY+cs.overflowX)&&(el.scrollHeight>el.clientHeight+1||el.scrollWidth>el.clientWidth+1))return;el=el.parentElement}
@@ -2619,9 +2640,9 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-fmt]');if(
 function openPlans(pending){const slot=$('#sheetSlot');const cur=st.plan;
   slot.innerHTML=`<div class="scrim" id="plSc" style="animation:none"></div><div class="sheet" style="animation:none;max-height:90%"><div class="sheet-h"><h3>Change plan</h3><button class="icon-btn" id="plBack" aria-label="Back to account">${ICON.x}</button></div><div class="sheet-b">
    <p class="sub" style="margin:0 0 14px">Every plan streams only the records you own, so it costs a fraction of a streaming subscription. Change or cancel any time.</p>
-   ${Object.entries(PLANS).map(([k,pl])=>`<div class="plan${k===cur?' cur':''}"><div class="plan-top"><b>${pl.name}</b><span class="pr">${fmtGBP(pl.price)}<small> /month</small></span></div><div class="who">${pl.who}</div>
+   ${Object.entries(PLANS).map(([k,pl])=>`<div class="plan-card${k===cur?' cur':''}"><div class="plan-top"><b>${pl.name}${k===cur?'<span class="cur-badge">Current</span>':''}</b><span class="pr">${fmtGBP(pl.price)}<small> /month</small></span></div><div class="who">${pl.who}</div>
      <ul>${pl.feats.map(f=>`<li>${f}</li>`).join('')}</ul>
-     ${k===cur?'<span class="cur-tag">YOUR CURRENT PLAN</span>':pending===k?`<p class="plan-warn">${cur==='family'?'Your Family Stack will stop sharing, and Mum, Dad and Ellie will lose access to your records.':k==='family'?'You can invite up to 3 people to share your Family Stack.':'Your plan changes from your next bill.'} You'll pay ${fmtGBP(pl.price)} a month from your next bill.</p><div style="display:flex;gap:8px"><button class="btn ghost" data-plan-cancel>Cancel</button><button class="btn" data-plan-confirm="${k}">Confirm ${pl.name}</button></div>`:`<button class="btn ghost" data-plan="${k}">Switch to ${pl.name}</button>`}</div>`).join('')}
+     ${k===cur?'<span class="cur-tag">You’re on this plan</span>':pending===k?`<p class="plan-warn">${cur==='family'?'Your Family Stack will stop sharing, and Mum, Dad and Ellie will lose access to your records.':k==='family'?'You can invite up to 3 people to share your Family Stack.':'Your plan changes from your next bill.'} You'll pay ${fmtGBP(pl.price)} a month from your next bill.</p><div style="display:flex;gap:8px"><button class="btn ghost" data-plan-cancel>Cancel</button><button class="btn" data-plan-confirm="${k}">Confirm ${pl.name}</button></div>`:`<button class="btn ghost" data-plan="${k}">Switch to ${pl.name}</button>`}</div>`).join('')}
    <div class="demo-note">PROTOTYPE · PLAN CHANGES ARE FOR DEMO ONLY</div></div></div>`;
   $('#plSc').onclick=closeSheet;$('#plBack').onclick=openAccount;
   slot.querySelectorAll('[data-plan]').forEach(b=>b.onclick=()=>openPlans(b.dataset.plan));
