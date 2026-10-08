@@ -1211,6 +1211,23 @@ html.touch .phone.full~.demo-fab,html.touch .demo-fab{display:none!important}
 .crate-front span{position:absolute;left:0;right:0;bottom:12px;text-align:center;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:rgba(255,248,236,.85)}
 .crate-cap{margin-top:12px}
 .crate-empty{position:absolute;left:0;right:0;top:200px;text-align:center;color:var(--muted);font-size:14px}
+/* search across songs and albums */
+.stack-search{display:flex;align-items:center;gap:8px;margin:14px 0 0;background:var(--surface-2);border-radius:14px;padding:0 13px;color:var(--muted)}
+.stack-search svg{width:17px;height:17px;flex:none}
+.stack-search input{flex:1;min-width:0;border:0;background:none;font:inherit;font-size:15px;color:var(--fg);padding:12px 0;outline:none}
+#stackRes{margin-top:10px}
+#stackRes h4{margin:16px 0 6px;font-size:12px;font-family:var(--mono);letter-spacing:.12em;color:var(--muted);font-weight:500}
+#stackRes .row .art{width:46px;height:46px}
+.song-row{display:flex;align-items:center;gap:12px;width:100%;padding:8px 2px;text-align:left;border-bottom:1px solid var(--line)}
+.song-row .art{width:42px;height:42px;border-radius:5px;flex:none}
+.song-row .tx{flex:1;min-width:0}.song-row b{display:block;font-size:14.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.song-row .tx span{font-size:12.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
+.song-row .go{width:32px;height:32px;border-radius:50%;background:var(--rose);color:var(--on-rose);display:grid;place-items:center;flex:none}
+.song-row .go svg{width:14px;height:14px}
+.res-empty{color:var(--muted);font-size:14px;padding:18px 0;text-align:center}
+.crate-tools{justify-content:flex-end;align-items:center}
+.crate-hint{font-size:12.5px;color:var(--muted);margin-right:auto}
+.searching .controls-row,.searching #spinesView,.searching #crateView,.searching #listMine,.searching #giftSlot,.searching .liked-card{display:none!important}
 </style>
 <style>[hidden]{display:none!important}body{margin:0}</style>
 </head>
@@ -1268,6 +1285,8 @@ html.touch .phone.full~.demo-fab,html.touch .demo-fab{display:none!important}
           </div>
           <h2 class="big">My Stack</h2>
           <p class="sub" id="mineSub"></p>
+          <label class="stack-search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></svg><input id="stackQ" type="search" placeholder="Search songs, albums and artists" autocomplete="off" aria-label="Search your Stack"></label>
+          <div id="stackRes" hidden></div>
           <div id="giftSlot"></div>
           <button class="liked-card" id="likedOpen"><span class="lk-ic"><svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linejoin="round"><path d="M12 20s-7.5-4.6-7.5-10A4.3 4.3 0 0 1 12 7.4 4.3 4.3 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10z"/></svg></span><span class="tx"><b>Liked songs</b><span id="likedCount"></span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
           <div class="controls-row">
@@ -1287,7 +1306,7 @@ html.touch .phone.full~.demo-fab,html.touch .demo-fab{display:none!important}
             <div class="caption" id="capMine"></div>
           </div>
           <div id="crateView" hidden>
-            <div class="crate-tools"><label class="crate-search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></svg><input id="crateQ" type="search" placeholder="Search your Stack" autocomplete="off" aria-label="Search your Stack"></label>
+            <div class="crate-tools"><span class="crate-hint">Sort the crate</span>
               <select id="crateSort" aria-label="Sort"><option value="artist">Artist A–Z</option><option value="title">Title A–Z</option><option value="recent">Recently added</option><option value="year">Year</option></select></div>
             <div class="crate" id="crate" tabindex="0" aria-label="Crate of records. Swipe or scroll to flick through."><div class="crate-items" id="crateItems"></div><div class="crate-front"><i></i><span id="crateCount"></span></div></div>
             <div class="caption crate-cap" id="crateCap"></div>
@@ -1782,7 +1801,24 @@ function jsonp(url,timeout=6000){return new Promise((res,rej)=>{const cb='_pv'+M
   window[cb]=d=>{if(done)return;end();res(d)};sc.onerror=()=>{if(done)return;end();rej(new Error('jsonp'))};setTimeout(()=>{if(!done){end();rej(new Error('timeout'))}},timeout);
   sc.src=url+(url.includes('?')?'&':'?')+'callback='+cb;document.head.appendChild(sc)})}
 const pvPending={};
-function pvLookup(a,i){const k=a.id+':'+i;if(k in PV)return Promise.resolve(PV[k]);if(pvPending[k])return pvPending[k];
+const ALB_CID={"rum": 594061854, "abr": 1474815798, "okc": 1097861387, "b2b": 1440856219, "ram": 617154241, "am": 663097964, "her": 1347894082, "btr": 310730204, "thr": 269572838, "boh": 6781027361, "blu": 1492263092, "tap": 747087657, "a21": 403037872, "mis": 1276760743, "kob": 268443092, "gra": 529574560, "mgl": 1517447039, "pr": 1746833068, "wlo": 1687292554, "pkl": 699665183, "hol": 1675375084, "pet": 1440841241, "lwt": 429822858, "jtr": 1443155637, "dmb": 1525936190},ALB_DZ={"nm": 1252979, "dsm": 12114240, "iti": 101618},ALB_TR={};
+let ALB_SAVED={};try{ALB_SAVED=JSON.parse(localStorage.getItem('stack-albtr'))||{}}catch(e){}
+function albumTracks(a){if(ALB_TR[a.id])return ALB_TR[a.id];
+  const p=(async()=>{const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+    if(ALB_CID[a.id]){if(ALB_SAVED[a.id])return ALB_SAVED[a.id];
+      const url=`https://itunes.apple.com/lookup?id=${ALB_CID[a.id]}&entity=song&country=GB&limit=200`;
+      for(let k=0;k<4;k++){let j=null;try{const r=await fetch(url);if(r.ok)j=await r.json()}catch(e){}if(!j){try{j=await jsonp(url)}catch(e){}}
+        if(j){const L=(j.results||[]).filter(x=>x.wrapperType==='track'&&x.previewUrl).map(x=>[x.trackName,x.previewUrl]);ALB_SAVED[a.id]=L;try{localStorage.setItem('stack-albtr',JSON.stringify(ALB_SAVED))}catch(e){}return L}
+        await sleep(1500*(k+1))}return null}
+    if(ALB_DZ[a.id]){for(let k=0;k<3;k++){try{const j=await jsonp(`https://api.deezer.com/album/${ALB_DZ[a.id]}/tracks?limit=100&output=jsonp`);return (j.data||[]).filter(x=>x.preview).map(x=>[x.title,x.preview])}catch(e){await sleep(1500)}}return null}
+    return null})();
+  ALB_TR[a.id]=p;p.then(v=>{if(!v)delete ALB_TR[a.id]});return p}
+function matchTrack(list,title){const clean=t=>pvNorm(String(t).replace(/[“”"]/g,'').replace(/\(.*?\)/g,' ').replace(/\[.*?\]/g,' ').replace(/ - .*$/,''));const nt=clean(title);
+  return (list.find(x=>clean(x[0])===nt)||list.find(x=>pvNorm(x[0]).startsWith(nt))||list.find(x=>pvNorm(x[0]).includes(nt))||[])[1]||null}
+function pvLookup(a,i){const k=a.id+':'+i;if(pvPending[k])return pvPending[k];
+  if(ALB_CID[a.id]||ALB_DZ[a.id]){const q=(async()=>{const L=await albumTracks(a);let u=L&&matchTrack(L,tracksOf(a)[i].t);delete pvPending[k];if(u)return u;return pvLookupSearch(a,i)})();pvPending[k]=q;return q}
+  return pvLookupSearch(a,i)}
+function pvLookupSearch(a,i){const k=a.id+':'+i;if(k in PV&&PV[k])return Promise.resolve(PV[k]);if(pvPending[k+'s'])return pvPending[k+'s'];
   const title=tracksOf(a)[i].t,clean=title.replace(/[“”"]/g,'').replace(/\(.*?\)/g,' ').replace(/\s+/g,' ').trim()||title,nt=pvNorm(clean),na=pvNorm(a.a);
   const pick=(list,tk,ak,uk)=>{const ok=list.filter(r=>r[uk]&&pvNorm(r[ak]).includes(na.slice(0,8)));
     return (ok.find(r=>pvNorm(r[tk])===nt)||ok.find(r=>pvNorm(r[tk]).startsWith(nt))||ok.find(r=>pvNorm(r[tk]).includes(nt))||{})[uk]||null};
@@ -1792,8 +1828,8 @@ function pvLookup(a,i){const k=a.id+':'+i;if(k in PV)return Promise.resolve(PV[k
       try{const j=await jsonp(it);reached=true;url=pick(j.results||[],'trackName','artistName','previewUrl')}catch(e2){}}
     if(!url){try{const j=await jsonp(`https://api.deezer.com/search?q=${term}&output=jsonp`);reached=true;url=pick((j.data||[]).map(x=>({t:x.title,a:x.artist&&x.artist.name,u:x.preview})),'t','a','u')}catch(e){}}
     if(reached){PV[k]=url;try{localStorage.setItem('stack-pv2',JSON.stringify(PV))}catch(e){}}
-    delete pvPending[k];return url})();
-  pvPending[k]=p;return p}
+    delete pvPending[k+'s'];return url})();
+  pvPending[k+'s']=p;return p}
 const pvLive=D=>!!(DS[D].ready&&isFinite(AUD[D].duration)&&AUD[D].duration>0);
 function deckWant(D){return D==='A'?(st.cur?[st.cur,st.track]:null):(st.deck2?[st.deck2,st.trackB]:null)}
 /* 'my pressing': surface noise, pops and a little turntable wow over the preview, so it sounds like a real record */
@@ -1818,11 +1854,11 @@ function audSync(){['A','B'].forEach(D=>{const w=deckWant(D),au=AUD[D],s=DS[D];
   s.key=k;s.ready=false;s.wait=true;au.pause();
   const lk=pvLookup(w[0],w[1]);const guard=setTimeout(()=>{if(s.key===k)s.wait=false},7000);
   lk.then(url=>{clearTimeout(guard);if(s.key!==k)return;s.wait=false;if(!url){s.ready=false;return}
-    au.src=url;au.currentTime=0;s.ready=true;audApply()},()=>{if(s.key===k)s.wait=false});
+    au._refetched=0;au.src=url;au.currentTime=0;s.ready=true;audApply()},()=>{if(s.key===k)s.wait=false});
   let nx;if(D==='A'&&st.queue&&!st.deck2&&st.queue.length)nx=st.queue[(st.qi+1)%st.queue.length].split(':');else nx=[w[0].id,(w[1]+1)%tracksOf(w[0]).length];
   const na=byId(nx[0]);if(na)setTimeout(()=>pvLookup(na,+nx[1]),1500)});
   audApply()}
-['A','B'].forEach(D=>{AUD[D].addEventListener('error',()=>{if(AUD[D].crossOrigin&&AUD[D].src&&!AUD[D]._retry){AUD[D]._retry=1;const u=AUD[D].src;AUD[D].removeAttribute('crossorigin');AUD[D].src=u;audApply()}})});
+['A','B'].forEach(D=>{AUD[D].addEventListener('error',()=>{const w=deckWant(D);if(w&&!AUD[D]._refetched){AUD[D]._refetched=1;delete ALB_TR[w[0].id];delete ALB_SAVED[w[0].id];DS[D].key=null;setTimeout(audSync,50);return}if(AUD[D].crossOrigin&&AUD[D].src&&!AUD[D]._retry){AUD[D]._retry=1;const u=AUD[D].src;AUD[D].removeAttribute('crossorigin');AUD[D].src=u;audApply()}})});
 AUD.A.onended=()=>{if(!DS.A.ready)return;st.queue&&!st.deck2?qStep(1):setTrack(st.track+1)};
 AUD.B.onended=()=>{if(DS.B.ready&&st.deck2)setTrackB(st.trackB+1)};
 {const wrap=f=>function(...x){const r=f.apply(this,x);try{audSync()}catch(e){}return r};
@@ -2226,6 +2262,21 @@ function openAI(){const slot=$('#sheetSlot');$('#aiTab').classList.add('open');
     bot.animate([{transform:`translate(${dx}px,${dy}px) scale(${sc})`},{transform:`translate(${dx*.3}px,${dy*.3}px) scale(${(1+sc)/1.5})`,offset:.55},{transform:'none'}],{duration:760,easing:'cubic-bezier(.3,.7,.2,1)'})}
   setTimeout(()=>{try{$('#askIn').focus({preventScroll:true})}catch(e){}},720)}
 $('#aiTab').onclick=openAI;
+/* search: songs and albums in your Stack */
+(function(){const inp=$('#stackQ'),box=$('#stackRes'),scr=$('#s-mine');if(!inp)return;
+  const esc2=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const PLAYI='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>';
+  function run(){const q=inp.value.trim().toLowerCase();scr.classList.toggle('searching',!!q);box.hidden=!q;if(!q){box.innerHTML='';return}
+    const pool=mine();const al=pool.filter(a=>(a.t+' '+a.a+' '+a.y).toLowerCase().includes(q));
+    const songs=[];pool.forEach(a=>tracksOf(a).forEach((t,i)=>{if(t.t.toLowerCase().includes(q)||(a.a.toLowerCase().includes(q)&&!al.includes(a)))songs.push([a,i,t])}));
+    box.innerHTML=(al.length?`<h4>ALBUMS</h4>`+al.map(a=>`<button class="row" data-id="${a.id}">${artHTML(a,'',false)}<span class="tx"><b>${esc2(a.t)}</b><span>${esc2(a.a)} · ${a.y}</span></span><span class="pill">${fmtLabel[a.f]}</span></button>`).join(''):'')
+      +(songs.length?`<h4>SONGS</h4>`+songs.slice(0,40).map(([a,i,t])=>`<button class="song-row" data-song="${a.id}:${i}">${artHTML(a,'',false)}<span class="tx"><b>${esc2(t.t)}</b><span>${esc2(a.t)} · ${esc2(a.a)}</span></span><span class="go">${PLAYI}</span></button>`).join(''):'')
+      +(!al.length&&!songs.length?`<div class="res-empty">Nothing in your Stack matches “${esc2(inp.value.trim())}”.</div>`:'')}
+  inp.addEventListener('input',run);inp.addEventListener('search',run);
+  box.addEventListener('click',async e=>{const b=e.target.closest('[data-song]');if(!b)return;e.stopPropagation();const[id,i]=b.dataset.song.split(':'),a=byId(id);
+    try{inp.blur()}catch(err){}await openRecord(a,b.querySelector('.art'),'Search');setTrack(+i);play()});
+})();
+
 /* ---------- Crate view ---------- */
 const Crate=(()=>{let items=[],cur=0,sort='artist',q='',built=false;const DVC=['#B6452C','#EF8B2C','#7FA7B7','#E9B949','#3A2216'];
   const key=a=>(sort==='title'?a.t:a.a).replace(/^[“"']/,'').replace(/^the\s+/i,'').trim();
@@ -2269,7 +2320,6 @@ const Crate=(()=>{let items=[],cur=0,sort='artist',q='',built=false;const DVC=['
       let v=d.v*16;const step=()=>{if(Math.abs(v)<.35)return;const n=cur+(v>0?1:-1);if(n<0||n>=items.length)return;go(n);v*=.8;mom=setTimeout(step,Math.max(40,120-Math.abs(v)*20))};if(Math.abs(v)>1.2)step()};
     c.addEventListener('pointerup',end);c.addEventListener('pointercancel',()=>{drag=null});
     c.addEventListener('keydown',e=>{if(e.key==='ArrowDown'||e.key==='ArrowRight'){go(cur+1);e.preventDefault()}if(e.key==='ArrowUp'||e.key==='ArrowLeft'){go(cur-1);e.preventDefault()}if(e.key==='Enter'&&items[cur]&&items[cur].a)openRecord(items[cur].a,null,'My Stack')});
-    $('#crateQ').addEventListener('input',e=>{q=e.target.value.trim();cur=0;render()});
     $('#crateSort').addEventListener('change',e=>{sort=e.target.value;render()})}
   return{render}})();
 // default view: remembered choice, otherwise automatic (carousel for small collections, crate once you pass ~30 records)
@@ -2557,7 +2607,7 @@ function openAbout(){const slot=$('#sheetSlot');
     <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18v-6a8 8 0 0 1 16 0v6"/><rect x="3" y="15" width="4" height="6" rx="1.5"/><rect x="17" y="15" width="4" height="6" rx="1.5"/></svg><b>Stream</b>Play them anywhere</div>
    </div>
    <div class="about-bot"><span class="bh" style="--s:52px"><span class="bh-band"></span><span class="bh-cup l"></span><span class="bh-cup r"></span><span class="bh-head"><span class="bh-stripes"></span><span class="bh-face"><i class="bh-eye l"></i><i class="bh-eye r"></i><i class="bh-vu"><b></b><b></b><b></b><b></b><b></b></i></span></span></span><div><b>Meet DJ Selector</b><span>Your own crate-digging DJ. Tell him a mood, a moment or an artist, like "rainy Sunday", "cooking dinner" or "some Fleetwood Mac", and he digs through every record you and your family own to build a mix in seconds.</span></div></div>
-   <ul class="about-sel"><li><b>Only music you own.</b> Every song comes from a real record in your Stack, so every mix rewards collecting.</li><li><b>Mixes the whole family.</b> On Duo and Family plans he digs through everyone's records, not just yours.</li><li><b>Keep the good ones.</b> Play the mix straight away, shuffle again, or save it as a mixtape to send to a friend.</li></ul><p class="mono" style="font-size:10.5px;color:var(--muted);text-align:center;margin:14px 0 0;letter-spacing:.06em">PROTOTYPE BUILD · 8 OCT · 17:15</p>
+   <ul class="about-sel"><li><b>Only music you own.</b> Every song comes from a real record in your Stack, so every mix rewards collecting.</li><li><b>Mixes the whole family.</b> On Duo and Family plans he digs through everyone's records, not just yours.</li><li><b>Keep the good ones.</b> Play the mix straight away, shuffle again, or save it as a mixtape to send to a friend.</li></ul><p class="mono" style="font-size:10.5px;color:var(--muted);text-align:center;margin:14px 0 0;letter-spacing:.06em">PROTOTYPE BUILD · 8 OCT · 17:30</p>
    <div class="about-foot">STACK 1.0 · FOR PEOPLE WHO STILL BUY RECORDS</div></div></div>`;
   $('#abSc').onclick=$('#abX').onclick=closeSheet;
 }
