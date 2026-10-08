@@ -1413,6 +1413,14 @@ html.rm .wl-sel,html.rm .wl-disc{transition:none!important}
 .film-rpm b.bump{animation:rpmb2 .35s cubic-bezier(.3,1.6,.5,1)}@keyframes rpmb2{40%{transform:scale(1.35);color:#EF8B2C}}
 
 .demo-jump{grid-template-columns:1fr 1fr}.demo-jump button{background:var(--surface-2);border-color:transparent;min-height:52px}
+
+.stats-card{display:block;width:100%;text-align:left;margin:4px 0 18px;padding:14px;border-radius:18px;background:var(--surface-2);border:1px solid var(--line);position:relative;overflow:hidden}
+.stats-card::after{content:"";position:absolute;right:-46px;top:-46px;width:120px;height:120px;border-radius:50%;background:repeating-radial-gradient(circle,#EF8B2C 0 9px,#E9B949 9px 18px,#B6452C 18px 27px,#7FA7B7 27px 36px);opacity:.85;pointer-events:none}
+.stats-card .sc-h{display:flex;flex-direction:column;gap:2px;margin-bottom:12px;position:relative;z-index:1}
+.stats-card .sc-h b{font-size:17px;font-weight:700;letter-spacing:-.01em}
+.stats-card .sc-h span{display:flex;align-items:center;gap:2px;font-size:13px;color:var(--rose);font-weight:600}.stats-card .sc-h svg{width:14px;height:14px}
+.stats-card .acct-stats{margin:0;position:relative;z-index:1}
+.stats-card .acct-stats i{font-style:normal;background:var(--surface);border-radius:12px;padding:10px;text-align:center}
 </style>
 <style>[hidden]{display:none!important}body{margin:0}</style>
 </head>
@@ -3426,8 +3434,8 @@ const CHEVR='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-w
 function openAccount(){const slot=$('#sheetSlot'),m=mine(),fresh=!$('#acctSheet');
   slot.innerHTML=`<div class="scrim" id="acScrim" style="${fresh?'':'animation:none'}"></div><div class="sheet" id="acctSheet" style="${fresh?'':'animation:none'}"><div class="sheet-h"><h3>Account</h3><button class="icon-btn" id="acX" aria-label="Close">${ICON.x}</button></div><div class="sheet-b">
    <div class="acct-top"><div class="avatar" ${avs('you','#F0A034')}>H</div><div style="flex:1"><b>Harry</b><span>@harry · Stack ${PLANS[st.plan].name} plan</span><div style="display:flex;gap:12px;margin-top:6px"><button class="cap-edit" style="margin:0" data-avatar="you">${CAM}${AV.you?'Change':'Add'} profile picture</button>${AV.you?'<button class="mt-del" style="margin:0;color:var(--muted)" data-avrm="you">Reset</button>':''}</div></div></div>
-   <button class="set-row stats-link" id="acStats"><span><b>Your stats</b><small>Listening, your collection and Stack Wrapped</small></span>${CHEVR}</button>
-   <div class="acct-stats"><div><b>${m.length}</b><span>records</span></div><div><b>${LIKES.length}</b><span>liked songs</span></div><div><b>${WISH.size}</b><span>on wishlist</span></div></div>
+   <button class="stats-card" id="acStats" aria-label="Your stats and Stack Wrapped"><span class="sc-h"><b>Your stats</b><span>Stats &amp; Wrapped ${CHEVR}</span></span>
+    <span class="acct-stats"><i><b>${m.length}</b><span>records</span></i><i><b>${LIKES.length}</b><span>liked songs</span></i><i><b>${Math.round(m.reduce((n,a)=>n+((HIST[a.id]||{}).secs||0),0)/3600)}h</b><span>listened</span></i></span></button>
    <div class="set-h">Appearance</div>
    <div class="set-row"><span>Theme</span><div class="seg" role="group" aria-label="Theme">${['system','light','dark'].map(t=>`<button data-theme-set="${t}" aria-pressed="${themeMode()===t}">${t[0].toUpperCase()+t.slice(1)}</button>`).join('')}</div></div>
    <div class="set-row"><span>Reduce motion</span><button class="sw" role="switch" id="acRM" aria-checked="${!!SETTINGS.rm}" aria-label="Reduce motion"></button></div>
@@ -3470,7 +3478,7 @@ function openAbout(){const slot=$('#sheetSlot');
     <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18v-6a8 8 0 0 1 16 0v6"/><rect x="3" y="15" width="4" height="6" rx="1.5"/><rect x="17" y="15" width="4" height="6" rx="1.5"/></svg><b>Stream</b>Play them anywhere</div>
    </div>
    <div class="about-bot"><span class="bh" style="--s:52px"><span class="bh-band"></span><span class="bh-cup l"></span><span class="bh-cup r"></span><span class="bh-head"><span class="bh-stripes"></span><span class="bh-face"><i class="bh-eye l"></i><i class="bh-eye r"></i><i class="bh-vu"><b></b><b></b><b></b><b></b><b></b></i></span></span></span><div><b>Meet DJ Selector</b><span>Your own crate-digging DJ. Tell him a mood, a moment or an artist, like "rainy Sunday", "cooking dinner" or "some Fleetwood Mac", and he digs through every record you and your family own to build a mix in seconds.</span></div></div>
-   <ul class="about-sel"><li><b>Only music you own.</b> Every song comes from a real record in your Stack, so every mix rewards collecting.</li><li><b>Mixes the whole family.</b> On Duo and Family plans he digs through everyone's records, not just yours.</li><li><b>Keep the good ones.</b> Play the mix straight away, shuffle again, or save it as a mixtape to send to a friend.</li></ul><p class="mono" style="font-size:10.5px;color:var(--muted);text-align:center;margin:14px 0 0;letter-spacing:.06em">PROTOTYPE BUILD · 8 OCT · 20:15</p>
+   <ul class="about-sel"><li><b>Only music you own.</b> Every song comes from a real record in your Stack, so every mix rewards collecting.</li><li><b>Mixes the whole family.</b> On Duo and Family plans he digs through everyone's records, not just yours.</li><li><b>Keep the good ones.</b> Play the mix straight away, shuffle again, or save it as a mixtape to send to a friend.</li></ul><p class="mono" style="font-size:10.5px;color:var(--muted);text-align:center;margin:14px 0 0;letter-spacing:.06em">PROTOTYPE BUILD · 8 OCT · 20:20</p>
    <div class="about-foot">STACK 1.0 · FOR PEOPLE WHO STILL BUY RECORDS</div></div></div>`;
   $('#abSc').onclick=$('#abX').onclick=closeSheet;
 }
