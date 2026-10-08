@@ -2184,6 +2184,12 @@ function openAI(){const slot=$('#sheetSlot');$('#aiTab').classList.add('open');
     bot.animate([{transform:`translate(${dx}px,${dy}px) scale(${sc})`},{transform:`translate(${dx*.3}px,${dy*.3}px) scale(${(1+sc)/1.5})`,offset:.55},{transform:'none'}],{duration:760,easing:'cubic-bezier(.3,.7,.2,1)'})}
   setTimeout(()=>{try{$('#askIn').focus({preventScroll:true})}catch(e){}},720)}
 $('#aiTab').onclick=openAI;
+(function(){try{if(navigator.audioSession)navigator.audioSession.type='playback'}catch(e){}
+  const SIL='data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAIA+AAACABAAZGF0YQAAAAA=';
+  const wake=()=>{try{const a=new Audio(SIL);a.setAttribute('playsinline','');a.play().catch(()=>{})}catch(e){}
+    try{[window.AC,window.IAC].forEach(c=>{if(c&&c.state==='suspended')c.resume()});if(typeof AC!=='undefined'&&AC&&AC.state==='suspended')AC.resume();if(typeof IAC!=='undefined'&&IAC&&IAC.state==='suspended')IAC.resume()}catch(e){}};
+  ['touchend','pointerdown','keydown'].forEach(t=>document.addEventListener(t,wake,{passive:true}));})();
+
 /* phone mode: stop pinch/double-tap zoom and page dragging, follow the visible viewport (keyboard, browser bars) */
 (function(){const touch=matchMedia('(pointer:coarse)').matches||'ontouchstart' in window;if(!touch)return;document.documentElement.classList.add('touch');
   ['gesturestart','gesturechange','gestureend'].forEach(t=>document.addEventListener(t,e=>e.preventDefault(),{passive:false}));
@@ -2370,6 +2376,19 @@ const BAKED=window.STACK_BAKED||{};
 [...ALBUMS,...SCAN_POOL].forEach(a=>{if(covers[a.id])a.img=covers[a.id];else if(BAKED[a.id])a.img=BAKED[a.id]});
 if(Object.keys(covers).length||Object.keys(BAKED).length){renderMine();renderFamily();renderFriends();renderWish();renderMT()}
 function saveCovers(){try{localStorage.setItem('stack-covers',JSON.stringify(covers))}catch(e){toast('Cover saved for this session only')}}
+/* live album art: when a cover isn't built in, show the official artwork from Apple Music's public catalogue */
+(function(){let ART={};try{ART=JSON.parse(localStorage.getItem('stack-art2'))||{}}catch(e){}
+  const all=[...ALBUMS,...SCAN_POOL].filter((a,i,arr)=>arr.indexOf(a)===i&&!a.img&&!covers[a.id]&&!BAKED[a.id]);
+  let dirty=false,tm=null;const redraw=()=>{clearTimeout(tm);tm=setTimeout(()=>{try{renderMine();renderFamily();renderFriends();renderWish();renderMT();const fr=$('#cfFr');if(fr&&fr._c)fr._c.render()}catch(e){}},250)};
+  const use=(a,url)=>{if(!url||a.img)return;a.img=url;dirty=true;redraw()};
+  const look=async a=>{if(a.id in ART){use(a,ART[a.id]);return}
+    const nt=pvNorm(a.t.replace(/[“”"]/g,'')),na=pvNorm(a.a),term=encodeURIComponent(a.a+' '+a.t.replace(/[“”"]/g,'')),url=`https://itunes.apple.com/search?term=${term}&media=music&entity=album&limit=10&country=GB`;
+    let j=null;try{j=await (await fetch(url)).json()}catch(e){try{j=await jsonp(url)}catch(e2){return}}
+    const ok=(j.results||[]).filter(r=>r.artworkUrl100&&pvNorm(r.artistName).includes(na.slice(0,8)));
+    const r=ok.find(r=>pvNorm(r.collectionName)===nt)||ok.find(r=>pvNorm(r.collectionName).startsWith(nt))||ok.find(r=>pvNorm(r.collectionName).includes(nt));
+    const art=r?r.artworkUrl100.replace(/\/\d+x\d+bb\./,'/600x600bb.'):null;ART[a.id]=art;try{localStorage.setItem('stack-art2',JSON.stringify(ART))}catch(e){}use(a,art)};
+  (async()=>{for(const a of all){await look(a);await new Promise(r=>setTimeout(r,120))}})();
+})();
 let editing=null;
 function pickCover(a){editing=a;const inp=$('#coverIn');inp.value='';inp.click()}
 function squareImage(file){return new Promise((res,rej)=>{const r=new FileReader();r.onerror=rej;r.onload=()=>{const im=new Image();im.onerror=rej;
