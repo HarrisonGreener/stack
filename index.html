@@ -1715,16 +1715,15 @@ function roomCanvas(){const W=512,H=340,c=cnv(W,H),g=c.getContext('2d');
   R(sx-6,sy-6,sw+12,sh+12,6,'#2a190e');g.fillStyle=sg;g.fillRect(sx,sy,sw,sh);g.fillStyle='rgba(255,230,180,.85)';g.beginPath();g.arc(sx+sw*.62,sy+sh*.62,20,0,7);g.fill();
   g.fillStyle='#2a190e';g.fillRect(sx+sw/2-3,sy,6,sh);g.fillRect(sx,sy+sh*.45,sw,5);
   // macrame + hanging plant
-  g.fillStyle='#3f6b3a';[[262,62,18],[276,74,16],[250,78,14],[268,90,13]].forEach(([x,y,r])=>{g.beginPath();g.arc(x,y,r,0,7);g.fill()});g.fillStyle='#c9a46a';g.fillRect(266,0,2,56);
-  // globe lamp glow
-  const lg=g.createRadialGradient(360,70,4,360,70,70);lg.addColorStop(0,'rgba(255,224,160,1)');lg.addColorStop(.25,'rgba(255,190,110,.75)');lg.addColorStop(1,'rgba(255,170,90,0)');g.fillStyle=lg;g.fillRect(270,0,200,160);
-  g.fillStyle='#ffe7b8';g.beginPath();g.arc(360,70,15,0,7);g.fill();g.fillStyle='#2a190e';g.fillRect(358,85,4,90);
   // record shelf
   R(400,120,100,110,4,'#2a190e');const sc=['#EF8B2C','#E9B949','#B6452C','#7FA7B7','#F2C9A0','#3a271b','#D9752B','#8B5A2E'];for(let i=0;i<22;i++){g.fillStyle=sc[(i*5)%sc.length];g.fillRect(404+i*4.3,128+(i%3)*2,3.6,46-(i%3)*2);g.fillStyle=sc[(i*3+2)%sc.length];g.fillRect(404+i*4.3,182+(i%2)*2,3.6,42-(i%2)*2)}
   // sunken conversation pit: curved orange sofa
   R(0,190,W,60,10,'#8f3f1d');R(0,205,W,70,18,'#C4622D');for(let i=0;i<8;i++)R(8+i*64,212,56,26,10,'#D9753A');R(0,250,W,30,8,'#a84f24');
   // shag rug + pit floor
   g.fillStyle='#7a4a24';g.fillRect(0,272,W,H-272);for(let i=0;i<500;i++){g.fillStyle=Math.random()<.5?'rgba(255,220,170,.06)':'rgba(30,15,5,.08)';g.fillRect(Math.random()*W,272+Math.random()*(H-272),2,3)}
+  // floor lamp standing on the floor, in front of the sofa
+  {const lg=g.createRadialGradient(360,70,4,360,70,70);lg.addColorStop(0,'rgba(255,224,160,1)');lg.addColorStop(.25,'rgba(255,190,110,.75)');lg.addColorStop(1,'rgba(255,170,90,0)');g.fillStyle=lg;g.fillRect(270,0,200,160);
+   g.fillStyle='#2a190e';g.fillRect(358,82,4,214);g.beginPath();g.ellipse(360,297,16,4,0,0,7);g.fill();g.fillStyle='#ffe7b8';g.beginPath();g.arc(360,70,15,0,7);g.fill()}
   // a few bokeh highlights
   for(let i=0;i<14;i++){const x=Math.random()*W,y=20+Math.random()*180,r=4+Math.random()*9,bg=g.createRadialGradient(x,y,0,x,y,r);bg.addColorStop(0,'rgba(255,220,160,.35)');bg.addColorStop(1,'rgba(255,220,160,0)');g.fillStyle=bg;g.fillRect(x-r,y-r,r*2,r*2)}
   return c}
@@ -1839,6 +1838,7 @@ function build(T,el){
       const cuff=new T.Mesh(new T.TorusGeometry(.064,.022,16,40),orange);cuff.rotation.x=Math.PI/2;cuff.position.y=-len;piv.add(cuff)}
     return piv}
   const armL=limb(.42,.045,false),armR=limb(.42,.045,false);armL.position.set(-.43,.55,0);armR.position.set(.43,.55,0);torso.add(armL,armR);
+  const pelvis=ol(new T.Mesh(rbox(.5,.11,.32,.05,5),brown),.01);pelvis.position.y=.56;hip.add(pelvis);
   const legL=limb(.5,.055,true),legR=limb(.5,.055,true);legL.position.set(-.17,.545,0);legR.position.set(.17,.545,0);hip.add(legL,legR);
   SEL.scale.setScalar(.34);scene.add(SEL);
   // dizzy stars / sparkles
@@ -1852,7 +1852,7 @@ function pose(s,o){const d={armL:[0,0,.22],armR:[0,0,-.22],legL:[0,0,0],legR:[0,
   s.armL.rotation.set(p.armL[0],p.armL[1],-p.armL[2]);s.armR.rotation.set(p.armR[0],p.armR[1],-p.armR[2]);s.legL.rotation.set(...p.legL);s.legR.rotation.set(...p.legR);s.torso.rotation.set(...p.torso);s.headG.rotation.set(...p.head);
   s.hip.position.y=p.bob;s.hip.scale.set(1/Math.sqrt(p.sq),p.sq,1/Math.sqrt(p.sq))}
 function runPose(s,ph,k=1,lean=.18){const sw=Math.sin(ph),a=.62*k*sw;
-  pose(s,{armL:[sw*.6*k,0,.24],armR:[-sw*.6*k,0,-.24],legL:[-a,0,0],legR:[a,0,0],torso:[lean,Math.sin(ph)*.1,0],head:[-lean*.6,0,Math.sin(ph)*.05],bob:-.56*(1-Math.cos(a))})}
+  pose(s,{armL:[sw*.6*k,0,.24],armR:[-sw*.6*k,0,-.24],legL:[-a,0,0],legR:[a,0,0],torso:[lean,Math.sin(ph)*.1,0],head:[-lean*.6,0,Math.sin(ph)*.05],bob:.545*Math.cos(a)+.225*Math.abs(Math.sin(a))-.545})}
 
 /* ---------- sound ---------- */
 function audio(){if(typeof SFX_ON!=='undefined'&&!SFX_ON)return null;try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();if(AC.state==='suspended')AC.resume();return AC}catch(e){return null}}
@@ -1891,7 +1891,7 @@ function fx(ac,kind){if(!ac)return;const t=ac.currentTime,o=ac.createOscillator(
 const bot=k=>{try{sfx(k)}catch(e){}};
 
 /* ---------- the film ---------- */
-const BEATS=[0,6,12,19.5,26.5,31.5,37.3],END=39.8;
+const BEATS=[0,6,12,19.5,26.5,31.5,36.1],END=38.6;
 async function play(host,handoff){
   if(document.documentElement.classList.contains('rm'))return false;
   let T;try{T=await Promise.race([loadThree(),new Promise((_,r)=>setTimeout(()=>r(0),8000))])}catch(e){return false}
@@ -1943,9 +1943,8 @@ async function play(host,handoff){
       if(window.FILM_SEEK!=null){t=window.FILM_SEEK;window.FILM_SEEK=null;prevT=t-.001}if(window.FILM_HOLD)t=prevT;window.FILM_T=t;
       if(t>=END){render();return finish(true)}
       // ---- record speed ----
-      let rpm=33;if(t>BEATS[5]+.1)rpm=t<33?45:t<35.1?78:t<37.3?lerp(78,33,seg(t,35.1,37.3)):33;
-      const slow=t>35&&t<37.0?.28:1;
-      ang+=rpm/60*Math.PI*2*dt*(t<35||t>37?1:slow);
+      let rpm=33;if(t>BEATS[5]+.1)rpm=t<33?45:t<35.1?78:t<36.1?lerp(78,33,seg(t,35.1,36.1)):33;
+      ang+=rpm/60*Math.PI*2*dt;
       // ---- dive: settle the record exactly at 0 so it matches the loading intro ----
       if(t>=BEATS[6]){const u=seg(t,BEATS[6],END);if(!landSnd.dv){landSnd.dv=1;W0.angStart=ang;W0.angEnd=Math.ceil((ang+Math.PI*2.4)/(Math.PI*2))*Math.PI*2}
         recG.rotation.y=-lerp(W0.angStart,W0.angEnd,1-Math.pow(1-u,2.2))}
@@ -1972,7 +1971,7 @@ async function play(host,handoff){
         once('land1',3.45,()=>{fx(ac,'thud');bot('hello')});
       }else if(t<BEATS[2]){// running: feet close-up, then 3/4
         P.copy(SP);runPose(sel,ph,1);
-        if(t<8.2)shot(t,6,8.2,V(SP.x+.05,.12,SP.z+.62),V(SP.x,.13,SP.z),V(SP.x-.1,.12,SP.z+.5),V(SP.x,.15,SP.z),30,30);
+        if(t<8.2)shot(t,6,8.2,V(SP.x+1.45,.6,SP.z+2.05),V(SP.x,.4,SP.z),V(SP.x+1.2,.55,SP.z+1.85),V(SP.x,.4,SP.z),34,34);
         else shot(t,8.2,12,V(1.2,.8,2.75),V(SP.x,.5,SP.z),V(1.0,.85,2.5),V(SP.x,.52,SP.z),36,35);
         stepCheck(ph);
         once('b2',8.6,()=>bot('msg'));
@@ -2023,20 +2022,19 @@ async function play(host,handoff){
           cam.position.copy(hr).addScaledVector(fw,lerp(2.75,2.45,u)).add(V(.1,lerp(.55,.45,u),0));cam.up.set(0,1,0);cam.lookAt(hr.x,hr.y-.02+jy*.35,hr.z);cam.fov=32;cam.updateProjectionMatrix();
         }
       }else if(t<BEATS[6]){// faster, faster... flung!
-        rpmEl.classList.add('on');const nr=t<31.6?33:t<33?45:t<35.1?78:33;if(nr!==shownRpm){shownRpm=nr;rpmB.textContent=nr;rpmB.classList.remove('bump');void rpmB.offsetWidth;rpmB.classList.add('bump');if(nr===45)bot('msg');if(nr===78){bot('typing');fx(ac,'rise')}}
+        const nr=t<31.6?33:t<33?45:t<35.1?78:33;if(nr!==shownRpm){shownRpm=nr;rpmB.textContent=nr;rpmB.classList.remove('bump');void rpmB.offsetWidth;rpmB.classList.add('bump');if(nr===45)bot('msg');if(nr===78){bot('typing');fx(ac,'rise')}}
         const drift=t<33?0:t<35?seg(t,33,35)*.45:.45;
         if(t<35){P.copy(SP);P.x-=drift;runPose(sel,ph,1.1,.18+drift*.5);stepCheck(ph);
           if(t>34.2){const w=1+.55*easeOut(seg(t,34.2,34.45));sel.eyes.forEach(e=>e.scale.setScalar(w));[.5,1.25,1.6,1.25,.5].forEach((h,i)=>sel.vu[i].scale.y=h*(1+Math.sin(t*40+i)*.05));sel.headG.rotation.x-=.22*seg(t,34.2,34.4);sel.headG.rotation.z+=Math.sin(t*38)*.035}}
         if(t<33)shot(t,31.5,33,V(.4,.95,2.8),V(SP.x,.25,SP.z),V(.2,.85,2.55),V(SP.x,.25,SP.z),38,37);
-        else if(t<34.2){const f=P.clone();shot(t,33,34.2,f.clone().add(V(.25,.03,.62)),f.clone().add(V(0,.1,0)),f.clone().add(V(.15,.03,.52)),f.clone().add(V(0,.1,0)),32,32)}
+        else if(t<34.2){const f=P.clone();shot(t,33,34.2,f.clone().add(V(.9,.22,1.5)),f.clone().add(V(0,.38,0)),f.clone().add(V(.7,.2,1.3)),f.clone().add(V(0,.38,0)),36,35)}
         else if(t<35){const hp=headPos();shot(t,34.2,35,hp.clone().add(V(1.55,.1,.6)),hp.clone().add(V(0,-.04,0)),hp.clone().add(V(1.25,.06,.48)),hp.clone().add(V(0,-.04,0)),30,30)}
-        else{// slow-motion fling with an orbiting camera
-          const u=seg(t,35,37.3),fu=u<.82?u*.55/.82:.55+(u-.82)/.18*.45;
+        else{// flung off, at full speed, the camera whips after him
+          const u=seg(t,35,36.1),fu=u*.8+easeOut(u)*.2;
           const start=V(SP.x-.45,SP.y,SP.z);P.set(start.x-fu*3.2,start.y+Math.sin(Math.min(1,fu*1.4)*Math.PI*.5)*1.1+fu*fu*.6,start.z+fu*1.5);
           sel.root.rotation.set(fu*7,Math.PI/2+fu*2,fu*4.5);const fl=Math.sin(t*14);pose(sel,{armL:[fl*.25,0,1.7+fl*.4],armR:[-fl*.25,0,-(1.5-fl*.4)],legL:[-.8+fl*.4,0,0],legR:[.5-fl*.4,0,0]});sel.eyes.forEach(e=>e.scale.setScalar(1.45));
-          const a=.5+u*2.0,rC=2.3;sel.root.updateMatrixWorld(true);const ce=new T.Vector3();sel.torso.getWorldPosition(ce);cam.position.set(ce.x+Math.cos(a)*rC,ce.y+.25,ce.z+Math.sin(a)*rC);cam.up.set(0,1,0);cam.lookAt(u>.82?start.clone().lerp(ce,.3):ce);cam.fov=36;cam.updateProjectionMatrix();
+          sel.root.updateMatrixWorld(true);const ce=new T.Vector3();sel.torso.getWorldPosition(ce);const sk=Math.max(0,1-u*4)*.02;cam.position.set(start.x+1.5+Math.sin(t*90)*sk,1.05+Math.cos(t*77)*sk,start.z+3.4);cam.up.set(0,1,0);cam.lookAt(start.x-.55,.62,start.z+.2);cam.fov=50;cam.updateProjectionMatrix();
           once('fling',35,()=>{fx(ac,'whoosh');fx(ac,'wee');bot('send')});
-          if(bed){if(!slowLP&&t<36.9){slowLP=true;bed.lp(420)}if(slowLP&&t>36.9){slowLP=false;bed.lp(9000)}}
         }
       }else{// dive into the record label: lands exactly on the loading intro's first frame
         showSel=false;rpmEl.classList.remove('on');
@@ -3460,7 +3458,7 @@ function openAbout(){const slot=$('#sheetSlot');
     <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18v-6a8 8 0 0 1 16 0v6"/><rect x="3" y="15" width="4" height="6" rx="1.5"/><rect x="17" y="15" width="4" height="6" rx="1.5"/></svg><b>Stream</b>Play them anywhere</div>
    </div>
    <div class="about-bot"><span class="bh" style="--s:52px"><span class="bh-band"></span><span class="bh-cup l"></span><span class="bh-cup r"></span><span class="bh-head"><span class="bh-stripes"></span><span class="bh-face"><i class="bh-eye l"></i><i class="bh-eye r"></i><i class="bh-vu"><b></b><b></b><b></b><b></b><b></b></i></span></span></span><div><b>Meet DJ Selector</b><span>Your own crate-digging DJ. Tell him a mood, a moment or an artist, like "rainy Sunday", "cooking dinner" or "some Fleetwood Mac", and he digs through every record you and your family own to build a mix in seconds.</span></div></div>
-   <ul class="about-sel"><li><b>Only music you own.</b> Every song comes from a real record in your Stack, so every mix rewards collecting.</li><li><b>Mixes the whole family.</b> On Duo and Family plans he digs through everyone's records, not just yours.</li><li><b>Keep the good ones.</b> Play the mix straight away, shuffle again, or save it as a mixtape to send to a friend.</li></ul><p class="mono" style="font-size:10.5px;color:var(--muted);text-align:center;margin:14px 0 0;letter-spacing:.06em">PROTOTYPE BUILD · 8 OCT · 19:50</p>
+   <ul class="about-sel"><li><b>Only music you own.</b> Every song comes from a real record in your Stack, so every mix rewards collecting.</li><li><b>Mixes the whole family.</b> On Duo and Family plans he digs through everyone's records, not just yours.</li><li><b>Keep the good ones.</b> Play the mix straight away, shuffle again, or save it as a mixtape to send to a friend.</li></ul><p class="mono" style="font-size:10.5px;color:var(--muted);text-align:center;margin:14px 0 0;letter-spacing:.06em">PROTOTYPE BUILD · 8 OCT · 20:05</p>
    <div class="about-foot">STACK 1.0 · FOR PEOPLE WHO STILL BUY RECORDS</div></div></div>`;
   $('#abSc').onclick=$('#abX').onclick=closeSheet;
 }
