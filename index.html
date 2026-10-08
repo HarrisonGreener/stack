@@ -1250,6 +1250,81 @@ html.standalone,html.standalone body{height:var(--sh,100vh)!important;min-height
 html.standalone .phone.full{top:0!important;bottom:auto!important;height:var(--sh,100vh)!important}
 html.standalone.kb .phone.full{height:var(--vh)!important}
 @media (display-mode: standalone){html.touch,html.touch body{height:100vh;min-height:100vh}.phone.full{bottom:auto!important;height:100vh!important}}
+
+/* ---------- new features ---------- */
+.dust{display:flex;gap:12px;align-items:center;margin-top:12px;padding:12px;border-radius:16px;background:color-mix(in srgb,var(--mustard) 18%,var(--surface));border:1px solid color-mix(in srgb,var(--mustard) 45%,var(--line))}
+.dust .art{width:56px;height:56px;border-radius:6px;flex:none;filter:sepia(.25) saturate(.85)}
+.dust .tx{flex:1;min-width:0}.dust small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--muted)}
+.dust b{display:block;font-size:15px;font-weight:600;line-height:1.25;margin:2px 0}
+.dust .acts{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}.dust .acts>*{white-space:nowrap}
+.chipbtn{font-size:12.5px;font-weight:600;padding:7px 12px;border-radius:999px;background:var(--surface);border:1px solid var(--line);color:var(--fg)}
+.chipbtn.on{background:var(--rose);color:var(--on-rose);border-color:var(--rose)}
+.loan{display:flex;gap:12px;align-items:center;margin-top:12px;padding:12px;border-radius:16px;background:color-mix(in srgb,var(--sky) 16%,var(--surface));border:1px solid color-mix(in srgb,var(--sky) 50%,var(--line))}
+.loan .art{width:48px;height:48px;border-radius:6px;flex:none}.loan .tx{flex:1;min-width:0}.loan b{display:block;font-size:14.5px;font-weight:600}.loan span{font-size:12.5px;color:var(--muted)}
+.copy-chips{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 0}.copy-chips:empty{display:none}
+.copy-chips span{font-size:12px;font-weight:500;padding:4px 9px;border-radius:999px;background:var(--surface-2);color:var(--fg)}
+.copy-chips span.lent{background:color-mix(in srgb,var(--sky) 30%,var(--surface));}
+.copy-chips span.cond{background:var(--mustard);color:#3A2216;font-weight:650}
+.upnext{font-size:12.5px;color:var(--muted);margin:10px 0 0;display:flex;gap:6px;align-items:center}.upnext b{color:var(--fg);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lent-note{margin:12px 0 0;padding:12px;border-radius:14px;background:color-mix(in srgb,var(--sky) 18%,var(--surface));font-size:13.5px;display:flex;gap:10px;align-items:center;justify-content:space-between}
+.flip-prompt{position:absolute;inset:0;z-index:30;display:grid;place-items:center;pointer-events:auto;cursor:pointer}
+.flip-prompt div{background:color-mix(in srgb,var(--surface) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:20px;padding:16px 22px;text-align:center;box-shadow:0 14px 30px -12px var(--shadow);animation:flipin .35s cubic-bezier(.3,1.4,.5,1)}
+.flip-prompt b{display:block;font-size:17px;font-weight:650}.flip-prompt span{font-size:13px;color:var(--muted)}
+.flip-prompt .fb{margin-top:10px;display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border-radius:999px;background:var(--rose);color:var(--on-rose);font-weight:600;font-size:14px}
+@keyframes flipin{from{opacity:0;transform:scale(.9)}}
+.stats-link{align-items:center}.stats-link span{display:flex;flex-direction:column;gap:2px}.stats-link small{font-size:12.5px;color:var(--muted);font-weight:400}.set-row>svg{width:16px;height:16px;flex:none;color:var(--muted)}
+.st-tiles{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px}
+.st-tile{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:12px}
+.st-tile b{display:block;font-size:24px;font-weight:700;letter-spacing:-.02em}.st-tile span{font-size:12.5px;color:var(--muted)}
+.st-h{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;color:var(--muted);margin:20px 0 8px}
+.st-bar{display:grid;grid-template-columns:62px 1fr 24px;align-items:center;gap:8px;font-size:13px;margin:6px 0}
+.st-bar i{display:block;height:12px;border-radius:6px;background:var(--c,var(--accent));min-width:4px}
+.st-bar em{font-style:normal;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums}
+.st-top{display:flex;gap:12px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}
+.st-top .n{font-family:var(--mono);font-size:12px;color:var(--muted);width:16px}.st-top .art{width:44px;height:44px;border-radius:5px;flex:none}
+.st-top .tx{flex:1;min-width:0}.st-top b{display:block;font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.st-top span{font-size:12px;color:var(--muted)}
+.wrapped{position:relative;overflow:hidden;border-radius:22px;padding:22px 20px 20px;color:#FBF1E2;background:#3A2216;margin-top:8px}
+.wrapped::before{content:"";position:absolute;right:-90px;top:-90px;width:200px;height:200px;border-radius:50%;background:repeating-radial-gradient(circle,#EF8B2C 0 14px,#E9B949 14px 28px,#B6452C 28px 42px,#7FA7B7 42px 56px);opacity:.9}
+.wrapped>*{position:relative}
+.wrapped small{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;opacity:.8}
+.wrapped h4{font-size:26px;font-weight:700;letter-spacing:-.02em;margin:6px 0 14px;max-width:70%;line-height:1.1}
+.wrapped .w-top{display:flex;gap:12px;align-items:center;background:#4A2D1F;border-radius:14px;padding:10px;margin-bottom:10px}
+.wrapped .w-top .art{width:64px;height:64px;border-radius:6px;flex:none}
+.wrapped .w-top b{display:block;font-size:16px}.wrapped .w-top span{font-size:12.5px;opacity:.8}
+.wrapped .w-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.wrapped .w-grid div{background:#4A2D1F;border-radius:12px;padding:10px}.wrapped .w-grid b{display:block;font-size:20px}.wrapped .w-grid span{font-size:12px;opacity:.8}
+.form-row{display:flex;flex-direction:column;gap:6px;padding:10px 0;border-bottom:1px solid var(--line)}
+.form-row label{font-size:12.5px;color:var(--muted);font-weight:500}
+.form-row input,.form-row textarea{font:inherit;font-size:15px;color:var(--fg);background:var(--surface-2);border:1px solid transparent;border-radius:10px;padding:10px 12px;outline:none}
+.form-row input:focus,.form-row textarea:focus{border-color:var(--accent)}
+.opt-row{display:flex;flex-wrap:wrap;gap:6px}
+.friend-pick{display:flex;align-items:center;gap:12px;width:100%;padding:10px 0;border-bottom:1px solid var(--line);text-align:left;font-size:15px;font-weight:500}
+.friend-pick .avatar{width:38px;height:38px;flex:none}
+.dg-step{text-align:center;padding:10px 0}.dg-step .ring{width:64px;height:64px;margin:6px auto 12px;border-radius:50%;border:4px solid var(--surface-2);border-top-color:var(--rose);animation:spin 1s linear infinite}
+.dg-row{display:flex;gap:12px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line)}
+.dg-row .art{width:46px;height:46px;border-radius:5px;flex:none}.dg-row .tx{flex:1;min-width:0}.dg-row b{display:block;font-size:14.5px;font-weight:600}.dg-row span{font-size:12.5px;color:var(--muted)}
+.dg-row .ok{font-size:12px;color:var(--muted)}
+.pend{margin-top:16px;padding:14px;border-radius:16px;background:var(--surface);border:1px solid var(--line)}
+.pend h4{margin:0 0 4px;font-size:15px}.pend p{margin:0 0 6px;font-size:13px;color:var(--muted)}
+.tt-card{margin-top:16px;padding:14px;border-radius:16px;background:var(--surface);border:1px solid var(--line)}
+.tt-card .top{display:flex;justify-content:space-between;align-items:center;gap:10px}.tt-card b{font-size:15px}.tt-card p{margin:6px 0 10px;font-size:13px;color:var(--muted)}
+.tt-log{font-size:13px;margin-top:8px;padding:10px;border-radius:12px;background:color-mix(in srgb,var(--sky) 16%,var(--surface))}
+.wish-row .tx .shop{display:block;margin-top:6px;font-size:12.5px;color:var(--fg)!important;white-space:normal;line-height:1.5}
+.shop i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#46B26B;margin-right:6px;vertical-align:1px}
+.shop button{margin-left:8px;font-weight:600;font-size:12px;color:var(--on-rose);background:var(--rose);border-radius:99px;padding:3px 10px;vertical-align:1px}
+.rsd{margin:0 0 14px;padding:14px;border-radius:16px;color:#FBF1E2;background:linear-gradient(120deg,#B6452C,#EF8B2C);display:flex;gap:12px;align-items:center}
+.rsd .tx{flex:1}.rsd b{display:block;font-size:15px}.rsd span{font-size:12.5px;opacity:.9}
+.rsd button{font-size:12.5px;font-weight:650;padding:8px 12px;border-radius:999px;background:#FBF1E2;color:#B6452C;flex:none}
+.welcome{position:absolute;inset:0;z-index:70;background:var(--bg);display:flex;flex-direction:column;padding:calc(30px + var(--sat,0px)) 26px calc(30px + env(safe-area-inset-bottom,0px))}
+.welcome .wl-art{flex:1;display:grid;place-items:center}
+.welcome h2{font-size:28px;font-weight:700;letter-spacing:-.03em;margin:0 0 8px}.welcome p{margin:0;font-size:15.5px;line-height:1.45;color:var(--muted)}
+.welcome .dots{display:flex;gap:6px;margin:22px 0}.welcome .dots i{width:8px;height:8px;border-radius:4px;background:var(--surface-2);transition:all .3s}.welcome .dots i.on{width:22px;background:var(--rose)}
+.welcome .wl-btns{display:flex;gap:8px}.welcome .wl-btns .btn{flex:1}
+.welcome .wl-slide{animation:wlin .4s cubic-bezier(.3,.7,.3,1)}
+@keyframes wlin{from{opacity:0;transform:translateX(24px)}}
+.wl-rec{width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,#EF8B2C 0 22%,#141210 22.5% 100%);box-shadow:0 20px 40px -16px rgba(40,20,8,.5);animation:spin 6s linear infinite;position:relative}
+.wl-rec::after{content:"";position:absolute;inset:0;border-radius:50%;background:repeating-radial-gradient(circle,rgba(255,255,255,.06) 0 1px,transparent 1px 4px)}
+html.rm *,html.rm *::before,html.rm *::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important}
 </style>
 <style>[hidden]{display:none!important}body{margin:0}</style>
 </head>
@@ -1287,6 +1362,11 @@ html.standalone.kb .phone.full{height:var(--vh)!important}
       <button data-jump="tapes">Mixtapes <span>10</span></button>
       <button data-jump="wish">Wishlist <span>11</span></button>
       <button data-jump="add">Scan a new record <span>12</span></button>
+      <button data-jump="stats">Your stats + Wrapped <span>13</span></button>
+      <button data-jump="flip">Side A / B flip <span>14</span></button>
+      <button data-jump="discogs">Import from Discogs <span>15</span></button>
+      <button data-jump="lend">Lend a record <span>16</span></button>
+      <button data-jump="welcome">Welcome screens <span>17</span></button>
     </div>
     <p class="mono" style="font-size:11px">Prototype. Plays 30-second previews courtesy of Apple Music when online.</p>
   </aside>
@@ -1309,7 +1389,7 @@ html.standalone.kb .phone.full{height:var(--vh)!important}
           <p class="sub" id="mineSub"></p>
           <label class="stack-search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></svg><input id="stackQ" type="search" placeholder="Search songs, albums and artists" autocomplete="off" aria-label="Search your Stack"></label>
           <div id="stackRes" hidden></div>
-          <div id="giftSlot"></div>
+          <div id="giftSlot"></div><div id="loanSlot"></div><div id="dustSlot"></div>
           <button class="liked-card" id="likedOpen"><span class="lk-ic"><svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linejoin="round"><path d="M12 20s-7.5-4.6-7.5-10A4.3 4.3 0 0 1 12 7.4 4.3 4.3 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10z"/></svg></span><span class="tx"><b>Liked songs</b><span id="likedCount"></span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
           <div class="controls-row">
             <div class="seg" role="group" aria-label="View">
@@ -1345,6 +1425,7 @@ html.standalone.kb .phone.full{height:var(--vh)!important}
           <h2 class="big">Wishlist</h2>
           <p class="sub" id="wishCount"></p>
           <div style="height:14px"></div>
+          <div id="rsdSlot"></div>
           <div id="wishList"></div>
         </section>
 
@@ -1391,7 +1472,7 @@ html.standalone.kb .phone.full{height:var(--vh)!important}
           <div class="dev-status" id="devStatus"></div>
           <div id="foundBox"></div>
           <div style="height:16px"></div>
-          <div class="btn-col" id="scanBtns"><button class="btn" id="scanBtn"></button><button class="btn ghost" id="codeBtn">Scan a Stack tag</button></div>
+          <div class="btn-col" id="scanBtns"><button class="btn" id="scanBtn"></button><button class="btn ghost" id="codeBtn">Scan a Stack tag</button></div><div id="dgSlot"></div><div id="ttSlot"></div>
           <div class="sec-h"><h3>How it works</h3></div>
           <div class="how-diagram" id="howDiagram"></div>
           <div class="steps" id="steps"></div>
@@ -1450,7 +1531,7 @@ html.standalone.kb .phone.full{height:var(--vh)!important}
             <div class="tx"><h2 id="plTitle"></h2><p id="plArtist"></p><div class="meta" id="plMeta"></div></div>
             <button class="like" id="likeBtn" aria-pressed="false" aria-label="Like this song"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 20s-7.5-4.6-7.5-10A4.3 4.3 0 0 1 12 7.4 4.3 4.3 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10z"/></svg></button>
           </div>
-          <div class="src-row" id="srcRow"><div class="seg" role="group" aria-label="Version"><button data-src="studio" aria-pressed="true">Studio</button><button data-src="mine" aria-pressed="false">My pressing</button></div><span class="src-note" id="srcNote"></span></div>
+          <div class="copy-chips" id="copyChips"></div><div class="src-row" id="srcRow"><div class="seg" role="group" aria-label="Version"><button data-src="studio" aria-pressed="true">Studio</button><button data-src="mine" aria-pressed="false">My pressing</button></div><span class="src-note" id="srcNote"></span></div>
           <div class="mix" id="mix" hidden>
             <div class="mix-rows">
               <button class="mix-row" data-deck="A" aria-label="Choose deck A song"><span class="k">A</span><span class="tx" id="mixA"></span><span class="lvl"><i id="lvlA"></i></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></button>
@@ -1572,7 +1653,7 @@ const st={src:'studio',plan:'family',trackB:0,tB:0,tab:'mine',view:'spines',filt
 const mine=()=>ALBUMS.filter(a=>a.o==='you');
 const PLAN_MEMBERS={solo:['you'],duo:['you','ellie'],family:['you','mum','dad','ellie']};
 const activeM=()=>PLAN_MEMBERS[st.plan];
-const canPlay=a=>!!(a&&a.o&&activeM().includes(a.o));
+const canPlay=a=>!!(a&&((a.o&&activeM().includes(a.o))||(window.BORROW&&window.BORROW[a.id])));
 const family=()=>ALBUMS.filter(canPlay);
 
 const CHEV={l:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>',r:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>'};
@@ -1806,7 +1887,7 @@ function renderTracks(){if(st.tape&&st.queue){const q=st.queue,h=Math.ceil(q.len
   $('#tracks').innerHTML=tr.map((x,i)=>`<li data-i="${i}" class="${i===st.track?'on':''}"><span class="n">${trackLabel(st.cur,i,tr.length)}</span><span class="tt">${x.t}</span><button class="heart-btn" data-like="${i}" aria-pressed="${isLiked(st.cur,i)}" aria-label="Like ${x.t.replace(/"/g,'')}">${HEART}</button><span class="d">${fmtT(x.d)}</span></li>`).join('')}
 function tick(dt){if(!st.cur)return;audSync();const tr=tracksOf(st.cur)[st.track];if(st.playing){if(pvLive('A'))st.t=AUD.A.currentTime;else if(!DS.A.wait)st.t+=dt;if(st.deck2){if(pvLive('B'))st.tB=AUD.B.currentTime;else if(!DS.B.wait)st.tB+=dt}}
   if(st.deck2&&st.tB>=tracksOf(st.deck2)[st.trackB].d){setTrackB(st.trackB+1)}
-  if(st.t>=tr.d){st.queue&&!st.deck2?qStep(1):setTrack(st.track+1);return}
+  if(st.t>=tr.d){if(st.playing&&!document.querySelector('.flip-prompt'))endOfTrack();return}
   const[a,i]=domTrack(),DD=domB()?'B':'A',live=pvLive(DD),d=live?AUD[DD].duration:tracksOf(a)[i].d,t=domB()?st.tB:st.t;
   $('#barFill').style.width=Math.min(100,t/d*100)+'%';$('#tNow').textContent=fmtT(t);$('#tLen').textContent=live?fmtT(d)+' · preview':fmtT(tracksOf(a)[i].d);if(st.playing)setArm(false)}
 setInterval(()=>tick(.25),250);
@@ -1881,7 +1962,7 @@ function audSync(){['A','B'].forEach(D=>{const w=deckWant(D),au=AUD[D],s=DS[D];
   const na=byId(nx[0]);if(na)setTimeout(()=>pvLookup(na,+nx[1]),1500)});
   audApply()}
 ['A','B'].forEach(D=>{AUD[D].addEventListener('error',()=>{const w=deckWant(D);if(w&&!AUD[D]._refetched){AUD[D]._refetched=1;delete ALB_TR[w[0].id];delete ALB_SAVED[w[0].id];DS[D].key=null;setTimeout(audSync,50);return}if(AUD[D].crossOrigin&&AUD[D].src&&!AUD[D]._retry){AUD[D]._retry=1;const u=AUD[D].src;AUD[D].removeAttribute('crossorigin');AUD[D].src=u;audApply()}})});
-AUD.A.onended=()=>{if(!DS.A.ready)return;st.queue&&!st.deck2?qStep(1):setTrack(st.track+1)};
+AUD.A.onended=()=>{if(!DS.A.ready||!st.playing||document.querySelector('.flip-prompt'))return;endOfTrack()};
 AUD.B.onended=()=>{if(DS.B.ready&&st.deck2)setTrackB(st.trackB+1)};
 {const wrap=f=>function(...x){const r=f.apply(this,x);try{audSync()}catch(e){}return r};
   play=wrap(play);pause=wrap(pause);setTrack=wrap(setTrack);setTrackB=wrap(setTrackB);setXf=wrap(setXf);loadDeckB=wrap(loadDeckB);ejectB=wrap(ejectB);}
@@ -1934,7 +2015,7 @@ function renderWish(){const ids=[...WISH];$('#wishCount').textContent=ids.length
   $$('.wbadge').forEach(b=>{b.textContent=ids.length;b.hidden=!ids.length});
   if(!ids.length){$('#wishList').innerHTML='<div class="empty">Nothing on your wishlist yet.<br>Open a friend\'s Stack and tap <b>Add to wishlist</b> on anything you\'d like to own.</div>';return}
   $('#wishList').innerHTML=ids.map(id=>{const a=byId(id),who=FRIENDS.filter(f=>f.ids.includes(id));
-    return `<div class="wish-row"><button class="open" data-wishopen="${id}">${artHTML(a,'',false)}<span class="tx"><b>${a.t}</b><span>${a.a} · ${fmtLabel[a.f]} · ${a.y}</span><span><span class="faces-sm">${who.map(f=>`<i ${avs('f:'+f.n,f.c)}>${f.n[0]}</i>`).join('')}</span>${who.length?who.map(f=>f.n).join(', ')+(who.length===1?' has':' have')+' this':'No friends have this yet'}</span></span></button>
+    return `<div class="wish-row"><button class="open" data-wishopen="${id}">${artHTML(a,'',false)}<span class="tx"><b>${a.t}</b><span>${a.a} · ${fmtLabel[a.f]} · ${a.y}</span><span><span class="faces-sm">${who.map(f=>`<i ${avs('f:'+f.n,f.c)}>${f.n[0]}</i>`).join('')}</span>${who.length?who.map(f=>f.n).join(', ')+(who.length===1?' has':' have')+' this':'No friends have this yet'}</span>${shopLine(id)}</span></button>
     <button class="x" data-wishx="${id}" aria-label="Remove ${a.t} from wishlist">${ICON.x}</button></div>`}).join('')}
 renderWish();
 document.addEventListener('click',e=>{
@@ -2283,7 +2364,184 @@ function openAI(){const slot=$('#sheetSlot');$('#aiTab').classList.add('open');
     const dx=((a.left+a.width/2)-(h.left+h.width/2))/S,dy=((a.top+a.height/2)-(h.top+h.height/2))/S,sc=a.width/h.width;
     bot.animate([{transform:`translate(${dx}px,${dy}px) scale(${sc})`},{transform:`translate(${dx*.3}px,${dy*.3}px) scale(${(1+sc)/1.5})`,offset:.55},{transform:'none'}],{duration:760,easing:'cubic-bezier(.3,.7,.2,1)'})}
   setTimeout(()=>{try{$('#askIn').focus({preventScroll:true})}catch(e){}},720)}
+const SETTINGS={quality:'Lossless',visible:true,nowSpinning:true};
 $('#aiTab').onclick=openAI;
+/* ================= NEW FEATURES ================= */
+const ICO_TAG='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12V4h8l9 9-8 8z"/><circle cx="7.5" cy="8.5" r="1.4"/></svg>';
+const ICO_LEND='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h12M12 6l6 6-6 6"/><path d="M20 5v14"/></svg>';
+const LS=(k,d)=>{try{const v=JSON.parse(localStorage.getItem(k));return v==null?d:v}catch(e){return d}},SS=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
+const DAY=864e5,NOW=Date.now();
+const ago=t=>{const d=Math.round((Date.now()-t)/DAY);if(d<1)return'today';if(d<2)return'yesterday';if(d<14)return d+' days ago';if(d<60)return Math.round(d/7)+' weeks ago';if(d<365)return Math.round(d/30)+' months ago';return'over a year ago'};
+const agoPlain=t=>{const d=Math.round((Date.now()-t)/DAY);if(d<60)return Math.round(d/7)+' weeks';if(d<365)return Math.round(d/30)+' months';return'over a year'};
+
+/* ---------- listening history ---------- */
+let HIST=LS('stack-hist',null);
+if(!HIST){HIST={};const seed={rum:[48,2,620],b2b:[22,5,310],am:[31,1,402],abr:[19,12,260],ram:[12,20,180],her:[6,40,70],okc:[9,128,140],nm:[4,190,55],dsm:[3,275,48]};
+  Object.entries(seed).forEach(([id,[plays,days,mins]])=>HIST[id]={plays,last:NOW-days*DAY,secs:mins*60,tt:Math.round(plays*.3)});SS('stack-hist',HIST)}
+let histSave=0;setInterval(()=>{if(!st.playing||!st.cur||document.hidden)return;const h=HIST[st.cur.id]||(HIST[st.cur.id]={plays:0,last:0,secs:0,tt:0});h.secs+=5;h.last=Date.now();if(++histSave%3===0)SS('stack-hist',HIST)},5000);
+{const _st=setTrack;setTrack=function(...x){const r=_st.apply(this,x);try{if(st.cur){const h=HIST[st.cur.id]||(HIST[st.cur.id]={plays:0,last:0,secs:0,tt:0});h.plays++;h.last=Date.now();SS('stack-hist',HIST);renderDust()}}catch(e){}return r}}
+const lastPlayed=a=>(HIST[a.id]&&HIST[a.id].last)||0;
+function dusty(){return mine().filter(a=>!LENT[a.id]).sort((x,y)=>lastPlayed(x)-lastPlayed(y))}
+function forgottenMix(){const al=dusty().slice(0,4);const q=[];al.forEach(a=>{const n=tracksOf(a).length;[0,Math.floor(n/3),Math.floor(n*2/3)].forEach(i=>{const k=a.id+':'+i;if(!q.includes(k))q.push(k)})});return q}
+
+/* ---------- Dust it off (My Stack) ---------- */
+function renderDust(){const slot=$('#dustSlot');if(!slot)return;const d=dusty()[0];if(!d||Date.now()-lastPlayed(d)<30*DAY){slot.innerHTML='';return}
+  slot.innerHTML=`<div class="dust">${artHTML(d,'',false)}<div class="tx"><small>DUST IT OFF</small><b>You haven't played ${d.t} in ${agoPlain(lastPlayed(d)||NOW-400*DAY)}</b>
+    <div class="acts"><button class="chipbtn on" id="dustPlay">Play it</button><button class="chipbtn" id="dustMix">Forgotten gems mix</button><button class="chipbtn" id="dustStats">Stats</button></div></div></div>`;
+  $('#dustPlay').onclick=()=>openRecord(d,slot.querySelector('.art'),'Dust it off');
+  $('#dustMix').onclick=()=>playQueue(forgottenMix(),0,'Forgotten gems');
+  $('#dustStats').onclick=openStats}
+
+/* ---------- side A / side B ---------- */
+const sideSplit=a=>{const n=tracksOf(a).length;return a.f==='7in'?1:Math.ceil(n/2)};
+function endOfTrack(){if(st.queue&&!st.deck2)return qStep(1);
+  const a=st.cur,n=tracksOf(a).length;if(!st.deck2&&a&&a.f!=='CD'&&n>1){const h=sideSplit(a);
+    if(st.track===h-1)return flipPrompt(a,h);
+    if(st.track===n-1)return endPrompt(a)}
+  setTrack(st.track+1)}
+function flipPrompt(a,h){pause();const deck=$('#deck');if(!deck)return setTrack(h);deck.querySelectorAll('.flip-prompt').forEach(x=>x.remove());
+  const el=document.createElement('div');el.className='flip-prompt';el.innerHTML=`<div><b>Side ${a.f==='7in'?'A':'A'} finished</b><span>Time to flip the record</span><br><span class="fb">Flip to side B</span></div>`;deck.appendChild(el);
+  el.onclick=async()=>{el.remove();const disc=$('#pA .disc')||$('#pA');try{await disc.animate([{transform:'rotateY(0)'},{transform:'rotateY(90deg)',offset:.5},{transform:'rotateY(0)'}],{duration:700,easing:'cubic-bezier(.5,0,.5,1)'}).finished}catch(e){}
+    try{snapSfx&&snapSfx(.3)}catch(e){}setTrack(h);play()}}
+function endPrompt(a){pause();const deck=$('#deck');if(!deck)return;deck.querySelectorAll('.flip-prompt').forEach(x=>x.remove());
+  const el=document.createElement('div');el.className='flip-prompt';el.innerHTML=`<div><b>That's the end of ${a.t}</b><span>The needle's lifted</span><br><span class="fb">Play from the start</span></div>`;deck.appendChild(el);
+  el.onclick=()=>{el.remove();setTrack(0);play()}}
+
+{const _sT=setTrack;setTrack=function(...x){document.querySelectorAll('.flip-prompt').forEach(e=>e.remove());return _sT.apply(this,x)}}
+/* ---------- your copy's details ---------- */
+let COPY=LS('stack-copy',null);if(!COPY){COPY={rum:{press:'UK 1977 first pressing',colour:'Black',cond:'VG+',bought:'Second Spin Records, 2019',price:'£28',signed:false,notes:'Inner sleeve has a coffee ring'},
+  abr:{press:'2019 50th anniversary',colour:'Black',cond:'NM',bought:'Birthday present, 2020',price:'',signed:false,notes:''},
+  am:{press:'2013 first pressing',colour:'Black',cond:'NM',bought:'Gig merch stand',price:'£20',signed:true,notes:'Signed by Alex at the Leeds show'},
+  ram:{press:'2013 gatefold',colour:'Black',cond:'M',bought:'',price:'',signed:false,notes:''}};SS('stack-copy',COPY)}
+function copyChips(a){const c=COPY[a.id],out=[];if(LENT[a.id])out.push(`<span class="lent">Lent to ${LENT[a.id].to}</span>`);if(c){if(c.cond)out.push(`<span class="cond">${c.cond}</span>`);if(c.press)out.push(`<span>${c.press}</span>`);if(c.colour&&c.colour!=='Black')out.push(`<span>${c.colour} vinyl</span>`);if(c.signed)out.push('<span>Signed</span>')}return out.join('')}
+function openCopy(a){const c=Object.assign({press:'',colour:'Black',cond:'',bought:'',price:'',signed:false,notes:''},COPY[a.id]||{}),slot=$('#pickSlot');const isCD=a.f==='CD';
+  const opts=(name,list,val)=>`<div class="opt-row" data-opt="${name}">${list.map(o=>`<button class="chipbtn${o===val?' on':''}" data-v="${o}">${o}</button>`).join('')}</div>`;
+  slot.innerHTML=`<div class="scrim" id="cpSc"></div><div class="sheet" style="max-height:90%"><div class="sheet-h"><h3>Your copy</h3><button class="icon-btn" id="cpX" aria-label="Close">${ICON.x}</button></div><div class="sheet-b">
+   <p class="sub" style="margin:0 0 6px">${a.t} · ${a.a}. Only you and your family see this.</p>
+   <div class="form-row"><label>Pressing / edition</label><input id="cpPress" value="${esc(c.press)}" placeholder="${isCD?'e.g. 2011 EU edition':'e.g. UK 1977 first pressing'}"></div>
+   <div class="form-row"><label>Condition</label>${opts('cond',['M','NM','VG+','VG','G'],c.cond)}</div>
+   ${isCD?'':`<div class="form-row"><label>Vinyl colour</label>${opts('colour',['Black','Coloured','Splatter','Picture disc'],c.colour)}</div>`}
+   <div class="form-row"><label>Where and when you got it</label><input id="cpBought" value="${esc(c.bought)}" placeholder="e.g. Second Spin Records, 2019"></div>
+   <div class="form-row"><label>Price paid</label><input id="cpPrice" value="${esc(c.price)}" placeholder="e.g. £24" inputmode="decimal"></div>
+   <div class="set-row"><span>Signed copy</span><button class="sw" role="switch" id="cpSigned" aria-checked="${!!c.signed}" aria-label="Signed copy"></button></div>
+   <div class="form-row"><label>Notes</label><textarea id="cpNotes" rows="2" placeholder="Anything about this copy">${esc(c.notes)}</textarea></div>
+   <button class="btn" id="cpSave" style="margin-top:14px">Save</button></div></div>`;
+  slot.querySelectorAll('[data-opt]').forEach(r=>r.onclick=e=>{const b=e.target.closest('[data-v]');if(!b)return;r.querySelectorAll('[data-v]').forEach(x=>x.classList.toggle('on',x===b));c[r.dataset.opt]=b.dataset.v});
+  $('#cpSigned').onclick=e=>{c.signed=!c.signed;e.currentTarget.setAttribute('aria-checked',c.signed)};
+  const close=()=>slot.innerHTML='';$('#cpSc').onclick=$('#cpX').onclick=close;
+  $('#cpSave').onclick=()=>{c.press=$('#cpPress').value.trim();c.bought=$('#cpBought').value.trim();c.price=$('#cpPrice').value.trim();c.notes=$('#cpNotes').value.trim();COPY[a.id]=c;SS('stack-copy',COPY);close();renderInfo()}}
+
+/* ---------- lending (until returned) + borrowing ---------- */
+let LENT=LS('stack-lent',{});window.BORROW=LS('stack-borrow',{kob:{from:'Jordan',since:NOW-3*DAY}});
+function openLend(a){const slot=$('#pickSlot');
+  slot.innerHTML=`<div class="scrim" id="lnSc"></div><div class="sheet"><div class="sheet-h"><h3>Lend ${a.t}</h3><button class="icon-btn" id="lnX" aria-label="Close">${ICON.x}</button></div><div class="sheet-b">
+   <p class="sub" style="margin:0 0 8px">They can play it on Stack until they give it back. While it's lent, it's theirs to play, not yours, just like lending the real record.</p>
+   ${FRIENDS.map((f,i)=>`<button class="friend-pick" data-lend="${i}"><div class="avatar" ${avs('f:'+f.n,f.c)}>${f.n[0]}</div>${f.n}</button>`).join('')}</div></div>`;
+  const close=()=>slot.innerHTML='';$('#lnSc').onclick=$('#lnX').onclick=close;
+  slot.querySelectorAll('[data-lend]').forEach(b=>b.onclick=()=>{const f=FRIENDS[+b.dataset.lend];LENT[a.id]={to:f.n,since:Date.now()};SS('stack-lent',LENT);close();
+    if(st.cur===a&&st.playing)pause();renderInfo();renderMine();renderLoans()})}
+function returnLoan(a){delete LENT[a.id];SS('stack-lent',LENT);renderInfo();renderMine();renderLoans()}
+{const _pl=play;play=function(...x){if(st.cur&&LENT[st.cur.id]&&st.cur.o==='you'){renderInfo();return}return _pl.apply(this,x)}}
+function renderLoans(){const slot=$('#loanSlot');if(!slot)return;const parts=[];
+  Object.entries(BORROW).forEach(([id,b])=>{const a=byId(id);if(a)parts.push(`<div class="loan">${artHTML(a,'',false)}<div class="tx"><b>${a.t}</b><span>Borrowed from ${b.from} · ${ago(b.since)}</span></div><button class="chipbtn on" data-bplay="${id}">Play</button><button class="chipbtn" data-bret="${id}">Give back</button></div>`)});
+  Object.entries(LENT).forEach(([id,l])=>{const a=byId(id);if(a)parts.push(`<div class="loan">${artHTML(a,'',false)}<div class="tx"><b>${a.t}</b><span>Lent to ${l.to} · ${ago(l.since)}</span></div><button class="chipbtn" data-lret="${id}">It's back</button></div>`)});
+  slot.innerHTML=parts.join('');
+  slot.querySelectorAll('[data-bplay]').forEach(b=>b.onclick=()=>openRecord(byId(b.dataset.bplay),b.closest('.loan').querySelector('.art'),'Borrowed from '+BORROW[b.dataset.bplay].from));
+  slot.querySelectorAll('[data-bret]').forEach(b=>b.onclick=()=>{delete BORROW[b.dataset.bret];SS('stack-borrow',BORROW);renderLoans()});
+  slot.querySelectorAll('[data-lret]').forEach(b=>b.onclick=()=>returnLoan(byId(b.dataset.lret)))}
+
+/* ---------- player extras: copy chips, lent note, up next ---------- */
+{const _ri=renderInfo;renderInfo=function(...x){const r=_ri.apply(this,x);try{const a=st.cur;const box=$('#copyChips');if(box&&a){box.innerHTML=a.o==='you'&&!st.deck2?copyChips(a):(BORROW[a.id]?`<span class="lent">Borrowed from ${BORROW[a.id].from}</span>`:'')}
+    let note=$('#lentNote');if(a&&LENT[a.id]&&a.o==='you'){if(!note){note=document.createElement('div');note.id='lentNote';note.className='lent-note';$('#srcRow').after(note)}note.innerHTML=`<span>Lent to ${LENT[a.id].to}. It's theirs to play until they give it back.</span><button class="chipbtn on" id="lnBack">It's back</button>`;$('#lnBack').onclick=()=>returnLoan(a)}else if(note)note.remove();
+    let up=$('#upNext');if(!up){up=document.createElement('div');up.id='upNext';up.className='upnext';$('#srcRow').after(up)}
+    let nx=null;if(st.queue&&!st.deck2){const[id,i]=st.queue[(st.qi+1)%st.queue.length].split(':');const b=byId(id);nx=b&&tracksOf(b)[+i]?tracksOf(b)[+i].t+' · '+b.a:null}else if(a&&!st.deck2){const n=tracksOf(a).length,h=sideSplit(a);if(a.f!=='CD'&&st.track===h-1)nx='Flip to side B';else if(st.track<n-1)nx=tracksOf(a)[st.track+1].t}
+    up.innerHTML=nx?`Up next <b>${esc(nx)}</b>`:''}catch(e){}return r}}
+
+/* ---------- stats + Stack Wrapped ---------- */
+const GENRE={rum:'Rock',abr:'Rock',okc:'Alternative',b2b:'Soul',ram:'Electronic',am:'Indie',her:'Rock',nm:'Grunge',dsm:'Prog rock',btr:'Rock',thr:'Pop',boh:'Rock',blu:'Folk',tap:'Singer-songwriter',a21:'Pop',mis:'Hip hop & soul',iti:'Indie'};
+function openStats(){const slot=$('#sheetSlot'),m=mine();const secs=m.reduce((n,a)=>n+((HIST[a.id]||{}).secs||0),0),hrs=Math.round(secs/3600);
+  const played=m.filter(a=>HIST[a.id]&&Date.now()-HIST[a.id].last<30*DAY).length,tt=m.reduce((n,a)=>n+((HIST[a.id]||{}).tt||0),0);
+  const top=m.slice().sort((x,y)=>((HIST[y.id]||{}).plays||0)-((HIST[x.id]||{}).plays||0)),d=dusty()[0];
+  const decs={};m.forEach(a=>{const k=Math.floor(a.y/10)*10+'s';decs[k]=(decs[k]||0)+1});const dk=Object.keys(decs).sort();const dmax=Math.max(...Object.values(decs));
+  const gen={};m.forEach(a=>{const g=GENRE[a.id]||'Other';gen[g]=(gen[g]||0)+1});const gk=Object.entries(gen).sort((x,y)=>y[1]-x[1]);const gmax=gk[0]?gk[0][1]:1;
+  const cols=['#EF8B2C','#B6452C','#E9B949','#7FA7B7','#8B4A23'];const artists={};m.forEach(a=>{artists[a.a]=(artists[a.a]||0)+((HIST[a.id]||{}).secs||0)});const topArtist=Object.entries(artists).sort((x,y)=>y[1]-x[1])[0];
+  const yr=new Date().getFullYear();
+  slot.innerHTML=`<div class="scrim" id="stSc"></div><div class="sheet" style="max-height:92%"><div class="sheet-h"><h3>Your stats</h3><button class="icon-btn" id="stX" aria-label="Close">${ICON.x}</button></div><div class="sheet-b">
+   <div class="st-tiles"><div class="st-tile"><b>${hrs}h</b><span>listened from your Stack</span></div><div class="st-tile"><b>${played} of ${m.length}</b><span>records played this month</span></div>
+    <div class="st-tile"><b>${tt}</b><span>plays on your turntable</span></div><div class="st-tile"><b>${d?agoPlain(lastPlayed(d)||NOW-400*DAY):'–'}</b><span>since you played ${d?d.t:'everything'}</span></div></div>
+   <div class="st-h">MOST PLAYED</div>${top.slice(0,5).map((a,i)=>`<div class="st-top"><span class="n">${i+1}</span>${artHTML(a,'',false)}<div class="tx"><b>${a.t}</b><span>${a.a} · ${(HIST[a.id]||{}).plays||0} plays</span></div></div>`).join('')}
+   <div class="st-h">YOUR COLLECTION BY DECADE</div>${dk.map((k,i)=>`<div class="st-bar"><span>${k}</span><i style="width:${decs[k]/dmax*100}%;--c:${cols[i%cols.length]}"></i><em>${decs[k]}</em></div>`).join('')}
+   <div class="st-h">BY STYLE</div>${gk.map(([g,n],i)=>`<div class="st-bar"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${g}</span><i style="width:${n/gmax*100}%;--c:${cols[(i+2)%cols.length]}"></i><em>${n}</em></div>`).join('')}
+   <div class="st-h">STACK WRAPPED ${yr}</div>
+   <div class="wrapped"><small>STACK WRAPPED · ${yr}</small><h4>Your year on record</h4>
+    ${top[0]?`<div class="w-top">${artHTML(top[0],'',false)}<div><span>Your record of the year</span><b>${top[0].t}</b><span>${top[0].a} · ${(HIST[top[0].id]||{}).plays||0} plays</span></div></div>`:''}
+    <div class="w-grid"><div><b>${hrs}h</b><span>of your own records</span></div><div><b>${topArtist?topArtist[0]:'–'}</b><span>top artist</span></div><div><b>${m.length}</b><span>records in your Stack</span></div><div><b>${tt}</b><span>turntable plays</span></div></div></div>
+   <button class="btn" id="stShare" style="margin-top:12px">Share your Wrapped</button><div class="demo-note">PROTOTYPE · LISTENING DATA IS PARTLY SIMULATED</div></div></div>`;
+  $('#stSc').onclick=$('#stX').onclick=closeSheet;$('#stShare').onclick=e=>{e.currentTarget.textContent='Copied to share with friends';e.currentTarget.disabled=true}}
+
+/* ---------- Discogs import (demo) ---------- */
+let DG=LS('stack-dg',{done:false,user:'',pending:[]});
+function openDiscogs(){const slot=$('#sheetSlot');const draw=html=>{slot.innerHTML=`<div class="scrim" id="dgSc"></div><div class="sheet" style="max-height:90%"><div class="sheet-h"><h3>Import from Discogs</h3><button class="icon-btn" id="dgX" aria-label="Close">${ICON.x}</button></div><div class="sheet-b">${html}<div class="demo-note">PROTOTYPE · DISCOGS IMPORT IS SIMULATED</div></div></div>`;$('#dgSc').onclick=$('#dgX').onclick=closeSheet};
+  draw(`<p class="sub" style="margin:0 0 10px">Already catalogue your records on Discogs? Bring your whole collection over in one go. You then verify each record with a quick barcode scan, so Stack knows it's really yours.</p>
+   <div class="form-row"><label>Discogs username</label><input id="dgUser" value="${esc(DG.user||'harry_spins')}" autocomplete="off"></div><button class="btn" id="dgGo" style="margin-top:14px">Connect and import</button>`);
+  $('#dgGo').onclick=async()=>{DG.user=$('#dgUser').value.trim()||'harry_spins';draw(`<div class="dg-step"><div class="ring"></div><b>Reading ${esc(DG.user)}'s collection…</b><p class="sub" id="dgN">Found 0 releases</p></div>`);
+    const found=SCAN_POOL.filter(a=>!ALBUMS.includes(a)).slice(0,6);const already=mine().slice(0,4);
+    for(let k=1;k<=found.length+already.length;k++){await wait(260);const n=$('#dgN');if(!n)return;n.textContent=`Found ${k} releases`}
+    await wait(300);draw(`<p class="sub" style="margin:0 0 8px"><b>${found.length+already.length} releases</b> found in ${esc(DG.user)}'s collection.</p>
+     ${found.map(a=>`<div class="dg-row">${artHTML(a,'',false)}<div class="tx"><b>${a.t}</b><span>${a.a} · ${fmtLabel[a.f]} · ${a.y}</span></div><span class="ok">New</span></div>`).join('')}
+     ${already.map(a=>`<div class="dg-row">${artHTML(a,'',false)}<div class="tx"><b>${a.t}</b><span>${a.a}</span></div><span class="ok">Already in your Stack</span></div>`).join('')}
+     <button class="btn" id="dgAdd" style="margin-top:14px">Add ${found.length} to verify</button>`);
+    $('#dgAdd').onclick=()=>{DG.done=true;DG.pending=[...new Set([...(DG.pending||[]),...found.map(a=>a.id)])];SS('stack-dg',DG);closeSheet();goTab('add');renderPending();setTimeout(()=>{const p=$('#dgSlot');if(p)p.scrollIntoView({block:'center',behavior:'smooth'})},200)}}}
+function renderPending(){const slot=$('#dgSlot');if(!slot)return;const pend=(DG.pending||[]).map(byId).filter(a=>a&&!ALBUMS.includes(a));
+  slot.innerHTML=pend.length?`<div class="pend"><h4>From Discogs · ${pend.length} to verify</h4><p>Scan each barcode with the Stack Puck to add it.</p>${pend.map(a=>`<div class="dg-row">${artHTML(a,'',false)}<div class="tx"><b>${a.t}</b><span>${a.a} · ${fmtLabel[a.f]}</span></div><button class="chipbtn on" data-verify="${a.id}">Verify</button></div>`).join('')}</div>`
+    :`<div class="pend"><h4>Import from Discogs</h4><p>Already catalogued your collection? Bring it over in one go.</p><button class="chipbtn on" id="dgOpen">Import</button></div>`;
+  slot.querySelectorAll('[data-verify]').forEach(b=>b.onclick=()=>{const a=byId(b.dataset.verify);DG.pending=DG.pending.filter(x=>x!==a.id);SS('stack-dg',DG);$('#scanBtns').hidden=true;showFound(a,'Matched from your Discogs collection and the barcode.');$('#devStatus').scrollIntoView({block:'center',behavior:'smooth'});renderPending()});
+  const o=$('#dgOpen');if(o)o.onclick=openDiscogs}
+
+/* ---------- turntable listening (Puck) ---------- */
+function renderTT(){const slot=$('#ttSlot');if(!slot)return;if(SETTINGS.tt==null)SETTINGS.tt=true;
+  slot.innerHTML=`<div class="tt-card"><div class="top"><b>Log what I play on my turntable</b><button class="sw" role="switch" id="ttSw" aria-checked="${SETTINGS.tt}" aria-label="Log turntable listening"></button></div>
+   <p>The Puck listens for the needle drop and recognises the record, so plays on your real turntable count in your stats too.</p><button class="chipbtn" id="ttDemo">Demo: drop the needle on a record</button><div id="ttLog"></div></div>`;
+  $('#ttSw').onclick=e=>{SETTINGS.tt=!SETTINGS.tt;e.currentTarget.setAttribute('aria-checked',SETTINGS.tt)};
+  $('#ttDemo').onclick=async()=>{if(!SETTINGS.tt){$('#ttLog').innerHTML='<div class="tt-log">Turn logging on first.</div>';return}const pool=mine().filter(a=>a.f!=='CD');const a=pool[Math.floor(Math.random()*pool.length)];
+    $('#ttLog').innerHTML='<div class="tt-log">Listening…</div>';$('#puckWrap').classList.add('scanning');await wait(1600);$('#puckWrap').classList.remove('scanning');
+    const h=HIST[a.id]||(HIST[a.id]={plays:0,last:0,secs:0,tt:0});h.tt++;h.plays++;h.last=Date.now();h.secs+=19*60;SS('stack-hist',HIST);renderDust();
+    $('#ttLog').innerHTML=`<div class="tt-log"><b>Heard ${a.t}</b>, side A, on your turntable. Logged to your stats.</div>`}}
+
+/* ---------- record shops + Record Store Day (wishlist) ---------- */
+var SHOPS=['Second Spin Records','Groove Exchange','The Vinyl Cellar','Needle & Groove'];
+let RSV=LS('stack-rsv',{});
+function shopLine(id){if(!SHOPS)return '';const h=[...id].reduce((n,c)=>n*31+c.charCodeAt(0)>>>0,7);const shop=SHOPS[h%SHOPS.length],mi=(0.4+(h%30)/10).toFixed(1),price=18+(h%15);
+  return `<span class="shop"><i></i>In stock at ${shop} · ${mi} mi · £${price}${RSV[id]?' · <b>Reserved</b>':`<button data-reserve="${id}">Reserve</button>`}</span>`}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-reserve]');if(!b)return;e.stopPropagation();e.preventDefault();RSV[b.dataset.reserve]=1;SS('stack-rsv',RSV);renderWish()},true);
+function renderRSD(){const slot=$('#rsdSlot');if(!slot)return;const on=LS('stack-rsd',false);
+  slot.innerHTML=`<div class="rsd"><div class="tx"><b>Record Store Day is coming</b><span>Get a nudge before limited releases from artists in your Stack hit the shops.</span></div><button id="rsdBtn">${on?'Reminder set':'Remind me'}</button></div>`;
+  $('#rsdBtn').onclick=()=>{SS('stack-rsd',!on);renderRSD()}}
+
+/* ---------- welcome (first run) ---------- */
+function openWelcome(force){if(!force&&LS('stack-welcomed',false))return;const ph=$('.phone')||document.body;let i=0;
+  const slides=[{h:'Your records, everywhere',p:'Every record and CD you own becomes music you can play anywhere, from your phone, your car or your speakers.',art:'<div class="wl-rec"></div>'},
+    {h:'Add them with the Stack Puck',p:'Scan the barcode to prove it\'s yours, then record your own pressing if you like. Already on Discogs? Import the lot.',art:'<div class="puck" style="transform:scale(1.4)"><svg style="--cut:#1c1b19"><use href="#mark"/></svg><span class="led"></span></div>'},
+    {h:'Meet DJ Selector',p:'Tell him a mood or a moment and he digs through your Stack to make the mix. Only music you actually own.',art:`<div style="transform:scale(1.25)">${MINI_BOT.replace('class="bh msg-av" style="--s:26px"','class="bh" style="--s:120px"')}</div>`}];
+  const el=document.createElement('div');el.className='welcome';ph.appendChild(el);
+  const draw=()=>{const sl=slides[i];el.innerHTML=`<div class="wl-art wl-slide">${sl.art}</div><div class="wl-slide"><h2>${sl.h}</h2><p>${sl.p}</p></div><div class="dots">${slides.map((_,k)=>`<i class="${k===i?'on':''}"></i>`).join('')}</div>
+    <div class="wl-btns">${i<slides.length-1?'<button class="btn ghost" id="wlSkip">Skip</button><button class="btn" id="wlNext">Next</button>':'<button class="btn" id="wlNext">Start listening</button>'}</div>`;
+    const done=()=>{SS('stack-welcomed',true);el.animate([{opacity:1},{opacity:0}],{duration:250}).finished.then(()=>el.remove())};
+    $('#wlNext').onclick=()=>{if(i<slides.length-1){i++;draw()}else done()};const sk=$('#wlSkip');if(sk)sk.onclick=done};draw()}
+{const _fin=null;const iv=setInterval(()=>{const sp=$('#splash');if(sp&&sp.hidden){clearInterval(iv);setTimeout(()=>openWelcome(false),400)}},300)}
+
+/* ---------- reduce motion ---------- */
+function applyRM(){document.documentElement.classList.toggle('rm',!!SETTINGS.rm);try{localStorage.setItem('stack-rm',SETTINGS.rm?'1':'')}catch(e){}}
+try{SETTINGS.rm=localStorage.getItem('stack-rm')==='1'}catch(e){}applyRM();
+
+/* ---------- Selector understands "forgotten" ---------- */
+{const _cu=curate;curate=function(text){if(/forgot|dust|haven.?t (played|listened)|rediscover|neglect|not played|ages/i.test(text||'')){const q=forgottenMix();const al=[...new Set(q.map(k=>k.split(':')[0]))].map(byId);
+    return{q,label:'Forgotten gems',reply:`Forgotten gems, coming right up. These are the records you haven't spun in a while: ${al.map(a=>a.t).slice(0,-1).join(', ')} and ${al.at(-1).t}. ${q.length} songs.`}}return _cu.call(this,text)}}
+
+renderDust();renderLoans();renderPending();renderTT();renderRSD();
+{const _rm=renderMine;renderMine=function(...x){const r=_rm.apply(this,x);try{renderDust();renderLoans()}catch(e){}return r}}
+{const _rw=renderWish;renderWish=function(...x){const r=_rw.apply(this,x);try{renderRSD()}catch(e){}return r}}
+
 /* search: songs and albums in your Stack */
 (function(){const inp=$('#stackQ'),box=$('#stackRes'),scr=$('#s-mine');if(!inp)return;
   const esc2=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -2575,14 +2833,16 @@ function refreshCovers(a){
 document.addEventListener('click',e=>{const b=e.target.closest('[data-edit]');if(b){e.stopPropagation();pickCover(byId(b.dataset.edit))}},true);
 $('#plMore').onclick=()=>{const a=dominant();if(!a)return;const slot=$('#pickSlot');
   slot.innerHTML=`<div class="scrim" id="mnScrim"></div><div class="sheet"><div class="sheet-h"><h3>${a.t}</h3><button class="icon-btn" id="mnX" aria-label="Close">${ICON.x}</button></div><div class="sheet-b">
+   ${a.o==='you'?`<button class="menu-item" id="mnCopy">${ICO_TAG}Your copy's details</button><button class="menu-item" id="mnLend">${ICO_LEND}${LENT[a.id]?'Lent to '+LENT[a.id].to+' · mark as returned':'Lend to a friend'}</button>`:''}
    <button class="menu-item" id="mnCover">${CAM}${a.img?'Change':'Add'} cover photo</button>
    ${a.img?`<button class="menu-item" id="mnClear">${ICON.x}Remove cover photo</button>`:''}
    <p class="sub" style="margin-top:14px">Use a photo of your own copy. It's cropped square and stays in this browser.</p></div></div>`;
   const close=()=>slot.innerHTML='';$('#mnScrim').onclick=$('#mnX').onclick=close;
+  if($('#mnCopy'))$('#mnCopy').onclick=()=>{close();openCopy(a)};if($('#mnLend'))$('#mnLend').onclick=()=>{close();LENT[a.id]?returnLoan(a):openLend(a)};
   $('#mnCover').onclick=()=>{close();pickCover(a)};if(a.img)$('#mnClear').onclick=()=>{close();clearCover(a)}};
 
 /* account */
-const SETTINGS={quality:'Lossless',visible:true,nowSpinning:true};
+
 const PLANS={solo:{name:'Solo',price:4,who:'Just you',feats:['Stream every record you own, anywhere','Selector, mixtapes and liked songs','Lossless audio']},
  duo:{name:'Duo',price:7,who:'2 people, one home',feats:['Everything in Solo','Two people, one shared Stack','See and play each other\'s mixtapes']},
  family:{name:'Family',price:14.99,who:'Up to 4 people',feats:['Everything in Duo, for up to four','Family Stack: everyone streams everyone\'s records','Family mixtapes, plus separate likes for each person']}};
@@ -2591,14 +2851,17 @@ const CHEVR='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-w
 function openAccount(){const slot=$('#sheetSlot'),m=mine(),fresh=!$('#acctSheet');
   slot.innerHTML=`<div class="scrim" id="acScrim" style="${fresh?'':'animation:none'}"></div><div class="sheet" id="acctSheet" style="${fresh?'':'animation:none'}"><div class="sheet-h"><h3>Account</h3><button class="icon-btn" id="acX" aria-label="Close">${ICON.x}</button></div><div class="sheet-b">
    <div class="acct-top"><div class="avatar" ${avs('you','#F0A034')}>H</div><div style="flex:1"><b>Harry</b><span>@harry · Stack ${PLANS[st.plan].name} plan</span><div style="display:flex;gap:12px;margin-top:6px"><button class="cap-edit" style="margin:0" data-avatar="you">${CAM}${AV.you?'Change':'Add'} profile picture</button>${AV.you?'<button class="mt-del" style="margin:0;color:var(--muted)" data-avrm="you">Reset</button>':''}</div></div></div>
+   <button class="set-row stats-link" id="acStats"><span><b>Your stats</b><small>Listening, your collection and Stack Wrapped</small></span>${CHEVR}</button>
    <div class="acct-stats"><div><b>${m.length}</b><span>records</span></div><div><b>${LIKES.length}</b><span>liked songs</span></div><div><b>${WISH.size}</b><span>on wishlist</span></div></div>
    <div class="set-h">Appearance</div>
    <div class="set-row"><span>Theme</span><div class="seg" role="group" aria-label="Theme">${['system','light','dark'].map(t=>`<button data-theme-set="${t}" aria-pressed="${themeMode()===t}">${t[0].toUpperCase()+t.slice(1)}</button>`).join('')}</div></div>
+   <div class="set-row"><span>Reduce motion</span><button class="sw" role="switch" id="acRM" aria-checked="${!!SETTINGS.rm}" aria-label="Reduce motion"></button></div>
    <div class="set-h">Hardware</div>
    <button class="set-row" data-acgo="add"><span>Stack Puck</span><span class="v"><i class="dot"></i>SP-01 · connected ${CHEVR}</span></button>
    <div class="set-h">Listening</div>
    <button class="set-row" id="acQual"><span>Streaming quality</span><span class="v">${SETTINGS.quality} ${CHEVR}</span></button>
    <div class="set-row"><span>Show what I'm spinning to friends</span><button class="sw" role="switch" data-sw="nowSpinning" aria-checked="${SETTINGS.nowSpinning}" aria-label="Show what I'm spinning to friends"></button></div>
+   <button class="set-row" id="acDiscogs"><span>Import from Discogs</span><span class="v">${DG.done?DG.user:"Not connected"} ${CHEVR}</span></button>
    <div class="set-h">Sharing</div>
    <div class="set-row"><span>Friends can browse my Stack</span><button class="sw" role="switch" data-sw="visible" aria-checked="${SETTINGS.visible}" aria-label="Friends can browse my Stack"></button></div>
    ${st.plan==='solo'?'':`<button class="set-row" data-acgo="family"><span>${st.plan==='duo'?'Duo':'Family'} Stack</span><span class="v">${activeM().length} of ${st.plan==='duo'?2:4} members ${CHEVR}</span></button>`}
@@ -2610,7 +2873,7 @@ function openAccount(){const slot=$('#sheetSlot'),m=mine(),fresh=!$('#acctSheet'
   slot.querySelectorAll('[data-theme-set]').forEach(b=>b.onclick=()=>{setTheme(b.dataset.themeSet);openAccount()});
   slot.querySelectorAll('[data-sw]').forEach(b=>b.onclick=()=>{SETTINGS[b.dataset.sw]=!SETTINGS[b.dataset.sw];b.setAttribute('aria-checked',SETTINGS[b.dataset.sw])});
   slot.querySelectorAll('[data-acgo]').forEach(b=>b.onclick=()=>{closeSheet();goTab(b.dataset.acgo)});
-  $('#acPlan').onclick=()=>openPlans();
+  $('#acPlan').onclick=()=>openPlans();$('#acStats').onclick=openStats;$('#acDiscogs').onclick=openDiscogs;$('#acRM').onclick=e=>{SETTINGS.rm=!SETTINGS.rm;e.currentTarget.setAttribute('aria-checked',SETTINGS.rm);applyRM()};
   $('#acQual').onclick=()=>{const q=['Lossless','High','Data saver'];SETTINGS.quality=q[(q.indexOf(SETTINGS.quality)+1)%q.length];openAccount()};
 }
 $('#acctBtn').onclick=openAccount;
@@ -2630,7 +2893,7 @@ function openAbout(){const slot=$('#sheetSlot');
     <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18v-6a8 8 0 0 1 16 0v6"/><rect x="3" y="15" width="4" height="6" rx="1.5"/><rect x="17" y="15" width="4" height="6" rx="1.5"/></svg><b>Stream</b>Play them anywhere</div>
    </div>
    <div class="about-bot"><span class="bh" style="--s:52px"><span class="bh-band"></span><span class="bh-cup l"></span><span class="bh-cup r"></span><span class="bh-head"><span class="bh-stripes"></span><span class="bh-face"><i class="bh-eye l"></i><i class="bh-eye r"></i><i class="bh-vu"><b></b><b></b><b></b><b></b><b></b></i></span></span></span><div><b>Meet DJ Selector</b><span>Your own crate-digging DJ. Tell him a mood, a moment or an artist, like "rainy Sunday", "cooking dinner" or "some Fleetwood Mac", and he digs through every record you and your family own to build a mix in seconds.</span></div></div>
-   <ul class="about-sel"><li><b>Only music you own.</b> Every song comes from a real record in your Stack, so every mix rewards collecting.</li><li><b>Mixes the whole family.</b> On Duo and Family plans he digs through everyone's records, not just yours.</li><li><b>Keep the good ones.</b> Play the mix straight away, shuffle again, or save it as a mixtape to send to a friend.</li></ul><p class="mono" style="font-size:10.5px;color:var(--muted);text-align:center;margin:14px 0 0;letter-spacing:.06em">PROTOTYPE BUILD · 8 OCT · 17:35</p>
+   <ul class="about-sel"><li><b>Only music you own.</b> Every song comes from a real record in your Stack, so every mix rewards collecting.</li><li><b>Mixes the whole family.</b> On Duo and Family plans he digs through everyone's records, not just yours.</li><li><b>Keep the good ones.</b> Play the mix straight away, shuffle again, or save it as a mixtape to send to a friend.</li></ul><p class="mono" style="font-size:10.5px;color:var(--muted);text-align:center;margin:14px 0 0;letter-spacing:.06em">PROTOTYPE BUILD · 8 OCT · 18:00</p>
    <div class="about-foot">STACK 1.0 · FOR PEOPLE WHO STILL BUY RECORDS</div></div></div>`;
   $('#abSc').onclick=$('#abX').onclick=closeSheet;
 }
@@ -2776,6 +3039,9 @@ document.querySelectorAll('[data-jump]').forEach(b=>b.onclick=async()=>{
   const j=b.dataset.jump;closeSheet();$('#pickSlot').innerHTML='';
   if(j!=='play'&&j!=='decks'&&!$('#player').hidden){$('#player').hidden=true;renderMini()}
   if(j==='intro')return intro();
+  if(j==='stats')return openStats();if(j==='discogs')return openDiscogs();if(j==='welcome')return openWelcome(true);
+  if(j==='lend'){goTab('mine');const r=byId('rum');await openRecord(r,null,'My Stack');await wait(600);return openLend(r)}
+  if(j==='flip'){goTab('mine');const r=byId('rum');$('#player').hidden=true;await openRecord(r,null,'My Stack');const h=sideSplit(r);setTrack(h-1);st.t=Math.max(0,tracksOf(r)[h-1].d-4);if(pvLive&&pvLive('A'))AUD.A.currentTime=Math.max(0,AUD.A.duration-4);play();return}
   if(j==='liked'){goTab('mine');return openLiked()}
   if(j==='ai'){return openAI()}
   if(j==='gift'){goTab('mine');const g=MT.find(m=>m.id==='m2');if(g){g.unopened=true;saveMT();renderMT();await wait(60);$('#s-mine').scrollTop=0;return openGift('m2')}}
