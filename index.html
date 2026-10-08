@@ -1192,23 +1192,25 @@ html.touch .phone.full~.demo-fab,html.touch .demo-fab{display:none!important}
 .crate-search svg{width:16px;height:16px;flex:none}
 .crate-search input{flex:1;min-width:0;border:0;background:none;font:inherit;font-size:14px;color:var(--fg);padding:10px 0;outline:none}
 #crateSort{flex:none;max-width:44%;font:inherit;font-size:13px;font-weight:500;color:var(--fg);background:var(--surface-2);border:0;border-radius:12px;padding:0 10px;outline:none}
-.crate{position:relative;height:452px;perspective:1000px;touch-action:none;user-select:none;-webkit-user-select:none;outline:none;overflow:hidden;margin:0 -20px}
+.crate{position:relative;height:560px;perspective:1000px;touch-action:none;user-select:none;-webkit-user-select:none;outline:none;overflow:hidden;margin:0 -20px}
 .crate-items{position:absolute;inset:0}
-.ck{position:absolute;left:50%;top:150px;width:210px;height:210px;margin-left:-105px;border-radius:4px;transform-origin:50% 100%;transition:transform .34s cubic-bezier(.25,.8,.3,1),opacity .25s,filter .3s;box-shadow:0 -1px 0 rgba(255,255,255,.25) inset,0 10px 24px -10px rgba(40,20,8,.55);cursor:pointer;will-change:transform}
+.ck{position:absolute;left:50%;top:0;width:var(--cw,280px);height:var(--cw,280px);margin-left:calc(var(--cw,280px) / -2);border-radius:4px;transform-origin:50% 0;transition:transform .34s cubic-bezier(.25,.8,.3,1),opacity .25s,filter .3s;box-shadow:0 -1px 0 rgba(255,255,255,.25) inset,0 10px 24px -10px rgba(40,20,8,.55);cursor:pointer;will-change:transform}
 .ck .art{position:absolute;inset:0;border-radius:4px}
 .ck .ck-t{position:absolute;left:0;right:0;top:0;height:24px;padding:5px 9px 0;font-size:11px;font-weight:650;letter-spacing:.01em;color:#fff;background:linear-gradient(rgba(20,10,4,.72),rgba(20,10,4,0));white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-radius:4px 4px 0 0;opacity:0;transition:opacity .25s}
 .ck .ck-t em{font-style:normal;opacity:.75;font-weight:500}
 .ck.up .ck-t{opacity:1}
 .ck.cur{cursor:pointer;box-shadow:0 22px 40px -14px rgba(40,20,8,.65)}
-.ck.cd{width:190px;height:190px;margin-left:-95px;top:170px}
-.ck.dv{height:196px;top:164px;border-radius:6px 6px 3px 3px;background:var(--dvc);box-shadow:inset 0 2px 0 rgba(255,255,255,.3),0 10px 20px -10px rgba(40,20,8,.5)}
-.ck.dv b{position:absolute;top:-22px;left:var(--tabx,22px);width:46px;height:30px;border-radius:9px 9px 0 0;background:var(--dvc);display:grid;place-items:center;font-family:var(--brand);font-size:19px;color:#fff;text-shadow:0 1px 0 rgba(0,0,0,.2)}
+.ck.cd{border-radius:3px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.35),0 10px 24px -10px rgba(40,20,8,.55)}
+.ck.cd::before{content:"";position:absolute;left:0;top:0;bottom:0;width:7%;z-index:2;border-radius:3px 0 0 3px;background:linear-gradient(90deg,rgba(255,255,255,.35),rgba(255,255,255,.08));box-shadow:1px 0 0 rgba(0,0,0,.18)}
+.ck.cd::after{content:"CD";position:absolute;right:8px;bottom:8px;z-index:2;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;color:#fff;background:rgba(20,10,4,.55);padding:2px 5px;border-radius:4px}
+.ck.dv{height:calc(var(--cw,280px) * .94);border-radius:6px 6px 3px 3px;background:var(--dvc);box-shadow:inset 0 2px 0 rgba(255,255,255,.3),0 10px 20px -10px rgba(40,20,8,.5)}
+.ck.dv b{position:absolute;top:-1px;height:24px!important;border-radius:0 0 9px 9px!important;background:rgba(0,0,0,.18)!important;left:var(--tabx,22px);width:46px;height:30px;border-radius:9px 9px 0 0;background:var(--dvc);display:grid;place-items:center;font-family:var(--font);font-weight:700;font-size:17px;color:#fff;text-shadow:0 1px 0 rgba(0,0,0,.2)}
 .ck.dv span{position:absolute;left:0;right:0;bottom:18px;text-align:center;font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:rgba(255,255,255,.85)}
 .crate-front{position:absolute;left:24px;right:24px;bottom:0;height:86px;z-index:900;border-radius:10px 10px 4px 4px;background:linear-gradient(180deg,#E8853A,#C9632A);box-shadow:inset 0 3px 0 #E9B949,inset 0 -4px 8px rgba(90,40,10,.25),0 14px 20px -12px rgba(40,20,8,.5)}
 .crate-front i{position:absolute;left:50%;top:22px;width:54px;height:12px;margin-left:-27px;border-radius:6px;background:#5a3018;box-shadow:inset 0 2px 3px rgba(0,0,0,.45)}
 .crate-front span{position:absolute;left:0;right:0;bottom:12px;text-align:center;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:rgba(255,248,236,.85)}
 .crate-cap{margin-top:12px}
-.crate-empty{position:absolute;left:0;right:0;top:170px;text-align:center;color:var(--muted);font-size:14px}
+.crate-empty{position:absolute;left:0;right:0;top:200px;text-align:center;color:var(--muted);font-size:14px}
 </style>
 <style>[hidden]{display:none!important}body{margin:0}</style>
 </head>
@@ -2236,12 +2238,14 @@ const Crate=(()=>{let items=[],cur=0,sort='artist',q='',built=false;const DVC=['
     box.innerHTML=items.length?items.map((x,i)=>x.a?`<div class="ck${x.a.f==='CD'?' cd':''}" data-ci="${i}">${artHTML(x.a,'',true)}<div class="ck-t">${x.a.t} <em>· ${x.a.a}</em></div></div>`
       :`<div class="ck dv" data-ci="${i}" style="--dvc:${x.c};--tabx:${22+((x.div.charCodeAt(0)*37)%120)}px"><b>${x.div}</b><span>${x.n} ${x.n===1?'RECORD':'RECORDS'}</span></div>`).join(''):'<div class="crate-empty">Nothing in your Stack matches that.</div>';
     const n=items.filter(x=>x.a).length;$('#crateCount').textContent=`${n} ${n===1?'RECORD':'RECORDS'} IN THE CRATE`;layout(true);if(!built)bind()}
-  function layout(instant){const els=$$('#crateItems .ck');els.forEach(el=>{const i=+el.dataset.ci,d=i-cur;let t,z,o=1,f='none';
-      if(d===0){t='translateY(-6px) translateZ(30px)';z=500}
-      else if(d>0){const k=Math.min(d,8);t=`translateY(${-24*k}px) translateZ(${-26*k}px) scale(${1-.012*k})`;z=500-d;o=d>7?0:1;f=`brightness(${1-.05*k})`}
-      else{const k=-d;t=`translateY(${196+k*9}px) rotateX(${-58-k*4}deg) scale(.98)`;z=600+k;o=k>4?0:1;f='brightness(.82)'}
-      if(instant)el.style.transition='none';el.style.transform=t;el.style.zIndex=z;el.style.opacity=o;el.style.filter=f;el.style.pointerEvents=o?'':'none';
-      el.classList.toggle('cur',d===0);el.classList.toggle('up',d>0&&d<8);if(instant){void el.offsetWidth;el.style.transition=''}});
+  function geo(){const c=$('#crate');const cw=c?c.clientWidth:390;const W=Math.round(Math.min(320,Math.max(220,cw*.74)));const TOP=92,STRIP=27;
+    if(c){c.style.setProperty('--cw',W+'px');c.style.height=(TOP+W+6+STRIP*5+96)+'px'}return{W,TOP,STRIP}}
+  function layout(instant){const {W,TOP,STRIP}=geo(),els=$$('#crateItems .ck');els.forEach(el=>{const i=+el.dataset.ci,d=i-cur;let y,z,o=1,f='none',sc=1;
+      if(d===0){y=TOP;z=500}
+      else if(d<0){const k=-d;y=TOP-STRIP*k;z=500-k;o=k>3?0:1;f=`brightness(${1-.07*k})`;sc=1-.02*k}
+      else{y=TOP+W+6+STRIP*(d-1);z=500+d;o=d>5?0:1;f='brightness(.97)'}
+      if(instant)el.style.transition='none';el.style.transform=`translateY(${y}px) scale(${sc})`;el.style.zIndex=z;el.style.opacity=o;el.style.filter=f;el.style.pointerEvents=o?'':'none';
+      el.classList.toggle('cur',d===0);el.classList.toggle('up',d!==0&&o>0);if(instant){void el.offsetWidth;el.style.transition=''}});
     const x=items[cur],cap=$('#crateCap');if(!cap)return;
     if(!x){cap.innerHTML='';return}
     cap.innerHTML=x.a?capWith(x.a,`<b>${x.a.t}</b><span>${x.a.a} · ${x.a.y} · ${fmtLabel[x.a.f]}</span><span class="mono" style="display:block;margin-top:4px;font-size:10.5px;letter-spacing:.1em;opacity:.7">TAP THE RECORD TO PLAY · SWIPE TO FLICK</span>`):`<b>${x.div}</b><span>${x.n} ${x.n===1?'record':'records'} under ${x.div}</span>`}
@@ -2548,7 +2552,7 @@ function openAbout(){const slot=$('#sheetSlot');
     <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18v-6a8 8 0 0 1 16 0v6"/><rect x="3" y="15" width="4" height="6" rx="1.5"/><rect x="17" y="15" width="4" height="6" rx="1.5"/></svg><b>Stream</b>Play them anywhere</div>
    </div>
    <div class="about-bot"><span class="bh" style="--s:52px"><span class="bh-band"></span><span class="bh-cup l"></span><span class="bh-cup r"></span><span class="bh-head"><span class="bh-stripes"></span><span class="bh-face"><i class="bh-eye l"></i><i class="bh-eye r"></i><i class="bh-vu"><b></b><b></b><b></b><b></b><b></b></i></span></span></span><div><b>Meet DJ Selector</b><span>Your own crate-digging DJ. Tell him a mood, a moment or an artist, like "rainy Sunday", "cooking dinner" or "some Fleetwood Mac", and he digs through every record you and your family own to build a mix in seconds.</span></div></div>
-   <ul class="about-sel"><li><b>Only music you own.</b> Every song comes from a real record in your Stack, so every mix rewards collecting.</li><li><b>Mixes the whole family.</b> On Duo and Family plans he digs through everyone's records, not just yours.</li><li><b>Keep the good ones.</b> Play the mix straight away, shuffle again, or save it as a mixtape to send to a friend.</li></ul><p class="mono" style="font-size:10.5px;color:var(--muted);text-align:center;margin:14px 0 0;letter-spacing:.06em">PROTOTYPE BUILD · 8 OCT · 16:45</p>
+   <ul class="about-sel"><li><b>Only music you own.</b> Every song comes from a real record in your Stack, so every mix rewards collecting.</li><li><b>Mixes the whole family.</b> On Duo and Family plans he digs through everyone's records, not just yours.</li><li><b>Keep the good ones.</b> Play the mix straight away, shuffle again, or save it as a mixtape to send to a friend.</li></ul><p class="mono" style="font-size:10.5px;color:var(--muted);text-align:center;margin:14px 0 0;letter-spacing:.06em">PROTOTYPE BUILD · 8 OCT · 17:00</p>
    <div class="about-foot">STACK 1.0 · FOR PEOPLE WHO STILL BUY RECORDS</div></div></div>`;
   $('#abSc').onclick=$('#abX').onclick=closeSheet;
 }
