@@ -1327,7 +1327,7 @@ html.standalone.kb .phone.full{height:var(--vh)!important}
 html.rm *,html.rm *::before,html.rm *::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important}
 
 /* demo shortcuts sit at the top of the side panel */
-.side{max-height:100vh;overflow:auto;padding-block:24px;align-self:stretch;justify-content:flex-start;scrollbar-width:none}
+.side{max-height:100vh;overflow:auto;padding-block:0;align-self:center;justify-content:flex-start;scrollbar-width:none}
 .side::-webkit-scrollbar{display:none}
 .jump{display:grid;grid-template-columns:1fr 1fr;gap:6px}
 .jump button{padding:9px 10px;font-size:12.5px;line-height:1.25;gap:6px;align-items:flex-start}
@@ -2883,6 +2883,11 @@ function openAI(){const slot=$('#sheetSlot');$('#aiTab').classList.add('open');
   setTimeout(()=>{try{$('#askIn').focus({preventScroll:true})}catch(e){}},720)}
 const SETTINGS={quality:'Lossless',visible:true,nowSpinning:true};
 $('#aiTab').onclick=openAI;
+/* keep the side panel lined up with the mock phone: same top, same bottom */
+(function(){const side=$('#side'),ph=$('#phone');if(!side||!ph)return;
+  const sync=()=>{if(matchMedia('(max-width:760px)').matches){side.style.height='';return}const r=ph.getBoundingClientRect(),bez=12*r.height/844;side.style.height=Math.round(r.height+bez*2)+'px'};
+  addEventListener('resize',()=>requestAnimationFrame(sync));sync();setTimeout(sync,300);setTimeout(sync,1200)})();
+
 /* demo shortcuts inside the app, for phones (the side panel only shows on a computer) */
 function openDemo(){const slot=$('#sheetSlot'),src=[...document.querySelectorAll('#jumpList [data-jump]')];
   slot.innerHTML=`<div class="scrim" id="dmSc"></div><div class="sheet" style="max-height:90%"><div class="sheet-h"><h3>Demo shortcuts</h3><button class="icon-btn" id="dmX" aria-label="Close">${ICON.x}</button></div><div class="sheet-b">
@@ -3478,7 +3483,7 @@ function openAbout(){const slot=$('#sheetSlot');
     <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18v-6a8 8 0 0 1 16 0v6"/><rect x="3" y="15" width="4" height="6" rx="1.5"/><rect x="17" y="15" width="4" height="6" rx="1.5"/></svg><b>Stream</b>Play them anywhere</div>
    </div>
    <div class="about-bot"><span class="bh" style="--s:52px"><span class="bh-band"></span><span class="bh-cup l"></span><span class="bh-cup r"></span><span class="bh-head"><span class="bh-stripes"></span><span class="bh-face"><i class="bh-eye l"></i><i class="bh-eye r"></i><i class="bh-vu"><b></b><b></b><b></b><b></b><b></b></i></span></span></span><div><b>Meet DJ Selector</b><span>Your own crate-digging DJ. Tell him a mood, a moment or an artist, like "rainy Sunday", "cooking dinner" or "some Fleetwood Mac", and he digs through every record you and your family own to build a mix in seconds.</span></div></div>
-   <ul class="about-sel"><li><b>Only music you own.</b> Every song comes from a real record in your Stack, so every mix rewards collecting.</li><li><b>Mixes the whole family.</b> On Duo and Family plans he digs through everyone's records, not just yours.</li><li><b>Keep the good ones.</b> Play the mix straight away, shuffle again, or save it as a mixtape to send to a friend.</li></ul><p class="mono" style="font-size:10.5px;color:var(--muted);text-align:center;margin:14px 0 0;letter-spacing:.06em">PROTOTYPE BUILD · 8 OCT · 20:20</p>
+   <ul class="about-sel"><li><b>Only music you own.</b> Every song comes from a real record in your Stack, so every mix rewards collecting.</li><li><b>Mixes the whole family.</b> On Duo and Family plans he digs through everyone's records, not just yours.</li><li><b>Keep the good ones.</b> Play the mix straight away, shuffle again, or save it as a mixtape to send to a friend.</li></ul><p class="mono" style="font-size:10.5px;color:var(--muted);text-align:center;margin:14px 0 0;letter-spacing:.06em">PROTOTYPE BUILD · 8 OCT · 20:25</p>
    <div class="about-foot">STACK 1.0 · FOR PEOPLE WHO STILL BUY RECORDS</div></div></div>`;
   $('#abSc').onclick=$('#abX').onclick=closeSheet;
 }
