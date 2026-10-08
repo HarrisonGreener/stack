@@ -1391,7 +1391,17 @@ html.rm *,html.rm *::before,html.rm *::after{animation-duration:.001s!important;
 .wl2.intro .wl-tap{opacity:.8}
 html.rm .wl-sel,html.rm .wl-disc{transition:none!important}
 
-/* ===== intro film (3D) ===== */.film-snd{position:absolute;left:50%;bottom:calc(30px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:99px;background:rgba(20,10,4,.55);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);color:#F6EEDC;font-size:13.5px;font-weight:600;pointer-events:none;animation:sndp 2s ease-in-out infinite;transition:opacity .3s}
+/* ===== intro film (3D) ===== */
+.film-card{position:absolute;left:50%;width:min(88%,400px);box-sizing:border-box;padding:22px 21px 20px;border-radius:18px;background:#F6EEDC;box-shadow:0 16px 34px -12px rgba(20,10,4,.55);overflow:hidden;pointer-events:none;visibility:hidden;opacity:0;transform-origin:50% 50%;z-index:2}
+.film-card.top{top:calc(48px + var(--sat,0px))}
+.film-card.bot{bottom:calc(8% + env(safe-area-inset-bottom,0px))}
+.film-card.free{left:0;top:0;width:340px;background:none;box-shadow:none;border-radius:0;padding-left:21px;padding-right:21px;transform-origin:0 0}
+.film-card .fc-st{position:absolute;left:0;right:0;top:0;height:12px;background:linear-gradient(#D9752B 0 33%,#E9B949 33% 66%,#B6452C 66%)}
+.film-card.free .fc-st{display:none}
+.film-card small{display:block;font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.17em;color:#B6452C}
+.film-card b{display:block;font-family:var(--font);font-size:30px;line-height:.95;font-weight:800;letter-spacing:-.03em;color:#2a1c14;margin:8px 0 8px}
+.film-card p{margin:0;font-family:var(--font);font-size:13.3px;line-height:1.4;color:#6b5646}
+.film-snd{position:absolute;left:50%;bottom:calc(30px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:99px;background:rgba(20,10,4,.55);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);color:#F6EEDC;font-size:13.5px;font-weight:600;pointer-events:none;animation:sndp 2s ease-in-out infinite;transition:opacity .3s}
 .film-snd svg{width:17px;height:17px}.film-snd.off{opacity:0}@keyframes sndp{50%{transform:translateX(-50%) scale(1.04)}}
 
 .film-title{position:absolute;left:50%;top:40%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:12px;pointer-events:none;opacity:0;visibility:hidden;width:88%}
@@ -1699,13 +1709,14 @@ function sunCanvas(){const c=cnv(1024,1024),g=c.getContext('2d'),C=512,cols=['#E
   for(let k=9;k>=0;k--){g.fillStyle=cols[k%cols.length];g.beginPath();g.arc(C,C,90+k*46,0,7);g.fill();g.fillStyle='#2a1a10';g.beginPath();g.arc(C,C,90+k*46-8,0,7);g.fill();g.fillStyle=cols[k%cols.length];g.beginPath();g.arc(C,C,90+k*46-8,0,7);g.fill()}
   const v=g.createRadialGradient(C,C,200,C,C,560);v.addColorStop(0,'rgba(42,26,16,0)');v.addColorStop(1,'rgba(42,26,16,1)');g.fillStyle=v;g.fillRect(0,0,1024,1024);return c}
 function wrap(g,text,maxW){const words=text.split(' '),lines=[];let l='';words.forEach(w=>{const t=l?l+' '+w:w;if(g.measureText(t).width>maxW&&l){lines.push(l);l=w}else l=t});if(l)lines.push(l);return lines}
-function cardCanvas(kick,h,p,topPad=0){const W=1024,pad=64,c=cnv(W,10),FONT=getComputedStyle(document.documentElement).getPropertyValue('--font')||'sans-serif',MONO=getComputedStyle(document.documentElement).getPropertyValue('--mono')||'monospace';
+function cardCanvas(kick,h,p,topPad=0,noText=false){const W=1024,pad=64,c=cnv(W,10),FONT=getComputedStyle(document.documentElement).getPropertyValue('--font')||'sans-serif',MONO=getComputedStyle(document.documentElement).getPropertyValue('--mono')||'monospace';
   const g0=c.getContext('2d');g0.font=`800 92px ${FONT}`;const hl=wrap(g0,h,W-pad*2);g0.font=`400 40px ${FONT}`;const pl=wrap(g0,p,W-pad*2);
   const H=topPad+pad+34+26+hl.length*92+20+pl.length*56+pad;c.height=H;const g=c.getContext('2d');
   const rr=(x,y,w,hh,r)=>{g.beginPath();g.moveTo(x+r,y);g.arcTo(x+w,y,x+w,y+hh,r);g.arcTo(x+w,y+hh,x,y+hh,r);g.arcTo(x,y+hh,x,y,r);g.arcTo(x,y,x+w,y,r);g.closePath()};
   rr(4,4,W-8,H-8,56);g.fillStyle='#F6EEDC';g.fill();g.lineWidth=4;g.strokeStyle='rgba(90,58,34,.18)';g.stroke();
   // 70s stripe along the top
   g.save();rr(4,4,W-8,H-8,56);g.clip();['#D9752B','#E9B949','#B6452C'].forEach((col,i)=>{g.fillStyle=col;g.fillRect(0,4+i*12,W,12)});g.restore();
+  if(noText)return c;
   let y=topPad+pad+30;g.fillStyle='#B6452C';g.font=`500 30px ${MONO}`;g.letterSpacing='5px';g.fillText(kick,pad,y);g.letterSpacing='0px';
   y+=26;g.fillStyle='#2a1c14';g.font=`800 92px ${FONT}`;g.letterSpacing='-3px';hl.forEach(l=>{y+=86;g.fillText(l,pad,y)});g.letterSpacing='0px';
   y+=22;g.fillStyle='#6b5646';g.font=`400 40px ${FONT}`;pl.forEach(l=>{y+=56;g.fillText(l,pad,y)});return c}
@@ -1917,11 +1928,15 @@ async function play(host,handoff){
   const ro=new ResizeObserver(size);ro.observe(el);
   const ac=audio(),bed=ac?makeBed(ac):null;
   // cards
-  const cards=[];
-  function mkCard(kick,h,p,opt={}){const c=cardCanvas(kick,h,p,opt.topPad||0),aspect=c.width/c.height,t=tex(c);
+  const cards=[],hcards=[],escH=x=>String(x).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+  // text cards are real HTML so they stay pin-sharp whatever resolution the 3D runs at
+  function htmlCard(kick,h,p,cls){const d=document.createElement('div');d.className='film-card '+cls;d.innerHTML=`<i class="fc-st"></i><small>${escH(kick)}</small><b>${escH(h)}</b><p>${escH(p)}</p>`;el.appendChild(d);return d}
+  function mkCard(kick,h,p,opt={}){
+    if(!opt.world){const d=htmlCard(kick,h,p,opt.y>0?'top':'bot');const o={userData:{html:d,...opt}};hcards.push(o);return o}
+    const c=cardCanvas(kick,h,p,opt.topPad||0,true),aspect=c.width/c.height,t=tex(c);
     const g=new T.Group(),m=new T.Mesh(new T.PlaneGeometry(1,1/aspect),new T.MeshBasicMaterial({map:t,transparent:true,toneMapped:false,depthTest:!!opt.world,depthWrite:!!opt.world,fog:false}));
     const sh=new T.Mesh(new T.PlaneGeometry(1.12,1.12/aspect+.12),new T.MeshBasicMaterial({map:tex(shadowCanvas()),transparent:true,opacity:.55,depthTest:!!opt.world,depthWrite:false,toneMapped:false,fog:false}));sh.position.set(.02,-.04,-.01);
-    g.add(sh,m);if(!opt.world){m.renderOrder=11;sh.renderOrder=10}g.visible=false;g.userData={m,sh,aspect,...opt};(opt.world?scene:cam).add(g);cards.push(g);return g}
+    g.add(sh,m);g.visible=false;g.userData={m,sh,aspect,...opt,text:htmlCard(kick,h,p,'free')};g.userData.text.style.paddingTop=((opt.topPad||0)+64)/1024*340+'px';(opt.world?scene:cam).add(g);cards.push(g);return g}
   const C1=mkCard('THIS IS STACK','Your records. Everywhere.','Every LP and CD you own, playable on your phone, in the car and through your speakers.',{t0:4.6,t1:6,y:.5});
   const C2=mkCard('BUY IT ONCE','Own the record. Get the music.','Scan the barcode and it lands in your Stack with the studio version, ready to stream in lossless.',{t0:8.5,t1:12,y:.5});
   const C3=mkCard('THE STACK PUCK','Your pressing, captured.','Plug the Puck between your turntable and speakers. Play a side and it records your own copy in hi-res, crackle and all.',{t0:15.3,t1:19.5,y:.5});
@@ -2079,10 +2094,14 @@ async function play(host,handoff){
       const on=t>15.48;led.material.color.set(on?'#5BE08E':'#2f4a39');
       rings.forEach((r,i)=>{if(!on||t>19.5){r.material.opacity=0;return}const k=((t-15.48)/1.2+i/3)%1;r.scale.setScalar(1+k*2.2);r.material.opacity=(1-k)*.75});
       // cards
-      cards.forEach(g=>{const d=g.userData,vis=t>=d.t0-.01&&t<d.t1;g.visible=vis||(t>=d.t1&&t<d.t1+.3);if(!g.visible)return;
+      hcards.forEach(c=>{const d=c.userData,h=d.html,a=seg(t,d.t0,d.t0+.5),on=t>=d.t0-.01&&t<d.t1+.3,o=!on?0:t>=d.t1?1-seg(t,d.t1,d.t1+.3):easeOut(a);
+        h.style.visibility=o>0?'visible':'hidden';if(o<=0)return;h.style.opacity=o;h.style.transform=`translateX(-50%) translateY(${(1-easeOut(a))*14}px) scale(${.94+.06*easeOut(a)}) rotate(${Math.sin(t*.8)*.4}deg)`});
+      cards.forEach(g=>{const d=g.userData,vis=t>=d.t0-.01&&t<d.t1;g.visible=vis||(t>=d.t1&&t<d.t1+.3);d.text.style.visibility=g.visible?'visible':'hidden';if(!g.visible)return;
         const a=seg(t,d.t0,d.t0+.5),o=t>=d.t1?1-seg(t,d.t1,d.t1+.3):easeOut(a);d.m.material.opacity=o;d.sh.material.opacity=o*.5;
         if(!d.world){placeCamCard(g);const s=.9+.1*easeOut(a);g.scale.multiplyScalar(s);g.rotation.set(Math.sin(t*.9)*.02,Math.sin(t*.7)*.035,0);g.position.y+=(1-easeOut(a))*-.04}
-        else{g.scale.setScalar(C4W*(.92+.08*easeOut(a)))}
+        else{g.scale.setScalar(C4W*(.92+.08*easeOut(a)));g.updateMatrixWorld(true);cam.updateMatrixWorld(true);
+          const W=el.clientWidth,H=el.clientHeight,hw=.5,hh=.5/d.aspect;let x0=1e9,y0=1e9,x1=-1e9;[[-hw,hh],[hw,hh],[-hw,-hh],[hw,-hh]].forEach(([x,y])=>{const v=new T.Vector3(x,y,0).applyMatrix4(d.m.matrixWorld).project(cam);const px=(v.x+1)/2*W,py=(1-v.y)/2*H;x0=Math.min(x0,px);x1=Math.max(x1,px);y0=Math.min(y0,py)});
+          const tx=d.text;tx.style.opacity=o;tx.style.left=x0+'px';tx.style.top=y0+'px';tx.style.transform=`scale(${(x1-x0)/340})`}
       });
       {const a=seg(t,2.75,3.25),z=1-seg(t,4.3,4.75),o=Math.min(easeOut(a),z);ttl.style.opacity=o;ttl.style.transform=`translate(-50%,-50%) scale(${.92+.08*easeOut(a)})`;ttl.style.visibility=o>0?'visible':'hidden'}
       // progress
@@ -2896,6 +2915,10 @@ function openAI(){const slot=$('#sheetSlot');$('#aiTab').classList.add('open');
   setTimeout(()=>{try{$('#askIn').focus({preventScroll:true})}catch(e){}},720)}
 const SETTINGS={quality:'Lossless',visible:true,nowSpinning:true};
 $('#aiTab').onclick=openAI;
+function screenDiag(){try{const pr=document.createElement('div');pr.style.cssText='position:fixed;left:0;top:0;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px);visibility:hidden';document.body.appendChild(pr);const cs=getComputedStyle(pr),st=parseInt(cs.paddingTop),sb=parseInt(cs.paddingBottom);pr.remove();
+  const ph=$('#phone').getBoundingClientRect(),sa=(navigator.standalone||matchMedia('(display-mode: standalone)').matches)?'HOME SCREEN':'BROWSER';
+  return `${sa} · SCREEN ${screen.width}×${screen.height} · WIN ${innerWidth}×${innerHeight} · APP ${Math.round(ph.top)}–${Math.round(ph.bottom)} · SAFE ${st}/${sb}`}catch(e){return ''}}
+
 /* keep the side panel lined up with the mock phone: same top, same bottom */
 (function(){const side=$('#side'),ph=$('#phone');if(!side||!ph)return;
   const sync=()=>{if(matchMedia('(max-width:760px)').matches){side.style.height='';return}const r=ph.getBoundingClientRect(),bez=12*r.height/844;side.style.height=Math.round(r.height+bez*2)+'px'};
@@ -3496,7 +3519,7 @@ function openAbout(){const slot=$('#sheetSlot');
     <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18v-6a8 8 0 0 1 16 0v6"/><rect x="3" y="15" width="4" height="6" rx="1.5"/><rect x="17" y="15" width="4" height="6" rx="1.5"/></svg><b>Stream</b>Play them anywhere</div>
    </div>
    <div class="about-bot"><span class="bh" style="--s:52px"><span class="bh-band"></span><span class="bh-cup l"></span><span class="bh-cup r"></span><span class="bh-head"><span class="bh-stripes"></span><span class="bh-face"><i class="bh-eye l"></i><i class="bh-eye r"></i><i class="bh-vu"><b></b><b></b><b></b><b></b><b></b></i></span></span></span><div><b>Meet DJ Selector</b><span>Your own crate-digging DJ. Tell him a mood, a moment or an artist, like "rainy Sunday", "cooking dinner" or "some Fleetwood Mac", and he digs through every record you and your family own to build a mix in seconds.</span></div></div>
-   <ul class="about-sel"><li><b>Only music you own.</b> Every song comes from a real record in your Stack, so every mix rewards collecting.</li><li><b>Mixes the whole family.</b> On Duo and Family plans he digs through everyone's records, not just yours.</li><li><b>Keep the good ones.</b> Play the mix straight away, shuffle again, or save it as a mixtape to send to a friend.</li></ul><p class="mono" style="font-size:10.5px;color:var(--muted);text-align:center;margin:14px 0 0;letter-spacing:.06em">PROTOTYPE BUILD · 8 OCT · 21:55</p>
+   <ul class="about-sel"><li><b>Only music you own.</b> Every song comes from a real record in your Stack, so every mix rewards collecting.</li><li><b>Mixes the whole family.</b> On Duo and Family plans he digs through everyone's records, not just yours.</li><li><b>Keep the good ones.</b> Play the mix straight away, shuffle again, or save it as a mixtape to send to a friend.</li></ul><p class="mono" style="font-size:10.5px;color:var(--muted);text-align:center;margin:14px 0 0;letter-spacing:.06em">PROTOTYPE BUILD · 8 OCT · 22:10</p><p class="mono" style="font-size:9.5px;color:var(--muted);text-align:center;margin:4px 0 0;letter-spacing:.04em;opacity:.8">${screenDiag()}</p>
    <div class="about-foot">STACK 1.0 · FOR PEOPLE WHO STILL BUY RECORDS</div></div></div>`;
   $('#abSc').onclick=$('#abX').onclick=closeSheet;
 }
