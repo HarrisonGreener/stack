@@ -1407,8 +1407,8 @@ html.rm .wl-sel,html.rm .wl-disc{transition:none!important}
 .film-snd{position:absolute;left:50%;bottom:calc(30px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:99px;background:rgba(20,10,4,.55);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);color:#F6EEDC;font-size:13.5px;font-weight:600;pointer-events:none;animation:sndp 2s ease-in-out infinite;transition:opacity .3s}
 .film-snd svg{width:17px;height:17px}.film-snd.off{opacity:0}@keyframes sndp{50%{transform:translateX(-50%) scale(1.04)}}
 
-.film-title{position:absolute;left:50%;top:40%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:12px;pointer-events:none;opacity:0;visibility:hidden;width:88%}
-.ft-blur{position:absolute;left:-14%;right:-14%;top:-55%;bottom:-55%;-webkit-backdrop-filter:blur(12px) brightness(.72);backdrop-filter:blur(12px) brightness(.72);-webkit-mask:radial-gradient(closest-side,#000 55%,transparent);mask:radial-gradient(closest-side,#000 55%,transparent);z-index:-1}
+.film-title{position:absolute;left:50%;top:40%;transform:translate(-50%,-50%);transition:none;display:flex;flex-direction:column;align-items:center;gap:12px;pointer-events:none;opacity:0;visibility:hidden;width:88%}
+.ft-blur{position:absolute;left:-30%;right:-30%;top:-90%;bottom:-90%;-webkit-backdrop-filter:blur(7px) brightness(.85);backdrop-filter:blur(7px) brightness(.85);-webkit-mask:radial-gradient(closest-side,#000 15%,rgba(0,0,0,.6) 50%,transparent 100%);mask:radial-gradient(closest-side,#000 15%,rgba(0,0,0,.6) 50%,transparent 100%);z-index:-1;pointer-events:none}
 .ft-mark{display:flex;align-items:center;gap:30px}
 .ft-mark svg{width:94px;height:94px;--cut:#2a190e;filter:drop-shadow(0 4px 12px rgba(0,0,0,.35))}
 .ft-mark b{font-family:var(--brand);font-weight:400;font-size:84px;line-height:1;color:#F6EEDC;letter-spacing:0;text-shadow:0 4px 18px rgba(0,0,0,.35)}
@@ -2108,7 +2108,7 @@ async function play(host,handoff){
           const W=el.clientWidth,H=el.clientHeight,hw=.5,hh=.5/d.aspect;let x0=1e9,y0=1e9,x1=-1e9;[[-hw,hh],[hw,hh],[-hw,-hh],[hw,-hh]].forEach(([x,y])=>{const v=new T.Vector3(x,y,0).applyMatrix4(d.m.matrixWorld).project(cam);const px=(v.x+1)/2*W,py=(1-v.y)/2*H;x0=Math.min(x0,px);x1=Math.max(x1,px);y0=Math.min(y0,py)});
           const tx=d.text;tx.style.opacity=o;tx.style.left=x0+'px';tx.style.top=y0+'px';tx.style.transform=`scale(${(x1-x0)/340})`}
       });
-      {const a=seg(t,2.75,3.25),z=1-seg(t,4.3,4.75),o=Math.min(easeOut(a),z);ttl.style.opacity=o;ttl.style.transform=`translate(-50%,-50%) scale(${.92+.08*easeOut(a)})`;ttl.style.visibility=o>0?'visible':'hidden'}
+      {const a=seg(t,2.75,3.25),z=1-seg(t,4.3,4.75),o=Math.min(easeOut(a),z);ttl.style.opacity=1;ttl.style.visibility=o>0?'visible':'hidden';const sc=.92+.08*easeOut(a);ttl.querySelectorAll('.ft-mark,span').forEach(x=>{x.style.opacity=o;x.style.transform=`scale(${sc})`});const bl=ttl.querySelector('.ft-blur');bl.style.opacity=o;}
       // progress
       bars.forEach((b,i)=>{const a=BEATS[i],z=BEATS[i+1]??END;b.style.transform=`scaleX(${seg(t,a,z)})`});
       render();raf=requestAnimationFrame(frame)}
@@ -3524,7 +3524,7 @@ function openAbout(){const slot=$('#sheetSlot');
     <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18v-6a8 8 0 0 1 16 0v6"/><rect x="3" y="15" width="4" height="6" rx="1.5"/><rect x="17" y="15" width="4" height="6" rx="1.5"/></svg><b>Stream</b>Play them anywhere</div>
    </div>
    <div class="about-bot"><span class="bh" style="--s:52px"><span class="bh-band"></span><span class="bh-cup l"></span><span class="bh-cup r"></span><span class="bh-head"><span class="bh-stripes"></span><span class="bh-face"><i class="bh-eye l"></i><i class="bh-eye r"></i><i class="bh-vu"><b></b><b></b><b></b><b></b><b></b></i></span></span></span><div><b>Meet DJ Selector</b><span>Your own crate-digging DJ. Tell him a mood, a moment or an artist, like "rainy Sunday", "cooking dinner" or "some Fleetwood Mac", and he digs through every record you and your family own to build a mix in seconds.</span></div></div>
-   <ul class="about-sel"><li><b>Only music you own.</b> Every song comes from a real record in your Stack, so every mix rewards collecting.</li><li><b>Mixes the whole family.</b> On Duo and Family plans he digs through everyone's records, not just yours.</li><li><b>Keep the good ones.</b> Play the mix straight away, shuffle again, or save it as a mixtape to send to a friend.</li></ul><p class="mono" style="font-size:10.5px;color:var(--muted);text-align:center;margin:14px 0 0;letter-spacing:.06em">PROTOTYPE BUILD · 8 OCT · 23:30</p><p class="mono" style="font-size:9.5px;color:var(--muted);text-align:center;margin:4px 0 0;letter-spacing:.04em;opacity:.8">${screenDiag()}</p>
+   <ul class="about-sel"><li><b>Only music you own.</b> Every song comes from a real record in your Stack, so every mix rewards collecting.</li><li><b>Mixes the whole family.</b> On Duo and Family plans he digs through everyone's records, not just yours.</li><li><b>Keep the good ones.</b> Play the mix straight away, shuffle again, or save it as a mixtape to send to a friend.</li></ul><p class="mono" style="font-size:10.5px;color:var(--muted);text-align:center;margin:14px 0 0;letter-spacing:.06em">PROTOTYPE BUILD · 8 OCT · 23:35</p><p class="mono" style="font-size:9.5px;color:var(--muted);text-align:center;margin:4px 0 0;letter-spacing:.04em;opacity:.8">${screenDiag()}</p>
    <div class="about-foot">STACK 1.0 · FOR PEOPLE WHO STILL BUY RECORDS</div></div></div>`;
   $('#abSc').onclick=$('#abX').onclick=closeSheet;
 }
