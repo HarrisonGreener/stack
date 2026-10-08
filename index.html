@@ -1186,6 +1186,29 @@ html.touch *{-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none}
 html.touch body{-webkit-user-select:none;user-select:none;touch-action:manipulation}
 html.touch input,html.touch textarea{font-size:16px!important;-webkit-user-select:text;user-select:text}
 html.touch .phone.full~.demo-fab,html.touch .demo-fab{display:none!important}
+/* crate view: flick through your records like digging in a shop */
+.crate-tools{display:flex;gap:8px;margin:14px 0 4px}
+.crate-search{flex:1;min-width:0;display:flex;align-items:center;gap:7px;background:var(--surface-2);border-radius:12px;padding:0 11px;color:var(--muted)}
+.crate-search svg{width:16px;height:16px;flex:none}
+.crate-search input{flex:1;min-width:0;border:0;background:none;font:inherit;font-size:14px;color:var(--fg);padding:10px 0;outline:none}
+#crateSort{flex:none;max-width:44%;font:inherit;font-size:13px;font-weight:500;color:var(--fg);background:var(--surface-2);border:0;border-radius:12px;padding:0 10px;outline:none}
+.crate{position:relative;height:452px;perspective:1000px;touch-action:none;user-select:none;-webkit-user-select:none;outline:none;overflow:hidden;margin:0 -20px}
+.crate-items{position:absolute;inset:0}
+.ck{position:absolute;left:50%;top:150px;width:210px;height:210px;margin-left:-105px;border-radius:4px;transform-origin:50% 100%;transition:transform .34s cubic-bezier(.25,.8,.3,1),opacity .25s,filter .3s;box-shadow:0 -1px 0 rgba(255,255,255,.25) inset,0 10px 24px -10px rgba(40,20,8,.55);cursor:pointer;will-change:transform}
+.ck .art{position:absolute;inset:0;border-radius:4px}
+.ck .ck-t{position:absolute;left:0;right:0;top:0;height:24px;padding:5px 9px 0;font-size:11px;font-weight:650;letter-spacing:.01em;color:#fff;background:linear-gradient(rgba(20,10,4,.72),rgba(20,10,4,0));white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-radius:4px 4px 0 0;opacity:0;transition:opacity .25s}
+.ck .ck-t em{font-style:normal;opacity:.75;font-weight:500}
+.ck.up .ck-t{opacity:1}
+.ck.cur{cursor:pointer;box-shadow:0 22px 40px -14px rgba(40,20,8,.65)}
+.ck.cd{width:190px;height:190px;margin-left:-95px;top:170px}
+.ck.dv{height:196px;top:164px;border-radius:6px 6px 3px 3px;background:var(--dvc);box-shadow:inset 0 2px 0 rgba(255,255,255,.3),0 10px 20px -10px rgba(40,20,8,.5)}
+.ck.dv b{position:absolute;top:-22px;left:var(--tabx,22px);width:46px;height:30px;border-radius:9px 9px 0 0;background:var(--dvc);display:grid;place-items:center;font-family:var(--brand);font-size:19px;color:#fff;text-shadow:0 1px 0 rgba(0,0,0,.2)}
+.ck.dv span{position:absolute;left:0;right:0;bottom:18px;text-align:center;font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:rgba(255,255,255,.85)}
+.crate-front{position:absolute;left:24px;right:24px;bottom:0;height:86px;z-index:900;border-radius:10px 10px 4px 4px;background:linear-gradient(180deg,#E8853A,#C9632A);box-shadow:inset 0 3px 0 #E9B949,inset 0 -4px 8px rgba(90,40,10,.25),0 14px 20px -12px rgba(40,20,8,.5)}
+.crate-front i{position:absolute;left:50%;top:22px;width:54px;height:12px;margin-left:-27px;border-radius:6px;background:#5a3018;box-shadow:inset 0 2px 3px rgba(0,0,0,.45)}
+.crate-front span{position:absolute;left:0;right:0;bottom:12px;text-align:center;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:rgba(255,248,236,.85)}
+.crate-cap{margin-top:12px}
+.crate-empty{position:absolute;left:0;right:0;top:170px;text-align:center;color:var(--muted);font-size:14px}
 </style>
 <style>[hidden]{display:none!important}body{margin:0}</style>
 </head>
@@ -1248,6 +1271,7 @@ html.touch .phone.full~.demo-fab,html.touch .demo-fab{display:none!important}
           <div class="controls-row">
             <div class="seg" role="group" aria-label="View">
               <button id="vSpines" aria-pressed="true">Covers</button>
+              <button id="vCrate" aria-pressed="false">Crate</button>
               <button id="vList" aria-pressed="false">List</button>
             </div>
             <div class="chips" id="chips">
@@ -1259,6 +1283,12 @@ html.touch .phone.full~.demo-fab,html.touch .demo-fab{display:none!important}
           <div id="spinesView">
             <div class="cf" id="cfMine"></div>
             <div class="caption" id="capMine"></div>
+          </div>
+          <div id="crateView" hidden>
+            <div class="crate-tools"><label class="crate-search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></svg><input id="crateQ" type="search" placeholder="Search your Stack" autocomplete="off" aria-label="Search your Stack"></label>
+              <select id="crateSort" aria-label="Sort"><option value="artist">Artist A–Z</option><option value="title">Title A–Z</option><option value="recent">Recently added</option><option value="year">Year</option></select></div>
+            <div class="crate" id="crate" tabindex="0" aria-label="Crate of records. Swipe or scroll to flick through."><div class="crate-items" id="crateItems"></div><div class="crate-front"><i></i><span id="crateCount"></span></div></div>
+            <div class="caption crate-cap" id="crateCap"></div>
           </div>
           <div class="listv" id="listMine" hidden></div>
           <div class="sec-h"><h3 id="mtTitle">Mixtapes</h3><button id="mtNewLink">+ New mixtape</button></div>
@@ -1552,6 +1582,7 @@ function renderMine(){
   $('#mineSub').innerHTML=`${all.length} records <span class="mono">· ${v} vinyl · ${all.length-v} CD</span>`;
   if(!cfMine)cfMine=Carousel($('#cfMine'),{items:()=>mineFiltered(),from:()=>'My Stack',cap:$('#capMine'),capText:a=>capWith(a,`<b>${a.t}</b><span>${a.a} · ${a.y} · ${fmtLabel[a.f]}</span>${capPlay}`)});
   cfMine.render();
+  try{if(st.view==='crate')Crate.render()}catch(e){}
   $('#listMine').innerHTML=list.map(a=>`<button class="row" data-id="${a.id}">${artHTML(a,'',false)}<span class="tx"><b>${a.t}</b><span>${a.a} · ${a.y}</span></span><span class="pill">${fmtLabel[a.f]}</span></button>`).join('');
 }
 const FAM_MT=[{id:'fm1',by:'mum',name:'Kitchen Disco',keys:['thr:5','ram:7','boh:0','tap:6','a21:1','iti:6']},
@@ -1594,8 +1625,9 @@ $('#tabs').onclick=e=>{const b=e.target.closest('.tab[data-tab]');if(b)goTab(b.d
 document.addEventListener('click',e=>{const g=e.target.closest('[data-go]');if(g)goTab(g.dataset.go)});
 
 /* view + filters */
-$('#vSpines').onclick=()=>setView('spines');$('#vList').onclick=()=>setView('list');
-function setView(v){st.view=v;phone.classList.toggle('list-mode',v==='list');try{renderMT();renderFamily()}catch(e){}$('#vSpines').setAttribute('aria-pressed',v==='spines');$('#vList').setAttribute('aria-pressed',v==='list');$('#spinesView').hidden=v!=='spines';$('#listMine').hidden=v!=='list'}
+$('#vSpines').onclick=()=>{setView('spines');saveView()};$('#vList').onclick=()=>{setView('list');saveView()};$('#vCrate').onclick=()=>{setView('crate');saveView()};
+function saveView(){try{localStorage.setItem('stack-view',st.view)}catch(e){}}
+function setView(v){st.view=v;phone.classList.toggle('list-mode',v==='list');try{renderMT();renderFamily()}catch(e){}$('#vSpines').setAttribute('aria-pressed',v==='spines');$('#vList').setAttribute('aria-pressed',v==='list');$('#spinesView').hidden=v!=='spines';$('#listMine').hidden=v!=='list';$('#vCrate').setAttribute('aria-pressed',v==='crate');$('#crateView').hidden=v!=='crate';if(v==='crate')Crate.render()}
 $('#chips').onclick=e=>{const c=e.target.closest('.chip');if(!c)return;st.filter=c.dataset.f;$$('.chip').forEach(x=>x.setAttribute('aria-pressed',x===c));renderMine()};
 
 /* open records */
@@ -2192,6 +2224,48 @@ function openAI(){const slot=$('#sheetSlot');$('#aiTab').classList.add('open');
     bot.animate([{transform:`translate(${dx}px,${dy}px) scale(${sc})`},{transform:`translate(${dx*.3}px,${dy*.3}px) scale(${(1+sc)/1.5})`,offset:.55},{transform:'none'}],{duration:760,easing:'cubic-bezier(.3,.7,.2,1)'})}
   setTimeout(()=>{try{$('#askIn').focus({preventScroll:true})}catch(e){}},720)}
 $('#aiTab').onclick=openAI;
+/* ---------- Crate view ---------- */
+const Crate=(()=>{let items=[],cur=0,sort='artist',q='',built=false;const DVC=['#B6452C','#EF8B2C','#7FA7B7','#E9B949','#3A2216'];
+  const key=a=>(sort==='title'?a.t:a.a).replace(/^[“"']/,'').replace(/^the\s+/i,'').trim();
+  const letter=a=>{const c=key(a)[0]||'#';return /[a-z]/i.test(c)?c.toUpperCase():'#'};
+  function list(){let L=mineFiltered();if(q){const n=q.toLowerCase();L=L.filter(a=>(a.t+' '+a.a+' '+a.y).toLowerCase().includes(n))}
+    L=L.slice();if(sort==='artist'||sort==='title')L.sort((x,y)=>key(x).localeCompare(key(y)));else if(sort==='year')L.sort((x,y)=>y.y-x.y);else L.reverse();
+    const out=[];let last=null,di=0;L.forEach(a=>{if((sort==='artist'||sort==='title')&&!q){const l=letter(a);if(l!==last){out.push({div:l,n:L.filter(b=>letter(b)===l).length,c:DVC[di++%DVC.length]});last=l}}out.push({a})});return out}
+  function render(){const box=$('#crateItems');if(!box)return;const prevId=items[cur]&&items[cur].a&&items[cur].a.id;items=list();
+    let ni=items.findIndex(x=>x.a&&x.a.id===prevId);if(ni<0)ni=items.findIndex(x=>x.a);cur=Math.max(0,ni);
+    box.innerHTML=items.length?items.map((x,i)=>x.a?`<div class="ck${x.a.f==='CD'?' cd':''}" data-ci="${i}">${artHTML(x.a,'',true)}<div class="ck-t">${x.a.t} <em>· ${x.a.a}</em></div></div>`
+      :`<div class="ck dv" data-ci="${i}" style="--dvc:${x.c};--tabx:${22+((x.div.charCodeAt(0)*37)%120)}px"><b>${x.div}</b><span>${x.n} ${x.n===1?'RECORD':'RECORDS'}</span></div>`).join(''):'<div class="crate-empty">Nothing in your Stack matches that.</div>';
+    const n=items.filter(x=>x.a).length;$('#crateCount').textContent=`${n} ${n===1?'RECORD':'RECORDS'} IN THE CRATE`;layout(true);if(!built)bind()}
+  function layout(instant){const els=$$('#crateItems .ck');els.forEach(el=>{const i=+el.dataset.ci,d=i-cur;let t,z,o=1,f='none';
+      if(d===0){t='translateY(-6px) translateZ(30px)';z=500}
+      else if(d>0){const k=Math.min(d,8);t=`translateY(${-24*k}px) translateZ(${-26*k}px) scale(${1-.012*k})`;z=500-d;o=d>7?0:1;f=`brightness(${1-.05*k})`}
+      else{const k=-d;t=`translateY(${196+k*9}px) rotateX(${-58-k*4}deg) scale(.98)`;z=600+k;o=k>4?0:1;f='brightness(.82)'}
+      if(instant)el.style.transition='none';el.style.transform=t;el.style.zIndex=z;el.style.opacity=o;el.style.filter=f;el.style.pointerEvents=o?'':'none';
+      el.classList.toggle('cur',d===0);el.classList.toggle('up',d>0&&d<8);if(instant){void el.offsetWidth;el.style.transition=''}});
+    const x=items[cur],cap=$('#crateCap');if(!cap)return;
+    if(!x){cap.innerHTML='';return}
+    cap.innerHTML=x.a?capWith(x.a,`<b>${x.a.t}</b><span>${x.a.a} · ${x.a.y} · ${fmtLabel[x.a.f]}</span><span class="mono" style="display:block;margin-top:4px;font-size:10.5px;letter-spacing:.1em;opacity:.7">TAP THE RECORD TO PLAY · SWIPE TO FLICK</span>`):`<b>${x.div}</b><span>${x.n} ${x.n===1?'record':'records'} under ${x.div}</span>`}
+  let lastTick=0;function tick(){if(typeof SFX_ON!=='undefined'&&!SFX_ON)return;const now=performance.now();if(now-lastTick<45)return;lastTick=now;
+    try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();const ac=AC,t=ac.currentTime,b=ac.createBufferSource(),f=ac.createBiquadFilter(),g=ac.createGain();
+      const buf=ac.createBuffer(1,Math.floor(ac.sampleRate*.04),ac.sampleRate),dd=buf.getChannelData(0);for(let k=0;k<dd.length;k++)dd[k]=(Math.random()*2-1)*Math.exp(-k/(dd.length*.22));
+      b.buffer=buf;f.type='bandpass';f.frequency.value=1500+Math.random()*500;f.Q.value=.8;g.gain.value=.05;b.connect(f);f.connect(g);g.connect(ac.destination);b.start(t)}catch(e){}}
+  function go(i){i=Math.max(0,Math.min(items.length-1,i));if(i===cur)return;cur=i;layout(false);tick()}
+  function bind(){built=true;const c=$('#crate');let acc=0,drag=null,mom=null;
+    c.addEventListener('touchmove',e=>e.stopPropagation(),{passive:true});c.addEventListener('wheel',e=>{e.preventDefault();e.stopPropagation();acc+=e.deltaY;while(acc>46){acc-=46;go(cur+1)}while(acc<-46){acc+=46;go(cur-1)}},{passive:false});
+    c.addEventListener('pointerdown',e=>{cancelAnimationFrame(mom);drag={y:e.clientY,start:cur,moved:false,t:performance.now(),ly:e.clientY,v:0};c.setPointerCapture&&c.setPointerCapture(e.pointerId)});
+    c.addEventListener('pointermove',e=>{if(!drag)return;const dy=(drag.y-e.clientY)/S;if(Math.abs(dy)>6)drag.moved=true;const now=performance.now();drag.v=(drag.ly-e.clientY)/S/Math.max(1,now-drag.t);drag.t=now;drag.ly=e.clientY;go(drag.start+Math.round(dy/30))});
+    const end=e=>{if(!drag)return;const d=drag;drag=null;
+      if(!d.moved){const el=document.elementFromPoint(e.clientX,e.clientY),ck=el&&el.closest('.ck');if(!ck)return;const i=+ck.dataset.ci;
+        if(i===cur&&items[i].a)openRecord(items[i].a,ck.querySelector('.art'),'My Stack');else go(i);return}
+      let v=d.v*16;const step=()=>{if(Math.abs(v)<.35)return;const n=cur+(v>0?1:-1);if(n<0||n>=items.length)return;go(n);v*=.8;mom=setTimeout(step,Math.max(40,120-Math.abs(v)*20))};if(Math.abs(v)>1.2)step()};
+    c.addEventListener('pointerup',end);c.addEventListener('pointercancel',()=>{drag=null});
+    c.addEventListener('keydown',e=>{if(e.key==='ArrowDown'||e.key==='ArrowRight'){go(cur+1);e.preventDefault()}if(e.key==='ArrowUp'||e.key==='ArrowLeft'){go(cur-1);e.preventDefault()}if(e.key==='Enter'&&items[cur]&&items[cur].a)openRecord(items[cur].a,null,'My Stack')});
+    $('#crateQ').addEventListener('input',e=>{q=e.target.value.trim();cur=0;render()});
+    $('#crateSort').addEventListener('change',e=>{sort=e.target.value;render()})}
+  return{render}})();
+// default view: remembered choice, otherwise automatic (carousel for small collections, crate once you pass ~30 records)
+{let v=null;try{v=localStorage.getItem('stack-view')}catch(e){}if(!v)v=mine().length>30?'crate':'spines';if(v!=='spines')setView(v)}
+
 (function(){try{if(navigator.audioSession)navigator.audioSession.type='playback'}catch(e){}
   const SIL='data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAIA+AAACABAAZGF0YQAAAAA=';
   const wake=()=>{try{const a=new Audio(SIL);a.setAttribute('playsinline','');a.play().catch(()=>{})}catch(e){}
@@ -2474,7 +2548,7 @@ function openAbout(){const slot=$('#sheetSlot');
     <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18v-6a8 8 0 0 1 16 0v6"/><rect x="3" y="15" width="4" height="6" rx="1.5"/><rect x="17" y="15" width="4" height="6" rx="1.5"/></svg><b>Stream</b>Play them anywhere</div>
    </div>
    <div class="about-bot"><span class="bh" style="--s:52px"><span class="bh-band"></span><span class="bh-cup l"></span><span class="bh-cup r"></span><span class="bh-head"><span class="bh-stripes"></span><span class="bh-face"><i class="bh-eye l"></i><i class="bh-eye r"></i><i class="bh-vu"><b></b><b></b><b></b><b></b><b></b></i></span></span></span><div><b>Meet DJ Selector</b><span>Your own crate-digging DJ. Tell him a mood, a moment or an artist, like "rainy Sunday", "cooking dinner" or "some Fleetwood Mac", and he digs through every record you and your family own to build a mix in seconds.</span></div></div>
-   <ul class="about-sel"><li><b>Only music you own.</b> Every song comes from a real record in your Stack, so every mix rewards collecting.</li><li><b>Mixes the whole family.</b> On Duo and Family plans he digs through everyone's records, not just yours.</li><li><b>Keep the good ones.</b> Play the mix straight away, shuffle again, or save it as a mixtape to send to a friend.</li></ul><p class="mono" style="font-size:10.5px;color:var(--muted);text-align:center;margin:14px 0 0;letter-spacing:.06em">PROTOTYPE BUILD · 8 OCT · 13:10</p>
+   <ul class="about-sel"><li><b>Only music you own.</b> Every song comes from a real record in your Stack, so every mix rewards collecting.</li><li><b>Mixes the whole family.</b> On Duo and Family plans he digs through everyone's records, not just yours.</li><li><b>Keep the good ones.</b> Play the mix straight away, shuffle again, or save it as a mixtape to send to a friend.</li></ul><p class="mono" style="font-size:10.5px;color:var(--muted);text-align:center;margin:14px 0 0;letter-spacing:.06em">PROTOTYPE BUILD · 8 OCT · 16:45</p>
    <div class="about-foot">STACK 1.0 · FOR PEOPLE WHO STILL BUY RECORDS</div></div></div>`;
   $('#abSc').onclick=$('#abX').onclick=closeSheet;
 }
