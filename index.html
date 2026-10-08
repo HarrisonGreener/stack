@@ -1967,7 +1967,7 @@ async function play(host,handoff){
     const finish=(handed)=>{if(done)return;done=true;cancelAnimationFrame(raf);ro.disconnect();if(bed)bed.stop(handed?1.2:.3);try{SS('stack-film-seen',true)}catch(e){}
       // hide now, free the GPU later (once the loading intro is done) so nothing stalls the hand-over on phones
       window.FILM_CLEANUP=()=>{window.FILM_CLEANUP=null;try{R.dispose()}catch(e){}el.remove()};
-      const go=()=>{el.style.display='none';if(!resolved){resolved=true;resolve(true)}};
+      const go=()=>{el.style.display='none';if(!resolved){resolved=true;resolve(true)}setTimeout(()=>window.FILM_CLEANUP&&FILM_CLEANUP(),700)};
       el.animate([{opacity:1},{opacity:0}],{duration:handed?380:300,fill:'forwards'}).finished.then(go,go)};
     el.querySelector('.film-skip').onclick=e=>{e.stopPropagation();el._wakeTap=false;t=Math.max(t,BEATS[6]+.6);last=performance.now()};
     const snd=el.querySelector('.film-snd');let soundOn=!ac||ac.state==='running';if(!soundOn)snd.classList.remove('off');
@@ -3524,7 +3524,7 @@ function openAbout(){const slot=$('#sheetSlot');
     <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18v-6a8 8 0 0 1 16 0v6"/><rect x="3" y="15" width="4" height="6" rx="1.5"/><rect x="17" y="15" width="4" height="6" rx="1.5"/></svg><b>Stream</b>Play them anywhere</div>
    </div>
    <div class="about-bot"><span class="bh" style="--s:52px"><span class="bh-band"></span><span class="bh-cup l"></span><span class="bh-cup r"></span><span class="bh-head"><span class="bh-stripes"></span><span class="bh-face"><i class="bh-eye l"></i><i class="bh-eye r"></i><i class="bh-vu"><b></b><b></b><b></b><b></b><b></b></i></span></span></span><div><b>Meet DJ Selector</b><span>Your own crate-digging DJ. Tell him a mood, a moment or an artist, like "rainy Sunday", "cooking dinner" or "some Fleetwood Mac", and he digs through every record you and your family own to build a mix in seconds.</span></div></div>
-   <ul class="about-sel"><li><b>Only music you own.</b> Every song comes from a real record in your Stack, so every mix rewards collecting.</li><li><b>Mixes the whole family.</b> On Duo and Family plans he digs through everyone's records, not just yours.</li><li><b>Keep the good ones.</b> Play the mix straight away, shuffle again, or save it as a mixtape to send to a friend.</li></ul><p class="mono" style="font-size:10.5px;color:var(--muted);text-align:center;margin:14px 0 0;letter-spacing:.06em">PROTOTYPE BUILD · 8 OCT · 23:35</p><p class="mono" style="font-size:9.5px;color:var(--muted);text-align:center;margin:4px 0 0;letter-spacing:.04em;opacity:.8">${screenDiag()}</p>
+   <ul class="about-sel"><li><b>Only music you own.</b> Every song comes from a real record in your Stack, so every mix rewards collecting.</li><li><b>Mixes the whole family.</b> On Duo and Family plans he digs through everyone's records, not just yours.</li><li><b>Keep the good ones.</b> Play the mix straight away, shuffle again, or save it as a mixtape to send to a friend.</li></ul><p class="mono" style="font-size:10.5px;color:var(--muted);text-align:center;margin:14px 0 0;letter-spacing:.06em">PROTOTYPE BUILD · 8 OCT · 23:45</p><p class="mono" style="font-size:9.5px;color:var(--muted);text-align:center;margin:4px 0 0;letter-spacing:.04em;opacity:.8">${screenDiag()}</p>
    <div class="about-foot">STACK 1.0 · FOR PEOPLE WHO STILL BUY RECORDS</div></div></div>`;
   $('#abSc').onclick=$('#abX').onclick=closeSheet;
 }
@@ -3631,7 +3631,7 @@ async function intro(){
   if(wantFilm&&typeof Film!=='undefined'){rec.style.transform='scale(3.6)';const bgH=$('#spBg');if(bgH)bgH.style.visibility='hidden';const sk=sp.querySelector('.sp-skip');sk.style.opacity=0;
     const lg=rec.querySelector('.sp-logo');
     await Film.play(sp.parentNode,{frame:fe=>{const a=lg.getBoundingClientRect(),b=fe.getBoundingClientRect();if(!a.height||!b.height)return{frac:.41,dx:0,dy:0};return{frac:a.height/b.height,dx:((a.left+a.width/2)-(b.left+b.width/2))/b.height,dy:((a.top+a.height/2)-(b.top+b.height/2))/b.height}}});
-    if(bgH)bgH.style.visibility='';if(run!==introRun)return;sk.style.opacity='';rec.style.transform='';await wait(20)}
+    if(bgH)bgH.style.visibility='';if(run!==introRun)return;sk.style.opacity=''}
   sp.onclick=()=>{if(ended)return;if(snd)snd.stop();sp.animate([{opacity:1},{opacity:0}],{duration:250,fill:'forwards'}).finished.then(finish)};
   snd=introSound();
   {const bg=$('#spBg');if(bg){bg.animate([{transform:'scale(1.3)'},{transform:'scale(1)'}],{duration:4200,easing:'cubic-bezier(.4,0,.3,1)',fill:'both'})}}
@@ -3642,32 +3642,38 @@ async function intro(){
   const zoom=rec.animate([
     {transform:'scale(3.6)',opacity:1,offset:0},
     {transform:'scale(3.6)',opacity:1,offset:.38},
-    {transform:'scale(1)',opacity:1,offset:1}],{duration:2600,easing:'cubic-bezier(.65,0,.35,1)',fill:'both'});
+    {transform:'scale(1)',opacity:1,offset:1}],{duration:2600,easing:'cubic-bezier(.65,0,.35,1)',fill:'both'});rec.style.transform='';
   await zoom.finished.catch(()=>{});if(ended||run!==introRun)return;
   // 2. hold a beat as a full record
   await wait(850);if(ended||run!==introRun)return;
   // 3. the screen behind fades to reveal the app, and the record rolls away to the right on its own
   sp.querySelector('.sp-skip').style.opacity=0;
-  {const D=1050,E='cubic-bezier(.65,0,.25,1)',bg=$('#spBg'),sec=document.querySelector('.screen:not([hidden])');
+  {const D=1050,bg=$('#spBg'),sec=document.querySelector('.screen:not([hidden])');
    const lab=rec.querySelector('.sp-logo'),lr=lab.getBoundingClientRect(),rr=rec.getBoundingClientRect(),tgt=hl?hl.getBoundingClientRect():null;
    sp.style.background='transparent';
-   // phones: freeze the spinning rings while the record flies into the logo spot, so nothing competes with it
-   {const sv=sp.querySelector('.sp-bgsvg');if(sv&&document.documentElement.classList.contains('touch')&&sv.pauseAnimations)sv.pauseAnimations()}
-   // the wallpaper opens up from the record like an iris, revealing My Stack underneath
-   if(bg){const sv=bg.querySelector('.sp-bgsvg');if(sv&&sv.pauseAnimations)sv.pauseAnimations();bg.getAnimations().forEach(x=>x.cancel());bg.style.willChange='transform,opacity';
-     bg.animate([{transform:'scale(1)',opacity:1},{transform:'scale(1.04)',opacity:1,offset:.12},{transform:'scale(2.6)',opacity:0}],{duration:D,easing:'cubic-bezier(.55,0,.35,1)',fill:'forwards'})}
-   if(sec){const soft=!document.documentElement.classList.contains('touch');sec.animate(soft?[{transform:'scale(1.07)',opacity:0,filter:'blur(6px)'},{opacity:1,offset:.55},{transform:'none',opacity:1,filter:'blur(0)'}]:[{transform:'scale(1.07)',opacity:0},{opacity:1,offset:.55},{transform:'none',opacity:1}],{duration:D,easing:E})}
-   // the vinyl falls away and the label flies up into the header, becoming the Stack logo
-   rec.querySelector('.sp-vinyl').animate([{opacity:1,transform:'scale(1)'},{opacity:0,transform:'scale(.72)'}],{duration:D*.55,easing:'ease-in',fill:'forwards'});
-   rec.querySelector('.sp-sheen').animate([{opacity:1},{opacity:0}],{duration:D*.35,fill:'forwards'});
-   rec.querySelector('.sp-logo2').animate([{opacity:0},{opacity:0,offset:.45},{opacity:1}],{duration:D,easing:'ease-in-out',fill:'forwards'});
-   let fly=null;
-   if(tgt&&tgt.width){const dx=((tgt.left+tgt.width/2)-(rr.left+rr.width/2))/S,dy=((tgt.top+tgt.height/2)-(rr.top+rr.height/2))/S,k=tgt.width/lr.width;
-     rec.getAnimations().forEach(x=>x.cancel());
-     fly=rec.animate([{transform:'translate(0,0) scale(1)'},{transform:`translate(${dx*.25}px,${dy*.12}px) scale(${.5+k*.5})`,offset:.45},{transform:`translate(${dx}px,${dy}px) scale(${k})`}],{duration:D,easing:E,fill:'forwards'})}
-   else fly=rec.animate([{opacity:1},{opacity:0}],{duration:D,fill:'forwards'});
-   setTimeout(()=>{if(snd&&snd.land)snd.land()},D-60);
-   await fly.finished.catch(()=>{});
+   {const sv=sp.querySelector('.sp-bgsvg');if(sv&&sv.pauseAnimations)sv.pauseAnimations()}
+   // Driven frame by frame with a clamped clock: if the phone stalls for a moment (it has to paint My Stack for the
+   // first time here), the animation pauses and carries on, instead of skipping straight to the end.
+   const bez=(x1,y1,x2,y2)=>u=>{let lo=0,hi=1,m=u;for(let i=0;i<20;i++){m=(lo+hi)/2;const x=3*(1-m)*(1-m)*m*x1+3*(1-m)*m*m*x2+m*m*m;if(x<u)lo=m;else hi=m}return 3*(1-m)*(1-m)*m*y1+3*(1-m)*m*m*y2+m*m*m};
+   const E=bez(.65,0,.25,1),EB=bez(.55,0,.35,1),EI=u=>u*u*u,EIO=bez(.42,0,.58,1),cl=x=>Math.max(0,Math.min(1,x)),lerp2=(a,b,u)=>a+(b-a)*u;
+   const vin=rec.querySelector('.sp-vinyl'),shn=rec.querySelector('.sp-sheen'),lg2=rec.querySelector('.sp-logo2'),soft=!document.documentElement.classList.contains('touch');
+   if(bg){bg.getAnimations().forEach(x=>x.cancel());bg.style.willChange='transform,opacity'}
+   let dx=0,dy=0,k=1;const canFly=tgt&&tgt.width;if(canFly){dx=((tgt.left+tgt.width/2)-(rr.left+rr.width/2))/S;dy=((tgt.top+tgt.height/2)-(rr.top+rr.height/2))/S;k=tgt.width/lr.width}
+   rec.getAnimations().forEach(x=>x.cancel());rec.style.willChange='transform';
+   if(sec){sec.style.opacity=0;sec.style.transform='scale(1.07)'}
+   // give the phone two frames to get My Stack ready before anything moves
+   await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
+   let el=0,last=performance.now(),landed=false;
+   await new Promise(res=>{const step=now=>{if(ended||run!==introRun)return res();el+=Math.min(34,now-last);last=now;const u=cl(el/D);
+     if(bg){const v=EB(u),sc=u<.12?lerp2(1,1.04,v/EB(.12)):lerp2(1.04,2.6,cl((v-EB(.12))/(1-EB(.12))));bg.style.transform=`scale(${sc})`;bg.style.opacity=u<.12?1:1-cl((v-EB(.12))/(1-EB(.12)))}
+     if(sec){const v=E(u);sec.style.opacity=cl(u/.55);sec.style.transform=`scale(${lerp2(1.07,1,v)})`;if(soft)sec.style.filter=`blur(${(1-v)*6}px)`}
+     {const uv=cl(u/.55),v=EI(uv);vin.style.opacity=1-v;vin.style.transform=`scale(${1-.28*v})`}
+     shn.style.opacity=1-cl(u/.35);lg2.style.opacity=EIO(cl((u-.45)/.55));
+     if(canFly){const v=E(u);let tx,ty,s2;if(v<.45){const w=v/.45;tx=dx*.25*w;ty=dy*.12*w;s2=lerp2(1,.5+k*.5,w)}else{const w=(v-.45)/.55;tx=lerp2(dx*.25,dx,w);ty=lerp2(dy*.12,dy,w);s2=lerp2(.5+k*.5,k,w)}rec.style.transform=`translate(${tx}px,${ty}px) scale(${s2})`}
+     else rec.style.opacity=1-u;
+     if(!landed&&u>(D-60)/D){landed=true;if(snd&&snd.land)snd.land()}
+     if(u<1)requestAnimationFrame(step);else res()};requestAnimationFrame(step)});
+   if(sec){sec.style.opacity='';sec.style.transform='';sec.style.filter=''}
    if(hl){hl.style.visibility='';hl.animate([{transform:'scale(1)'},{transform:'scale(1.14)'},{transform:'scale(1)'}],{duration:340,easing:'cubic-bezier(.3,1.6,.5,1)'})}}
   finish();
 }
