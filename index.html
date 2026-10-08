@@ -1965,9 +1965,10 @@ async function play(host,handoff){
   return await new Promise(resolve=>{
     let resolved=false;
     const finish=(handed)=>{if(done)return;done=true;cancelAnimationFrame(raf);ro.disconnect();if(bed)bed.stop(handed?1.2:.3);try{SS('stack-film-seen',true)}catch(e){}
-      const go=()=>{try{R.dispose();R.forceContextLoss&&R.forceContextLoss()}catch(e){}el.remove()};
-      if(handed){el.animate([{opacity:1},{opacity:0}],{duration:420,fill:'forwards'}).finished.then(go)}else{el.animate([{opacity:1},{opacity:0}],{duration:300,fill:'forwards'}).finished.then(go)}
-      if(!resolved){resolved=true;resolve(true)}};
+      // hide now, free the GPU later (once the loading intro is done) so nothing stalls the hand-over on phones
+      window.FILM_CLEANUP=()=>{window.FILM_CLEANUP=null;try{R.dispose()}catch(e){}el.remove()};
+      const go=()=>{el.style.display='none';if(!resolved){resolved=true;resolve(true)}};
+      el.animate([{opacity:1},{opacity:0}],{duration:handed?380:300,fill:'forwards'}).finished.then(go,go)};
     el.querySelector('.film-skip').onclick=e=>{e.stopPropagation();el._wakeTap=false;t=Math.max(t,BEATS[6]+.6);last=performance.now()};
     const snd=el.querySelector('.film-snd');let soundOn=!ac||ac.state==='running';if(!soundOn)snd.classList.remove('off');
     const wake=()=>{if(soundOn)return false;soundOn=true;snd.classList.add('off');try{ac.resume()}catch(e){}try{typeof introCtx==='function'&&introCtx()}catch(e){}return true};
@@ -2080,14 +2081,15 @@ async function play(host,handoff){
       }else{// dive into the record label: lands exactly on the loading intro's first frame
         showSel=false;rpmEl.classList.remove('on');
         const u=seg(t,BEATS[6],END),e=1-Math.pow(1-u,2.6);
-        const lw=handoff&&handoff.labelFrac?handoff.labelFrac():.41;
-        const labelD=2*1.22*.343,dEnd=labelD/(lw*2*Math.tan(30*Math.PI/360));
-        const top=V(RC.x,.08+dEnd,RC.z);
+        // land exactly where the loading intro's label sits on this screen: same size and same centre
+        const hf=handoff&&handoff.frame?handoff.frame(el):{frac:.41,dx:0,dy:0};
+        const labelD=2*1.22*.343,dEnd=labelD/(hf.frac*2*Math.tan(30*Math.PI/360)),visH=labelD/hf.frac;
+        const top=V(RC.x-hf.dx*visH,.08+dEnd,RC.z-hf.dy*visH);
         const pA=V(RC.x+.9,2.4,2.6);
         // camera path: oblique → straight down, orientation slerped so screen-up = away from you
         cam.position.lerpVectors(pA,top,e);cam.fov=lerp(40,30,e);cam.updateProjectionMatrix();
         cam.up.set(0,1,0);cam.lookAt(RC.x,.08,RC.z);q0.copy(cam.quaternion);
-        m4.lookAt(top,V(RC.x,.08,RC.z),V(0,0,-1));q1.setFromRotationMatrix(m4);
+        m4.lookAt(top,V(top.x,.08,top.z),V(0,0,-1));q1.setFromRotationMatrix(m4);
         cam.quaternion.copy(q0).slerp(q1,clamp(e*1.15));
         W0.recTop.material.emissiveIntensity=.32*Math.pow(e,5);W0.key.intensity=3.2*(1-.6*Math.pow(e,5));
         if(bed&&!landSnd.bs){landSnd.bs=1;bed.stop(2.4)}
@@ -3522,7 +3524,7 @@ function openAbout(){const slot=$('#sheetSlot');
     <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18v-6a8 8 0 0 1 16 0v6"/><rect x="3" y="15" width="4" height="6" rx="1.5"/><rect x="17" y="15" width="4" height="6" rx="1.5"/></svg><b>Stream</b>Play them anywhere</div>
    </div>
    <div class="about-bot"><span class="bh" style="--s:52px"><span class="bh-band"></span><span class="bh-cup l"></span><span class="bh-cup r"></span><span class="bh-head"><span class="bh-stripes"></span><span class="bh-face"><i class="bh-eye l"></i><i class="bh-eye r"></i><i class="bh-vu"><b></b><b></b><b></b><b></b><b></b></i></span></span></span><div><b>Meet DJ Selector</b><span>Your own crate-digging DJ. Tell him a mood, a moment or an artist, like "rainy Sunday", "cooking dinner" or "some Fleetwood Mac", and he digs through every record you and your family own to build a mix in seconds.</span></div></div>
-   <ul class="about-sel"><li><b>Only music you own.</b> Every song comes from a real record in your Stack, so every mix rewards collecting.</li><li><b>Mixes the whole family.</b> On Duo and Family plans he digs through everyone's records, not just yours.</li><li><b>Keep the good ones.</b> Play the mix straight away, shuffle again, or save it as a mixtape to send to a friend.</li></ul><p class="mono" style="font-size:10.5px;color:var(--muted);text-align:center;margin:14px 0 0;letter-spacing:.06em">PROTOTYPE BUILD · 8 OCT · 22:50</p><p class="mono" style="font-size:9.5px;color:var(--muted);text-align:center;margin:4px 0 0;letter-spacing:.04em;opacity:.8">${screenDiag()}</p>
+   <ul class="about-sel"><li><b>Only music you own.</b> Every song comes from a real record in your Stack, so every mix rewards collecting.</li><li><b>Mixes the whole family.</b> On Duo and Family plans he digs through everyone's records, not just yours.</li><li><b>Keep the good ones.</b> Play the mix straight away, shuffle again, or save it as a mixtape to send to a friend.</li></ul><p class="mono" style="font-size:10.5px;color:var(--muted);text-align:center;margin:14px 0 0;letter-spacing:.06em">PROTOTYPE BUILD · 8 OCT · 23:30</p><p class="mono" style="font-size:9.5px;color:var(--muted);text-align:center;margin:4px 0 0;letter-spacing:.04em;opacity:.8">${screenDiag()}</p>
    <div class="about-foot">STACK 1.0 · FOR PEOPLE WHO STILL BUY RECORDS</div></div></div>`;
   $('#abSc').onclick=$('#abX').onclick=closeSheet;
 }
@@ -3620,7 +3622,7 @@ async function intro(){
   let ended=false;
   let snd=null,gatedI=false;
   const hl=$('#logoBtn svg');if(hl)hl.style.visibility='hidden';
-  const finish=()=>{if(ended||run!==introRun)return;ended=true;sp.hidden=true;sp.innerHTML='';sp.style.background='';sp.getAnimations().forEach(a=>a.cancel());if(hl)hl.style.visibility=''};
+  const finish=()=>{if(ended||run!==introRun)return;ended=true;sp.hidden=true;sp.innerHTML='';sp.style.background='';sp.getAnimations().forEach(a=>a.cancel());if(hl)hl.style.visibility='';if(window.FILM_CLEANUP)setTimeout(()=>window.FILM_CLEANUP&&FILM_CLEANUP(),1200)};
   const wantFilm=!!window.FILM_FORCE&&!reduce&&typeof Film!=='undefined';window.FILM_FORCE=false;
   if(wantFilm)try{Film.loadThree().catch(()=>{})}catch(e){}
   const ac=introCtx();await wait(60);if(run!==introRun)return;
@@ -3628,7 +3630,7 @@ async function intro(){
     await new Promise(res=>{sp.onclick=()=>{try{ac.resume()}catch(e){}res()}});if(run!==introRun)return;sk.classList.remove('gate');sk.textContent='TAP TO SKIP';rec.style.transform='';await wait(40)}
   if(wantFilm&&typeof Film!=='undefined'){rec.style.transform='scale(3.6)';const bgH=$('#spBg');if(bgH)bgH.style.visibility='hidden';const sk=sp.querySelector('.sp-skip');sk.style.opacity=0;
     const lg=rec.querySelector('.sp-logo');
-    await Film.play(sp.parentNode,{labelFrac:()=>{const a=lg.getBoundingClientRect(),b=sp.getBoundingClientRect();return a.height/b.height||.41}});
+    await Film.play(sp.parentNode,{frame:fe=>{const a=lg.getBoundingClientRect(),b=fe.getBoundingClientRect();if(!a.height||!b.height)return{frac:.41,dx:0,dy:0};return{frac:a.height/b.height,dx:((a.left+a.width/2)-(b.left+b.width/2))/b.height,dy:((a.top+a.height/2)-(b.top+b.height/2))/b.height}}});
     if(bgH)bgH.style.visibility='';if(run!==introRun)return;sk.style.opacity='';rec.style.transform='';await wait(20)}
   sp.onclick=()=>{if(ended)return;if(snd)snd.stop();sp.animate([{opacity:1},{opacity:0}],{duration:250,fill:'forwards'}).finished.then(finish)};
   snd=introSound();
@@ -3649,9 +3651,11 @@ async function intro(){
   {const D=1050,E='cubic-bezier(.65,0,.25,1)',bg=$('#spBg'),sec=document.querySelector('.screen:not([hidden])');
    const lab=rec.querySelector('.sp-logo'),lr=lab.getBoundingClientRect(),rr=rec.getBoundingClientRect(),tgt=hl?hl.getBoundingClientRect():null;
    sp.style.background='transparent';
+   // phones: freeze the spinning rings while the record flies into the logo spot, so nothing competes with it
+   {const sv=sp.querySelector('.sp-bgsvg');if(sv&&document.documentElement.classList.contains('touch')&&sv.pauseAnimations)sv.pauseAnimations()}
    // the wallpaper opens up from the record like an iris, revealing My Stack underneath
-   // drive the iris by hand: Safari doesn't animate CSS custom properties through the Web Animations API
-   if(bg){const t0=performance.now(),ez=u=>u<.5?4*u*u*u:1-Math.pow(-2*u+2,3)/2,stepH=now=>{const u=Math.min(1,(now-t0)/D),k=Math.max(0,(u-.08)/.92);bg.style.setProperty('--hole',(ez(k)*1500).toFixed(1)+'px');if(u<1&&!ended)requestAnimationFrame(stepH)};requestAnimationFrame(stepH)}
+   if(bg){const sv=bg.querySelector('.sp-bgsvg');if(sv&&sv.pauseAnimations)sv.pauseAnimations();bg.getAnimations().forEach(x=>x.cancel());bg.style.willChange='transform,opacity';
+     bg.animate([{transform:'scale(1)',opacity:1},{transform:'scale(1.04)',opacity:1,offset:.12},{transform:'scale(2.6)',opacity:0}],{duration:D,easing:'cubic-bezier(.55,0,.35,1)',fill:'forwards'})}
    if(sec){const soft=!document.documentElement.classList.contains('touch');sec.animate(soft?[{transform:'scale(1.07)',opacity:0,filter:'blur(6px)'},{opacity:1,offset:.55},{transform:'none',opacity:1,filter:'blur(0)'}]:[{transform:'scale(1.07)',opacity:0},{opacity:1,offset:.55},{transform:'none',opacity:1}],{duration:D,easing:E})}
    // the vinyl falls away and the label flies up into the header, becoming the Stack logo
    rec.querySelector('.sp-vinyl').animate([{opacity:1,transform:'scale(1)'},{opacity:0,transform:'scale(.72)'}],{duration:D*.55,easing:'ease-in',fill:'forwards'});
