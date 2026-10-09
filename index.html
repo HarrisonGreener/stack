@@ -3538,7 +3538,7 @@ function openAbout(){const slot=$('#sheetSlot');
     <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18v-6a8 8 0 0 1 16 0v6"/><rect x="3" y="15" width="4" height="6" rx="1.5"/><rect x="17" y="15" width="4" height="6" rx="1.5"/></svg><b>Stream</b>Play them anywhere</div>
    </div>
    <div class="about-bot"><span class="bh" style="--s:52px"><span class="bh-band"></span><span class="bh-cup l"></span><span class="bh-cup r"></span><span class="bh-head"><span class="bh-stripes"></span><span class="bh-face"><i class="bh-eye l"></i><i class="bh-eye r"></i><i class="bh-vu"><b></b><b></b><b></b><b></b><b></b></i></span></span></span><div><b>Meet DJ Selector</b><span>Your own crate-digging DJ. Tell him a mood, a moment or an artist, like "rainy Sunday", "cooking dinner" or "some Fleetwood Mac", and he digs through every record you and your family own to build a mix in seconds.</span></div></div>
-   <ul class="about-sel"><li><b>Only music you own.</b> Every song comes from a real record in your Stack, so every mix rewards collecting.</li><li><b>Mixes the whole family.</b> On Duo and Family plans he digs through everyone's records, not just yours.</li><li><b>Keep the good ones.</b> Play the mix straight away, shuffle again, or save it as a mixtape to send to a friend.</li></ul><p class="mono" style="font-size:10.5px;color:var(--muted);text-align:center;margin:14px 0 0;letter-spacing:.06em">PROTOTYPE BUILD · 9 OCT · 21:05</p><p class="mono" style="font-size:9.5px;color:var(--muted);text-align:center;margin:4px 0 0;letter-spacing:.04em;opacity:.8">${screenDiag()}</p>
+   <ul class="about-sel"><li><b>Only music you own.</b> Every song comes from a real record in your Stack, so every mix rewards collecting.</li><li><b>Mixes the whole family.</b> On Duo and Family plans he digs through everyone's records, not just yours.</li><li><b>Keep the good ones.</b> Play the mix straight away, shuffle again, or save it as a mixtape to send to a friend.</li></ul><p class="mono" style="font-size:10.5px;color:var(--muted);text-align:center;margin:14px 0 0;letter-spacing:.06em">PROTOTYPE BUILD · 9 OCT · 21:20</p><p class="mono" style="font-size:9.5px;color:var(--muted);text-align:center;margin:4px 0 0;letter-spacing:.04em;opacity:.8">${screenDiag()}</p>
    <div class="about-foot">STACK 1.0 · FOR PEOPLE WHO STILL BUY RECORDS</div></div></div>`;
   $('#abSc').onclick=$('#abX').onclick=closeSheet;
 }
@@ -3746,6 +3746,16 @@ document.querySelectorAll('[data-jump]').forEach(b=>b.onclick=async()=>{
    if(want&&!wl){wl=await navigator.wakeLock.request('screen');wl.addEventListener('release',()=>{wl=null})}else if(!want&&wl){await wl.release();wl=null}}catch(e){wl=null}}
  setInterval(wakeSync,2000);document.addEventListener('visibilitychange',wakeSync);
  const _cp=$('#plClose').onclick;}
+
+/* pin the app to the screen: on a phone, dragging in empty space (any direction) must not move the page; only real scroll areas scroll */
+if(matchMedia('(pointer:coarse)').matches||'ontouchstart' in window){let sx=0,sy=0;
+ const canScroll=(el,dx,dy)=>{for(;el&&el!==document.body&&el!==document.documentElement;el=el.parentElement){const cs=getComputedStyle(el);
+   if(Math.abs(dy)>=Math.abs(dx)){if(/(auto|scroll)/.test(cs.overflowY)&&el.scrollHeight>el.clientHeight+1){if(dy>0?el.scrollTop>0:el.scrollTop+el.clientHeight<el.scrollHeight-1)return true}}
+   else{if(/(auto|scroll)/.test(cs.overflowX)&&el.scrollWidth>el.clientWidth+1){if(dx>0?el.scrollLeft>0:el.scrollLeft+el.clientWidth<el.scrollWidth-1)return true}}}return false};
+ document.addEventListener('touchstart',e=>{const t=e.touches[0];sx=t.clientX;sy=t.clientY},{passive:true});
+ document.addEventListener('touchmove',e=>{if(e.touches.length>1){e.preventDefault();return}const t=e.touches[0],dx=t.clientX-sx,dy=t.clientY-sy;if(!canScroll(e.target,dx,dy)&&e.cancelable)e.preventDefault()},{passive:false});
+ ['gesturestart','gesturechange'].forEach(g=>document.addEventListener(g,e=>e.preventDefault()));
+ addEventListener('scroll',()=>{if(scrollX||scrollY)scrollTo(0,0)},{passive:true});}
 goTab('mine');{const q=location.search+location.hash;window.FILM_FORCE=!/[?&#]nofilm\b/.test(q);if(/[?&#]demo\b/.test(q))setTimeout(()=>{const iv=setInterval(()=>{if($('#splash').hidden){clearInterval(iv);openDemo()}},300)},500)}intro();
 </script>
 
