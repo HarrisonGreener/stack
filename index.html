@@ -1255,6 +1255,9 @@ html.standalone.kb .phone.full{height:var(--vh)!important}
 
 
 /* ---------- new features ---------- */
+.bell{position:relative}.bell-n{position:absolute;top:-3px;right:-3px;min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:var(--accent,#E8744F);color:#fff;font:700 11px/18px var(--font,system-ui);text-align:center;box-sizing:border-box;border:2px solid var(--bg,#241813)}
+.nf-empty{text-align:center;color:var(--muted);padding:34px 10px 24px;font-size:14px}.nf-empty b{display:block;color:var(--fg);font-size:16px;margin-bottom:4px}
+#nfBody .gift-card,#nfBody .loan,#nfBody .dust{margin-top:10px}#nfBody>div:first-child>*:first-child{margin-top:0}
 .dust{display:flex;gap:12px;align-items:center;margin-top:12px;padding:12px;border-radius:16px;background:color-mix(in srgb,var(--mustard) 18%,var(--surface));border:1px solid color-mix(in srgb,var(--mustard) 45%,var(--line))}
 .dust .art{width:56px;height:56px;border-radius:6px;flex:none;filter:sepia(.25) saturate(.85)}
 .dust .tx{flex:1;min-width:0}.dust small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--muted)}
@@ -1492,6 +1495,7 @@ html.rm .wl-sel,html.rm .wl-disc{transition:none!important}
           <div class="hdr">
             <button class="logo-lock" id="logoBtn" aria-label="About Stack"><svg style="--cut:var(--bg)"><use href="#mark"/></svg>stack</button>
             <div class="hdr-r">
+              <button class="icon-btn bell" id="bellBtn" aria-label="Notifications"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 21a2 2 0 0 0 4 0"/></svg><span class="bell-n" id="bellN" hidden></span></button>
               <button class="icon-btn" data-go="add" aria-label="Add records"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
               <button class="avatar avatar-btn" id="acctBtn" style="background:#F0A034" aria-label="Account and settings">H</button>
             </div>
@@ -1500,7 +1504,7 @@ html.rm .wl-sel,html.rm .wl-disc{transition:none!important}
           <p class="sub" id="mineSub"></p>
           <label class="stack-search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></svg><input id="stackQ" type="search" placeholder="Search songs, albums and artists" autocomplete="off" aria-label="Search your Stack"></label>
           <div id="stackRes" hidden></div>
-          <div id="giftSlot"></div><div id="loanSlot"></div><div id="dustSlot"></div>
+          <div id="notifBox" hidden><div id="giftSlot"></div><div id="loanSlot"></div><div id="dustSlot"></div></div>
           <button class="liked-card" id="likedOpen"><span class="lk-ic"><svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linejoin="round"><path d="M12 20s-7.5-4.6-7.5-10A4.3 4.3 0 0 1 12 7.4 4.3 4.3 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10z"/></svg></span><span class="tx"><b>Liked songs</b><span id="likedCount"></span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
           <div class="controls-row">
             <div class="seg" role="group" aria-label="View">
@@ -3528,7 +3532,7 @@ function openAbout(){const slot=$('#sheetSlot');
     <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18v-6a8 8 0 0 1 16 0v6"/><rect x="3" y="15" width="4" height="6" rx="1.5"/><rect x="17" y="15" width="4" height="6" rx="1.5"/></svg><b>Stream</b>Play them anywhere</div>
    </div>
    <div class="about-bot"><span class="bh" style="--s:52px"><span class="bh-band"></span><span class="bh-cup l"></span><span class="bh-cup r"></span><span class="bh-head"><span class="bh-stripes"></span><span class="bh-face"><i class="bh-eye l"></i><i class="bh-eye r"></i><i class="bh-vu"><b></b><b></b><b></b><b></b><b></b></i></span></span></span><div><b>Meet DJ Selector</b><span>Your own crate-digging DJ. Tell him a mood, a moment or an artist, like "rainy Sunday", "cooking dinner" or "some Fleetwood Mac", and he digs through every record you and your family own to build a mix in seconds.</span></div></div>
-   <ul class="about-sel"><li><b>Only music you own.</b> Every song comes from a real record in your Stack, so every mix rewards collecting.</li><li><b>Mixes the whole family.</b> On Duo and Family plans he digs through everyone's records, not just yours.</li><li><b>Keep the good ones.</b> Play the mix straight away, shuffle again, or save it as a mixtape to send to a friend.</li></ul><p class="mono" style="font-size:10.5px;color:var(--muted);text-align:center;margin:14px 0 0;letter-spacing:.06em">PROTOTYPE BUILD · 9 OCT · 15:25</p><p class="mono" style="font-size:9.5px;color:var(--muted);text-align:center;margin:4px 0 0;letter-spacing:.04em;opacity:.8">${screenDiag()}</p>
+   <ul class="about-sel"><li><b>Only music you own.</b> Every song comes from a real record in your Stack, so every mix rewards collecting.</li><li><b>Mixes the whole family.</b> On Duo and Family plans he digs through everyone's records, not just yours.</li><li><b>Keep the good ones.</b> Play the mix straight away, shuffle again, or save it as a mixtape to send to a friend.</li></ul><p class="mono" style="font-size:10.5px;color:var(--muted);text-align:center;margin:14px 0 0;letter-spacing:.06em">PROTOTYPE BUILD · 9 OCT · 20:30</p><p class="mono" style="font-size:9.5px;color:var(--muted);text-align:center;margin:4px 0 0;letter-spacing:.04em;opacity:.8">${screenDiag()}</p>
    <div class="about-foot">STACK 1.0 · FOR PEOPLE WHO STILL BUY RECORDS</div></div></div>`;
   $('#abSc').onclick=$('#abX').onclick=closeSheet;
 }
@@ -3706,6 +3710,21 @@ document.querySelectorAll('[data-jump]').forEach(b=>b.onclick=async()=>{
     loadDeckB(byId('thr'));$('#xf').value=35;setXf(35);$('#plScroll').scrollTop=0}
 });
 
+
+/* notifications: gifts, loans and "dust it off" live behind the bell so My Stack is just music */
+{const box=$('#notifBox'),bn=$('#bellN');
+ const count=()=>{const n=($('#giftSlot').children.length)+$('#loanSlot').querySelectorAll('.loan').length+($('#dustSlot').children.length);bn.textContent=n;bn.hidden=!n;return n};
+ new MutationObserver(count).observe(box,{childList:true,subtree:true});
+ function nfClose(){const sl=$('#sheetSlot');if(sl&&sl.querySelector('#nfBody')){['giftSlot','loanSlot','dustSlot'].forEach(id=>box.appendChild($('#'+id)));sl.innerHTML=''}}
+ const _cs=closeSheet;closeSheet=function(){nfClose();return _cs.apply(this,arguments)};
+ $('#bellBtn').onclick=()=>{const slot=$('#sheetSlot');nfClose();
+  slot.innerHTML=`<div class="scrim" id="nfScrim"></div><div class="sheet"><div class="sheet-h"><h3>Notifications</h3><button class="icon-btn" id="nfX" aria-label="Close">${ICON.x}</button></div><div class="sheet-b" id="nfBody"></div></div>`;
+  const body=$('#nfBody');['giftSlot','loanSlot','dustSlot'].forEach(id=>body.appendChild($('#'+id)));
+  const em=document.createElement('div');em.className='nf-empty';em.innerHTML='<b>You\'re all caught up</b>Mixtapes, loans and reminders show up here.';em.hidden=count()>0;body.appendChild(em);
+  new MutationObserver(()=>{em.hidden=count()>0}).observe(body,{childList:true,subtree:true});
+  $('#nfScrim').onclick=$('#nfX').onclick=closeSheet;
+  body.addEventListener('click',e=>{const b=e.target.closest('button');if(b&&!b.matches('[data-bret],[data-lret]'))setTimeout(()=>{if($('#nfBody'))closeSheet()},400)})};
+ count()}
 goTab('mine');{const q=location.search+location.hash;window.FILM_FORCE=!/[?&#]nofilm\b/.test(q);if(/[?&#]demo\b/.test(q))setTimeout(()=>{const iv=setInterval(()=>{if($('#splash').hidden){clearInterval(iv);openDemo()}},300)},500)}intro();
 </script>
 
