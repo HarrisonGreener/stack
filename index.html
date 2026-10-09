@@ -2275,7 +2275,7 @@ function renderFamily(){const P=st.plan,act=activeM(),others=act.filter(k=>k!=='
   $('#famCount').textContent=`${act.length} of ${P==='duo'?2:4} members`;
   $('#faces').innerHTML=act.map(k=>Object.assign({key:k},MEMBERS[k])).map(m=>`<div class="avatar" ${avs(m.key,m.c)}>${m.i}</div>`).join('');
   $('#legend').innerHTML=act.map(k=>[k,MEMBERS[k]]).map(([k,m])=>`<span style="--c:${m.c}"><i></i>${m.n} · ${ALBUMS.filter(a=>a.o===k).length}</span>`).join('');
-  if(!cfFam)cfFam=Carousel($('#cfFam'),{items:family,owner:true,from:()=>$('#famTitle').textContent,cap:$('#capFam'),capText:a=>capWith(a,`<b>${a.t}</b><span>${a.a} · ${fmtLabel[a.f]} · ${MEMBERS[a.o].n==='You'?'Your copy':MEMBERS[a.o].n+"'s copy"}</span>${capPlay}`)});
+  if(!cfFam)cfFam=Carousel($('#cfFam'),{items:family,owner:true,from:()=>$('#famTitle').textContent,cap:$('#capFam'),capText:a=>capWith(a,`<b>${a.t}</b><span>${a.a} · ${fmtLabel[a.f]} · ${!MEMBERS[a.o]||a.o==='you'?((window.BORROW||{})[a.id]?'Borrowed from '+window.BORROW[a.id].from:'Your copy'):MEMBERS[a.o].n+"'s copy"}</span>${capPlay}`)});
   cfFam.render();
   $('#famMtTitle').textContent=lbl+' mixtapes';
   const fm=FAM_MT.filter(m=>act.includes(m.by)).map(m=>Object.assign(m,{keys:m.keys.filter(k=>canPlay(byId(k.split(':')[0])))}));
@@ -2417,7 +2417,7 @@ function domTrack(){return domB()?[st.deck2,st.trackB]:[st.cur,st.track]}
 function renderInfo(){if(!st.cur)return;const[a,i]=domTrack(),tr=tracksOf(a)[i];
   $('#plTitle').textContent=tr.t;$('#plArtist').textContent=`${a.a} · ${a.t}`;
   const mine=st.src==='mine'&&a.rec&&!st.deck2;$('#player').classList.toggle('pressing',mine);
-  $('#plMeta').textContent=`${st.deck2?'DECK '+(domB()?'B':'A')+' · ':''}${mine?(a.f==='CD'?'MY COPY · RECORDED FROM CD · 44.1 kHz':(a.o==='you'?'MY':MEMBERS[a.o].n.toUpperCase()+"'S")+' PRESSING · 24-bit/96 kHz'):'STUDIO · '+fmtMeta[a.f]} · ${a.cat} · ${a.y}`;
+  $('#plMeta').textContent=`${st.deck2?'DECK '+(domB()?'B':'A')+' · ':''}${mine?(a.f==='CD'?'MY COPY · RECORDED FROM CD · 44.1 kHz':(a.o==='you'||!MEMBERS[a.o]?'MY':MEMBERS[a.o].n.toUpperCase()+"'S")+' PRESSING · 24-bit/96 kHz'):'STUDIO · '+fmtMeta[a.f]} · ${a.cat} · ${a.y}`;
   paintSrc(a);
   $('#tLen').textContent=fmtT(tr.d);$('#likeBtn').setAttribute('aria-pressed',isLiked(a,i));}
 function paintSrc(a){const row=$('#srcRow');if(!row||!a)return;const who=a.o==='you'||!a.o?'My':MEMBERS[a.o].n+"'s",lbl=a.f==='CD'?who+' copy':who+' pressing';
@@ -2538,7 +2538,7 @@ function renderMini(){const slot=$('#miniSlot');const a=st.cur;
 $('#load2').onclick=openPicker;
 function openPicker(){const slot=$('#pickSlot');
   const opts=family().filter(a=>a!==st.cur);
-  slot.innerHTML=`<div class="scrim" id="pkScrim"></div><div class="sheet"><div class="sheet-h"><h3>Load deck B</h3><button class="icon-btn" id="pkX" aria-label="Close">${ICON.x}</button></div><div class="sheet-b">${opts.map(a=>`<button class="row" data-id="${a.id}">${artHTML(a,'',false)}<span class="tx"><b>${a.t}</b><span>${a.a} · ${MEMBERS[a.o].n==='You'?'Your copy':MEMBERS[a.o].n+"'s copy"}</span></span><span class="pill">${fmtLabel[a.f]}</span></button>`).join('')}</div></div>`;
+  slot.innerHTML=`<div class="scrim" id="pkScrim"></div><div class="sheet"><div class="sheet-h"><h3>Load deck B</h3><button class="icon-btn" id="pkX" aria-label="Close">${ICON.x}</button></div><div class="sheet-b">${opts.map(a=>`<button class="row" data-id="${a.id}">${artHTML(a,'',false)}<span class="tx"><b>${a.t}</b><span>${a.a} · ${!MEMBERS[a.o]||a.o==='you'?((window.BORROW||{})[a.id]?'Borrowed from '+window.BORROW[a.id].from:'Your copy'):MEMBERS[a.o].n+"'s copy"}</span></span><span class="pill">${fmtLabel[a.f]}</span></button>`).join('')}</div></div>`;
   $('#pkScrim').onclick=$('#pkX').onclick=()=>slot.innerHTML='';
   slot.querySelector('.sheet-b').onclick=e=>{const r=e.target.closest('.row');if(r){e.stopPropagation();const b=byId(r.dataset.id);slot.innerHTML='';loadDeckB(b)}};
 }
@@ -3350,7 +3350,7 @@ function renderMT(){renderGift();const L=listMode(),row=$('#mtRow');row.classLis
 function songPicker(title,btn,preset,exclude,onDone){const slot=$('#sheetSlot'),sel=new Set(preset||[]),ex=new Set(exclude||[]),open=new Set();
   const albums=ALBUMS.filter(canPlay);
   const draw=()=>{const body=slot.querySelector('#pkBody');body.innerHTML=albums.map(a=>{const tr=tracksOf(a),n=tr.filter((_,i)=>sel.has(a.id+':'+i)).length;
-    return `<div class="pk-alb"><button data-alb="${a.id}" aria-expanded="${open.has(a.id)}">${artHTML(a,'',false)}<span class="tx"><b>${a.t}</b><span>${a.a} · ${MEMBERS[a.o].n==='You'?'Your copy':MEMBERS[a.o].n+"'s copy"}</span></span>${n?`<span class="cnt">${n} picked</span>`:''}</button>
+    return `<div class="pk-alb"><button data-alb="${a.id}" aria-expanded="${open.has(a.id)}">${artHTML(a,'',false)}<span class="tx"><b>${a.t}</b><span>${a.a} · ${!MEMBERS[a.o]||a.o==='you'?((window.BORROW||{})[a.id]?'Borrowed from '+window.BORROW[a.id].from:'Your copy'):MEMBERS[a.o].n+"'s copy"}</span></span>${n?`<span class="cnt">${n} picked</span>`:''}</button>
      ${open.has(a.id)?`<div class="pk-tracks">${tr.map((t,i)=>{const k=a.id+':'+i;return `<button class="pk-t" data-k="${k}" aria-pressed="${sel.has(k)||ex.has(k)}" ${ex.has(k)?'disabled':''}><i></i>${t.t}</button>`}).join('')}</div>`:''}</div>`}).join('');
     slot.querySelector('#pkDone').textContent=sel.size?`${btn} (${sel.size} song${sel.size===1?'':'s'})`:btn;slot.querySelector('#pkDone').disabled=!sel.size};
   slot.innerHTML=`<div class="scrim" id="pkSc"></div><div class="sheet" style="max-height:90%"><div class="sheet-h"><h3>${title}</h3><button class="icon-btn" id="pkClose" aria-label="Close">${ICON.x}</button></div><div class="sheet-b"><div id="pkTop"></div><p class="sub" style="margin:4px 0 6px">Tap a record to see its songs.</p><div id="pkBody"></div><div class="pk-foot"><button class="btn" id="pkDone"></button></div></div></div>`;
@@ -3527,7 +3527,7 @@ function openAbout(){const slot=$('#sheetSlot');
     <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18v-6a8 8 0 0 1 16 0v6"/><rect x="3" y="15" width="4" height="6" rx="1.5"/><rect x="17" y="15" width="4" height="6" rx="1.5"/></svg><b>Stream</b>Play them anywhere</div>
    </div>
    <div class="about-bot"><span class="bh" style="--s:52px"><span class="bh-band"></span><span class="bh-cup l"></span><span class="bh-cup r"></span><span class="bh-head"><span class="bh-stripes"></span><span class="bh-face"><i class="bh-eye l"></i><i class="bh-eye r"></i><i class="bh-vu"><b></b><b></b><b></b><b></b><b></b></i></span></span></span><div><b>Meet DJ Selector</b><span>Your own crate-digging DJ. Tell him a mood, a moment or an artist, like "rainy Sunday", "cooking dinner" or "some Fleetwood Mac", and he digs through every record you and your family own to build a mix in seconds.</span></div></div>
-   <ul class="about-sel"><li><b>Only music you own.</b> Every song comes from a real record in your Stack, so every mix rewards collecting.</li><li><b>Mixes the whole family.</b> On Duo and Family plans he digs through everyone's records, not just yours.</li><li><b>Keep the good ones.</b> Play the mix straight away, shuffle again, or save it as a mixtape to send to a friend.</li></ul><p class="mono" style="font-size:10.5px;color:var(--muted);text-align:center;margin:14px 0 0;letter-spacing:.06em">PROTOTYPE BUILD · 9 OCT · 00:20</p><p class="mono" style="font-size:9.5px;color:var(--muted);text-align:center;margin:4px 0 0;letter-spacing:.04em;opacity:.8">${screenDiag()}</p>
+   <ul class="about-sel"><li><b>Only music you own.</b> Every song comes from a real record in your Stack, so every mix rewards collecting.</li><li><b>Mixes the whole family.</b> On Duo and Family plans he digs through everyone's records, not just yours.</li><li><b>Keep the good ones.</b> Play the mix straight away, shuffle again, or save it as a mixtape to send to a friend.</li></ul><p class="mono" style="font-size:10.5px;color:var(--muted);text-align:center;margin:14px 0 0;letter-spacing:.06em">PROTOTYPE BUILD · 9 OCT · 13:40</p><p class="mono" style="font-size:9.5px;color:var(--muted);text-align:center;margin:4px 0 0;letter-spacing:.04em;opacity:.8">${screenDiag()}</p>
    <div class="about-foot">STACK 1.0 · FOR PEOPLE WHO STILL BUY RECORDS</div></div></div>`;
   $('#abSc').onclick=$('#abX').onclick=closeSheet;
 }
