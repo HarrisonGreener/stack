@@ -10,6 +10,18 @@ On an iPhone, open it in Safari, then Share → Add to Home Screen to run it ful
 
 ---
 
+## A look inside
+
+<table>
+<tr><td align="center" valign="top" width="25%"><img src="docs/film-run.jpg" width="190"><br><sub>The opening film: the Selector runs along a spinning record</sub></td><td align="center" valign="top" width="25%"><img src="docs/film-puck.jpg" width="190"><br><sub>Explaining the Puck, the turntable accessory</sub></td><td align="center" valign="top" width="25%"><img src="docs/loading.jpg" width="190"><br><sub>The loading screen, a record label that spins in</sub></td><td align="center" valign="top" width="25%"><img src="docs/my-stack.jpg" width="190"><br><sub>My Stack: your records, with search, Liked songs and a notification bell</sub></td></tr>
+<tr><td align="center" valign="top" width="25%"><img src="docs/player.jpg" width="190"><br><sub>The turntable player</sub></td><td align="center" valign="top" width="25%"><img src="docs/vinyl-colours.jpg" width="190"><br><sub>Your copy: choose your vinyl colour</sub></td><td align="center" valign="top" width="25%"><img src="docs/two-decks.jpg" width="190"><br><sub>Two decks and a crossfader</sub></td><td align="center" valign="top" width="25%"><img src="docs/selector.jpg" width="190"><br><sub>The Selector, your robot DJ</sub></td></tr>
+<tr><td align="center" valign="top" width="25%"><img src="docs/family.jpg" width="190"><br><sub>Family Stack: one shared shelf</sub></td><td align="center" valign="top" width="25%"><img src="docs/friends.jpg" width="190"><br><sub>Friends: browse their stacks, you can only stream what you own</sub></td><td align="center" valign="top" width="25%"><img src="docs/stats.jpg" width="190"><br><sub>Your stats</sub></td><td align="center" valign="top" width="25%"><img src="docs/notifications.jpg" width="190"><br><sub>The notification bell keeps My Stack about the music</sub></td></tr>
+</table>
+
+Screenshots are from the live demo. Album covers show as placeholder art here; on the live site, official artwork loads from the Apple Music and Deezer APIs.
+
+---
+
 ## Why I made it
 
 Streaming made music easy to reach but hard to own. Subscriptions can drop an album overnight, and a playlist is rented space, not a collection. Meanwhile people keep buying vinyl and CDs, because they want something they actually own and can hold.
