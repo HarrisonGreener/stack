@@ -4,7 +4,7 @@
 
 Stack is a prototype app for people who collect vinyl and CDs. You add the records you own, and Stack turns that shelf into the way you listen: browse your covers, drop the needle on a record, share your collection with family and friends, and take it with you on your phone.
 
-**Live demo:** https://harrisongreener-cloud.github.io/stack/
+**Live demo:** https://harrisongreener.github.io/stack/
 
 On an iPhone, open it in Safari, then Share → Add to Home Screen to run it full-screen like a real app. It also works in a desktop browser, where a panel of demo shortcuts sits beside a phone-sized screen.
 
