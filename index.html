@@ -833,6 +833,51 @@ h2.big{font-size:34px;font-weight:650;letter-spacing:-.035em;margin:6px 0 4px;te
 .disc{position:absolute;inset:0;border-radius:50%;
   background:radial-gradient(circle,#111 0 33%,transparent 33.5%),repeating-radial-gradient(circle,#181818 0 1.1px,#0a0a0a 1.1px 2.4px);
   box-shadow:0 22px 44px -12px rgba(0,0,0,.55)}
+/* ---------- marketplace + stack shop ---------- */
+.mk-chips{display:flex;gap:6px;overflow-x:auto;margin:12px -20px 14px;padding:0 20px;scrollbar-width:none}.mk-chips::-webkit-scrollbar{display:none}
+.mk-chips button{flex:none;padding:8px 14px;border-radius:999px;font-size:13.5px;font-weight:600;border:1px solid var(--line);color:var(--muted);background:var(--surface)}
+.mk-chips button.on{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.mk-top{display:flex;align-items:center;gap:8px;justify-content:space-between;margin-bottom:10px}
+.mk-fmt{display:flex;gap:5px;overflow-x:auto;scrollbar-width:none;min-width:0}.mk-fmt::-webkit-scrollbar{display:none}.mk-fmt.c{justify-content:center;margin:8px 0}
+.mk-fmt button{flex:none;font-size:12px;font-weight:600;padding:6px 10px;border-radius:999px;color:var(--muted);border:1px solid var(--line)}.mk-fmt button.on{color:var(--fg);border-color:var(--fg)}
+.mk-orders{flex:none;font-size:12.5px;font-weight:600;padding:7px 12px;border-radius:999px;background:var(--surface);border:1px solid var(--line);color:var(--fg)}.mk-orders b{display:inline-block;min-width:17px;padding:0 4px;border-radius:9px;background:var(--accent,#E8744F);color:#fff;font-size:11px;margin-left:3px;text-align:center}
+.mk-note{font-size:13px;line-height:1.4;color:var(--muted);padding:10px 12px;border-radius:12px;background:color-mix(in srgb,var(--mustard,#F0A034) 14%,var(--surface));margin-bottom:12px}.mk-note b{color:var(--fg)}
+.mk-list{display:flex;flex-direction:column;gap:8px}
+.mk-card{display:flex;gap:12px;align-items:center;text-align:left;width:100%;padding:10px;border-radius:14px;background:var(--surface);border:1px solid var(--line);color:var(--fg)}
+.mk-card .art{width:64px;height:64px;border-radius:6px;flex:none}.mk-card .tx{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.mk-card .tx b{font-size:14.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.mk-card .tx>span{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mk-sell{display:flex;align-items:center;gap:5px}.mk-sell i,.mk-av{display:inline-grid;place-items:center;width:16px;height:16px;border-radius:50%;color:#fff;font-size:9px;font-style:normal;font-weight:700;vertical-align:-3px}
+.mk-tags{display:flex;gap:4px;flex-wrap:wrap;margin-top:2px}.mk-pill{font-size:10.5px;font-weight:600;padding:2px 7px;border-radius:999px;background:var(--surface-2);color:var(--fg);white-space:nowrap}
+.mk-pill.wl{background:color-mix(in srgb,var(--sky,#8EC5E8) 35%,var(--surface))}.mk-pill.rc{background:color-mix(in srgb,#34C38F 30%,var(--surface))}.mk-pill.pr{background:color-mix(in srgb,var(--mustard,#F0A034) 40%,var(--surface))}
+.mk-price{font-weight:700;font-size:16px;flex:none}.mk-cta{flex:none;font-size:13px;font-weight:600;padding:7px 14px;border-radius:999px;background:var(--accent,#E8744F);color:#fff}
+.mk-hero{display:flex;gap:14px;align-items:center;margin-bottom:12px}.mk-hero .art{width:92px;height:92px;border-radius:8px;flex:none}.mk-hero b{display:block;font-size:17px}.mk-hero span{display:block;font-size:13px;color:var(--muted);margin-top:2px}
+.mk-hero.sm .art,.mk-sq{width:52px;height:52px}.mk-hero.sm b{font-size:14.5px}.mk-sq{border-radius:8px;flex:none;display:grid;place-items:center;font-weight:700;background:linear-gradient(135deg,#F2AE3D,#C8452B);color:#fff}
+.mk-row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-top:1px solid var(--line);font-size:13.5px}.mk-row span{color:var(--muted)}.mk-row b{font-weight:600;text-align:right}
+.mk-break{margin:10px 0;padding:10px 12px;border-radius:12px;background:var(--surface-2)}.mk-break div{display:flex;justify-content:space-between;font-size:13.5px;padding:3px 0}.mk-break span{color:var(--muted)}.mk-break .tot{border-top:1px solid var(--line);margin-top:4px;padding-top:7px}.mk-break .tot b{font-size:16px}
+.mk-escrow{display:flex;gap:10px;align-items:flex-start;font-size:12.5px;line-height:1.4;color:var(--muted);padding:10px 12px;border-radius:12px;background:color-mix(in srgb,#34C38F 14%,var(--surface));margin:10px 0 12px}.mk-escrow.warn{background:color-mix(in srgb,var(--accent,#E8744F) 14%,var(--surface))}.mk-escrow svg{width:20px;height:20px;flex:none;color:var(--fg)}.mk-escrow b{color:var(--fg)}
+.mk-btns{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+.mk-order{padding:12px;border-radius:14px;border:1px solid var(--line);background:var(--surface);margin-bottom:10px}.mk-order .mk-hero{margin-bottom:8px}
+.mk-steps{display:flex;gap:4px;margin:4px 0 10px}.mk-steps span{flex:1;font-size:10.5px;color:var(--muted);display:flex;flex-direction:column;gap:5px}.mk-steps i{height:4px;border-radius:2px;background:var(--surface-2)}.mk-steps .on{color:var(--fg)}.mk-steps .on i{background:linear-gradient(90deg,#F2AE3D,#C8452B)}
+.mk-done{font-size:12.5px;color:var(--muted)}
+.mk-earn{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px}.mk-earn div{padding:10px;border-radius:12px;background:var(--surface);border:1px solid var(--line)}.mk-earn span{display:block;font-size:11px;color:var(--muted)}.mk-earn b{font-size:17px}
+.mk-verify{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:12px;background:color-mix(in srgb,var(--sky,#8EC5E8) 18%,var(--surface));margin-bottom:6px}.mk-verify div{flex:1}.mk-verify b{display:block;font-size:13.5px}.mk-verify span{font-size:12px;color:var(--muted)}
+.mk-h{font-size:15px;margin:16px 0 8px}.empty.small{padding:14px;font-size:13px}
+.mk-wl{display:block;margin:6px 0 2px 76px;font-size:12px;font-weight:600;padding:6px 11px;border-radius:999px;background:color-mix(in srgb,#34C38F 25%,var(--surface));color:var(--fg)}
+.wish-row{flex-wrap:wrap}
+.mk-shopc{display:flex;gap:12px;align-items:flex-start;padding:12px;border-radius:14px;background:var(--surface);border:1px solid var(--line);margin-bottom:8px}.mk-pin{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:color-mix(in srgb,var(--accent,#E8744F) 20%,var(--surface));flex:none}.mk-pin svg{width:20px;height:20px}
+.mk-shopc .tx{flex:1}.mk-shopc b{font-size:14.5px;margin-right:6px}.mk-shopc span{display:block;font-size:12px;color:var(--muted);margin-top:2px}.mk-shopc .ev{color:var(--fg);font-weight:600}
+.shop-hero{position:relative;overflow:hidden;border-radius:18px;padding:18px;margin-bottom:12px;background:#4A2415;color:#F4E4C1;min-height:112px}
+.sh-rings{position:absolute;right:-40px;bottom:-70px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,#4A2415 0 22%,#F4E4C1 22% 32%,#F0A034 32% 46%,#E8742B 46% 60%,#C8452B 60% 74%,transparent 74%)}
+.sh-tx{position:relative;max-width:62%}.sh-tx small{font-family:var(--mono);font-size:10px;letter-spacing:.14em;opacity:.8}.sh-tx b{display:block;font-family:"Shrikhand","Cooper Black",Georgia,serif;font-weight:400;font-size:26px;line-height:1.05;margin:4px 0;color:#F0A034}.sh-tx span{font-size:12.5px;opacity:.85}
+.shop-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.shop-card{display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:3px;padding:8px 8px 10px;border-radius:14px;background:var(--surface);border:1px solid var(--line);color:var(--fg)}
+.sc-art{display:block;width:100%;aspect-ratio:1;border-radius:10px;overflow:hidden;background:color-mix(in srgb,var(--mustard,#F0A034) 22%,var(--surface))}.sc-art>svg,.pd-art>svg,.ln-art>svg{display:block;width:100%;height:100%}
+.shop-card b{font-size:13.5px;margin-top:4px}.shop-card span:last-child{font-size:12px;color:var(--muted)}
+.pd-art{width:100%;max-width:300px;margin:0 auto;aspect-ratio:1;border-radius:16px;overflow:hidden;background:color-mix(in srgb,var(--mustard,#F0A034) 22%,var(--surface))}
+.pd-top{display:flex;justify-content:space-between;align-items:baseline;margin-top:10px}.pd-top b{font-size:22px}.pd-top span{font-size:12px;color:var(--muted)}
+.mk-line{display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}.ln-art{width:52px;height:52px;border-radius:8px;overflow:hidden;flex:none;background:color-mix(in srgb,var(--mustard,#F0A034) 22%,var(--surface))}.mk-line .tx{flex:1;min-width:0}.mk-line b{font-size:13.5px;display:block}.mk-line span{font-size:12px;color:var(--muted)}
+.qty{display:flex;align-items:center;gap:8px}.qty button{width:28px;height:28px;border-radius:50%;border:1px solid var(--line);font-size:16px;color:var(--fg)}
+.mk-toast{position:absolute;left:50%;top:calc(env(safe-area-inset-top,0px) + 14px);transform:translate(-50%,-20px);opacity:0;z-index:120;background:var(--fg);color:var(--bg);padding:10px 16px;border-radius:999px;font-size:13px;font-weight:600;white-space:nowrap;max-width:90%;overflow:hidden;text-overflow:ellipsis;pointer-events:none;transition:.25s}.mk-toast.on{opacity:1;transform:translate(-50%,0)}
 /* vinyl colours: the disc itself changes with the copy you own */
 .disc[class*="vs-"]{--g:repeating-radial-gradient(circle,rgba(0,0,0,.16) 0 1px,transparent 1px 2.4px)}
 .disc.vs-solid{background:var(--g),radial-gradient(circle at 30% 25%,color-mix(in srgb,var(--vc) 85%,#fff),var(--vc) 55%,color-mix(in srgb,var(--vc) 80%,#000))}
@@ -3577,7 +3622,7 @@ function openAbout(){const slot=$('#sheetSlot');
     <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18v-6a8 8 0 0 1 16 0v6"/><rect x="3" y="15" width="4" height="6" rx="1.5"/><rect x="17" y="15" width="4" height="6" rx="1.5"/></svg><b>Stream</b>Play them anywhere</div>
    </div>
    <div class="about-bot"><span class="bh" style="--s:52px"><span class="bh-band"></span><span class="bh-cup l"></span><span class="bh-cup r"></span><span class="bh-head"><span class="bh-stripes"></span><span class="bh-face"><i class="bh-eye l"></i><i class="bh-eye r"></i><i class="bh-vu"><b></b><b></b><b></b><b></b><b></b></i></span></span></span><div><b>Meet DJ Selector</b><span>Your own crate-digging DJ. Tell him a mood, a moment or an artist, like "rainy Sunday", "cooking dinner" or "some Fleetwood Mac", and he digs through every record you and your family own to build a mix in seconds.</span></div></div>
-   <ul class="about-sel"><li><b>Only music you own.</b> Every song comes from a real record in your Stack, so every mix rewards collecting.</li><li><b>Mixes the whole family.</b> On Duo and Family plans he digs through everyone's records, not just yours.</li><li><b>Keep the good ones.</b> Play the mix straight away, shuffle again, or save it as a mixtape to send to a friend.</li></ul><p class="mono" style="font-size:10.5px;color:var(--muted);text-align:center;margin:14px 0 0;letter-spacing:.06em">PROTOTYPE BUILD · 9 OCT · 22:25</p><p class="mono" style="font-size:9.5px;color:var(--muted);text-align:center;margin:4px 0 0;letter-spacing:.04em;opacity:.8">${screenDiag()}</p>
+   <ul class="about-sel"><li><b>Only music you own.</b> Every song comes from a real record in your Stack, so every mix rewards collecting.</li><li><b>Mixes the whole family.</b> On Duo and Family plans he digs through everyone's records, not just yours.</li><li><b>Keep the good ones.</b> Play the mix straight away, shuffle again, or save it as a mixtape to send to a friend.</li></ul><p class="mono" style="font-size:10.5px;color:var(--muted);text-align:center;margin:14px 0 0;letter-spacing:.06em">PROTOTYPE BUILD · 17 OCT · 19:30</p><p class="mono" style="font-size:9.5px;color:var(--muted);text-align:center;margin:4px 0 0;letter-spacing:.04em;opacity:.8">${screenDiag()}</p>
    <div class="about-foot">STACK 1.0 · FOR PEOPLE WHO STILL BUY RECORDS</div></div></div>`;
   $('#abSc').onclick=$('#abX').onclick=closeSheet;
 }
@@ -3795,6 +3840,222 @@ if(matchMedia('(pointer:coarse)').matches||'ontouchstart' in window){let sx=0,sy
  document.addEventListener('touchmove',e=>{if(e.touches.length>1){e.preventDefault();return}const t=e.touches[0],dx=t.clientX-sx,dy=t.clientY-sy;if(!canScroll(e.target,dx,dy)&&e.cancelable)e.preventDefault()},{passive:false});
  ['gesturestart','gesturechange'].forEach(g=>document.addEventListener(g,e=>e.preventDefault()));
  addEventListener('scroll',()=>{if(scrollX||scrollY)scrollTo(0,0)},{passive:true});}
+/* ===== Marketplace (second-hand records) + Stack Shop (70s merch) ===== */
+(function(){
+const P={cr:'#F4E4C1',or:'#E8742B',mu:'#F0A034',rd:'#C8452B',br:'#4A2415',av:'#7E8B35',dk:'#2A1810',bl:'#2E7DD1'};
+const FEE=0.08,POST=3.5;
+const money=n=>{n=Math.round(n*100)/100;return '£'+(Number.isInteger(n)?n:n.toFixed(2))};
+let mkT=null;function mkToast(m){let t=document.getElementById('mkToast');if(!t){t=document.createElement('div');t.id='mkToast';t.className='mk-toast';(document.querySelector('.phone')||document.body).appendChild(t)}t.textContent=m;t.classList.add('on');clearTimeout(mkT);mkT=setTimeout(()=>t.classList.remove('on'),2600)}
+const hash=s=>[...String(s)].reduce((n,c)=>(n*31+c.charCodeAt(0))>>>0,7);
+
+/* ---------- state ---------- */
+let ORD=LS('stack-mk-orders',[]),MYL=LS('stack-mk-listings',[]),BAL=LS('stack-mk-bal',{bal:0,fees:0,promo:0}),BOUGHT=LS('stack-mk-bought',[]),SOLD=LS('stack-mk-sold',[]),CART=LS('stack-shop-cart',[]),SORD=LS('stack-shop-orders',[]),VERIFIED=LS('stack-mk-verified',false);
+const save=()=>{SS('stack-mk-orders',ORD);SS('stack-mk-listings',MYL);SS('stack-mk-bal',BAL);SS('stack-mk-bought',BOUGHT);SS('stack-mk-sold',SOLD);SS('stack-shop-cart',CART);SS('stack-shop-orders',SORD);SS('stack-mk-verified',VERIFIED)};
+
+/* ---------- sellers + seeded listings ---------- */
+const SELLERS=[{n:'Jordan',c:'#4C8DF0',d:'1.2 mi',r:'4.9',k:41},{n:'Priya',c:'#E85D75',d:'3.4 mi',r:'5.0',k:18},{n:'Sam',c:'#F0A034',d:'0.8 mi',r:'4.8',k:63},{n:'Ade',c:'#34C38F',d:'5.1 mi',r:'4.9',k:27},{n:'vinyl_ollie',c:'#7A4FC9',d:'12 mi',r:'4.7',k:109},{n:'Maya R',c:'#C8452B',d:'2.2 mi',r:'5.0',k:9},{n:'DiscDad',c:'#2FA37A',d:'8 mi',r:'4.8',k:84}];
+const SEED=[['gra',3,22,'VG+','UK pressing',0],['kob',2,26,'NM','Reissue',1],['pr',2,24,'VG','Original UK pressing',0],['hol',1,19,'NM','UK pressing',1],['pet',4,28,'VG+','Reissue, stereo',0],['dmb',5,9,'NM','CD, first edition',0],['mgl',6,7,'VG+','CD',0],['pkl',3,8,'NM','CD',0],['wlo',4,12,'VG+','7in, UK pressing',0],['lwt',2,11,'VG','7in single',0],['jtr',1,6,'VG+','CD, remastered',0]];
+function seedListings(){return SEED.map((s,i)=>({id:'S'+i,rid:s[0],seller:SELLERS[s[1]],price:s[2],cond:s[3],press:s[4],rec:!!s[5],mine:false}))}
+let LIST=[];
+function allListings(){return seedListings().filter(l=>!ORD.some(o=>o.type==='buy'&&o.lid===l.id)).concat(MYL.filter(l=>l.status==='live'))}
+
+/* ---------- apply saved purchases / sales on load ---------- */
+function applyOwnership(){BOUGHT.forEach(b=>{const a=byId(b.rid);if(!a)return;if(ALBUMS.includes(a))a.o='you';else addToStack(a);if(b.rec){a.rec=true;a.recDate=b.recDate}if(b.copy){COPY[a.id]=b.copy;SS('stack-copy',COPY)}});
+  SOLD.forEach(id=>{const a=byId(id);if(a){a.o=null;delete a.rec;delete a.recDate}})}
+
+/* ---------- art helpers ---------- */
+const mark=(x,y,s)=>`<svg x="${x}" y="${y}" width="${s}" height="${s}" viewBox="0 0 200 200" style="--cut:${P.dk}"><use href="#mark"/></svg>`;
+function head(cx,cy,s){return `<g transform="translate(${cx} ${cy}) scale(${s})" stroke="${P.dk}" stroke-width="2.4" stroke-linejoin="round">
+ <rect x="-37" y="-18" width="12" height="30" rx="5" fill="${P.or}"/><rect x="25" y="-18" width="12" height="30" rx="5" fill="${P.or}"/>
+ <path d="M-31 -14 C-31 -50 31 -50 31 -14" fill="none" stroke-width="7" stroke="${P.dk}"/><path d="M-31 -14 C-31 -50 31 -50 31 -14" fill="none" stroke-width="3.6" stroke="${P.or}"/>
+ <rect x="-27" y="-30" width="54" height="52" rx="12" fill="${P.cr}"/><rect x="-20" y="-20" width="40" height="26" rx="8" fill="${P.dk}"/>
+ <circle cx="-9" cy="-7" r="5.5" fill="${P.mu}" stroke="none"/><circle cx="9" cy="-7" r="5.5" fill="${P.mu}" stroke="none"/><circle cx="-7.5" cy="-8.5" r="1.7" fill="#fff" stroke="none"/><circle cx="10.5" cy="-8.5" r="1.7" fill="#fff" stroke="none"/>
+ <path d="M-8 12 h16" stroke-width="3" stroke-linecap="round"/></g>`}
+function backArt(c,w){/* big 70s back graphic: sunset arcs + the Selector */const [a,b,d,e]=c;
+ return `<g transform="translate(100 ${w||112})"><path d="M-60 40 A60 60 0 0 1 60 40Z" fill="${e}"/><path d="M-48 40 A48 48 0 0 1 48 40Z" fill="${d}"/><path d="M-36 40 A36 36 0 0 1 36 40Z" fill="${b}"/><path d="M-24 40 A24 24 0 0 1 24 40Z" fill="${a}"/></g>`}
+function backGraphic(col){const g=col==='cream'?[P.cr,P.mu,P.or,P.rd]:col==='orange'?[P.cr,P.mu,P.br,P.br]:[P.cr,P.mu,P.or,P.rd];
+ const ink=col==='cream'?P.br:P.cr;
+ return `<g>${[0,1,2,3].map(i=>`<path d="M${58-i*0} ${150} A42 42 0 0 1 ${142} 150" fill="none" stroke="${[P.rd,P.or,P.mu,P.cr][i]}" stroke-width="7" transform="translate(0 ${-i*0}) scale(${1+i*.0}) " opacity="0"/>`).join('')}
+ <g transform="translate(100 112)"><path d="M-40 34 A40 40 0 0 1 40 34" fill="none" stroke="${col==='cream'?P.rd:P.rd}" stroke-width="7"/><path d="M-32 34 A32 32 0 0 1 32 34" fill="none" stroke="${P.or}" stroke-width="7"/><path d="M-24 34 A24 24 0 0 1 24 34" fill="none" stroke="${P.mu}" stroke-width="7"/><path d="M-16 34 A16 16 0 0 1 16 34" fill="none" stroke="${col==='cream'?P.br:P.cr}" stroke-width="7"/></g>
+ ${head(100,88,.62)}<rect x="62" y="150" width="76" height="3" rx="1.5" fill="${ink}"/><rect x="72" y="157" width="56" height="3" rx="1.5" fill="${P.or}"/></g>`}
+const COL={cream:{g:P.cr,l:P.br,n:'Cream'},brown:{g:P.br,l:P.cr,n:'Chocolate'},orange:{g:P.or,l:P.cr,n:'Burnt orange'}};
+function garment(kind,col,side){const c=COL[col],f=c.g,ln=col==='cream'?P.br:P.dk;let body='';
+ if(kind==='tee')body=`<path d="M72 36 Q100 56 128 36 L172 56 L160 94 L144 86 L144 170 L56 170 L56 86 L40 94 L28 56 Z" fill="${f}" stroke="${ln}" stroke-width="2.6" stroke-linejoin="round"/>${side==='back'?'':`<path d="M72 36 Q100 56 128 36" fill="none" stroke="${ln}" stroke-width="2.6"/>`}`;
+ else if(kind==='hoodie')body=`<path d="M64 46 Q100 70 136 46 L184 74 L174 156 L152 150 L150 178 L50 178 L48 150 L26 156 L16 74 Z" fill="${f}" stroke="${ln}" stroke-width="2.6" stroke-linejoin="round"/>${side==='back'?`<path d="M70 46 Q100 30 130 46 Q100 66 70 46Z" fill="${f}" stroke="${ln}" stroke-width="2.6"/>`:`<path d="M68 46 Q100 14 132 46 Q100 74 68 46Z" fill="${f}" stroke="${ln}" stroke-width="2.6"/><path d="M80 48 Q100 26 120 48 Q100 64 80 48Z" fill="${ln}" opacity=".55"/><path d="M92 62 v28 M108 62 v28" stroke="${c.l}" stroke-width="2.4" stroke-linecap="round"/><path d="M70 132 h60 l8 30 h-76Z" fill="none" stroke="${ln}" stroke-width="2.2" opacity=".6"/>`}`;
+ else body=`<path d="M38 124 Q36 56 100 56 Q164 56 162 124 Q100 112 38 124Z" fill="${f}" stroke="${ln}" stroke-width="2.6" stroke-linejoin="round"/><path d="M38 124 Q100 106 190 132 Q120 152 40 128Z" fill="${col==='cream'?P.or:P.mu}" stroke="${ln}" stroke-width="2.6" stroke-linejoin="round"/><circle cx="100" cy="58" r="5" fill="${col==='cream'?P.or:P.mu}" stroke="${ln}" stroke-width="2"/>`;
+ let gfx='';
+ if(kind==='cap'){gfx=mark(80,66,40)}
+ else if(side==='back'){gfx=kind==='tee'?`<g transform="translate(0 6)">${backGraphic(col)}</g>`:`<g transform="translate(0 14) scale(1)">${backGraphic(col)}</g>`}
+ else gfx=kind==='tee'?mark(112,66,20):mark(118,76,20);
+ return `<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">${body}${gfx}</svg>`}
+const tile=(inner,bg)=>`<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="200" fill="${bg}"/>${inner}</svg>`;
+const slip=(cx,cy,r)=>`<circle cx="${cx}" cy="${cy}" r="${r}" fill="${P.br}"/>`+[[.88,P.rd],[.74,P.or],[.6,P.mu],[.46,P.cr]].map(a=>`<circle cx="${cx}" cy="${cy}" r="${r*a[0]}" fill="${a[1]}"/>`).join('')+`<circle cx="${cx}" cy="${cy}" r="${r*.34}" fill="${P.br}"/>`+mark(cx-r*.3,cy-r*.3,r*.6)+`<circle cx="${cx}" cy="${cy}" r="${r*.04}" fill="${P.cr}"/>`;
+const puckArt=(cx,cy,s)=>`<g transform="translate(${cx} ${cy}) scale(${s})"><ellipse cx="0" cy="18" rx="44" ry="14" fill="${P.dk}"/><rect x="-44" y="2" width="88" height="16" fill="${P.br}"/><ellipse cx="0" cy="2" rx="44" ry="14" fill="${P.or}" stroke="${P.dk}" stroke-width="2"/><ellipse cx="0" cy="2" rx="32" ry="9.5" fill="${P.mu}" opacity=".9"/><circle cx="-12" cy="-6" r="0" fill="none"/><g transform="translate(-10 -9) scale(.4)">${mark(0,0,50)}</g><circle cx="34" cy="10" r="2.4" fill="${P.rd}"/></g>`;
+const ART={
+ hoodie:(c,s)=>garment('hoodie',c,s),tee:(c,s)=>garment('tee',c,s),cap:(c)=>garment('cap',c,'front'),
+ slipmat:()=>tile(slip(100,100,76),P.mu),
+ brush:()=>tile(`<g transform="rotate(-24 100 100)"><rect x="34" y="82" width="132" height="22" rx="8" fill="${P.br}" stroke="${P.dk}" stroke-width="2.4"/><rect x="34" y="92" width="132" height="5" fill="${P.or}"/><rect x="48" y="104" width="104" height="14" rx="3" fill="${P.dk}"/>${[...Array(14)].map((_,i)=>`<path d="M${52+i*7} 118 v8" stroke="${P.cr}" stroke-width="1.6"/>`).join('')}</g>`,P.cr),
+ clean:()=>tile(`<rect x="46" y="64" width="50" height="94" rx="12" fill="${P.cr}" stroke="${P.dk}" stroke-width="2.6"/><rect x="58" y="42" width="26" height="26" rx="5" fill="${P.or}" stroke="${P.dk}" stroke-width="2.6"/>${mark(52,92,38)}<path d="M108 120 l50 -14 l12 34 l-52 18Z" fill="${P.or}" stroke="${P.dk}" stroke-width="2.6" stroke-linejoin="round"/><path d="M114 134 l50 -14 M118 146 l50 -14" stroke="${P.mu}" stroke-width="3"/>`,P.mu),
+ crate:()=>tile(`<circle cx="76" cy="62" r="34" fill="${P.dk}"/><circle cx="76" cy="62" r="11" fill="${P.or}"/><circle cx="124" cy="68" r="34" fill="${P.dk}"/><circle cx="124" cy="68" r="11" fill="${P.mu}"/><rect x="28" y="84" width="144" height="84" rx="6" fill="${P.mu}" stroke="${P.dk}" stroke-width="2.6"/>${[100,116,132,148].map(y=>`<path d="M28 ${y} H172" stroke="${P.br}" stroke-width="2.4"/>`).join('')}<rect x="76" y="106" width="48" height="36" rx="5" fill="${P.cr}" stroke="${P.dk}" stroke-width="2"/>${mark(88,108,24)}`,P.or),
+ sleeves:()=>tile(`<circle cx="100" cy="72" r="46" fill="${P.dk}"/><circle cx="100" cy="72" r="14" fill="${P.rd}"/>${[0,1,2,3].map(i=>`<rect x="${42+i*5}" y="${70+i*8}" width="116" height="92" rx="5" fill="${P.cr}" opacity=".5" stroke="${P.br}" stroke-width="2"/>`).join('')}`,P.rd),
+ plush:()=>tile(`<ellipse cx="100" cy="172" rx="46" ry="8" fill="${P.dk}" opacity=".25"/><circle cx="68" cy="132" r="14" fill="${P.cr}" stroke="${P.dk}" stroke-width="2.6"/><circle cx="132" cy="132" r="14" fill="${P.cr}" stroke="${P.dk}" stroke-width="2.6"/><ellipse cx="82" cy="164" rx="16" ry="12" fill="${P.cr}" stroke="${P.dk}" stroke-width="2.6"/><ellipse cx="118" cy="164" rx="16" ry="12" fill="${P.cr}" stroke="${P.dk}" stroke-width="2.6"/><ellipse cx="100" cy="136" rx="34" ry="36" fill="${P.cr}" stroke="${P.dk}" stroke-width="2.6"/><rect x="95" y="118" width="10" height="32" rx="5" fill="${P.dk}"/><circle cx="100" cy="124" r="2.6" fill="${P.mu}"/><circle cx="100" cy="134" r="2.6" fill="${P.or}"/><circle cx="100" cy="144" r="2.6" fill="${P.rd}"/><circle cx="72" cy="52" r="14" fill="${P.cr}" stroke="${P.dk}" stroke-width="2.6"/><circle cx="128" cy="52" r="14" fill="${P.cr}" stroke="${P.dk}" stroke-width="2.6"/>${head(100,86,1.15)}`,P.mu),
+ pins:()=>tile(`<circle cx="62" cy="70" r="30" fill="${P.br}" stroke="${P.dk}" stroke-width="2.4"/>${mark(40,48,44)}<circle cx="138" cy="70" r="30" fill="${P.or}" stroke="${P.dk}" stroke-width="2.4"/><g transform="translate(138 74) scale(.62)">${head(0,0,1)}</g><circle cx="100" cy="140" r="30" fill="${P.cr}" stroke="${P.dk}" stroke-width="2.4"/>${[0,1,2,3].map(i=>`<circle cx="100" cy="140" r="${24-i*6}" fill="none" stroke="${[P.rd,P.or,P.mu,P.br][i]}" stroke-width="4"/>`).join('')}`,P.rd),
+ stickers:()=>tile(`<rect x="34" y="40" width="132" height="120" rx="10" fill="${P.cr}" stroke="${P.dk}" stroke-width="2.4" transform="rotate(-4 100 100)"/><g transform="rotate(-4 100 100)">${mark(46,52,40)}<g transform="translate(130 74) scale(.7)">${head(0,0,1)}</g>${[0,1,2,3].map(i=>`<path d="M46 ${134-i*0} h${100-i*0}" stroke="${[P.rd,P.or,P.mu,P.br][i]}" stroke-width="5" transform="translate(0 ${i*6-6})"/>`).join('')}</g>`,P.or),
+ puck:()=>tile(puckArt(100,92,1.5)+`<rect x="30" y="150" width="140" height="6" rx="3" fill="${P.dk}" opacity=".18"/>`,P.cr),
+ bundle:()=>tile(`<g transform="translate(70 62)">${slip(0,0,44).replace(/<svg x="[^"]*" y="[^"]*"/,'<svg x="-13" y="-13"')}</g>${puckArt(122,108,.9)}<g transform="rotate(-28 70 150)"><rect x="32" y="140" width="76" height="14" rx="6" fill="${P.br}" stroke="${P.dk}" stroke-width="2"/><rect x="32" y="146" width="76" height="3" fill="${P.or}"/></g><rect x="118" y="20" width="62" height="22" rx="11" fill="${P.rd}"/><text x="149" y="35" text-anchor="middle" font-size="11" font-weight="700" fill="${P.cr}" font-family="Geist,system-ui,sans-serif">SAVE £12</text>`,P.mu)
+};
+const PRODUCTS=[
+ {id:'hoodie',n:'Selector Hoodie',p:54,k:'cloth',t:'hoodie',pod:1,d:'Heavyweight 400gsm fleece. Big sunset-and-Selector graphic across the back, tiny Stack mark on the chest.',cols:['brown','cream','orange'],sizes:['S','M','L','XL']},
+ {id:'tee',n:'Sunset Tee',p:28,k:'cloth',t:'tee',pod:1,d:'Soft organic cotton. Oversized 70s back print, minimal chest logo.',cols:['cream','brown','orange'],sizes:['S','M','L','XL']},
+ {id:'cap',n:'Dad Cap',p:24,k:'cloth',t:'cap',pod:1,d:'Six-panel cotton cap with the Stack mark embroidered on the front.',cols:['brown','cream','orange'],sizes:['One size']},
+ {id:'plush',n:'Little Selector',p:26,k:'plush',d:'A 25cm Selector teddy with a stitched headband and headphones, and glowing-bar chest lights in thread.'},
+ {id:'pins',n:'Enamel Pin Set',p:9,k:'plush',d:'Three hard-enamel pins: the S mark, the Selector and a Sunset Stripe record.'},
+ {id:'stickers',n:'Sticker Sheet',p:5,k:'plush',d:'Vinyl stickers for your crate, case or laptop. Waterproof.'},
+ {id:'slipmat',n:'Sunset Slipmat (pair)',p:16,k:'acc',d:'Felt slipmats, 12", printed in Sunset Stripe rings with the S mark at the centre.'},
+ {id:'brush',n:'Carbon Record Brush',p:14,k:'acc',d:'Anti-static carbon fibre brush with a 70s-striped handle.'},
+ {id:'clean',n:'Record Care Kit',p:22,k:'acc',d:'Cleaning fluid, microfibre cloth and a stylus brush in a canvas pouch.'},
+ {id:'sleeves',n:'Outer Sleeves (50)',p:12,k:'acc',d:'Crystal-clear 12" outer sleeves that keep covers like new.'},
+ {id:'crate',n:'Wooden Record Crate',p:42,k:'acc',d:'Birch crate that holds 60 records, stained a warm 70s mustard.'},
+ {id:'puck',n:'The Stack Puck',p:79,k:'puck',d:'Sits between your turntable and speakers and records your own copy in hi-res, crackle and all. Works with Stack on your phone.'},
+ {id:'bundle',n:'Starter Bundle',p:97,k:'puck',d:'The Puck + a Sunset slipmat + a carbon brush. Everything to digitise your first record. Saves £12.'}
+];
+const prod=id=>PRODUCTS.find(p=>p.id===id);
+const prodArt=(p,col,side)=>p.t?ART[p.t](col||p.cols[0],side||'back'):ART[p.id]();
+
+/* ---------- screen skeleton ---------- */
+const sc=document.getElementById('s-wish');
+sc.innerHTML=`<div class="glow"></div><h2 class="big">Marketplace</h2><p class="sub" id="mkSub">Buy, sell and swap records, and shop Stack merch.</p>
+<div class="mk-chips" id="mkChips" role="tablist"><button data-p="browse" class="on">Browse</button><button data-p="sell">Sell</button><button data-p="wish">Wishlist</button><button data-p="near">Nearby</button><button data-p="shop">Stack Shop</button></div>
+<div class="mk-pane" id="mk-browse"></div><div class="mk-pane" id="mk-sell" hidden></div>
+<div class="mk-pane" id="mk-wish" hidden><p class="sub" id="wishCount"></p><div style="height:10px"></div><div id="wishList"></div></div>
+<div class="mk-pane" id="mk-near" hidden><div id="rsdSlot"></div><div id="mkShops"></div></div><div class="mk-pane" id="mk-shop" hidden></div>`;
+const tabBtn=document.querySelector('.tab[data-tab="wish"]');
+if(tabBtn){tabBtn.innerHTML=`<span class="tab-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="M4 9l1.5-4.5h13L20 9"/><path d="M4 9a2.7 2.7 0 0 0 5.3 0 2.7 2.7 0 0 0 5.4 0A2.7 2.7 0 0 0 20 9"/><path d="M5.5 12v7.5h13V12"/><path d="M10 19.5V15h4v4.5"/></svg><b class="wbadge"></b></span>Market`}
+document.querySelectorAll('[data-jump="wish"]').forEach(b=>b.firstChild.textContent='Marketplace ');
+let pane='browse';
+function setPane(p){pane=p;$$('#mkChips button').forEach(b=>b.classList.toggle('on',b.dataset.p===p));$$('.mk-pane').forEach(x=>x.hidden=x.id!=='mk-'+p);render()}
+$('#mkChips').onclick=e=>{const b=e.target.closest('[data-p]');if(b)setPane(b.dataset.p)};
+function render(){({browse:rBrowse,sell:rSell,wish:()=>{try{renderWish()}catch(e){}},near:rNear,shop:rShop})[pane]();badge()}
+function badge(){const n=[...WISH].filter(id=>allListings().some(l=>l.rid===id)).length;$$('.wbadge').forEach(b=>{b.textContent=n;b.hidden=!n})}
+
+/* ---------- browse ---------- */
+let fmt='all';
+const pill=(t,c)=>`<span class="mk-pill ${c||''}">${t}</span>`;
+function condChip(l){return `${l.cond}`}
+function rBrowse(){const el=$('#mk-browse'),all=allListings();let L=all.filter(l=>{const a=byId(l.rid);if(!a||a.o==='you')return false;return fmt==='all'||(fmt==='CD'?a.f==='CD':fmt==='rec'?l.rec:a.f!=='CD')});
+ const open=ORD.filter(o=>o.status!=='delivered').length+SORD.filter(o=>!o.done).length;
+ el.innerHTML=`<div class="mk-top"><div class="mk-fmt">${[['all','All'],['LP','Vinyl'],['CD','CDs'],['rec','Recorded pressings']].map(([k,n])=>`<button data-fmt="${k}" class="${fmt===k?'on':''}">${n}</button>`).join('')}</div><button class="mk-orders" data-orders>Orders${open?` <b>${open}</b>`:''}</button></div>
+ <div class="mk-note"><b>Buy it, own it.</b> Pay Stack, we hold the money until the record arrives, then the digital copy moves to you.</div>
+ <div class="mk-list">${L.length?L.map(l=>{const a=byId(l.rid),wl=WISH.has(l.rid);return `<button class="mk-card" data-lid="${l.id}">${artHTML(a,'',false)}<span class="tx"><b>${esc(a.t)}</b><span>${esc(a.a)} · ${fmtLabel[a.f]} · ${a.y}</span><span class="mk-meta">${condChip(l)} · ${esc(l.press)}</span><span class="mk-sell"><i style="background:${l.seller.c}">${l.seller.n[0]}</i>${esc(l.seller.n)} · ${l.seller.d}${l.promo?' '+pill('Promoted','pr'):''}</span><span class="mk-tags">${wl?pill('On your wishlist','wl'):''}${l.rec?pill('Recorded pressing','rc'):''}</span></span><span class="mk-price">${money(l.price)}</span></button>`}).join(''):'<div class="empty">Nothing listed for that filter yet.</div>'}</div>`}
+
+/* ---------- listing sheet + buying ---------- */
+function sheet(html){const slot=$('#sheetSlot');slot.innerHTML=`<div class="scrim" id="mkSc"></div><div class="sheet" style="max-height:92%">${html}</div>`;$('#mkSc').onclick=()=>closeSheet();const x=slot.querySelector('[data-close]');if(x)x.onclick=()=>closeSheet();return slot}
+const sheetH=t=>`<div class="sheet-h"><h3>${t}</h3><button class="icon-btn" data-close aria-label="Close">${ICON.x}</button></div>`;
+function findL(id){return allListings().find(l=>l.id===id)||seedListings().find(l=>l.id===id)}
+function openListing(id){const l=findL(id);if(!l)return;const a=byId(l.rid),own=l.mine,total=l.price+POST;
+ const slot=sheet(`${sheetH(own?'Your listing':'Buy this record')}<div class="sheet-b"><div class="mk-hero">${artHTML(a,'',false)}<div><b>${esc(a.t)}</b><span>${esc(a.a)} · ${fmtLabel[a.f]} · ${a.y}</span><div class="mk-tags">${pill(l.cond+' condition')}${l.rec?pill('Recorded pressing included','rc'):''}${l.vstyle&&l.vstyle!=='black'?pill((l.colour||'Coloured')+' vinyl'):''}${WISH.has(l.rid)?pill('On your wishlist','wl'):''}</div></div></div>
+ <div class="mk-row"><span>Pressing</span><b>${esc(l.press)}</b></div>
+ <div class="mk-row"><span>Seller</span><b><i class="mk-av" style="background:${l.seller.c}">${l.seller.n[0]}</i> ${esc(l.seller.n)} · ★ ${l.seller.r} (${l.seller.k}) · ${l.seller.d}</b></div>
+ ${own?`<div class="mk-row"><span>You receive</span><b>${money(l.price*(1-FEE))} after the ${Math.round(FEE*100)}% Stack fee</b></div><div class="mk-row"><span>Promotion</span><b>${l.promo?'Promoted for 7 days':'Not promoted'}</b></div>
+   <div class="mk-btns"><button class="btn" data-promo="${l.id}" ${l.promo?'disabled':''}>Promote for £1.99</button><button class="btn ghost" data-demo-buy="${l.id}">Demo: someone buys it</button><button class="btn ghost" data-unlist="${l.id}">Remove listing</button></div>`
+ :`<div class="mk-break"><div><span>Record</span><b>${money(l.price)}</b></div><div><span>Postage</span><b>${money(POST)}</b></div><div class="tot"><span>Total</span><b>${money(total)}</b></div></div>
+ <div class="mk-escrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg><span><b>Stack holds your payment.</b> The seller is paid when you confirm it arrived. At that moment ${esc(l.seller.n)} loses the digital copy${l.rec?' and the recorded pressing moves to you':''}, and it becomes yours to play anywhere.</span></div>
+ <button class="btn" data-buy="${l.id}">Buy for ${money(total)}</button>${WISH.has(l.rid)?'':`<button class="btn ghost" data-wishadd="${l.rid}" style="margin-top:8px">Add to wishlist</button>`}`}</div>`);
+ slot.onclick=e=>{const t=e.target.closest('button');if(!t)return;
+  if(t.dataset.buy){buy(t.dataset.buy)}
+  if(t.dataset.wishadd){WISH.add(t.dataset.wishadd);mkToast('Added to wishlist');openListing(id);render()}
+  if(t.dataset.promo){const L=MYL.find(x=>x.id===t.dataset.promo);L.promo=true;BAL.promo+=1.99;save();mkToast('Promoted for 7 days · £1.99');openListing(id)}
+  if(t.dataset.unlist){const L=MYL.find(x=>x.id===t.dataset.unlist);L.status='removed';save();closeSheet();render()}
+  if(t.dataset.demoBuy){demoBuy(t.dataset.demoBuy)}}}
+function buy(id){const l=findL(id),a=byId(l.rid);ORD.unshift({oid:'O'+Date.now(),type:'buy',lid:l.id,rid:l.rid,price:l.price,post:POST,seller:l.seller.n,status:'paid',rec:l.rec,press:l.press,cond:l.cond,vstyle:l.vstyle,vcol:l.vcol,colour:l.colour,ts:Date.now()});save();render();openOrders();mkToast('Paid · Stack is holding it until it arrives')}
+function demoBuy(lid){const L=MYL.find(x=>x.id===lid);if(!L)return;L.status='sold';const buyers=['Noah','Leah','Kit','Tom','Ana'],b=buyers[hash(lid)%buyers.length];
+ ORD.unshift({oid:'O'+Date.now(),type:'sell',lid,rid:L.rid,price:L.price,post:POST,buyer:b,status:'paid',rec:L.rec,ts:Date.now()});save();render();openOrders();mkToast(b+' bought it. Post it and mark it sent')}
+
+/* ---------- orders ---------- */
+const STEPS={buy:['paid','posted','delivered'],sell:['paid','posted','delivered']};
+function stepper(o){const lab={buy:['Paid, held by Stack','Seller posted it','Arrived'],sell:['Buyer paid','You posted it','Arrived · paid out']}[o.type],i=STEPS[o.type].indexOf(o.status);return `<div class="mk-steps">${lab.map((t,k)=>`<span class="${k<=i?'on':''}"><i></i>${t}</span>`).join('')}</div>`}
+function openOrders(){const a=ORD.length||SORD.length;
+ const slot=sheet(`${sheetH('Orders and sales')}<div class="sheet-b">${!a?'<div class="empty">No orders yet.</div>':''}${ORD.map(o=>{const r=byId(o.rid),b=o.type==='buy';
+  return `<div class="mk-order"><div class="mk-hero sm">${artHTML(r,'',false)}<div><b>${esc(r.t)}</b><span>${b?'Bought from '+esc(o.seller):'Sold to '+esc(o.buyer)} · ${money(o.price)}${b?' + '+money(o.post)+' postage':' · you get '+money(o.price*(1-FEE))}</span></div></div>${stepper(o)}
+  <div class="mk-obtn">${b?(o.status==='paid'?`<button class="chipbtn" data-adv="${o.oid}">Demo: seller posts it</button>`:o.status==='posted'?`<button class="chipbtn on" data-adv="${o.oid}">It arrived: confirm</button>`:`<span class="mk-done">In your Stack. Digital copy unlocked${o.rec?', with the recorded pressing':''}.</span>`)
+   :(o.status==='paid'?`<button class="chipbtn on" data-adv="${o.oid}">Mark as posted</button>`:o.status==='posted'?`<button class="chipbtn" data-adv="${o.oid}">Demo: buyer confirms arrival</button>`:`<span class="mk-done">Paid out ${money(o.price*(1-FEE))}. The digital copy${o.rec?' and your recorded pressing have':' has'} moved to ${esc(o.buyer)}.</span>`)}</div></div>`}).join('')}
+  ${SORD.map(o=>`<div class="mk-order"><div class="mk-hero sm"><div class="mk-sq">${o.lines.length}</div><div><b>Stack Shop order</b><span>${o.lines.map(l=>esc(l.n)).join(', ')}</span><span>${money(o.total)} · ${o.pod?'Made to order, ships in 5–7 days':'Ships in 2 days'}</span></div></div></div>`).join('')}</div>`);
+ slot.onclick=e=>{const t=e.target.closest('[data-adv]');if(!t)return;advance(t.dataset.adv)}}
+function advance(oid){const o=ORD.find(x=>x.oid===oid);if(!o)return;o.status=o.status==='paid'?'posted':'delivered';const a=byId(o.rid);
+ if(o.status==='delivered'){
+  if(o.type==='buy'){const copy={press:o.press,colour:o.colour||'Black',cond:o.cond,bought:'Stack Marketplace, '+new Date().getFullYear(),price:money(o.price),signed:false,notes:'',vstyle:o.vstyle||'black',vcol:o.vcol};
+   BOUGHT.push({rid:o.rid,rec:o.rec,recDate:o.rec?new Date().toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}):'',copy});if(ALBUMS.includes(a))a.o='you';else addToStack(a);if(o.rec){a.rec=true;a.recDate=BOUGHT[BOUGHT.length-1].recDate}COPY[a.id]=copy;SS('stack-copy',COPY);WISH.delete(o.rid);if(window.BORROW&&BORROW[o.rid]){delete BORROW[o.rid];SS('stack-borrow',BORROW);try{renderLoans()}catch(e){}}
+   try{renderMine();renderFamily()}catch(e){}mkToast(a.t+' is in your Stack. Digital copy unlocked')}
+  else{if(st.cur===a){try{pause()}catch(e){}}a.o=null;delete a.rec;delete a.recDate;delete COPY[a.id];SS('stack-copy',COPY);SOLD.push(a.id);const net=o.price*(1-FEE);BAL.bal+=net;BAL.fees+=o.price*FEE;
+   try{renderMine();renderFamily()}catch(e){}mkToast('Paid out '+money(net)+'. '+a.t+' has left your Stack')}}
+ save();openOrders();render()}
+
+/* ---------- sell ---------- */
+function suggest(a){const h=hash(a.id);return a.f==='CD'?7+h%6:a.f==='7in'?9+h%5:18+h%20}
+function rSell(){const el=$('#mk-sell'),ms=mine().filter(a=>!LENT[a.id]&&!MYL.some(l=>l.rid===a.id&&l.status==='live')),live=MYL.filter(l=>l.status==='live');
+ el.innerHTML=`<div class="mk-earn"><div><span>Stack balance</span><b>${money(BAL.bal)}</b></div><div><span>Fees paid</span><b>${money(BAL.fees+BAL.promo)}</b></div><div><span>Seller fee</span><b>${Math.round(FEE*100)}%</b></div></div>
+ <div class="mk-verify"><div><b>${VERIFIED?'Verified seller':'Get verified'}</b><span>${VERIFIED?'Your listings show a verified badge.':'A badge buyers trust, plus grading help. £2.99 a month.'}</span></div><button class="chipbtn ${VERIFIED?'on':''}" data-verify>${VERIFIED?'Verified':'Verify'}</button></div>
+ <h3 class="mk-h">Your listings</h3>${live.length?live.map(l=>{const a=byId(l.rid);return `<button class="mk-card" data-lid="${l.id}">${artHTML(a,'',false)}<span class="tx"><b>${esc(a.t)}</b><span>${esc(a.a)} · ${l.cond}</span><span class="mk-tags">${pill('Live','rc')}${l.promo?pill('Promoted','pr'):''}${VERIFIED?pill('Verified','wl'):''}</span></span><span class="mk-price">${money(l.price)}</span></button>`}).join(''):'<div class="empty small">Nothing listed. Pick a record below to sell it.</div>'}
+ <h3 class="mk-h">Sell from your Stack</h3><p class="sub" style="margin:0 0 8px">When it arrives, the buyer gets the digital copy and your recorded pressing. You lose both, like selling the real record.</p>
+ ${ms.length?`<div class="mk-list">${ms.map(a=>`<button class="mk-card" data-sell="${a.id}">${artHTML(a,'',false)}<span class="tx"><b>${esc(a.t)}</b><span>${esc(a.a)} · ${fmtLabel[a.f]}</span><span class="mk-meta">Suggested ${money(suggest(a))}</span></span><span class="mk-cta">Sell</span></button>`).join('')}</div>`:'<div class="empty small">Nothing to sell.</div>'}${LENT&&Object.keys(LENT).length?'<p class="sub">Lent records can\'t be sold until they come back.</p>':''}`}
+function openSell(id){const a=byId(id),c=COPY[id]||{},sg=suggest(a);
+ const slot=sheet(`${sheetH('Sell '+esc(a.t))}<div class="sheet-b"><div class="mk-hero">${artHTML(a,'',false)}<div><b>${esc(a.t)}</b><span>${esc(a.a)} · ${fmtLabel[a.f]} · ${a.y}</span><div class="mk-tags">${c.cond?pill(c.cond+' condition'):''}${c.press?pill(esc(c.press)):''}${c.vstyle&&c.vstyle!=='black'?pill(esc(c.colour)+' vinyl'):''}</div></div></div>
+ <div class="form-row"><label>Your price</label><input id="mkPrice" type="number" inputmode="decimal" min="1" value="${sg}"></div>
+ <div class="mk-break"><div><span>Buyer pays you</span><b id="mkP1">${money(sg)}</b></div><div><span>Stack fee (${Math.round(FEE*100)}%)</span><b id="mkP2">-${money(sg*FEE)}</b></div><div class="tot"><span>You receive</span><b id="mkP3">${money(sg*(1-FEE))}</b></div></div>
+ <p class="sub" style="margin:8px 0 0">Buyer covers ${money(POST)} postage. Similar copies sold for ${money(sg-3)}–${money(sg+4)}.</p>
+ ${a.rec?`<div class="set-row"><span>Include my recorded pressing</span><button class="sw" role="switch" id="mkRec" aria-checked="true"></button></div>`:''}
+ <div class="mk-escrow warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.01"/></svg><span><b>You will lose access.</b> Once the buyer confirms it arrived, the digital copy${a.rec?' and your recorded pressing move':' moves'} to them. You keep it until then.</span></div>
+ <button class="btn" id="mkList">List it</button></div>`);
+ const pr=()=>{const v=Math.max(1,+$('#mkPrice').value||1);$('#mkP1').textContent=money(v);$('#mkP2').textContent='-'+money(v*FEE);$('#mkP3').textContent=money(v*(1-FEE))};$('#mkPrice').oninput=pr;
+ const rb=$('#mkRec');if(rb)rb.onclick=e=>e.currentTarget.setAttribute('aria-checked',e.currentTarget.getAttribute('aria-checked')!=='true');
+ $('#mkList').onclick=()=>{const v=Math.max(1,+$('#mkPrice').value||sg);MYL.unshift({id:'M'+Date.now(),rid:id,seller:{n:'You',c:'#F0A034',d:'here',r:'5.0',k:3},price:v,cond:c.cond||'VG+',press:c.press||(a.f==='CD'?'CD':'Your copy'),vstyle:c.vstyle,vcol:c.vcol,colour:c.colour,rec:!!(a.rec&&(!rb||rb.getAttribute('aria-checked')==='true')),mine:true,status:'live',ts:Date.now()});save();closeSheet();setPane('sell');mkToast('Listed for '+money(v))}}
+
+/* ---------- nearby shops ---------- */
+const SHOPN=[{n:'Second Spin Records',d:'0.4 mi',h:'Open until 6pm',s:'1,240 records',sp:1,e:'Record Store Day: Saturday 18 Apr'},{n:'Groove Exchange',d:'1.1 mi',h:'Open until 5:30pm',s:'860 records'},{n:'The Vinyl Cellar',d:'2.3 mi',h:'Opens 10am',s:'2,100 records'},{n:'Needle & Groove',d:'3.6 mi',h:'Open until 7pm',s:'540 records',e:'Listening party Friday'}];
+function rNear(){try{renderRSD()}catch(e){}$('#mkShops').innerHTML=`<h3 class="mk-h">Independent shops near you</h3>`+SHOPN.map(s=>`<div class="mk-shopc"><div class="mk-pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6 7-11a7 7 0 0 0-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.4"/></svg></div><div class="tx"><b>${esc(s.n)}</b>${s.sp?pill('Featured','pr'):''}<span>${s.d} · ${s.h} · ${s.s}</span>${s.e?`<span class="ev">${esc(s.e)}</span>`:''}</div></div>`).join('')+`<p class="sub" style="margin:10px 2px">Shops can pay to feature their stock and events here.</p>`}
+
+/* ---------- stack shop ---------- */
+let shopCat='all';
+function cartN(){return CART.reduce((n,l)=>n+l.q,0)}
+function rShop(){const el=$('#mk-shop'),L=PRODUCTS.filter(p=>shopCat==='all'||p.k===shopCat);
+ el.innerHTML=`<div class="shop-hero"><div class="sh-rings"></div><div class="sh-tx"><small>THE STACK SHOP</small><b>Wear the record.</b><span>70s-style merch, vinyl care and the Puck.</span></div></div>
+ <div class="mk-top"><div class="mk-fmt">${[['all','All'],['cloth','Clothing'],['plush','Selector'],['acc','Vinyl care'],['puck','Puck']].map(([k,n])=>`<button data-cat="${k}" class="${shopCat===k?'on':''}">${n}</button>`).join('')}</div><button class="mk-orders" data-basket>Basket${cartN()?` <b>${cartN()}</b>`:''}</button></div>
+ <div class="shop-grid">${L.map(p=>`<button class="shop-card" data-prod="${p.id}"><span class="sc-art">${prodArt(p)}</span><b>${p.n}</b><span>${money(p.p)}${p.pod?' · made to order':''}</span></button>`).join('')}</div>
+ <p class="sub" style="margin:12px 2px">Clothing is printed to order. Everything else ships in 2 days. Free delivery over £50. Prototype: no payment is taken.</p>`}
+function openProd(id){const p=prod(id);let col=p.cols?p.cols[0]:null,size=p.sizes?p.sizes[Math.min(1,p.sizes.length-1)]:null,side='back';
+ const draw=()=>{const slot=sheet(`${sheetH(p.n)}<div class="sheet-b"><div class="pd-art">${prodArt(p,col,side)}</div>
+  ${p.t&&p.t!=='cap'?`<div class="mk-fmt c"><button data-side="back" class="${side==='back'?'on':''}">Back</button><button data-side="front" class="${side==='front'?'on':''}">Front</button></div>`:''}
+  <div class="pd-top"><b>${money(p.p)}</b><span>${p.pod?'Made to order · ships in 5–7 days':'Ships in 2 days'}</span></div><p class="sub" style="margin:6px 0 10px">${p.d}</p>
+  ${p.cols?`<div class="form-row"><label>Colour · ${COL[col].n}</label><div class="vc-cols">${p.cols.map(c=>`<button data-col="${c}" class="${c===col?'on':''}" style="background:${COL[c].g}" aria-label="${COL[c].n}"></button>`).join('')}</div></div>`:''}
+  ${p.sizes&&p.sizes.length>1?`<div class="form-row"><label>Size</label><div class="opt-row">${p.sizes.map(s=>`<button class="chipbtn${s===size?' on':''}" data-size="${s}">${s}</button>`).join('')}</div></div>`:''}
+  <button class="btn" data-add style="margin-top:10px">Add to basket</button></div>`);
+  slot.onclick=e=>{const t=e.target.closest('button');if(!t)return;if(t.dataset.side){side=t.dataset.side;draw()}else if(t.dataset.col){col=t.dataset.col;draw()}else if(t.dataset.size){size=t.dataset.size;draw()}
+   else if('add' in t.dataset){const key=[p.id,col,size].join('|'),ex=CART.find(l=>l.key===key);ex?ex.q++:CART.push({key,id:p.id,n:p.n+(col?' · '+COL[col].n:'')+(size&&p.sizes.length>1?' · '+size:''),p:p.p,q:1,pod:!!p.pod});save();closeSheet();rShop();mkToast('Added to basket')}}};
+ draw()}
+function openBasket(){const sub=CART.reduce((n,l)=>n+l.p*l.q,0),del=!CART.length||sub>=50?0:3.95,tot=sub+del;
+ const slot=sheet(`${sheetH('Your basket')}<div class="sheet-b">${CART.length?CART.map((l,i)=>`<div class="mk-line"><span class="ln-art">${prodArt(prod(l.id),l.key.split('|')[1]||undefined,'back')}</span><div class="tx"><b>${esc(l.n)}</b><span>${money(l.p)}${l.pod?' · made to order':''}</span></div><div class="qty"><button data-q="${i}" data-d="-1" aria-label="Fewer">−</button><b>${l.q}</b><button data-q="${i}" data-d="1" aria-label="More">+</button></div></div>`).join('')+`<div class="mk-break"><div><span>Subtotal</span><b>${money(sub)}</b></div><div><span>Delivery</span><b>${del?money(del):'Free'}</b></div><div class="tot"><span>Total</span><b>${money(tot)}</b></div></div><button class="btn" data-place>Place demo order</button><p class="sub" style="margin:8px 0 0;text-align:center">Prototype: no payment is taken.</p>`:'<div class="empty">Your basket is empty.</div>'}</div>`);
+ slot.onclick=e=>{const t=e.target.closest('button');if(!t)return;if(t.dataset.q!==undefined){const l=CART[+t.dataset.q];l.q+=+t.dataset.d;if(l.q<1)CART.splice(+t.dataset.q,1);save();openBasket();if(pane==='shop')rShop()}
+  else if('place' in t.dataset){SORD.unshift({oid:'S'+Date.now(),lines:CART.map(l=>({n:l.n,q:l.q})),total:tot,pod:CART.some(l=>l.pod),ts:Date.now()});CART=[];save();rShop();openOrders();mkToast('Order placed. Thank you')}}}
+
+/* ---------- events ---------- */
+sc.addEventListener('click',e=>{const t=e.target.closest('button');if(!t)return;
+ if(t.dataset.fmt){fmt=t.dataset.fmt;rBrowse()}else if(t.dataset.cat){shopCat=t.dataset.cat;rShop()}
+ else if(t.dataset.lid)openListing(t.dataset.lid);else if(t.dataset.sell)openSell(t.dataset.sell);else if('orders' in t.dataset)openOrders();else if('basket' in t.dataset)openBasket();else if(t.dataset.prod)openProd(t.dataset.prod);
+ else if('verify' in t.dataset){VERIFIED=!VERIFIED;save();rSell();mkToast(VERIFIED?'Verified seller · £2.99 a month':'Verification cancelled')}
+ else if(t.dataset.listfor){setPane('browse');openListing(t.dataset.listfor)}});
+/* wishlist rows: show when something is for sale */
+{const _rw=renderWish;renderWish=function(...x){const r=_rw.apply(this,x);try{$$('#wishList .wish-row').forEach(row=>{const id=(row.querySelector('[data-wishopen]')||{}).dataset&&row.querySelector('[data-wishopen]').dataset.wishopen,L=allListings().filter(l=>l.rid===id).sort((a,b)=>a.price-b.price)[0];if(L&&!row.querySelector('.mk-wl')){const b=document.createElement('button');b.className='mk-wl';b.dataset.listfor=L.id;b.textContent='For sale now from '+money(L.price)+' · View';row.appendChild(b)}});badge()}catch(e){}return r}}
+/* demo shortcuts */
+function addJump(label,key,after){const list=document.getElementById('jumpList');if(!list)return;const b=document.createElement('button');b.dataset.jump=key;b.innerHTML=label+' <span></span>';const ref=list.querySelector('[data-jump="'+after+'"]');ref?ref.after(b):list.appendChild(b);
+ b.onclick=async()=>{closeSheet();$('#side').classList.remove('open');if(!$('#player').hidden){$('#player').hidden=true;try{renderMini()}catch(e){}}goTab('wish');await new Promise(r=>setTimeout(r,60));setPane(key==='sell'?'sell':key==='shop'?'shop':'browse')}}
+addJump('Sell a record','sell','wish');addJump('Stack Shop','shop','sell');
+{const w=document.querySelector('#jumpList [data-jump="wish"]');if(w){w.textContent='Marketplace ';w.innerHTML='Marketplace <span></span>';w.onclick=async()=>{closeSheet();goTab('wish');await new Promise(r=>setTimeout(r,60));setPane('browse')}}
+ [...document.querySelectorAll('#jumpList [data-jump]')].forEach((b,i)=>{const s=b.querySelector('span');if(s)s.textContent=String(i+1).padStart(2,'0')})}
+const _gt=goTab;goTab=function(t){const r=_gt.apply(this,arguments);if(t==='wish')try{render()}catch(e){}return r};
+applyOwnership();try{renderMine();renderFamily()}catch(e){}
+render();
+})();
+
 goTab('mine');{const q=location.search+location.hash;window.FILM_FORCE=!/[?&#]nofilm\b/.test(q);if(/[?&#]demo\b/.test(q))setTimeout(()=>{const iv=setInterval(()=>{if($('#splash').hidden){clearInterval(iv);openDemo()}},300)},500)}intro();
 </script>
 
