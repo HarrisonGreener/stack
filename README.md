@@ -103,4 +103,4 @@ A single HTML file, with vanilla JavaScript and CSS and no framework. [Three.js]
 
 ## Credits
 
-Designed and built by Harry as a university project. Album artwork and audio previews belong to their respective artists and labels and are loaded from the services above for demonstration only.
+Designed and built by Harrison Greener. Album artwork and audio previews belong to their respective artists and labels and are loaded from the services above for demonstration only.
