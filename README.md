@@ -16,10 +16,10 @@ On an iPhone, open it in Safari, then Share → Add to Home Screen to run it ful
 <tr><td align="center" valign="top" width="25%"><img src="docs/film-run.jpg" width="190"><br><sub>The opening film: the Selector runs along a spinning record</sub></td><td align="center" valign="top" width="25%"><img src="docs/film-puck.jpg" width="190"><br><sub>Explaining the Puck, the turntable accessory</sub></td><td align="center" valign="top" width="25%"><img src="docs/loading.jpg" width="190"><br><sub>The loading screen, a record label that spins in</sub></td><td align="center" valign="top" width="25%"><img src="docs/my-stack.jpg" width="190"><br><sub>My Stack: your records, with search, Liked songs and a notification bell</sub></td></tr>
 <tr><td align="center" valign="top" width="25%"><img src="docs/player.jpg" width="190"><br><sub>The turntable player</sub></td><td align="center" valign="top" width="25%"><img src="docs/vinyl-colours.jpg" width="190"><br><sub>Your copy: choose your vinyl colour</sub></td><td align="center" valign="top" width="25%"><img src="docs/two-decks.jpg" width="190"><br><sub>Two decks and a crossfader</sub></td><td align="center" valign="top" width="25%"><img src="docs/selector.jpg" width="190"><br><sub>The Selector, your robot DJ</sub></td></tr>
 <tr><td align="center" valign="top" width="25%"><img src="docs/family.jpg" width="190"><br><sub>Family Stack: one shared shelf</sub></td><td align="center" valign="top" width="25%"><img src="docs/friends.jpg" width="190"><br><sub>Friends: browse their stacks, you can only stream what you own</sub></td><td align="center" valign="top" width="25%"><img src="docs/stats.jpg" width="190"><br><sub>Your stats</sub></td><td align="center" valign="top" width="25%"><img src="docs/notifications.jpg" width="190"><br><sub>The notification bell keeps My Stack about the music</sub></td></tr>
-<tr><td align="center" valign="top" width="25%"><img src="docs/marketplace.jpg" width="190"><br><sub>Marketplace: second-hand records from other collectors</sub></td><td align="center" valign="top" width="25%"><img src="docs/market-buy.jpg" width="190"><br><sub>Buying: Stack holds the money until it arrives</sub></td><td align="center" valign="top"
+<tr><td align="center" valign="top" width="25%"><img src="docs/marketplace.jpg" width="190"><br><sub>Marketplace: second-hand records from other collectors</sub></td><td align="center" valign="top" width="25%"><img src="docs/market-buy.jpg" width="190"><br><sub>Buying: Stack holds the money until it arrives</sub></td><td align="center" valign="top" width="25%"><img src="docs/shop.jpg" width="190"><br><sub>The Stack Shop: clothing, record gear and the Puck</sub></td><td align="center" valign="top" width="25%"><img src="docs/shop-puck.jpg" width="190"><br><sub>The Stack Puck in black, orange or white</sub></td></tr>
 </table>
 
-Screenshots are from the live demo. Album covers show as placeholder art here; on the live site, official artwork loads from the Apple Music and Deezer APIs.
+Screenshots are from the live demo. Album covers show as placeholder art in these screenshots; on the live site, official artwork loads from the Apple Music and Deezer APIs.
 
 ---
 
@@ -31,7 +31,7 @@ The problem is that physical records and phones don't talk to each other. If you
 
 Stack is my answer to one question: **what if owning the record was the thing that unlocked it everywhere?** The app is built around that idea, and every feature is there to make owning music feel better than renting it.
 
-This project, is a design prototype. It explores the idea, the interface and the experience, and it is honest about what is simulated (see below).
+Stack is a design prototype. It explores the idea, the interface and the experience, and it is honest about what is simulated (see below).
 
 ---
 
@@ -59,6 +59,7 @@ This project, is a design prototype. It explores the idea, the interface and the
 - **The Selector:** a cel-shaded robot DJ who digs through your crate. Ask it for a mood or an idea and it builds a queue from records you own.
 - **Stats and Wrapped:** what you play most, and a year-end style recap.
 - **Dust it off:** a nudge to play the record you have not touched in months, with a "forgotten gems" mix.
+
 ### Marketplace
 - **Browse** second-hand records listed by other collectors, with the pressing, condition, vinyl colour and seller rating. Filter by vinyl, CD, or copies that come with a recorded pressing.
 - **Buy safely.** You pay Stack, and Stack holds the money until you confirm the record arrived. Only then is the seller paid, and the digital copy, plus the seller's recorded pressing if it was included, moves to you.
@@ -67,10 +68,17 @@ This project, is a design prototype. It explores the idea, the interface and the
 - **Nearby:** independent record shops near you, their events and Record Store Day.
 
 ### The Stack Shop
-70s-style merch drawn in the app's own look: a **Selector Hoodie**, **Sunset Tee** and **Dad Cap** with big back graphics and a minimal chest logo; a **Little Selector** teddy; pins and stickers; vinyl care (slipmats, a carbon brush, a care kit, outer sleeves, a record crate); and **the Puck**, alone or in a starter bundle. Checkout is a demo, and no payment is taken.
+Stack's own merch and record gear, all in the brand's 70s palette and finished with small details like woven S labels, a tiny embroidered Selector on the sleeve and three-stripe tabs.
+
+<table>
+<tr><td align="center" valign="top" width="33%"><img src="shop/hoodie.jpg" width="300"><br><sub><b>Sunset S Hoodie</b> · £62<br>Washed record print and labelled stripes on the back</sub></td><td align="center" valign="top" width="33%"><img src="shop/tee-black.jpg" width="300"><br><sub><b>Selector Tee</b> · £32<br>In washed black, oatmeal, chocolate and rust</sub></td><td align="center" valign="top" width="33%"><img src="shop/cap.jpg" width="300"><br><sub><b>Corduroy S Cap</b> · £28<br>Embroidered S, orange under-brim, brass buckle</sub></td></tr>
+<tr><td align="center" valign="top" width="33%"><img src="shop/slipmat.jpg" width="300"><br><sub><b>Sunset Slipmat</b> · £18<br>Felt, with a non-slip underside</sub></td><td align="center" valign="top" width="33%"><img src="shop/crate.jpg" width="220"><br><sub><b>Birch Record Crate</b> · £48<br>Holds about 60 LPs</sub></td><td align="center" valign="top" width="33%"><img src="shop/puck-orange.jpg" width="300"><br><sub><b>The Stack Puck</b> · £79<br>In black, orange or white</sub></td></tr>
+</table>
+
+Each product has front and back photos in the app, plus colours and sizes where they apply. Checkout is a demo, and no payment is taken.
 
 ### The Puck
-A small turntable accessory that sits under your record. In the concept, it logs what you play on the real turntable, so a physical spin counts toward your stats just like a digital one. In this prototype it is simulated.
+A small device that sits between your turntable and speakers. It records your own copy of each record in hi-res, crackle and all, and logs what you play, so a physical spin counts toward your stats just like a digital one. It comes in black, orange or white. In this prototype it is simulated.
 
 ### The opening film
 The first thing you see is a short real-time 3D film, rendered live in the browser with Three.js. The Selector runs along a spinning record, explains what Stack is and how the Puck works, and gets flung off, and the camera dives into the record label and hands over to the loading screen.
@@ -86,7 +94,7 @@ The first thing you see is a short real-time 3D film, rendered live in the brows
 | Official album artwork loaded from those same services | The Puck, barcode scanning and Discogs import |
 | The 3D intro film, built in code | Shop details and Record Store Day events |
 | Marketplace flow: listing, fees, held payment and ownership moving on arrival | Other sellers, buyers, payments and deliveries |
-| Stack Shop products, basket and order flow | Checkout: no payment is taken |
+| Stack Shop products, colours, sizes, basket and order flow | Checkout: no payment is taken |
 
 No copyrighted audio or artwork is stored in this repository. Previews and artwork come from the public APIs at the moment you play.
 
