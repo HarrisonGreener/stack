@@ -16,8 +16,7 @@ On an iPhone, open it in Safari, then Share → Add to Home Screen to run it ful
 <tr><td align="center" valign="top" width="25%"><img src="docs/film-run.jpg" width="190"><br><sub>The opening film: the Selector runs along a spinning record</sub></td><td align="center" valign="top" width="25%"><img src="docs/film-puck.jpg" width="190"><br><sub>Explaining the Puck, the turntable accessory</sub></td><td align="center" valign="top" width="25%"><img src="docs/loading.jpg" width="190"><br><sub>The loading screen, a record label that spins in</sub></td><td align="center" valign="top" width="25%"><img src="docs/my-stack.jpg" width="190"><br><sub>My Stack: your records, with search, Liked songs and a notification bell</sub></td></tr>
 <tr><td align="center" valign="top" width="25%"><img src="docs/player.jpg" width="190"><br><sub>The turntable player</sub></td><td align="center" valign="top" width="25%"><img src="docs/vinyl-colours.jpg" width="190"><br><sub>Your copy: choose your vinyl colour</sub></td><td align="center" valign="top" width="25%"><img src="docs/two-decks.jpg" width="190"><br><sub>Two decks and a crossfader</sub></td><td align="center" valign="top" width="25%"><img src="docs/selector.jpg" width="190"><br><sub>The Selector, your robot DJ</sub></td></tr>
 <tr><td align="center" valign="top" width="25%"><img src="docs/family.jpg" width="190"><br><sub>Family Stack: one shared shelf</sub></td><td align="center" valign="top" width="25%"><img src="docs/friends.jpg" width="190"><br><sub>Friends: browse their stacks, you can only stream what you own</sub></td><td align="center" valign="top" width="25%"><img src="docs/stats.jpg" width="190"><br><sub>Your stats</sub></td><td align="center" valign="top" width="25%"><img src="docs/notifications.jpg" width="190"><br><sub>The notification bell keeps My Stack about the music</sub></td></tr>
-<tr><td align="center" valign="top" width="25%"><img src="docs/marketplace.jpg" width="190"><br><sub>Marketplace: second-hand records from other collectors</sub></td><td align="center" valign="top" width="25%"><img src="docs/market-buy.jpg" width="190"><br><sub>Buying: Stack holds the money until it arrives</sub></td><td align="center" valign="top" width="25%"><img src="docs/market-sell.jpg" width="190"><br><sub>Selling: your price, the fee and what you get</sub></td><td align="center" valign="top" width="25%"><img src="docs/shop.jpg" width="190"><br><sub>The Stack Shop: 70s merch, vinyl care and the Puck</sub></td></tr>
-<tr><td align="center" valign="top" width="25%"><img src="docs/shop-hoodie.jpg" width="190"><br><sub>The Selector Hoodie, with a big back graphic</sub></td><td></td><td></td><td></td></tr>
+<tr><td align="center" valign="top" width="25%"><img src="docs/marketplace.jpg" width="190"><br><sub>Marketplace: second-hand records from other collectors</sub></td><td align="center" valign="top" width="25%"><img src="docs/market-buy.jpg" width="190"><br><sub>Buying: Stack holds the money until it arrives</sub></td><td align="center" valign="top"
 </table>
 
 Screenshots are from the live demo. Album covers show as placeholder art here; on the live site, official artwork loads from the Apple Music and Deezer APIs.
@@ -32,7 +31,7 @@ The problem is that physical records and phones don't talk to each other. If you
 
 Stack is my answer to one question: **what if owning the record was the thing that unlocked it everywhere?** The app is built around that idea, and every feature is there to make owning music feel better than renting it.
 
-This is a university project, so it is a design prototype. It explores the idea, the interface and the experience, and it is honest about what is simulated (see below).
+This project, is a design prototype. It explores the idea, the interface and the experience, and it is honest about what is simulated (see below).
 
 ---
 
@@ -75,56 +74,6 @@ A small turntable accessory that sits under your record. In the concept, it logs
 
 ### The opening film
 The first thing you see is a short real-time 3D film, rendered live in the browser with Three.js. The Selector runs along a spinning record, explains what Stack is and how the Puck works, and gets flung off, and the camera dives into the record label and hands over to the loading screen.
-
----
-
-## Business model
-
-Stack is designed to earn from several directions, so it doesn't rely on one stream:
-
-| Stream | How it earns | Price in the prototype |
-|---|---|---|
-| Subscriptions | Monthly plans to stream the records you own | Solo £4 · Duo £7 · Family £14.99 a month |
-| Marketplace fees | A cut of every second-hand sale, paid by the seller | 8% of the sale price |
-| Seller tools | Promoted listings and a verified-seller badge | £1.99 per promotion · £2.99 a month |
-| The Puck | Hardware sold at a margin | £79, or £97 in the starter bundle |
-| Merch | Clothing printed to order (no stock risk); plush, pins and accessories bought in bulk | £5 to £54 |
-| Shop partnerships | Independent shops pay to feature their stock and events | £29 a month per shop |
-
-**How the 8% compares.** Discogs is reported to charge sellers 9% ([fee calculator](https://feecalculator.us/discogs-fee-calculator/)), while eBay UK has dropped fees for private sellers and charges buyers a protection fee instead ([Startups.co.uk](https://startups.co.uk/news/ebay-buyer-protection-fee)). Stack sits just under Discogs and keeps the buyer's price simple: the record plus postage.
-
-### Product margins (assumed costs)
-
-| Product | Price | Assumed unit cost | Gross margin |
-|---|---|---|---|
-| Selector Hoodie (print on demand) | £54 | £24 | 56% |
-| Sunset Tee (print on demand) | £28 | £11 | 61% |
-| Dad Cap (print on demand) | £24 | £9 | 62% |
-| Little Selector teddy | £26 | £7 | 73% |
-| Enamel pin set | £9 | £2.50 | 72% |
-| Sunset slipmat (pair) | £16 | £4 | 75% |
-| Record care kit | £22 | £6 | 73% |
-| Wooden record crate | £42 | £16 | 62% |
-| The Stack Puck | £79 | £32 | 59% |
-| Starter bundle | £97 | £40 | 59% |
-
-### A year-one scenario
-
-An illustration, not a prediction. It assumes 10,000 users, 2,000 of them paying (60% Solo, 25% Duo, 15% Family), 1,500 marketplace sales a month averaging £20, 300 promotions a month, 150 verified sellers, 1,200 Pucks, 2,500 merch orders averaging £35 and 15 featured shops.
-
-| Stream | Revenue | After direct costs |
-|---|---|---|
-| Subscriptions | £153,564 | £61,426, after an assumed 60% to rights holders |
-| Marketplace fees | £28,800 | £19,800, after card processing (1.5% + 20p a sale) |
-| Promotions and verification | £12,546 | £12,546 |
-| The Puck | £94,800 | £56,400 |
-| Merch | £87,500 | £48,125, at a 55% blended margin |
-| Shop partnerships | £5,220 | £5,220 |
-| **Total** | **£382,430** | **£203,517** |
-
-The Puck and merch matter more than they first look. Together they make up nearly half the revenue, and they don't depend on licensing deals. Subscriptions are the largest single stream, but most of that money goes to rights holders.
-
-**What the numbers leave out:** staff, development, marketing, hosting, returns, VAT and the licensing deals themselves. Every cost here is an assumption for the project, not a quote from a supplier.
 
 ---
 
