@@ -878,6 +878,8 @@ h2.big{font-size:34px;font-weight:650;letter-spacing:-.035em;margin:6px 0 4px;te
 .shop-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .shop-card{display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:3px;padding:8px 8px 10px;border-radius:14px;background:var(--surface);border:1px solid var(--line);color:var(--fg)}
 .sc-art{display:block;width:100%;aspect-ratio:1;border-radius:10px;overflow:hidden;background:color-mix(in srgb,var(--mustard,#F0A034) 22%,var(--surface))}.sc-art>svg,.pd-art>svg,.ln-art>svg{display:block;width:100%;height:100%}
+.ph-img{display:block;width:100%;height:100%;background-size:200% 100%;background-repeat:no-repeat;background-color:#F0E3CE}
+.sc-art,.pd-art{aspect-ratio:632/848!important}.pd-art{max-width:260px!important}
 .shop-card b{font-size:13.5px;margin-top:4px}.shop-card span:last-child{font-size:12px;color:var(--muted)}
 .pd-art{width:100%;max-width:300px;margin:0 auto;aspect-ratio:1;border-radius:16px;overflow:hidden;background:color-mix(in srgb,var(--mustard,#F0A034) 22%,var(--surface))}
 .pd-top{display:flex;justify-content:space-between;align-items:baseline;margin-top:10px}.pd-top b{font-size:22px}.pd-top span{font-size:12px;color:var(--muted)}
@@ -1949,6 +1951,7 @@ const LOWEND=/iPhone|iPad|Android/i.test(navigator.userAgent)||matchMedia('(poin
   // dizzy stars / sparkles
   const starM=new T.MeshBasicMaterial({color:'#E9B949',toneMapped:false,transparent:true});
   const sel={chest,root:SEL,hip,torso,headG,armL,armR,legL,legR,eyes,vu};
+  if(window.FILM_DEV)try{window.FILM_DEV({T,R,scene,cam,SEL,sel,pose})}catch(e){}
   return {recTop,R,scene,cam,recG,armLift,liftA,liftUp,STIP,RC,puck,ptopM,led,rings,sel,TT,sun,key,tex,rbox,PK,PH}
 }
 
@@ -3628,7 +3631,7 @@ function openAbout(){const slot=$('#sheetSlot');
     <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18v-6a8 8 0 0 1 16 0v6"/><rect x="3" y="15" width="4" height="6" rx="1.5"/><rect x="17" y="15" width="4" height="6" rx="1.5"/></svg><b>Stream</b>Play them anywhere</div>
    </div>
    <div class="about-bot"><span class="bh" style="--s:52px"><span class="bh-band"></span><span class="bh-cup l"></span><span class="bh-cup r"></span><span class="bh-head"><span class="bh-stripes"></span><span class="bh-face"><i class="bh-eye l"></i><i class="bh-eye r"></i><i class="bh-vu"><b></b><b></b><b></b><b></b><b></b></i></span></span></span><div><b>Meet DJ Selector</b><span>Your own crate-digging DJ. Tell him a mood, a moment or an artist, like "rainy Sunday", "cooking dinner" or "some Fleetwood Mac", and he digs through every record you and your family own to build a mix in seconds.</span></div></div>
-   <ul class="about-sel"><li><b>Only music you own.</b> Every song comes from a real record in your Stack, so every mix rewards collecting.</li><li><b>Mixes the whole family.</b> On Duo and Family plans he digs through everyone's records, not just yours.</li><li><b>Keep the good ones.</b> Play the mix straight away, shuffle again, or save it as a mixtape to send to a friend.</li></ul><p class="mono" style="font-size:10.5px;color:var(--muted);text-align:center;margin:14px 0 0;letter-spacing:.06em">PROTOTYPE BUILD · 17 OCT · 19:30</p><p class="mono" style="font-size:9.5px;color:var(--muted);text-align:center;margin:4px 0 0;letter-spacing:.04em;opacity:.8">${screenDiag()}</p>
+   <ul class="about-sel"><li><b>Only music you own.</b> Every song comes from a real record in your Stack, so every mix rewards collecting.</li><li><b>Mixes the whole family.</b> On Duo and Family plans he digs through everyone's records, not just yours.</li><li><b>Keep the good ones.</b> Play the mix straight away, shuffle again, or save it as a mixtape to send to a friend.</li></ul><p class="mono" style="font-size:10.5px;color:var(--muted);text-align:center;margin:14px 0 0;letter-spacing:.06em">PROTOTYPE BUILD · 17 OCT · 19:40</p><p class="mono" style="font-size:9.5px;color:var(--muted);text-align:center;margin:4px 0 0;letter-spacing:.04em;opacity:.8">${screenDiag()}</p>
    <div class="about-foot">STACK 1.0 · FOR PEOPLE WHO STILL BUY RECORDS</div></div></div>`;
   $('#abSc').onclick=$('#abX').onclick=closeSheet;
 }
@@ -3911,22 +3914,16 @@ const ART={
  bundle:()=>tile(`<g transform="translate(70 62)">${slip(0,0,44).replace(/<svg x="[^"]*" y="[^"]*"/,'<svg x="-13" y="-13"')}</g>${puckArt(122,108,.9)}<g transform="rotate(-28 70 150)"><rect x="32" y="140" width="76" height="14" rx="6" fill="${P.br}" stroke="${P.dk}" stroke-width="2"/><rect x="32" y="146" width="76" height="3" fill="${P.or}"/></g><rect x="118" y="20" width="62" height="22" rx="11" fill="${P.rd}"/><text x="149" y="35" text-anchor="middle" font-size="11" font-weight="700" fill="${P.cr}" font-family="Geist,system-ui,sans-serif">SAVE £12</text>`,P.mu)
 };
 const PRODUCTS=[
- {id:'hoodie',n:'Selector Hoodie',p:54,k:'cloth',t:'hoodie',pod:1,d:'Heavyweight 400gsm fleece. Big sunset-and-Selector graphic across the back, tiny Stack mark on the chest.',cols:['brown','cream','orange'],sizes:['S','M','L','XL']},
- {id:'tee',n:'Sunset Tee',p:28,k:'cloth',t:'tee',pod:1,d:'Soft organic cotton. Oversized 70s back print, minimal chest logo.',cols:['cream','brown','orange'],sizes:['S','M','L','XL']},
- {id:'cap',n:'Dad Cap',p:24,k:'cloth',t:'cap',pod:1,d:'Six-panel cotton cap with the Stack mark embroidered on the front.',cols:['brown','cream','orange'],sizes:['One size']},
- {id:'plush',n:'Little Selector',p:26,k:'plush',d:'A 25cm Selector teddy with a stitched headband and headphones, and glowing-bar chest lights in thread.'},
- {id:'pins',n:'Enamel Pin Set',p:9,k:'plush',d:'Three hard-enamel pins: the S mark, the Selector and a Sunset Stripe record.'},
- {id:'stickers',n:'Sticker Sheet',p:5,k:'plush',d:'Vinyl stickers for your crate, case or laptop. Waterproof.'},
- {id:'slipmat',n:'Sunset Slipmat (pair)',p:16,k:'acc',d:'Felt slipmats, 12", printed in Sunset Stripe rings with the S mark at the centre.'},
- {id:'brush',n:'Carbon Record Brush',p:14,k:'acc',d:'Anti-static carbon fibre brush with a 70s-striped handle.'},
- {id:'clean',n:'Record Care Kit',p:22,k:'acc',d:'Cleaning fluid, microfibre cloth and a stylus brush in a canvas pouch.'},
- {id:'sleeves',n:'Outer Sleeves (50)',p:12,k:'acc',d:'Crystal-clear 12" outer sleeves that keep covers like new.'},
- {id:'crate',n:'Wooden Record Crate',p:42,k:'acc',d:'Birch crate that holds 60 records, stained a warm 70s mustard.'},
- {id:'puck',n:'The Stack Puck',p:79,k:'puck',d:'Sits between your turntable and speakers and records your own copy in hi-res, crackle and all. Works with Stack on your phone.'},
- {id:'bundle',n:'Starter Bundle',p:97,k:'puck',d:'The Puck + a Sunset slipmat + a carbon brush. Everything to digitise your first record. Saves £12.'}
+ {id:'tee',n:'Selector Tee',p:32,k:'cloth',pod:1,sizes:['S','M','L','XL'],cols:[['black','Washed black','#1E1C1B'],['oatmeal','Oatmeal','#D6CAB2'],['chocolate','Chocolate','#462C1E'],['rust','Rust','#96422C']],d:'Heavyweight washed tee. A small S on the chest, the Selector in a 70s sunset across the back, a tiny embroidered Selector on the sleeve and a woven S neck tag.'},
+ {id:'hoodie',n:'Sunset S Hoodie',p:62,k:'cloth',pod:1,sizes:['S','M','L','XL'],d:'450gsm garment-dyed chocolate hoodie. Embroidered S on the chest, a washed record print on the back over three record-spine stripes, a tiny Selector stitched on the cuff, a woven S neck label and orange-tipped drawcords.'},
+ {id:'cap',n:'Corduroy S Cap',p:28,k:'cloth',sizes:['One size'],d:'Washed black six-panel corduroy cap. Embroidered S on the front, burnt-orange under-brim, contrast brim stitching, brass slide buckle and a three-stripe tab on the back.'},
+ {id:'slipmat',n:'Sunset Slipmat',p:18,k:'acc',d:'12" dense black felt slipmat with the sunset S and three thin rings. Non-slip underside and a woven S label.'},
+ {id:'crate',n:'Birch Record Crate',p:48,k:'acc',d:'Holds about 60 LPs. Finger-jointed birch ply, engraved S, painted sunset stripes, antique-brass corners and a leather tab stamped with the S.'},
+ {id:'puck',n:'The Stack Puck',p:79,k:'puck',d:'Sits between your turntable and speakers and records your own copy in hi-res, crackle and all. Knurled aluminium rim, amber status light, USB-C and RCA in and out.'}
 ];
-const prod=id=>PRODUCTS.find(p=>p.id===id);
-const prodArt=(p,col,side)=>p.t?ART[p.t](col||p.cols[0],side||'back'):ART[p.id]();
+const SHOP_IMG=k=>(window.STACK_SHOP_IMG&&window.STACK_SHOP_IMG[k])||('shop/'+k+'.jpg');
+const prod=id=>PRODUCTS.find(p=>p.id===id);CART=CART.filter(l=>prod(l.id));
+const prodArt=(p,side,col)=>`<span class="ph-img" style="background-image:url('${SHOP_IMG(p.cols?p.id+'-'+(col||p.cols[0][0]):p.id)}');background-position:${side==='back'?'100%':'0%'} 50%" role="img" aria-label="${p.n}, ${side==='back'?'back':'front'}"></span>`;
 
 /* ---------- screen skeleton ---------- */
 const sc=document.getElementById('s-wish');
@@ -4025,22 +4022,22 @@ function rNear(){try{renderRSD()}catch(e){}$('#mkShops').innerHTML=`<h3 class="m
 let shopCat='all';
 function cartN(){return CART.reduce((n,l)=>n+l.q,0)}
 function rShop(){const el=$('#mk-shop'),L=PRODUCTS.filter(p=>shopCat==='all'||p.k===shopCat);
- el.innerHTML=`<div class="shop-hero"><div class="sh-rings"></div><div class="sh-tx"><small>THE STACK SHOP</small><b>Wear the record.</b><span>70s-style merch, vinyl care and the Puck.</span></div></div>
- <div class="mk-top"><div class="mk-fmt">${[['all','All'],['cloth','Clothing'],['plush','Selector'],['acc','Vinyl care'],['puck','Puck']].map(([k,n])=>`<button data-cat="${k}" class="${shopCat===k?'on':''}">${n}</button>`).join('')}</div><button class="mk-orders" data-basket>Basket${cartN()?` <b>${cartN()}</b>`:''}</button></div>
+ el.innerHTML=`<div class="shop-hero"><div class="sh-rings"></div><div class="sh-tx"><small>THE STACK SHOP</small><b>Wear the record.</b><span>Clothing, record gear and the Puck.</span></div></div>
+ <div class="mk-top"><div class="mk-fmt">${[['all','All'],['cloth','Clothing'],['acc','For your records'],['puck','The Puck']].map(([k,n])=>`<button data-cat="${k}" class="${shopCat===k?'on':''}">${n}</button>`).join('')}</div><button class="mk-orders" data-basket>Basket${cartN()?` <b>${cartN()}</b>`:''}</button></div>
  <div class="shop-grid">${L.map(p=>`<button class="shop-card" data-prod="${p.id}"><span class="sc-art">${prodArt(p)}</span><b>${p.n}</b><span>${money(p.p)}${p.pod?' · made to order':''}</span></button>`).join('')}</div>
- <p class="sub" style="margin:12px 2px">Clothing is printed to order. Everything else ships in 2 days. Free delivery over £50. Prototype: no payment is taken.</p>`}
-function openProd(id){const p=prod(id);let col=p.cols?p.cols[0]:null,size=p.sizes?p.sizes[Math.min(1,p.sizes.length-1)]:null,side='back';
- const draw=()=>{const slot=sheet(`${sheetH(p.n)}<div class="sheet-b"><div class="pd-art">${prodArt(p,col,side)}</div>
-  ${p.t&&p.t!=='cap'?`<div class="mk-fmt c"><button data-side="back" class="${side==='back'?'on':''}">Back</button><button data-side="front" class="${side==='front'?'on':''}">Front</button></div>`:''}
+ <p class="sub" style="margin:12px 2px">Tees and hoodies are made to order. Everything else ships in 2 days. Free delivery over £50. Prototype: no payment is taken.</p>`}
+function openProd(id){const p=prod(id);let size=p.sizes?p.sizes[Math.min(1,p.sizes.length-1)]:null,side='front',col=p.cols?p.cols[0][0]:null;
+ const draw=()=>{const cn=p.cols?p.cols.find(c=>c[0]===col)[1]:'';const slot=sheet(`${sheetH(p.n)}<div class="sheet-b"><div class="pd-art">${prodArt(p,side,col)}</div>
+  <div class="mk-fmt c"><button data-side="front" class="${side==='front'?'on':''}">Front</button><button data-side="back" class="${side==='back'?'on':''}">Back</button></div>
   <div class="pd-top"><b>${money(p.p)}</b><span>${p.pod?'Made to order · ships in 5–7 days':'Ships in 2 days'}</span></div><p class="sub" style="margin:6px 0 10px">${p.d}</p>
-  ${p.cols?`<div class="form-row"><label>Colour · ${COL[col].n}</label><div class="vc-cols">${p.cols.map(c=>`<button data-col="${c}" class="${c===col?'on':''}" style="background:${COL[c].g}" aria-label="${COL[c].n}"></button>`).join('')}</div></div>`:''}
+  ${p.cols?`<div class="form-row"><label>Colour · ${cn}</label><div class="vc-cols">${p.cols.map(c=>`<button data-col="${c[0]}" class="${c[0]===col?'on':''}" style="background:${c[2]}" aria-label="${c[1]}"></button>`).join('')}</div></div>`:''}
   ${p.sizes&&p.sizes.length>1?`<div class="form-row"><label>Size</label><div class="opt-row">${p.sizes.map(s=>`<button class="chipbtn${s===size?' on':''}" data-size="${s}">${s}</button>`).join('')}</div></div>`:''}
   <button class="btn" data-add style="margin-top:10px">Add to basket</button></div>`);
   slot.onclick=e=>{const t=e.target.closest('button');if(!t)return;if(t.dataset.side){side=t.dataset.side;draw()}else if(t.dataset.col){col=t.dataset.col;draw()}else if(t.dataset.size){size=t.dataset.size;draw()}
-   else if('add' in t.dataset){const key=[p.id,col,size].join('|'),ex=CART.find(l=>l.key===key);ex?ex.q++:CART.push({key,id:p.id,n:p.n+(col?' · '+COL[col].n:'')+(size&&p.sizes.length>1?' · '+size:''),p:p.p,q:1,pod:!!p.pod});save();closeSheet();rShop();mkToast('Added to basket')}}};
+   else if('add' in t.dataset){const key=[p.id,col,size].join('|'),ex=CART.find(l=>l.key===key);ex?ex.q++:CART.push({key,id:p.id,col,n:p.n+(col?' · '+cn:'')+(size&&p.sizes.length>1?' · '+size:''),p:p.p,q:1,pod:!!p.pod});save();closeSheet();rShop();mkToast('Added to basket')}}};
  draw()}
 function openBasket(){const sub=CART.reduce((n,l)=>n+l.p*l.q,0),del=!CART.length||sub>=50?0:3.95,tot=sub+del;
- const slot=sheet(`${sheetH('Your basket')}<div class="sheet-b">${CART.length?CART.map((l,i)=>`<div class="mk-line"><span class="ln-art">${prodArt(prod(l.id),l.key.split('|')[1]||undefined,'back')}</span><div class="tx"><b>${esc(l.n)}</b><span>${money(l.p)}${l.pod?' · made to order':''}</span></div><div class="qty"><button data-q="${i}" data-d="-1" aria-label="Fewer">−</button><b>${l.q}</b><button data-q="${i}" data-d="1" aria-label="More">+</button></div></div>`).join('')+`<div class="mk-break"><div><span>Subtotal</span><b>${money(sub)}</b></div><div><span>Delivery</span><b>${del?money(del):'Free'}</b></div><div class="tot"><span>Total</span><b>${money(tot)}</b></div></div><button class="btn" data-place>Place demo order</button><p class="sub" style="margin:8px 0 0;text-align:center">Prototype: no payment is taken.</p>`:'<div class="empty">Your basket is empty.</div>'}</div>`);
+ const slot=sheet(`${sheetH('Your basket')}<div class="sheet-b">${CART.length?CART.map((l,i)=>`<div class="mk-line"><span class="ln-art">${prod(l.id)?prodArt(prod(l.id),'front',l.col):''}</span><div class="tx"><b>${esc(l.n)}</b><span>${money(l.p)}${l.pod?' · made to order':''}</span></div><div class="qty"><button data-q="${i}" data-d="-1" aria-label="Fewer">−</button><b>${l.q}</b><button data-q="${i}" data-d="1" aria-label="More">+</button></div></div>`).join('')+`<div class="mk-break"><div><span>Subtotal</span><b>${money(sub)}</b></div><div><span>Delivery</span><b>${del?money(del):'Free'}</b></div><div class="tot"><span>Total</span><b>${money(tot)}</b></div></div><button class="btn" data-place>Place demo order</button><p class="sub" style="margin:8px 0 0;text-align:center">Prototype: no payment is taken.</p>`:'<div class="empty">Your basket is empty.</div>'}</div>`);
  slot.onclick=e=>{const t=e.target.closest('button');if(!t)return;if(t.dataset.q!==undefined){const l=CART[+t.dataset.q];l.q+=+t.dataset.d;if(l.q<1)CART.splice(+t.dataset.q,1);save();openBasket();if(pane==='shop')rShop()}
   else if('place' in t.dataset){SORD.unshift({oid:'S'+Date.now(),lines:CART.map(l=>({n:l.n,q:l.q})),total:tot,pod:CART.some(l=>l.pod),ts:Date.now()});CART=[];save();rShop();openOrders();mkToast('Order placed. Thank you')}}}
 
