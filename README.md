@@ -16,6 +16,8 @@ On an iPhone, open it in Safari, then Share → Add to Home Screen to run it ful
 <tr><td align="center" valign="top" width="25%"><img src="docs/film-run.jpg" width="190"><br><sub>The opening film: the Selector runs along a spinning record</sub></td><td align="center" valign="top" width="25%"><img src="docs/film-puck.jpg" width="190"><br><sub>Explaining the Puck, the turntable accessory</sub></td><td align="center" valign="top" width="25%"><img src="docs/loading.jpg" width="190"><br><sub>The loading screen, a record label that spins in</sub></td><td align="center" valign="top" width="25%"><img src="docs/my-stack.jpg" width="190"><br><sub>My Stack: your records, with search, Liked songs and a notification bell</sub></td></tr>
 <tr><td align="center" valign="top" width="25%"><img src="docs/player.jpg" width="190"><br><sub>The turntable player</sub></td><td align="center" valign="top" width="25%"><img src="docs/vinyl-colours.jpg" width="190"><br><sub>Your copy: choose your vinyl colour</sub></td><td align="center" valign="top" width="25%"><img src="docs/two-decks.jpg" width="190"><br><sub>Two decks and a crossfader</sub></td><td align="center" valign="top" width="25%"><img src="docs/selector.jpg" width="190"><br><sub>The Selector, your robot DJ</sub></td></tr>
 <tr><td align="center" valign="top" width="25%"><img src="docs/family.jpg" width="190"><br><sub>Family Stack: one shared shelf</sub></td><td align="center" valign="top" width="25%"><img src="docs/friends.jpg" width="190"><br><sub>Friends: browse their stacks, you can only stream what you own</sub></td><td align="center" valign="top" width="25%"><img src="docs/stats.jpg" width="190"><br><sub>Your stats</sub></td><td align="center" valign="top" width="25%"><img src="docs/notifications.jpg" width="190"><br><sub>The notification bell keeps My Stack about the music</sub></td></tr>
+<tr><td align="center" valign="top" width="25%"><img src="docs/marketplace.jpg" width="190"><br><sub>Marketplace: second-hand records from other collectors</sub></td><td align="center" valign="top" width="25%"><img src="docs/market-buy.jpg" width="190"><br><sub>Buying: Stack holds the money until it arrives</sub></td><td align="center" valign="top" width="25%"><img src="docs/market-sell.jpg" width="190"><br><sub>Selling: your price, the fee and what you get</sub></td><td align="center" valign="top" width="25%"><img src="docs/shop.jpg" width="190"><br><sub>The Stack Shop: 70s merch, vinyl care and the Puck</sub></td></tr>
+<tr><td align="center" valign="top" width="25%"><img src="docs/shop-hoodie.jpg" width="190"><br><sub>The Selector Hoodie, with a big back graphic</sub></td><td></td><td></td><td></td></tr>
 </table>
 
 Screenshots are from the live demo. Album covers show as placeholder art here; on the live site, official artwork loads from the Apple Music and Deezer APIs.
@@ -40,7 +42,7 @@ This is a university project, so it is a design prototype. It explores the idea,
 - **My Stack:** your records shown as covers, a crate of spines, or a list. Search by song, album or artist.
 - **Add records** by search, by scanning a barcode, or by importing from Discogs.
 - **Your copy:** record the pressing, condition, where you bought it, what you paid, whether it is signed, and the **vinyl colour** (black, solid, translucent, clear, marble, splatter, galaxy, half and half, tri-colour or picture disc). The record you see spinning matches the one on your shelf.
-- **Wishlist, mixtapes and Liked songs** sit alongside, and a notification bell collects mixtapes sent to you, loans and "dust it off" reminders so My Stack stays about the music.
+- **Mixtapes and Liked songs** sit alongside, and a notification bell collects mixtapes sent to you, loans and "dust it off" reminders so My Stack stays about the music.
 
 ### Listening
 - A **turntable-style player** with a spinning record, tonearm, up next and sides.
@@ -58,13 +60,71 @@ This is a university project, so it is a design prototype. It explores the idea,
 - **The Selector:** a cel-shaded robot DJ who digs through your crate. Ask it for a mood or an idea and it builds a queue from records you own.
 - **Stats and Wrapped:** what you play most, and a year-end style recap.
 - **Dust it off:** a nudge to play the record you have not touched in months, with a "forgotten gems" mix.
-- **Shops and Record Store Day:** a place to find independent record shops.
+### Marketplace
+- **Browse** second-hand records listed by other collectors, with the pressing, condition, vinyl colour and seller rating. Filter by vinyl, CD, or copies that come with a recorded pressing.
+- **Buy safely.** You pay Stack, and Stack holds the money until you confirm the record arrived. Only then is the seller paid, and the digital copy, plus the seller's recorded pressing if it was included, moves to you.
+- **Sell** any record in your Stack. You set the price and see the fee and what you take home. Once the buyer confirms it arrived, you lose the digital copy and your recorded pressing, exactly like handing over the real record. Lent records can't be sold until they come back.
+- **Wishlist:** records you want, with a "for sale now" alert when someone lists one.
+- **Nearby:** independent record shops near you, their events and Record Store Day.
+
+### The Stack Shop
+70s-style merch drawn in the app's own look: a **Selector Hoodie**, **Sunset Tee** and **Dad Cap** with big back graphics and a minimal chest logo; a **Little Selector** teddy; pins and stickers; vinyl care (slipmats, a carbon brush, a care kit, outer sleeves, a record crate); and **the Puck**, alone or in a starter bundle. Checkout is a demo, and no payment is taken.
 
 ### The Puck
 A small turntable accessory that sits under your record. In the concept, it logs what you play on the real turntable, so a physical spin counts toward your stats just like a digital one. In this prototype it is simulated.
 
 ### The opening film
 The first thing you see is a short real-time 3D film, rendered live in the browser with Three.js. The Selector runs along a spinning record, explains what Stack is and how the Puck works, and gets flung off, and the camera dives into the record label and hands over to the loading screen.
+
+---
+
+## Business model
+
+Stack is designed to earn from several directions, so it doesn't rely on one stream:
+
+| Stream | How it earns | Price in the prototype |
+|---|---|---|
+| Subscriptions | Monthly plans to stream the records you own | Solo £4 · Duo £7 · Family £14.99 a month |
+| Marketplace fees | A cut of every second-hand sale, paid by the seller | 8% of the sale price |
+| Seller tools | Promoted listings and a verified-seller badge | £1.99 per promotion · £2.99 a month |
+| The Puck | Hardware sold at a margin | £79, or £97 in the starter bundle |
+| Merch | Clothing printed to order (no stock risk); plush, pins and accessories bought in bulk | £5 to £54 |
+| Shop partnerships | Independent shops pay to feature their stock and events | £29 a month per shop |
+
+**How the 8% compares.** Discogs is reported to charge sellers 9% ([fee calculator](https://feecalculator.us/discogs-fee-calculator/)), while eBay UK has dropped fees for private sellers and charges buyers a protection fee instead ([Startups.co.uk](https://startups.co.uk/news/ebay-buyer-protection-fee)). Stack sits just under Discogs and keeps the buyer's price simple: the record plus postage.
+
+### Product margins (assumed costs)
+
+| Product | Price | Assumed unit cost | Gross margin |
+|---|---|---|---|
+| Selector Hoodie (print on demand) | £54 | £24 | 56% |
+| Sunset Tee (print on demand) | £28 | £11 | 61% |
+| Dad Cap (print on demand) | £24 | £9 | 62% |
+| Little Selector teddy | £26 | £7 | 73% |
+| Enamel pin set | £9 | £2.50 | 72% |
+| Sunset slipmat (pair) | £16 | £4 | 75% |
+| Record care kit | £22 | £6 | 73% |
+| Wooden record crate | £42 | £16 | 62% |
+| The Stack Puck | £79 | £32 | 59% |
+| Starter bundle | £97 | £40 | 59% |
+
+### A year-one scenario
+
+An illustration, not a prediction. It assumes 10,000 users, 2,000 of them paying (60% Solo, 25% Duo, 15% Family), 1,500 marketplace sales a month averaging £20, 300 promotions a month, 150 verified sellers, 1,200 Pucks, 2,500 merch orders averaging £35 and 15 featured shops.
+
+| Stream | Revenue | After direct costs |
+|---|---|---|
+| Subscriptions | £153,564 | £61,426, after an assumed 60% to rights holders |
+| Marketplace fees | £28,800 | £19,800, after card processing (1.5% + 20p a sale) |
+| Promotions and verification | £12,546 | £12,546 |
+| The Puck | £94,800 | £56,400 |
+| Merch | £87,500 | £48,125, at a 55% blended margin |
+| Shop partnerships | £5,220 | £5,220 |
+| **Total** | **£382,430** | **£203,517** |
+
+The Puck and merch matter more than they first look. Together they make up nearly half the revenue, and they don't depend on licensing deals. Subscriptions are the largest single stream, but most of that money goes to rights holders.
+
+**What the numbers leave out:** staff, development, marketing, hosting, returns, VAT and the licensing deals themselves. Every cost here is an assumption for the project, not a quote from a supplier.
 
 ---
 
@@ -76,6 +136,8 @@ The first thing you see is a short real-time 3D film, rendered live in the brows
 | Audio: 30-second previews looked up live from the Apple Music and Deezer APIs, with crossfade through the Web Audio API | Full-length playback and ownership checks |
 | Official album artwork loaded from those same services | The Puck, barcode scanning and Discogs import |
 | The 3D intro film, built in code | Shop details and Record Store Day events |
+| Marketplace flow: listing, fees, held payment and ownership moving on arrival | Other sellers, buyers, payments and deliveries |
+| Stack Shop products, basket and order flow | Checkout: no payment is taken |
 
 No copyrighted audio or artwork is stored in this repository. Previews and artwork come from the public APIs at the moment you play.
 
@@ -93,7 +155,7 @@ Rather than pretend a prototype answers everything, these are the questions behi
 
 ## Try it
 
-Open the live demo. On a phone, tap **Account → Demo shortcuts** to jump to any feature: the intro film, the loading screen, the player, two decks, lending, stats, the Selector and more. On a computer the shortcuts are in the panel beside the phone.
+Open the live demo. On a phone, tap **Account → Demo shortcuts** to jump to any feature: the intro film, the loading screen, the player, two decks, lending, stats, the Selector, the Marketplace, selling a record, the Stack Shop and more. On a computer the shortcuts are in the panel beside the phone.
 
 Add `?nofilm` to the address to skip the intro film, or `?demo` to open the shortcuts straight away.
 
