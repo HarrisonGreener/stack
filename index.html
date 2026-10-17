@@ -834,6 +834,12 @@ h2.big{font-size:34px;font-weight:650;letter-spacing:-.035em;margin:6px 0 4px;te
   background:radial-gradient(circle,#111 0 33%,transparent 33.5%),repeating-radial-gradient(circle,#181818 0 1.1px,#0a0a0a 1.1px 2.4px);
   box-shadow:0 22px 44px -12px rgba(0,0,0,.55)}
 /* ---------- marketplace + stack shop ---------- */
+.mk-chips button.shopchip:not(.on){background:linear-gradient(135deg,#F2AE3D,#C8452B);color:#fff;border-color:transparent}
+.shop-promo{position:relative;overflow:hidden;display:flex;align-items:center;gap:10px;width:100%;text-align:left;padding:14px 14px;border-radius:16px;background:#4A2415;color:#F4E4C1;margin-bottom:10px}
+.shop-promo .sp-r{position:absolute;right:-34px;top:-30px;width:130px;height:130px;border-radius:50%;background:radial-gradient(circle,#4A2415 0 22%,#F4E4C1 22% 32%,#F0A034 32% 46%,#E8742B 46% 60%,#C8452B 60% 74%,transparent 74%);opacity:.9}
+.shop-promo .sp-t{position:relative;flex:1}.shop-promo small{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;opacity:.8}.shop-promo b{display:block;font-family:"Shrikhand","Cooper Black",Georgia,serif;font-weight:400;font-size:20px;color:#F0A034;line-height:1.1}.shop-promo .sp-t span{font-size:12px;opacity:.85}
+.shop-promo .sp-go{position:relative;font-size:13px;font-weight:700;padding:8px 14px;border-radius:999px;background:#F4E4C1;color:#4A2415}
+
 .mk-chips{display:flex;gap:6px;overflow-x:auto;margin:12px -20px 14px;padding:0 20px;scrollbar-width:none}.mk-chips::-webkit-scrollbar{display:none}
 .mk-chips button{flex:none;padding:8px 14px;border-radius:999px;font-size:13.5px;font-weight:600;border:1px solid var(--line);color:var(--muted);background:var(--surface)}
 .mk-chips button.on{background:var(--fg);color:var(--bg);border-color:var(--fg)}
@@ -3925,7 +3931,7 @@ const prodArt=(p,col,side)=>p.t?ART[p.t](col||p.cols[0],side||'back'):ART[p.id](
 /* ---------- screen skeleton ---------- */
 const sc=document.getElementById('s-wish');
 sc.innerHTML=`<div class="glow"></div><h2 class="big">Marketplace</h2><p class="sub" id="mkSub">Buy, sell and swap records, and shop Stack merch.</p>
-<div class="mk-chips" id="mkChips" role="tablist"><button data-p="browse" class="on">Browse</button><button data-p="sell">Sell</button><button data-p="wish">Wishlist</button><button data-p="near">Nearby</button><button data-p="shop">Stack Shop</button></div>
+<div class="mk-chips" id="mkChips" role="tablist"><button data-p="browse" class="on">Records</button><button data-p="shop" class="shopchip">Stack Shop</button><button data-p="sell">Sell</button><button data-p="wish">Wishlist</button><button data-p="near">Nearby</button></div>
 <div class="mk-pane" id="mk-browse"></div><div class="mk-pane" id="mk-sell" hidden></div>
 <div class="mk-pane" id="mk-wish" hidden><p class="sub" id="wishCount"></p><div style="height:10px"></div><div id="wishList"></div></div>
 <div class="mk-pane" id="mk-near" hidden><div id="rsdSlot"></div><div id="mkShops"></div></div><div class="mk-pane" id="mk-shop" hidden></div>`;
@@ -3945,6 +3951,7 @@ function condChip(l){return `${l.cond}`}
 function rBrowse(){const el=$('#mk-browse'),all=allListings();let L=all.filter(l=>{const a=byId(l.rid);if(!a||a.o==='you')return false;return fmt==='all'||(fmt==='CD'?a.f==='CD':fmt==='rec'?l.rec:a.f!=='CD')});
  const open=ORD.filter(o=>o.status!=='delivered').length+SORD.filter(o=>!o.done).length;
  el.innerHTML=`<div class="mk-top"><div class="mk-fmt">${[['all','All'],['LP','Vinyl'],['CD','CDs'],['rec','Recorded pressings']].map(([k,n])=>`<button data-fmt="${k}" class="${fmt===k?'on':''}">${n}</button>`).join('')}</div><button class="mk-orders" data-orders>Orders${open?` <b>${open}</b>`:''}</button></div>
+ <button class="shop-promo" data-goshop><span class="sp-r"></span><span class="sp-t"><small>THE STACK SHOP</small><b>Wear the record.</b><span>Selector merch, vinyl care and the Puck</span></span><span class="sp-go">Shop</span></button>
  <div class="mk-note"><b>Buy it, own it.</b> Pay Stack, we hold the money until the record arrives, then the digital copy moves to you.</div>
  <div class="mk-list">${L.length?L.map(l=>{const a=byId(l.rid),wl=WISH.has(l.rid);return `<button class="mk-card" data-lid="${l.id}">${artHTML(a,'',false)}<span class="tx"><b>${esc(a.t)}</b><span>${esc(a.a)} · ${fmtLabel[a.f]} · ${a.y}</span><span class="mk-meta">${condChip(l)} · ${esc(l.press)}</span><span class="mk-sell"><i style="background:${l.seller.c}">${l.seller.n[0]}</i>${esc(l.seller.n)} · ${l.seller.d}${l.promo?' '+pill('Promoted','pr'):''}</span><span class="mk-tags">${wl?pill('On your wishlist','wl'):''}${l.rec?pill('Recorded pressing','rc'):''}</span></span><span class="mk-price">${money(l.price)}</span></button>`}).join(''):'<div class="empty">Nothing listed for that filter yet.</div>'}</div>`}
 
@@ -4042,6 +4049,7 @@ sc.addEventListener('click',e=>{const t=e.target.closest('button');if(!t)return;
  if(t.dataset.fmt){fmt=t.dataset.fmt;rBrowse()}else if(t.dataset.cat){shopCat=t.dataset.cat;rShop()}
  else if(t.dataset.lid)openListing(t.dataset.lid);else if(t.dataset.sell)openSell(t.dataset.sell);else if('orders' in t.dataset)openOrders();else if('basket' in t.dataset)openBasket();else if(t.dataset.prod)openProd(t.dataset.prod);
  else if('verify' in t.dataset){VERIFIED=!VERIFIED;save();rSell();mkToast(VERIFIED?'Verified seller · £2.99 a month':'Verification cancelled')}
+ else if('goshop' in t.dataset){setPane('shop');sc.scrollTop=0}
  else if(t.dataset.listfor){setPane('browse');openListing(t.dataset.listfor)}});
 /* wishlist rows: show when something is for sale */
 {const _rw=renderWish;renderWish=function(...x){const r=_rw.apply(this,x);try{$$('#wishList .wish-row').forEach(row=>{const id=(row.querySelector('[data-wishopen]')||{}).dataset&&row.querySelector('[data-wishopen]').dataset.wishopen,L=allListings().filter(l=>l.rid===id).sort((a,b)=>a.price-b.price)[0];if(L&&!row.querySelector('.mk-wl')){const b=document.createElement('button');b.className='mk-wl';b.dataset.listfor=L.id;b.textContent='For sale now from '+money(L.price)+' · View';row.appendChild(b)}});badge()}catch(e){}return r}}
