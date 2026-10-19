@@ -1628,6 +1628,7 @@ html.rm .wl-sel,html.rm .wl-disc{transition:none!important}
 .ch-fr{display:flex;align-items:center;gap:8px}.ch-fr>span{font-size:12px;color:#E9CFA8;margin-left:4px}.ch-f{position:relative;padding:0}.ch-f .ch-art{width:40px;height:40px}.ch-f .avatar{position:absolute;right:-5px;bottom:-5px;width:20px;height:20px;font-size:9px;box-shadow:0 0 0 2px #3B2418}
 .ch-res,.ch-list{display:flex;flex-direction:column;gap:4px;margin-top:8px}.ch-row{display:flex;align-items:center;gap:10px;padding:6px;border-radius:12px;text-align:left;width:100%}button.ch-row:hover{background:var(--surface-2)}.ch-row div{flex:1;min-width:0;display:flex;flex-direction:column}.ch-row b{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.ch-row small{font-size:12px;color:var(--muted)}.ch-row em{font-style:normal;font-size:11px;font-weight:700;color:#2FA37A}.ch-m{background:none!important;padding:0!important;border-radius:0!important;font-size:11.5px!important;font-weight:700}
 .mk-intro{padding:14px 16px;border-radius:18px;background:var(--surface);box-shadow:0 1px 3px var(--shadow);margin:2px 0 12px}.mk-intro b{font-size:16px;font-weight:800}.mk-intro p{margin:4px 0 10px;font-size:13.5px;color:var(--muted);line-height:1.4}.mk-intro ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px}.mk-intro li{display:flex;align-items:flex-start;gap:10px;font-size:13px;line-height:1.35}.mk-intro li i{flex:none;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:11px;font-weight:800;color:#FFF3E0;background:#E8762C}
+.ov-search{margin:6px 0 8px}.ov-seg{display:flex;margin:6px 0 12px}.ov-seg button{flex:1}
 </style>
 <style>[hidden]{display:none!important}body{margin:0}</style>
 </head>
@@ -1742,8 +1743,9 @@ html.rm .wl-sel,html.rm .wl-disc{transition:none!important}
             <div class="fam-top"><div class="faces" id="faces"></div><span class="plan" id="famCount">4 of 4 members</span></div>
             <div class="legend" id="legend"></div>
           </div>
-          <div class="cf" id="cfFam"></div>
-          <div class="caption" id="capFam"></div>
+          <div class="seg ov-seg" data-ov="fam" id="famSeg"><button aria-pressed="true" data-v="covers">Covers</button><button aria-pressed="false" data-v="crate">Crate</button><button aria-pressed="false" data-v="list">List</button></div>
+          <div data-ovp="covers"><div class="cf" id="cfFam"></div>
+          <div class="caption" id="capFam"></div></div><div data-ovp="crate" hidden></div><div data-ovp="list" class="listv" hidden></div>
           <div class="sec-h"><h3 id="famMtTitle">Family mixtapes</h3></div>
           <div class="mt-row" id="famMt"></div>
           <div class="sec-h"><h3>In the house now</h3></div>
@@ -2481,8 +2483,8 @@ function renderFamily(){const P=st.plan,act=activeM(),others=act.filter(k=>k!=='
   $('#famCount').textContent=`${act.length} of ${P==='duo'?2:4} members`;
   $('#faces').innerHTML=act.map(k=>Object.assign({key:k},MEMBERS[k])).map(m=>`<div class="avatar" ${avs(m.key,m.c)}>${m.i}</div>`).join('');
   $('#legend').innerHTML=act.map(k=>[k,MEMBERS[k]]).map(([k,m])=>`<span style="--c:${m.c}"><i></i>${m.n} · ${ALBUMS.filter(a=>a.o===k).length}</span>`).join('');
-  if(!cfFam)cfFam=Carousel($('#cfFam'),{items:family,owner:true,from:()=>$('#famTitle').textContent,cap:$('#capFam'),capText:a=>capWith(a,`<b>${a.t}</b><span>${a.a} · ${fmtLabel[a.f]} · ${!MEMBERS[a.o]||a.o==='you'?((window.BORROW||{})[a.id]?'Borrowed from '+window.BORROW[a.id].from:'Your copy'):MEMBERS[a.o].n+"'s copy"}</span>${capPlay}`)});
-  cfFam.render();
+  if(!cfFam)cfFam=Carousel($('#cfFam'),{items:()=>{const r=$('#s-family');return r._ovItems?r._ovItems():family()},owner:true,from:()=>$('#famTitle').textContent,cap:$('#capFam'),capText:a=>capWith(a,`<b>${a.t}</b><span>${a.a} · ${fmtLabel[a.f]} · ${!MEMBERS[a.o]||a.o==='you'?((window.BORROW||{})[a.id]?'Borrowed from '+window.BORROW[a.id].from:'Your copy'):MEMBERS[a.o].n+"'s copy"}</span>${capPlay}`)});
+  cfFam.render();try{OV.wire($('#s-family'),{items:family,rerender:()=>{cfFam.target=cfFam.pos=0;cfFam.render()}})}catch(e){}
   $('#famMtTitle').textContent=lbl+' mixtapes';
   const fm=FAM_MT.filter(m=>act.includes(m.by)).map(m=>Object.assign(m,{keys:m.keys.filter(k=>canPlay(byId(k.split(':')[0])))}));
   const L=st.view==='list';$('#famMt').classList.toggle('mt-list',L);
@@ -2503,7 +2505,7 @@ function renderFriends(){
 renderMine();renderFamily();renderFriends();
 
 /* tabs */
-function goTab(t){st.tab=t;try{t==='add'?setTimeout(()=>Puck.start(),30):Puck.stop()}catch(e){}$$('.screen').forEach(s=>s.hidden=s.id!=='s-'+t);if(t==='mine'&&cfMine)cfMine.layout();if(t==='family'&&cfFam)cfFam.layout();
+function goTab(t){try{if(t!=='family'&&$('#s-family').contains($('#crateView')))OV.restore()}catch(e){}st.tab=t;try{t==='add'?setTimeout(()=>Puck.start(),30):Puck.stop()}catch(e){}$$('.screen').forEach(s=>s.hidden=s.id!=='s-'+t);if(t==='mine'&&cfMine)cfMine.layout();if(t==='family'&&cfFam)cfFam.layout();
   $$('.tab').forEach(b=>{if(b.dataset.tab===t)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current')});$('#s-'+t).scrollTop=0}
 $('#tabs').onclick=e=>{const b=e.target.closest('.tab[data-tab]');if(b)goTab(b.dataset.tab)};
 document.addEventListener('click',e=>{const g=e.target.closest('[data-go]');if(g)goTab(g.dataset.go)});
@@ -2511,7 +2513,7 @@ document.addEventListener('click',e=>{const g=e.target.closest('[data-go]');if(g
 /* view + filters */
 $('#vSpines').onclick=()=>{setView('spines');saveView()};$('#vList').onclick=()=>{setView('list');saveView()};$('#vCrate').onclick=()=>{setView('crate');saveView()};
 function saveView(){try{localStorage.setItem('stack-view',st.view)}catch(e){}}
-function setView(v){st.view=v;phone.classList.toggle('list-mode',v==='list');try{renderMT();renderFamily()}catch(e){}$('#vSpines').setAttribute('aria-pressed',v==='spines');$('#vList').setAttribute('aria-pressed',v==='list');$('#spinesView').hidden=v!=='spines';$('#listMine').hidden=v!=='list';$('#vCrate').setAttribute('aria-pressed',v==='crate');$('#crateView').hidden=v!=='crate';if(v==='crate')Crate.render()}
+function setView(v){try{OV.restore()}catch(e){}st.view=v;phone.classList.toggle('list-mode',v==='list');try{renderMT();renderFamily()}catch(e){}$('#vSpines').setAttribute('aria-pressed',v==='spines');$('#vList').setAttribute('aria-pressed',v==='list');$('#spinesView').hidden=v!=='spines';$('#listMine').hidden=v!=='list';$('#vCrate').setAttribute('aria-pressed',v==='crate');$('#crateView').hidden=v!=='crate';if(v==='crate')Crate.render()}
 $('#chips').onclick=e=>{const c=e.target.closest('.chip');if(!c)return;st.filter=c.dataset.f;$$('.chip').forEach(x=>x.setAttribute('aria-pressed',x===c));renderMine()};
 
 /* open records */
@@ -2765,14 +2767,32 @@ $('#autoFade').onclick=()=>{if(fadeAnim)return;const from=st.xf,to=from>50?0:100
 /* friend sheet */
 function openFriend(f,focusId){const slot=$('#sheetSlot');
   slot.innerHTML=`<div class="scrim" id="frScrim"></div><div class="sheet" data-from="${f.n}'s Stack"><div class="sheet-h"><h3>${f.n}'s Stack</h3><button class="icon-btn" id="frX" aria-label="Close">${ICON.x}</button></div>
-  <div class="sheet-b"><p class="sub">${f.ids.length} records · ${f.ids.filter(id=>mine().some(a=>a.id===id)).length} you both own · browse only</p><div class="cf" id="cfFr"></div><div class="caption" id="capFr"></div></div></div>`;
+  <div class="sheet-b"><p class="sub">${f.ids.length} records · ${f.ids.filter(id=>mine().some(a=>a.id===id)).length} you both own · browse only</p><div class="seg ov-seg" data-ov="fr"><button aria-pressed="true" data-v="covers">Covers</button><button aria-pressed="false" data-v="crate">Crate</button><button aria-pressed="false" data-v="list">List</button></div><div data-ovp="covers"><div class="cf" id="cfFr"></div><div class="caption" id="capFr"></div></div><div data-ovp="crate" hidden></div><div data-ovp="list" class="listv" hidden></div></div></div>`;
   $('#frScrim').onclick=$('#frX').onclick=closeSheet;
-  $('#cfFr')._c=Carousel($('#cfFr'),{items:()=>f.ids.map(byId),playable:false,from:()=>f.n+"'s Stack",cap:$('#capFr'),capText:a=>{const own=ALBUMS.find(x=>x.id===a.id&&canPlay(x));
-    return `<b>${a.t}</b><span>${a.a} · ${a.y} · ${fmtLabel[a.f]}</span><span style="display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;margin-top:4px">${own?(own.o==='you'?'YOU OWN THIS TOO':'IN YOUR FAMILY STACK'):'ONLY '+f.n.toUpperCase()+' CAN PLAY THIS'}</span>`+
+  $('#cfFr')._c=Carousel($('#cfFr'),{items:()=>{const r=$('#sheetSlot .sheet');return r&&r._ovItems?r._ovItems():f.ids.map(byId)},playable:false,from:()=>f.n+"'s Stack",cap:$('#capFr'),capText:a=>{const own=ALBUMS.find(x=>x.id===a.id&&canPlay(x));
+    return `<b>${a.t}</b><span>${a.a} · ${a.y} · ${fmtLabel[a.f]}</span><span style="display:block;font-size:12px;font-weight:600;margin-top:4px">${own?(own.o==='you'?'You own this too':'In your Family Stack'):'Only '+f.n+' can play this'}</span>`+
     (own?`<button class="cap-edit" data-playown="${a.id}">${ICON.play.replace('<svg','<svg width="14" height="14"')}Play ${own.o==='you'?'your':'the family'} copy</button>`:`<button class="cap-edit" data-wish="${a.id}">${WISH.has(a.id)?'✓ On your wishlist':'+ Add to wishlist'}</button>`)}});
+  OV.wire($('#sheetSlot .sheet'),{items:()=>f.ids.map(byId),friend:f,rerender:()=>{const c=$('#cfFr')._c;c.target=c.pos=0;c.render()}});
   const fc=$('#cfFr')._c;fc.render();if(focusId){const i=f.ids.indexOf(focusId);if(i>=0){fc.target=fc.pos=i;fc.layout()}}
 }
-function closeSheet(){$('#sheetSlot').innerHTML='';const t=$('#aiTab');if(t)t.classList.remove('open')}
+
+const OV=(()=>{let home=null,holder=null;const flt=(L,q)=>{q=(q||'').trim().toLowerCase();return q?L.filter(a=>a&&(a.t+' '+a.a+' '+a.y).toLowerCase().includes(q)):L};
+ function restore(){const cv=$('#crateView');if(!cv||!home)return;if(cv.parentNode!==home.parentNode||cv.previousSibling!==home)home.after(cv);window.CRATE_SRC=window.CRATE_TAP=window.CRATE_CAP=null;cv.hidden=st.view!=='crate';holder=null;try{Crate.render()}catch(e){}}
+ function frCap(f,a){const own=ALBUMS.find(x=>x.id===a.id&&canPlay(x));return `<b>${a.t}</b><span>${a.a} · ${a.y} · ${fmtLabel[a.f]}</span><span style="display:block;font-size:12px;font-weight:600;margin-top:4px">${own?(own.o==='you'?'You own this too':'In your Family Stack'):'Only '+f.n+' can play this'}</span>`+(own?`<button class="cap-edit" data-playown="${a.id}">Play ${own.o==='you'?'your':'the family'} copy</button>`:`<button class="cap-edit" data-wish="${a.id}">${WISH.has(a.id)?'✓ On your wishlist':'+ Add to wishlist'}</button>`)}
+ function tap(o,a,el){if(o.friend){const own=ALBUMS.find(x=>x.id===a.id&&canPlay(x));if(own){closeSheet();goTab(own.o==='you'?'mine':'family');openRecord(own,null,own.o==='you'?'My Stack':'Family Stack')}}else openRecord(a,el,$('#famTitle').textContent)}
+ function wire(root,o){if(!root)return;const seg=root.querySelector('.ov-seg');if(!seg||seg._w)return;seg._w=1;const raw=o.items;o.items=()=>flt(raw(),o.q);root._ovItems=o.items;
+  const sr=document.createElement('div');sr.className='search ov-search';sr.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input type="search" placeholder="Search this Stack" autocomplete="off" aria-label="Search this Stack">';seg.before(sr);
+  sr.querySelector('input').addEventListener('input',e=>{o.q=e.target.value;const v=(seg.querySelector('[aria-pressed="true"]')||{}).dataset;const cur=v?v.v:'covers';try{o.rerender&&o.rerender()}catch(_){}if(cur!=='covers'){seg.querySelector('[data-v="'+cur+'"]').click()}});
+  seg.addEventListener('click',e=>{const b=e.target.closest('[data-v]');if(!b)return;e.stopPropagation();const v=b.dataset.v;
+   seg.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));root.querySelectorAll('[data-ovp]').forEach(p=>p.hidden=p.dataset.ovp!==v);
+   if(v==='crate'){const cv=$('#crateView');if(!home){home=document.createComment('crate-home');cv.before(home)}const slot=root.querySelector('[data-ovp="crate"]');slot.appendChild(cv);cv.hidden=false;holder=root;
+    window.CRATE_SRC=()=>o.items().filter(Boolean);window.CRATE_TAP=(a,el)=>tap(o,a,el);window.CRATE_CAP=o.friend?(a=>frCap(o.friend,a)):null;Crate.render()}
+   else if(holder===root)restore();
+   if(v==='list'){const L=root.querySelector('[data-ovp="list"]');L.innerHTML=o.items().filter(Boolean).map(a=>{const own=o.friend?ALBUMS.find(x=>x.id===a.id&&canPlay(x)):1;const who=o.friend?'':(!MEMBERS[a.o]||a.o==='you'?'Your copy':MEMBERS[a.o].n+'’s copy');return `<button class="row" data-ovid="${a.id}">${artHTML(a,'',false)}<span class="tx"><b>${a.t}</b><span>${a.a} · ${a.y}${who?' · '+who:''}</span></span><span class="pill">${o.friend?(own?'You own':fmtLabel[a.f]):fmtLabel[a.f]}</span></button>`}).join('');
+    L.onclick=e=>{const r=e.target.closest('[data-ovid]');if(!r)return;e.stopPropagation();tap(o,byId(r.dataset.ovid),r.querySelector('.art'))}}});
+  root.addEventListener('click',e=>{const w=e.target.closest('[data-ovp="crate"] [data-wish]');if(w)setTimeout(()=>{try{Crate.render()}catch(_){}},50)})}
+ return {wire,restore}})();
+function closeSheet(){try{if($('#sheetSlot').contains($('#crateView')))OV.restore()}catch(e){}$('#sheetSlot').innerHTML='';const t=$('#aiTab');if(t)t.classList.remove('open')}
 const WISH=new Set(['kob','gra']);
 function renderWish(){const ids=[...WISH];$('#wishCount').textContent=ids.length?`${ids.length} record${ids.length===1?'':'s'} you'd like to own. Tap one to see it in a friend's Stack.`:'Records you\'d like to own.';
   $$('.wbadge').forEach(b=>{b.textContent=ids.length;b.hidden=!ids.length});
@@ -3419,7 +3439,7 @@ renderDust();renderLoans();renderPending();renderTT();renderRSD();
 const Crate=(()=>{let items=[],cur=0,sort='artist',q='',built=false;const DVC=['#B6452C','#EF8B2C','#7FA7B7','#E9B949','#3A2216'];
   const key=a=>(sort==='title'?a.t:a.a).replace(/^[“"']/,'').replace(/^the\s+/i,'').trim();
   const letter=a=>{const c=key(a)[0]||'#';return /[a-z]/i.test(c)?c.toUpperCase():'#'};
-  function list(){let L=mineFiltered();if(q){const n=q.toLowerCase();L=L.filter(a=>(a.t+' '+a.a+' '+a.y).toLowerCase().includes(n))}
+  function list(){let L=window.CRATE_SRC?window.CRATE_SRC():mineFiltered();if(q){const n=q.toLowerCase();L=L.filter(a=>(a.t+' '+a.a+' '+a.y).toLowerCase().includes(n))}
     L=L.slice();if(sort==='artist'||sort==='title')L.sort((x,y)=>key(x).localeCompare(key(y)));else if(sort==='year')L.sort((x,y)=>y.y-x.y);else L.reverse();
     const out=[];let last=null,di=0;L.forEach(a=>{if((sort==='artist'||sort==='title')&&!q){const l=letter(a);if(l!==last){out.push({div:l,n:L.filter(b=>letter(b)===l).length,c:DVC[di++%DVC.length]});last=l}}out.push({a})});return out}
   function render(){const box=$('#crateItems');if(!box)return;const prevId=items[cur]&&items[cur].a&&items[cur].a.id;items=list();
@@ -3437,7 +3457,7 @@ const Crate=(()=>{let items=[],cur=0,sort='artist',q='',built=false;const DVC=['
       el.classList.toggle('cur',d===0);el.classList.toggle('up',d!==0&&o>0);if(instant){void el.offsetWidth;el.style.transition=''}});
     const x=items[cur],cap=$('#crateCap');if(!cap)return;
     if(!x){cap.innerHTML='';return}
-    cap.innerHTML=x.a?capWith(x.a,`<b>${x.a.t}</b><span>${x.a.a} · ${x.a.y} · ${fmtLabel[x.a.f]}</span><span class="mono" style="display:block;margin-top:4px;font-size:10.5px;letter-spacing:.1em;opacity:.7">TAP THE RECORD TO PLAY · SWIPE TO FLICK</span>`):`<b>${x.div}</b><span>${x.n} ${x.n===1?'record':'records'} under ${x.div}</span>`}
+    cap.innerHTML=x.a?(window.CRATE_CAP?window.CRATE_CAP(x.a):capWith(x.a,`<b>${x.a.t}</b><span>${x.a.a} · ${x.a.y} · ${fmtLabel[x.a.f]}</span><span style="display:block;margin-top:4px;font-size:12px;opacity:.7">Tap the record to play · swipe to flick</span>`)):`<b>${x.div}</b><span>${x.n} ${x.n===1?'record':'records'} under ${x.div}</span>`}
   let lastTick=0;function tick(){if(typeof SFX_ON!=='undefined'&&!SFX_ON)return;const now=performance.now();if(now-lastTick<45)return;lastTick=now;
     try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();const ac=AC,t=ac.currentTime,b=ac.createBufferSource(),f=ac.createBiquadFilter(),g=ac.createGain();
       const buf=ac.createBuffer(1,Math.floor(ac.sampleRate*.04),ac.sampleRate),dd=buf.getChannelData(0);for(let k=0;k<dd.length;k++)dd[k]=(Math.random()*2-1)*Math.exp(-k/(dd.length*.22));
@@ -3454,7 +3474,7 @@ const Crate=(()=>{let items=[],cur=0,sort='artist',q='',built=false;const DVC=['
       drag.base=null;drag.top0=drag.scr?drag.scr.scrollTop:0;go(want)});
     const end=e=>{if(!drag)return;const d=drag;drag=null;if(d.page)return;
       if(!d.moved){const el=document.elementFromPoint(e.clientX,e.clientY),ck=el&&el.closest('.ck');if(!ck)return;const i=+ck.dataset.ci;
-        if(i===cur&&items[i].a)openRecord(items[i].a,ck.querySelector('.art'),'My Stack');else go(i);return}
+        if(i===cur&&items[i].a){if(window.CRATE_TAP)window.CRATE_TAP(items[i].a,ck.querySelector('.art'));else openRecord(items[i].a,ck.querySelector('.art'),'My Stack')}else go(i);return}
       let v=d.v*16;const step=()=>{if(Math.abs(v)<.35)return;const n=cur+(v>0?1:-1);if(n<0||n>=items.length)return;go(n);v*=.8;mom=setTimeout(step,Math.max(40,120-Math.abs(v)*20))};if(Math.abs(v)>1.2)step()};
     c.addEventListener('pointerup',end);c.addEventListener('pointercancel',()=>{drag=null});
     c.addEventListener('keydown',e=>{if(e.key==='ArrowDown'||e.key==='ArrowRight'){go(cur+1);e.preventDefault()}if(e.key==='ArrowUp'||e.key==='ArrowLeft'){go(cur-1);e.preventDefault()}if(e.key==='Enter'&&items[cur]&&items[cur].a)openRecord(items[cur].a,null,'My Stack')});
@@ -3985,7 +4005,7 @@ const save=()=>{SS('stack-mk-orders',ORD);SS('stack-mk-listings',MYL);SS('stack-
 
 /* ---------- sellers + seeded listings ---------- */
 const SELLERS=[{n:'cratedigger_92',c:'#4C8DF0',d:'1.2 mi',r:'4.9',k:41,ship:2,since:2023},{n:'wax_and_wane',c:'#E85D75',d:'3.4 mi',r:'5.0',k:18,ship:1,since:2024},{n:'needledrop.leeds',c:'#F0A034',d:'0.8 mi',r:'4.8',k:63,ship:2,since:2022},{n:'b-side_beth',c:'#34C38F',d:'5.1 mi',r:'4.9',k:27,ship:3,since:2023},{n:'vinyl_ollie',c:'#7A4FC9',d:'12 mi',r:'4.7',k:109,ship:2,since:2021},{n:'lo-fi_lou',c:'#C8452B',d:'2.2 mi',r:'5.0',k:9,ship:1,since:2025},{n:'DiscDad',c:'#2FA37A',d:'8 mi',r:'4.8',k:84,ship:3,since:2022}];
-const QUADS={"L1": [[154.0, 154.7], [562.5, 151.9], [582.9, 568.8], [138.5, 570.9]], "L2": [[175.8, 232.7], [537.9, 232.0], [611.7, 547.7], [102.7, 547.0]], "L3": [[118.1, 114.6], [592.7, 116.7], [562.5, 552.7], [145.5, 552.7]], "L4": [[75.9, 144.1], [615.9, 83.0], [658.1, 562.5], [110.4, 655.3]], "L5": [[132.2, 131.5], [587.1, 135.7], [586.4, 587.8], [128.0, 585.7]], "L6": [[163.1, 153.3], [582.2, 153.3], [592.0, 566.0], [161.7, 566.0]], "L7": [[216.6, 203.9], [521.7, 203.9], [521.7, 522.4], [216.6, 497.8]], "L8": [[184.2, 184.2], [547.0, 184.2], [566.0, 539.3], [182.8, 539.3]], "L9": [[160.3, 161.0], [563.9, 161.0], [568.1, 568.1], [156.1, 568.1]], "L10": [[140.6, 173.0], [547.0, 170.9], [608.9, 587.8], [67.5, 583.6]]};
+const QUADS={"L1": [[154.0, 154.7], [562.5, 151.9], [582.9, 568.8], [138.5, 570.9]], "L2": [[175.8, 232.7], [537.9, 232.0], [611.7, 547.7], [102.7, 547.0]], "L3": [[118.1, 114.6], [592.7, 116.7], [562.5, 552.7], [145.5, 552.7]], "L4": [[80.0, 143.0], [552.0, 78.0], [657.0, 561.0], [133.0, 647.0]], "L5": [[132.2, 131.5], [587.1, 135.7], [586.4, 587.8], [128.0, 585.7]], "L6": [[163.1, 153.3], [582.2, 153.3], [592.0, 566.0], [161.7, 566.0]], "L7": [[216.6, 203.9], [521.7, 203.9], [521.7, 522.4], [216.6, 497.8]], "L8": [[184.2, 184.2], [547.0, 184.2], [566.0, 539.3], [182.8, 539.3]], "L9": [[160.3, 161.0], [563.9, 161.0], [568.1, 568.1], [156.1, 568.1]], "L10": [[140.6, 173.0], [547.0, 170.9], [608.9, 587.8], [67.5, 583.6]]};
 /* [record, seller, price, sleeve grade, media grade, pressing, recorded pressing, photo set, seller note, days listed] */
 const SEED=[['gra',3,22,'VG+','VG+','UK pressing',0,'L1:abc','Light shelf wear on the bottom corner and a soft crease. Plays clean, a few faint scuffs that don’t affect sound.',2],
  ['kob',2,18,'NM','NM','Reissue, 180g',1,'L2:abc','Bought new, played twice. Original inner sleeve. Comes with my Stack recording.',1],
