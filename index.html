@@ -22,7 +22,7 @@
   --tint:#EF8B2C; --tint-amt:30%;
   --font:"Geist",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
   --brand:"Shrikhand","Cooper Black","Georgia",serif;
-  --mono:"Geist Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --mono:"Geist",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#2A1A12; --surface:#36241A; --surface-2:#432D21; --fg:#F6ECE2; --muted:#B89D8C; --line:rgba(246,236,226,.10);
@@ -45,7 +45,7 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline
 .side h1{font-family:var(--brand);font-size:38px;font-weight:400;letter-spacing:0;margin:0;line-height:1}
 .side p{color:var(--muted);line-height:1.55;margin:0;font-size:14px;max-width:34ch}
 .side .pitch-tag{color:var(--fg);font-size:19px;font-weight:650;letter-spacing:-.02em;line-height:1.25}
-.side .lbl{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.side .lbl{font-family:var(--mono);font-size:11px;text-transform:none;letter-spacing:0;color:var(--muted)}
 .jump{display:flex;flex-direction:column;gap:6px}
 .jump button{text-align:left;padding:10px 14px;border-radius:12px;background:var(--surface);border:1px solid var(--line);font-size:14px;font-weight:500;display:flex;justify-content:space-between;align-items:center}
 .jump button:hover{border-color:var(--accent)}
@@ -107,7 +107,7 @@ h2.big{font-size:34px;font-weight:650;letter-spacing:-.035em;margin:6px 0 4px;te
 .spine:hover,.spine:focus-visible{transform:translateY(-14px)}
 .spine .band{width:100%;height:16px;background:var(--c2);flex:none;margin-bottom:9px}
 .spine.f-CD .band{height:9px;margin-bottom:6px}
-.spine .vt{writing-mode:vertical-rl;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1 1 auto;min-height:0;font-size:11px;font-weight:650;letter-spacing:.06em;text-transform:uppercase}
+.spine .vt{writing-mode:vertical-rl;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1 1 auto;min-height:0;font-size:11px;font-weight:650;letter-spacing:0;text-transform:none}
 .spine .vt i{font-style:normal;font-weight:450;opacity:.7;margin-top:8px;letter-spacing:.03em}
 .spine.f-CD .vt{font-size:9px}
 .spine .cat{writing-mode:vertical-rl;font-family:var(--mono);font-size:8px;opacity:.65;margin-top:6px;flex:none}
@@ -285,7 +285,7 @@ h2.big{font-size:34px;font-weight:650;letter-spacing:-.035em;margin:6px 0 4px;te
   background:color-mix(in srgb,var(--fg) 10%,transparent);box-shadow:inset 0 2px 10px rgba(0,0,0,.25)}
 .tape-deck::before{content:"";position:absolute;left:18px;right:18px;top:18px;bottom:18px;border-radius:16px;border:1px solid color-mix(in srgb,var(--fg) 14%,transparent)}
 .tape-deck .tape{width:280px}
-.tape-deck .led{position:absolute;bottom:10px;left:50%;margin-left:-28px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--muted);display:flex;gap:6px;align-items:center}
+.tape-deck .led{position:absolute;bottom:10px;left:50%;margin-left:-28px;font-family:var(--mono);font-size:10px;letter-spacing:0;color:var(--muted);display:flex;gap:6px;align-items:center}
 .tape-deck .led i{width:6px;height:6px;border-radius:50%;background:#B6452C}
 .paused .tape-deck .led i{background:color-mix(in srgb,var(--fg) 25%,transparent)}
 .tape-mode .tape-deck{display:flex}
@@ -293,7 +293,7 @@ h2.big{font-size:34px;font-weight:650;letter-spacing:-.035em;margin:6px 0 4px;te
 .mt-card .tape{margin-bottom:2px}
 .recpanel{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:14px;margin:18px 0 6px}
 .rec-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
-.rec-side{font-family:var(--mono);font-size:11px;letter-spacing:.1em;padding:3px 8px;border-radius:6px;background:#B6452C;color:#fff}
+.rec-side{font-family:var(--mono);font-size:11px;letter-spacing:0;padding:3px 8px;border-radius:6px;background:#B6452C;color:#fff}
 .rec-step{font-family:var(--mono);font-size:11px;color:var(--muted)}
 .wave{width:100%;height:70px;display:block;margin-bottom:10px;border-radius:10px;background:var(--surface-2)}
 .recpanel .bar i{background:#B6452C}
@@ -319,7 +319,7 @@ h2.big{font-size:34px;font-weight:650;letter-spacing:-.035em;margin:6px 0 4px;te
 .viewer{position:relative;height:230px;margin:-4px -4px 6px;border-radius:16px;background:radial-gradient(120% 90% at 50% 30%,color-mix(in srgb,var(--fg) 6%,transparent),transparent 70%);touch-action:none;cursor:grab}
 .viewer:active{cursor:grabbing}
 .viewer canvas{width:100%;height:100%;display:block}
-.viewer-hint{position:absolute;left:0;right:0;bottom:8px;text-align:center;font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--muted);pointer-events:none;transition:opacity .4s}
+.viewer-hint{position:absolute;left:0;right:0;bottom:8px;text-align:center;font-family:var(--mono);font-size:10px;letter-spacing:0;color:var(--muted);pointer-events:none;transition:opacity .4s}
 .prod-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
 .prod-top b{display:block;font-size:18px;font-weight:650;letter-spacing:-.02em}
 .prod-top span{display:block;font-size:12.5px;color:var(--muted);margin-top:2px}
@@ -338,7 +338,7 @@ h2.big{font-size:34px;font-weight:650;letter-spacing:-.035em;margin:6px 0 4px;te
 .pack .tx{flex:1;min-width:0}
 .pack b{display:block;font-size:15.5px;font-weight:650}
 .pack .tx span{display:block;font-size:12.5px;color:var(--muted);margin-top:2px;line-height:1.4}
-.pack .tag{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.06em;padding:2px 6px;border-radius:5px;background:var(--accent);color:var(--on-accent);margin-bottom:4px}
+.pack .tag{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:0;padding:2px 6px;border-radius:5px;background:var(--accent);color:var(--on-accent);margin-bottom:4px}
 .pack .price{text-align:right;flex:none}
 .pack .price b{font-size:18px;font-variant-numeric:tabular-nums}
 .pack .price span{font-size:11px;color:var(--accent-ink);font-weight:600}
@@ -359,7 +359,7 @@ h2.big{font-size:34px;font-weight:650;letter-spacing:-.035em;margin:6px 0 4px;te
 .sum div{display:flex;justify-content:space-between;padding:3px 0;font-variant-numeric:tabular-nums}
 .sum .tot{font-weight:700;border-top:1px solid var(--line);margin-top:6px;padding-top:8px}
 .demo-note{font-family:var(--mono);font-size:10.5px;color:var(--muted);text-align:center;margin-top:8px;letter-spacing:.04em}
-.mt-from{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.06em;padding:2px 6px;border-radius:5px;background:color-mix(in srgb,var(--accent) 16%,transparent);color:var(--accent-ink);margin-top:3px}
+.mt-from{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:0;padding:2px 6px;border-radius:5px;background:color-mix(in srgb,var(--accent) 16%,transparent);color:var(--accent-ink);margin-top:3px}
 .send-who{display:grid;gap:2px;margin:6px 0 12px}
 .send-p{display:flex;align-items:center;gap:12px;width:100%;padding:9px 0;border-bottom:1px solid var(--line);text-align:left}
 .send-p .avatar{width:38px;height:38px}
@@ -411,7 +411,7 @@ h2.big{font-size:34px;font-weight:650;letter-spacing:-.035em;margin:6px 0 4px;te
 .env-stamp{position:absolute;right:16px;bottom:16px;z-index:3;width:40px;height:48px;background:#F6F0E3;border:2px dashed #C99A5E;outline:3px solid #F6F0E3;display:grid;place-items:center}
 .env-stamp svg{width:28px;height:28px}
 .env-flap{position:absolute;left:0;right:0;top:0;height:60%;z-index:4;background:#D4A86B;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:50% 0}
-.unpack .hint{font-family:var(--mono);font-size:11px;letter-spacing:.12em;opacity:.7;animation:breathe 1.8s ease-in-out infinite}
+.unpack .hint{font-family:var(--mono);font-size:11px;letter-spacing:0;opacity:.7;animation:breathe 1.8s ease-in-out infinite}
 .gift-note{background:#F6F0E3;color:#1B1206;font-family:"Caveat","Segoe Print",cursive;font-size:23px;line-height:1.1;padding:12px 18px;border-radius:3px;transform:rotate(-2.5deg);box-shadow:0 10px 24px rgba(0,0,0,.4);max-width:260px;text-align:center}
 .gift-list{width:100%;max-width:300px;font-size:13px;opacity:.9}
 .gift-list div{display:flex;gap:10px;padding:4px 0;border-bottom:1px solid rgba(255,255,255,.1)}
@@ -694,7 +694,7 @@ h2.big{font-size:34px;font-weight:650;letter-spacing:-.035em;margin:6px 0 4px;te
 .acct-stats div{background:var(--surface-2);border-radius:12px;padding:10px;text-align:center}
 .acct-stats b{display:block;font-size:19px;font-weight:650;font-variant-numeric:tabular-nums}
 .acct-stats span{font-size:11.5px;color:var(--muted)}
-.set-h{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:18px 0 4px}
+.set-h{font-family:var(--mono);font-size:10.5px;letter-spacing:0;text-transform:none;color:var(--muted);margin:18px 0 4px}
 .set-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:14.5px;width:100%;text-align:left}
 .set-row .v{color:var(--muted);font-size:13.5px;display:flex;align-items:center;gap:6px}
 .set-row .v svg{width:16px;height:16px}
@@ -708,7 +708,7 @@ h2.big{font-size:34px;font-weight:650;letter-spacing:-.035em;margin:6px 0 4px;te
 .plan ul{margin:10px 0 12px;padding:0;list-style:none;font-size:13.5px}
 .plan li{padding:3px 0 3px 22px;position:relative}
 .plan li::before{content:"✓";position:absolute;left:0;color:var(--accent-ink);font-weight:700}
-.plan .cur-tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:var(--accent-ink)}
+.plan .cur-tag{font-family:var(--mono);font-size:10.5px;letter-spacing:0;color:var(--accent-ink)}
 .plan .btn{padding:11px;font-size:14px;border-radius:12px}
 .plan-warn{font-size:13px;margin:0 0 10px;padding:10px 12px;border-radius:10px;background:color-mix(in srgb,var(--accent) 12%,transparent)}
 .set-row .dot{width:8px;height:8px;border-radius:50%;background:#46D27B}
@@ -720,7 +720,7 @@ h2.big{font-size:34px;font-weight:650;letter-spacing:-.035em;margin:6px 0 4px;te
 .avatar-sm{width:30px!important;height:30px!important;font-size:12px!important}
 .menu-item{display:flex;align-items:center;gap:12px;width:100%;padding:14px 0;border-bottom:1px solid var(--line);font-size:15px;font-weight:500;text-align:left}
 .menu-item svg{width:20px;height:20px;color:var(--muted)}
-.art .cv{position:absolute;left:8%;bottom:7%;right:8%;font-family:var(--mono);font-size:10px;color:var(--ink);opacity:.85;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.art .cv{position:absolute;left:8%;bottom:7%;right:8%;font-family:var(--mono);font-size:10px;color:var(--ink);opacity:.85;letter-spacing:.04em;text-transform:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
 /* circle strip */
 .sec-h{display:flex;justify-content:space-between;align-items:baseline;margin:30px 0 12px}
@@ -845,7 +845,7 @@ h2.big{font-size:34px;font-weight:650;letter-spacing:-.035em;margin:6px 0 4px;te
 .mk-search{position:relative;display:flex;align-items:center;gap:8px;padding:0 6px 0 12px;height:46px;border-radius:14px;background:var(--surface);border:1px solid var(--line)}
 .mk-search>svg{width:18px;height:18px;color:var(--muted);flex:none}.mk-search input{flex:1;min-width:0;border:0;background:none;color:var(--fg);font:inherit;font-size:16px;outline:none}
 .mk-fbtn{position:relative;width:36px;height:36px;border-radius:10px;display:grid;place-items:center;color:var(--fg)}.mk-fbtn svg{width:19px;height:19px}.mk-fbtn.on{background:var(--fg);color:var(--bg)}.mk-fbtn b{position:absolute;top:-4px;right:-4px;min-width:16px;height:16px;border-radius:8px;background:var(--accent,#E8744F);color:#fff;font:700 10px/16px var(--font)}
-.mk-sugg{margin-top:8px;padding:10px 12px;border-radius:14px;background:var(--surface);border:1px solid var(--line)}.mk-sugg small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:2px 0 6px}
+.mk-sugg{margin-top:8px;padding:10px 12px;border-radius:14px;background:var(--surface);border:1px solid var(--line)}.mk-sugg small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:0;text-transform:none;color:var(--muted);margin:2px 0 6px}
 .mk-sugg div{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:6px}.mk-sugg button{display:inline-flex;gap:5px;align-items:center;font-size:13px;padding:6px 11px;border-radius:999px;background:var(--surface-2);color:var(--fg)}
 .mk-fc{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.mk-fc button{font-size:12.5px;font-weight:600;padding:6px 11px;border-radius:999px;background:var(--fg);color:var(--bg)}
 .mk-res{display:flex;justify-content:space-between;gap:8px;font-size:12px;color:var(--muted);margin:12px 2px 10px}.mk-res span{display:flex;gap:4px;align-items:center}
@@ -865,7 +865,7 @@ h2.big{font-size:34px;font-weight:650;letter-spacing:-.035em;margin:6px 0 4px;te
 .lc-s{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--muted)}.lc-s i,.lp-seller i,.sp-hd i{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;color:#fff;font-style:normal;font-weight:700;font-size:11px;flex:none}.lc-s em{margin-left:auto;font-style:normal}
 .lp{padding-top:0}.lp-gal{position:relative;margin:0 -20px 12px}.lp-gal .lp-ph{aspect-ratio:1}
 .lp-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.lp-top b{display:block;font-size:19px}.lp-top span{display:block;font-size:12.5px;color:var(--muted);margin-top:3px}.lp-top strong{font-size:24px}
-.lp-h{font-size:12px;font-family:var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:18px 2px 8px;font-weight:500}
+.lp-h{font-size:12px;font-family:var(--mono);letter-spacing:0;text-transform:none;color:var(--muted);margin:18px 2px 8px;font-weight:500}
 .lp-card{display:block;width:100%;text-align:left;padding:12px 14px;border-radius:14px;background:var(--surface);border:1px solid var(--line);color:var(--fg)}
 .mk-gr{display:flex;align-items:center;gap:10px;padding:4px 0;font-size:13.5px}.mk-gr span{width:52px;color:var(--muted)}.mk-gr div{flex:1;display:flex;gap:4px}.mk-gr i{flex:1;height:7px;border-radius:4px;background:var(--surface-2)}.mk-gr i.on{background:linear-gradient(90deg,#F2AE3D,#C8452B)}.mk-gr b{width:34px;text-align:right}
 .lp-gt{font-size:12px;color:var(--muted);margin:6px 0 0}.lp-note{font-size:13.5px;line-height:1.45;margin:10px 0 0;padding-top:10px;border-top:1px solid var(--line)}.lp-note span{display:block;font-size:12px;color:var(--muted);margin-top:3px}
@@ -892,7 +892,7 @@ h2.big{font-size:34px;font-weight:650;letter-spacing:-.035em;margin:6px 0 4px;te
 .mk-chips button.shopchip:not(.on){background:linear-gradient(135deg,#F2AE3D,#C8452B);color:#fff;border-color:transparent}
 .shop-promo{position:relative;overflow:hidden;display:flex;align-items:center;gap:10px;width:100%;text-align:left;padding:14px 14px;border-radius:16px;background:#4A2415;color:#F4E4C1;margin-bottom:10px}
 .shop-promo .sp-r{position:absolute;right:-34px;top:-30px;width:130px;height:130px;border-radius:50%;background:radial-gradient(circle,#4A2415 0 22%,#F4E4C1 22% 32%,#F0A034 32% 46%,#E8742B 46% 60%,#C8452B 60% 74%,transparent 74%);opacity:.9}
-.shop-promo .sp-t{position:relative;flex:1}.shop-promo small{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;opacity:.8}.shop-promo b{display:block;font-family:"Shrikhand","Cooper Black",Georgia,serif;font-weight:400;font-size:20px;color:#F0A034;line-height:1.1}.shop-promo .sp-t span{font-size:12px;opacity:.85}
+.shop-promo .sp-t{position:relative;flex:1}.shop-promo small{font-family:var(--mono);font-size:9.5px;letter-spacing:0;opacity:.8}.shop-promo b{display:block;font-family:"Shrikhand","Cooper Black",Georgia,serif;font-weight:400;font-size:20px;color:#F0A034;line-height:1.1}.shop-promo .sp-t span{font-size:12px;opacity:.85}
 .shop-promo .sp-go{position:relative;font-size:13px;font-weight:700;padding:8px 14px;border-radius:999px;background:#F4E4C1;color:#4A2415}
 
 .mk-chips{display:flex;gap:6px;overflow-x:auto;margin:12px -20px 14px;padding:0 20px;scrollbar-width:none}.mk-chips::-webkit-scrollbar{display:none}
@@ -929,7 +929,7 @@ h2.big{font-size:34px;font-weight:650;letter-spacing:-.035em;margin:6px 0 4px;te
 .mk-shopc .tx{flex:1}.mk-shopc b{font-size:14.5px;margin-right:6px}.mk-shopc span{display:block;font-size:12px;color:var(--muted);margin-top:2px}.mk-shopc .ev{color:var(--fg);font-weight:600}
 .shop-hero{position:relative;overflow:hidden;border-radius:18px;padding:18px;margin-bottom:12px;background:#4A2415;color:#F4E4C1;min-height:112px}
 .sh-rings{position:absolute;right:-40px;bottom:-70px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,#4A2415 0 22%,#F4E4C1 22% 32%,#F0A034 32% 46%,#E8742B 46% 60%,#C8452B 60% 74%,transparent 74%)}
-.sh-tx{position:relative;max-width:62%}.sh-tx small{font-family:var(--mono);font-size:10px;letter-spacing:.14em;opacity:.8}.sh-tx b{display:block;font-family:"Shrikhand","Cooper Black",Georgia,serif;font-weight:400;font-size:26px;line-height:1.05;margin:4px 0;color:#F0A034}.sh-tx span{font-size:12.5px;opacity:.85}
+.sh-tx{position:relative;max-width:62%}.sh-tx small{font-family:var(--mono);font-size:10px;letter-spacing:0;opacity:.8}.sh-tx b{display:block;font-family:"Shrikhand","Cooper Black",Georgia,serif;font-weight:400;font-size:26px;line-height:1.05;margin:4px 0;color:#F0A034}.sh-tx span{font-size:12.5px;opacity:.85}
 .shop-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .shop-card{display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:3px;padding:8px 8px 10px;border-radius:14px;background:var(--surface);border:1px solid var(--line);color:var(--fg)}
 .sc-art{display:block;width:100%;aspect-ratio:1;border-radius:10px;overflow:hidden;background:color-mix(in srgb,var(--mustard,#F0A034) 22%,var(--surface))}.sc-art>svg,.pd-art>svg,.ln-art>svg{display:block;width:100%;height:100%}
@@ -985,7 +985,7 @@ h2.big{font-size:34px;font-weight:650;letter-spacing:-.035em;margin:6px 0 4px;te
 .pl-top{display:flex;align-items:center;justify-content:space-between;height:44px}
 .pl-top .icon-btn{background:color-mix(in srgb,var(--surface) 55%,transparent);border-color:transparent}
 .pl-from{text-align:center;font-size:13px}
-.pl-from small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
+.pl-from small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:0;color:var(--muted);text-transform:none}
 .pl-from b{font-weight:600}
 .deck{position:relative;height:320px;margin:0 -22px;transition:height .5s cubic-bezier(.2,.8,.2,1)}
 .platter{position:absolute;width:280px;height:280px;left:calc(50% - 140px);top:20px;transition:transform .55s cubic-bezier(.2,.8,.2,1),opacity .5s}
@@ -1040,7 +1040,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:30px;border-radius:6px;bac
 .tracks li .tt{flex:1}
 .tracks li .d{font-family:var(--mono);font-size:11px;color:var(--muted)}
 .tracks li.on .tt{color:var(--accent-ink);font-weight:600}
-.side-h{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:28px 0 0}
+.side-h{font-family:var(--mono);font-size:11px;letter-spacing:0;text-transform:none;color:var(--muted);margin:28px 0 0}
 
 /* sheets, fly, toast */
 .sheet{position:absolute;left:0;right:0;bottom:0;max-height:78%;z-index:35;background:var(--surface);border-radius:26px 26px 0 0;box-shadow:0 -20px 50px var(--shadow);display:flex;flex-direction:column;animation:up .4s cubic-bezier(.2,.8,.2,1)}
@@ -1074,7 +1074,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:30px;border-radius:6px;bac
   background:conic-gradient(from 20deg,transparent 0 8%,rgba(255,255,255,.14) 13%,transparent 19% 50%,rgba(255,255,255,.1) 63%,transparent 69%);
   -webkit-mask:radial-gradient(circle closest-side,transparent 0 34%,#000 35%);mask:radial-gradient(circle closest-side,transparent 0 34%,#000 35%)}
 .sp-word{position:absolute;bottom:120px;font-size:22px;font-weight:650;letter-spacing:-.03em;opacity:0}
-.sp-skip{position:absolute;bottom:46px;font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.08em}
+.sp-skip{position:absolute;bottom:46px;font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:0}
 
 
 
@@ -1185,7 +1185,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:30px;border-radius:6px;bac
 #aiSnd svg{width:18px;height:18px}
 .sp-disc{position:absolute;inset:0;width:100%;height:100%;display:block}
 .sp-grooves{position:absolute;inset:0;border-radius:50%;pointer-events:none;background:repeating-radial-gradient(circle closest-side,rgba(40,20,8,.13) 0 .7px,transparent .7px 2.3px);-webkit-mask:radial-gradient(circle closest-side,transparent 0 40%,#000 41% 97%,transparent 98%);mask:radial-gradient(circle closest-side,transparent 0 40%,#000 41% 97%,transparent 98%);mix-blend-mode:multiply}
-.sp-skip.gate{color:#F6EEDC;background:rgba(42,28,20,.82);padding:9px 16px;border-radius:999px;letter-spacing:.12em;font-size:11.5px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);animation:spgate 1.6s ease-in-out infinite;bottom:70px}
+.sp-skip.gate{color:#F6EEDC;background:rgba(42,28,20,.82);padding:9px 16px;border-radius:999px;letter-spacing:0;font-size:11.5px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);animation:spgate 1.6s ease-in-out infinite;bottom:70px}
 @keyframes spgate{0%,100%{opacity:.7;transform:scale(1)}50%{opacity:1;transform:scale(1.04)}}
 .sp-bg{position:absolute;inset:-25%;pointer-events:none;will-change:transform}
 .sp-bgsvg{width:100%;height:100%;display:block}
@@ -1331,13 +1331,13 @@ html.touch .phone.full~.demo-fab,html.touch .demo-fab{display:none!important}
 .ck.cur{cursor:pointer;box-shadow:0 22px 40px -14px rgba(40,20,8,.65)}
 .ck.cd{border-radius:3px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.35),0 10px 24px -10px rgba(40,20,8,.55)}
 .ck.cd::before{content:"";position:absolute;left:0;top:0;bottom:0;width:7%;z-index:2;border-radius:3px 0 0 3px;background:linear-gradient(90deg,rgba(255,255,255,.35),rgba(255,255,255,.08));box-shadow:1px 0 0 rgba(0,0,0,.18)}
-.ck.cd::after{content:"CD";position:absolute;right:8px;bottom:8px;z-index:2;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;color:#fff;background:rgba(20,10,4,.55);padding:2px 5px;border-radius:4px}
+.ck.cd::after{content:"CD";position:absolute;right:8px;bottom:8px;z-index:2;font-family:var(--mono);font-size:9.5px;letter-spacing:0;color:#fff;background:rgba(20,10,4,.55);padding:2px 5px;border-radius:4px}
 .ck.dv{height:calc(var(--cw,280px) * .94);border-radius:6px 6px 3px 3px;background:var(--dvc);box-shadow:inset 0 2px 0 rgba(255,255,255,.3),0 10px 20px -10px rgba(40,20,8,.5)}
 .ck.dv b{position:absolute;top:-21px;height:24px!important;border-radius:9px 9px 0 0!important;background:var(--dvc)!important;box-shadow:inset 0 2px 0 rgba(255,255,255,.3);left:var(--tabx,22px);width:46px;height:30px;border-radius:9px 9px 0 0;background:var(--dvc);display:grid;place-items:center;font-family:var(--font);font-weight:700;font-size:17px;color:#fff;text-shadow:0 1px 0 rgba(0,0,0,.2)}
-.ck.dv span{position:absolute;left:0;right:0;bottom:18px;text-align:center;font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:rgba(255,255,255,.85)}
+.ck.dv span{position:absolute;left:0;right:0;bottom:18px;text-align:center;font-family:var(--mono);font-size:11px;letter-spacing:0;color:rgba(255,255,255,.85)}
 .crate-front{position:absolute;left:24px;right:24px;bottom:0;height:86px;z-index:900;border-radius:10px 10px 4px 4px;background:linear-gradient(180deg,#E8853A,#C9632A);box-shadow:inset 0 3px 0 #E9B949,inset 0 -4px 8px rgba(90,40,10,.25),0 14px 20px -12px rgba(40,20,8,.5)}
 .crate-front i{position:absolute;left:50%;top:22px;width:54px;height:12px;margin-left:-27px;border-radius:6px;background:#5a3018;box-shadow:inset 0 2px 3px rgba(0,0,0,.45)}
-.crate-front span{position:absolute;left:0;right:0;bottom:12px;text-align:center;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:rgba(255,248,236,.85)}
+.crate-front span{position:absolute;left:0;right:0;bottom:12px;text-align:center;font-family:var(--mono);font-size:10.5px;letter-spacing:0;color:rgba(255,248,236,.85)}
 .crate-cap{margin-top:12px}
 .crate-empty{position:absolute;left:0;right:0;top:200px;text-align:center;color:var(--muted);font-size:14px}
 /* search across songs and albums */
@@ -1345,7 +1345,7 @@ html.touch .phone.full~.demo-fab,html.touch .demo-fab{display:none!important}
 .stack-search svg{width:17px;height:17px;flex:none}
 .stack-search input{flex:1;min-width:0;border:0;background:none;font:inherit;font-size:15px;color:var(--fg);padding:12px 0;outline:none}
 #stackRes{margin-top:10px}
-#stackRes h4{margin:16px 0 6px;font-size:12px;font-family:var(--mono);letter-spacing:.12em;color:var(--muted);font-weight:500}
+#stackRes h4{margin:16px 0 6px;font-size:12px;font-family:var(--mono);letter-spacing:0;color:var(--muted);font-weight:500}
 #stackRes .row .art{width:46px;height:46px}
 .song-row{display:flex;align-items:center;gap:12px;width:100%;padding:8px 2px;text-align:left;border-bottom:1px solid var(--line)}
 .song-row .art{width:42px;height:42px;border-radius:5px;flex:none}
@@ -1389,7 +1389,7 @@ html.standalone.kb .phone.full{height:var(--vh)!important}
 #nfBody .gift-card,#nfBody .loan,#nfBody .dust{margin-top:10px}#nfBody>div:first-child>*:first-child{margin-top:0}
 .dust{display:flex;gap:12px;align-items:center;margin-top:12px;padding:12px;border-radius:16px;background:color-mix(in srgb,var(--mustard) 18%,var(--surface));border:1px solid color-mix(in srgb,var(--mustard) 45%,var(--line))}
 .dust .art{width:56px;height:56px;border-radius:6px;flex:none;filter:sepia(.25) saturate(.85)}
-.dust .tx{flex:1;min-width:0}.dust small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--muted)}
+.dust .tx{flex:1;min-width:0}.dust small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:0;color:var(--muted)}
 .dust b{display:block;font-size:15px;font-weight:600;line-height:1.25;margin:2px 0}
 .dust .acts{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}.dust .acts>*{white-space:nowrap}
 .chipbtn{font-size:12.5px;font-weight:600;padding:7px 12px;border-radius:999px;background:var(--surface);border:1px solid var(--line);color:var(--fg)}
@@ -1411,7 +1411,7 @@ html.standalone.kb .phone.full{height:var(--vh)!important}
 .st-tiles{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px}
 .st-tile{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:12px}
 .st-tile b{display:block;font-size:24px;font-weight:700;letter-spacing:-.02em}.st-tile span{font-size:12.5px;color:var(--muted)}
-.st-h{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;color:var(--muted);margin:20px 0 8px}
+.st-h{font-family:var(--mono);font-size:10.5px;letter-spacing:0;color:var(--muted);margin:20px 0 8px}
 .st-bar{display:grid;grid-template-columns:62px 1fr 24px;align-items:center;gap:8px;font-size:13px;margin:6px 0}
 .st-bar i{display:block;height:12px;border-radius:6px;background:var(--c,var(--accent));min-width:4px}
 .st-bar em{font-style:normal;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums}
@@ -1421,7 +1421,7 @@ html.standalone.kb .phone.full{height:var(--vh)!important}
 .wrapped{position:relative;overflow:hidden;border-radius:22px;padding:22px 20px 20px;color:#FBF1E2;background:#3A2216;margin-top:8px}
 .wrapped::before{content:"";position:absolute;right:-90px;top:-90px;width:200px;height:200px;border-radius:50%;background:repeating-radial-gradient(circle,#EF8B2C 0 14px,#E9B949 14px 28px,#B6452C 28px 42px,#7FA7B7 42px 56px);opacity:.9}
 .wrapped>*{position:relative}
-.wrapped small{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;opacity:.8}
+.wrapped small{font-family:var(--mono);font-size:10.5px;letter-spacing:0;opacity:.8}
 .wrapped h4{font-size:26px;font-weight:700;letter-spacing:-.02em;margin:6px 0 14px;max-width:70%;line-height:1.1}
 .wrapped .w-top{display:flex;gap:12px;align-items:center;background:#4A2D1F;border-radius:14px;padding:10px;margin-bottom:10px}
 .wrapped .w-top .art{width:64px;height:64px;border-radius:6px;flex:none}
@@ -1467,7 +1467,7 @@ html.rm *,html.rm *::before,html.rm *::after{animation-duration:.001s!important;
 .jump{display:grid;grid-template-columns:1fr 1fr;gap:6px}
 .jump button{padding:9px 10px;font-size:12.5px;line-height:1.25;gap:6px;align-items:flex-start}
 .jump button span{font-size:10px;padding-top:2px}
-@media (max-width:760px){.demo-fab{bottom:auto!important;top:calc(12px + env(safe-area-inset-top,0px))}.side{bottom:auto!important;top:calc(58px + env(safe-area-inset-top,0px));align-self:auto;padding-block:16px}}
+@media (max-width:760px){.demo-fab{display:none!important}.side{bottom:auto!important;top:calc(58px + env(safe-area-inset-top,0px));align-self:auto;padding-block:16px}}
 
 /* ===== welcome: Selector on the record treadmill ===== */
 .wl2{padding:0!important;overflow:hidden;background:var(--bg)}
@@ -1478,7 +1478,7 @@ html.rm *,html.rm *::before,html.rm *::after{animation-duration:.001s!important;
   background:linear-gradient(#E9B949 0 30%,transparent 30% 34%,#EF8B2C 34% 50%,transparent 50% 54%,#D9752B 54% 66%,transparent 66% 70%,#B6452C 70% 79%,transparent 79% 83%,#7FA7B7 83% 89%,transparent 89%);
   -webkit-mask:linear-gradient(#000 60%,transparent 92%);mask:linear-gradient(#000 60%,transparent 92%);opacity:.9;transition:transform .7s cubic-bezier(.3,.7,.3,1)}
 .wl2.talk .wl-sun{transform:scale(.8) translateY(100px)}
-.wl-rpm{position:absolute;left:20px;top:calc(18px + var(--sat,0px));font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--muted);display:flex;align-items:baseline;gap:6px}
+.wl-rpm{position:absolute;left:20px;top:calc(18px + var(--sat,0px));font-family:var(--mono);font-size:11px;letter-spacing:0;color:var(--muted);display:flex;align-items:baseline;gap:6px}
 .wl-rpm b{font-family:var(--font);font-size:34px;font-weight:800;letter-spacing:-.04em;color:var(--fg);display:inline-block}
 .wl-rpm b.bump{animation:rpmb .35s cubic-bezier(.3,1.6,.5,1)}
 @keyframes rpmb{40%{transform:scale(1.35);color:var(--rose)}}
@@ -1513,7 +1513,7 @@ html.rm *,html.rm *::before,html.rm *::after{animation-duration:.001s!important;
 .wl-bub.on{transform:translateX(-50%) scale(1)}
 .wl-copy{position:relative;padding:0 26px calc(26px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;opacity:0;transform:translateY(30px);transition:opacity .4s,transform .6s cubic-bezier(.3,.7,.3,1);flex:0 0 0;min-height:0;overflow:hidden}
 .wl2.talk .wl-copy{opacity:1;transform:none;flex:1 1 auto;overflow:visible}
-.wl-copy .kick{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--rose);margin:6px 0 8px}
+.wl-copy .kick{font-family:var(--mono);font-size:11px;letter-spacing:0;color:var(--rose);margin:6px 0 8px}
 .wl-copy h2{font-size:34px!important;line-height:1.02;font-weight:800!important;letter-spacing:-.045em!important;margin:0 0 10px!important}
 .wl-copy h2 em{font-style:normal;color:var(--rose)}
 .wl-copy p{font-size:16px!important;line-height:1.45!important}
@@ -1522,7 +1522,7 @@ html.rm *,html.rm *::before,html.rm *::after{animation-duration:.001s!important;
 .wl-copy .wl-txt>*:nth-child(2){animation-delay:.06s}.wl-copy .wl-txt>*:nth-child(3){animation-delay:.12s}
 @keyframes wlpop{from{opacity:0;transform:translateY(18px) scale(.97)}}
 .wl-copy .dots{margin:14px 0!important}
-.wl2 .wl-tap{position:absolute;left:0;right:0;bottom:calc(28px + env(safe-area-inset-bottom,0px));text-align:center;font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--muted);opacity:0;transition:opacity .4s}
+.wl2 .wl-tap{position:absolute;left:0;right:0;bottom:calc(28px + env(safe-area-inset-bottom,0px));text-align:center;font-family:var(--mono);font-size:11px;letter-spacing:0;color:var(--muted);opacity:0;transition:opacity .4s}
 .wl2.intro .wl-tap{opacity:.8}
 html.rm .wl-sel,html.rm .wl-disc{transition:none!important}
 
@@ -1533,7 +1533,7 @@ html.rm .wl-sel,html.rm .wl-disc{transition:none!important}
 .film-card.free{left:0;top:0;width:340px;background:none;box-shadow:none;border-radius:0;padding-left:21px;padding-right:21px;transform-origin:0 0}
 .film-card .fc-st{position:absolute;left:0;right:0;top:0;height:12px;background:linear-gradient(#D9752B 0 33%,#E9B949 33% 66%,#B6452C 66%)}
 .film-card.free .fc-st{display:none}
-.film-card small{display:block;font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.17em;color:#B6452C}
+.film-card small{display:block;font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:0;color:#B6452C}
 .film-card b{display:block;font-family:var(--font);font-size:30px;line-height:.95;font-weight:800;letter-spacing:-.03em;color:#2a1c14;margin:8px 0 8px}
 .film-card p{margin:0;font-family:var(--font);font-size:13.3px;line-height:1.4;color:#6b5646}
 .film-snd{position:absolute;left:50%;bottom:calc(30px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:99px;background:rgba(20,10,4,.55);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);color:#F6EEDC;font-size:13.5px;font-weight:600;pointer-events:none;animation:sndp 2s ease-in-out infinite;transition:opacity .3s}
@@ -1544,7 +1544,7 @@ html.rm .wl-sel,html.rm .wl-disc{transition:none!important}
 .ft-mark{display:flex;align-items:center;gap:30px}
 .ft-mark svg{width:94px;height:94px;--cut:#2a190e;filter:drop-shadow(0 4px 12px rgba(0,0,0,.35))}
 .ft-mark b{font-family:var(--brand);font-weight:400;font-size:84px;line-height:1;color:#F6EEDC;letter-spacing:0;text-shadow:0 4px 18px rgba(0,0,0,.35)}
-.film-title span{font-family:var(--mono);font-size:13.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#F6EEDC;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+.film-title span{font-family:var(--mono);font-size:13.5px;font-weight:600;letter-spacing:0;text-transform:none;color:#F6EEDC;text-shadow:0 1px 8px rgba(0,0,0,.6)}
 
 .film{position:absolute;inset:0;z-index:95;background:#1d120b;overflow:hidden;cursor:pointer}
 .film-gl,.film-gl canvas{position:absolute;inset:0;display:block}
@@ -1555,7 +1555,7 @@ html.rm .wl-sel,html.rm .wl-disc{transition:none!important}
 .film-bars i{flex:1;height:3px;border-radius:2px;background:rgba(246,238,220,.25);overflow:hidden}
 .film-bars b{display:block;height:100%;background:#F6EEDC;transform-origin:0 50%;transform:scaleX(0)}
 .film-skip{position:absolute;right:12px;top:calc(4px + var(--sat,0px) + env(safe-area-inset-top,0px));padding:6px 10px;font-size:13px;font-weight:600;color:#F6EEDC;opacity:.85}
-.film-rpm{position:absolute;left:18px;top:calc(34px + var(--sat,0px) + env(safe-area-inset-top,0px));font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:rgba(246,238,220,.7);opacity:0;transition:opacity .3s;pointer-events:none}
+.film-rpm{position:absolute;left:18px;top:calc(34px + var(--sat,0px) + env(safe-area-inset-top,0px));font-family:var(--mono);font-size:11px;letter-spacing:0;color:rgba(246,238,220,.7);opacity:0;transition:opacity .3s;pointer-events:none}
 .film-rpm.on{opacity:1}.film-rpm b{font-family:var(--font);font-size:30px;font-weight:800;color:#F6EEDC;letter-spacing:-.03em;display:inline-block}
 .film-rpm b.bump{animation:rpmb2 .35s cubic-bezier(.3,1.6,.5,1)}@keyframes rpmb2{40%{transform:scale(1.35);color:#EF8B2C}}
 
@@ -1629,6 +1629,8 @@ html.rm .wl-sel,html.rm .wl-disc{transition:none!important}
 .ch-res,.ch-list{display:flex;flex-direction:column;gap:4px;margin-top:8px}.ch-row{display:flex;align-items:center;gap:10px;padding:6px;border-radius:12px;text-align:left;width:100%}button.ch-row:hover{background:var(--surface-2)}.ch-row div{flex:1;min-width:0;display:flex;flex-direction:column}.ch-row b{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.ch-row small{font-size:12px;color:var(--muted)}.ch-row em{font-style:normal;font-size:11px;font-weight:700;color:#2FA37A}.ch-m{background:none!important;padding:0!important;border-radius:0!important;font-size:11.5px!important;font-weight:700}
 .mk-intro{padding:14px 16px;border-radius:18px;background:var(--surface);box-shadow:0 1px 3px var(--shadow);margin:2px 0 12px}.mk-intro b{font-size:16px;font-weight:800}.mk-intro p{margin:4px 0 10px;font-size:13.5px;color:var(--muted);line-height:1.4}.mk-intro ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px}.mk-intro li{display:flex;align-items:flex-start;gap:10px;font-size:13px;line-height:1.35}.mk-intro li i{flex:none;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:11px;font-weight:800;color:#FFF3E0;background:#E8762C}
 .ov-search{margin:6px 0 8px}.ov-seg{display:flex;margin:6px 0 12px}.ov-seg button{flex:1}
+.phone:has(#miniSlot:not(:empty)) .screen{padding-bottom:240px}
+.vs{margin:14px 0 4px;padding:12px 14px;border-radius:16px;background:var(--surface)}.vs-h{display:flex;justify-content:space-between;align-items:baseline}.vs-h b{font-size:15px}.vs-h button{font-size:12.5px;font-weight:700;color:#C8452B}.vs-r{display:flex;align-items:center;gap:10px;padding:7px 0;border-top:1px solid var(--surface-2);font-size:13.5px}.vs-r:first-of-type{border-top:0}.vs-r span{flex:1}.vs-r em{font-style:normal;color:var(--muted);font-size:12.5px}.vs-r i{font-style:normal;font-weight:800;min-width:34px;text-align:right}.vs-r i.top{color:#E8762C}
 </style>
 <style>[hidden]{display:none!important}body{margin:0}</style>
 </head>
@@ -1784,7 +1786,7 @@ html.rm .wl-sel,html.rm .wl-disc{transition:none!important}
           <div class="steps" id="steps"></div>
           <div class="sec-h"><h3>Get a Stack Puck</h3></div>
           <div class="product">
-            <div class="viewer" id="viewer"><canvas id="puckCanvas" aria-label="3D model of the Stack Puck. Drag to turn it."></canvas><span class="viewer-hint">DRAG TO SPIN</span></div>
+            <div class="viewer" id="viewer"><canvas id="puckCanvas" aria-label="3D model of the Stack Puck. Drag to turn it."></canvas><span class="viewer-hint">Drag to spin</span></div>
             <div class="prod-top"><div><b>Stack Puck</b><span>Records your own vinyl and CDs. One Stack Puck per player.</span></div><b class="prod-price">from £30</b></div>
             <div class="opt-row" id="puckCols"></div>
             <ul class="spec"><li><span>In the box</span>Stack Puck, RCA and 3.5mm cables, optical adapter, USB-C cable</li><li><span>Records</span>Up to 24-bit/96 kHz from vinyl, bit-perfect from CD</li><li><span>Size</span>9 cm across, 2.8 cm tall, 140 g</li><li><span>Power</span>USB-C, or the battery lasts about 2 weeks</li><li><span>Connects</span>Bluetooth to your phone, Wi-Fi to your Stack</li></ul>
@@ -1832,7 +1834,7 @@ html.rm .wl-sel,html.rm .wl-disc{transition:none!important}
               <rect x="14" y="222" width="30" height="16" rx="3" transform="rotate(-28 29 230)" fill="var(--fg)"/>
             </svg>
             <div class="tape-deck" id="tapeDeck"></div>
-            <span class="deck-tag a">DECK A</span><span class="deck-tag b">DECK B</span>
+            <span class="deck-tag a">Deck A</span><span class="deck-tag b">Deck B</span>
           </div>
           <div class="pl-info" id="plInfo">
             <div class="tx"><h2 id="plTitle"></h2><p id="plArtist"></p><div class="meta" id="plMeta"></div></div>
@@ -2138,11 +2140,11 @@ async function play(host,handoff){
     const g=new T.Group(),m=new T.Mesh(new T.PlaneGeometry(1,1/aspect),new T.MeshBasicMaterial({map:t,transparent:true,toneMapped:false,depthTest:!!opt.world,depthWrite:!!opt.world,fog:false}));
     const sh=new T.Mesh(new T.PlaneGeometry(1.12,1.12/aspect+.12),new T.MeshBasicMaterial({map:tex(shadowCanvas()),transparent:true,opacity:.55,depthTest:!!opt.world,depthWrite:false,toneMapped:false,fog:false}));sh.position.set(.02,-.04,-.01);
     g.add(sh,m);g.visible=false;g.userData={m,sh,aspect,...opt,text:htmlCard(kick,h,p,'free')};g.userData.text.style.paddingTop=((opt.topPad||0)+64)/1024*340+'px';(opt.world?scene:cam).add(g);cards.push(g);return g}
-  const C1=mkCard('THIS IS STACK','Your records. Everywhere.','Every LP and CD you own, playable on your phone, in the car and through your speakers.',{t0:4.6,t1:6,y:.5});
-  const C2=mkCard('BUY IT ONCE','Own the record. Get the music.','Scan the barcode and it lands in your Stack with the studio version, ready to stream in lossless.',{t0:8.5,t1:12,y:.5});
-  const C3=mkCard('THE STACK PUCK','Your pressing, captured.','Plug the Puck between your turntable and speakers. Play a side and it records your own copy in hi-res, crackle and all.',{t0:15.3,t1:19.5,y:.5});
-  const C4=mkCard('WHY STACK','Owning music is worth it again.','Streaming made music something you rent. Stack turns the records you love into a library you can play anywhere, share with family and swap with friends.',{t0:19.6,t1:26.5,world:true,topPad:150});
-  const C5=mkCard('MEET SELECTOR','Your DJ, digging through your crate.','Tell him a mood and he finds the perfect mix. Only music you actually own.',{t0:27.4,t1:31.5,y:-.52});
+  const C1=mkCard('This is Stack','Your records. Everywhere.','Every LP and CD you own, playable on your phone, in the car and through your speakers.',{t0:4.6,t1:6,y:.5});
+  const C2=mkCard('Buy it once','Own the record. Get the music.','Scan the barcode and it lands in your Stack with the studio version, ready to stream in lossless.',{t0:8.5,t1:12,y:.5});
+  const C3=mkCard('The Stack Puck','Your pressing, captured.','Plug the Puck between your turntable and speakers. Play a side and it records your own copy in hi-res, crackle and all.',{t0:15.3,t1:19.5,y:.5});
+  const C4=mkCard('Why Stack','Owning music is worth it again.','Streaming made music something you rent. Stack turns the records you love into a library you can play anywhere, share with family and swap with friends.',{t0:19.6,t1:26.5,world:true,topPad:150});
+  const C5=mkCard('Meet Selector','Your DJ, digging through your crate.','Tell him a mood and he finds the perfect mix. Only music you actually own.',{t0:27.4,t1:31.5,y:-.52});
   // card 4 stands on the table, left of the turntable
   const C4W=1.7,C4H=C4W/C4.userData.aspect,C4P=new T.Vector3(-2.85,-.33+C4H/2+.02,1.25);C4.position.copy(C4P);C4.rotation.y=.18;C4.scale.setScalar(C4W);
   const c4top=new T.Vector3(.18*C4W,C4H/2,.02).applyEuler(C4.rotation).add(C4P);
@@ -2456,7 +2458,7 @@ function Carousel(root,{items,from,owner,cap,capText,playable=true}){
 const SIZE={LP:1,'7in':.6,CD:.48};
 const caseInner=a=>`<span class="jc-tray"></span><div class="jc-disc">${discHTML(a)}</div><div class="jc-lid"><div class="jc-front"><span class="case-art">${artHTML(a)}</span><span class="gloss"></span></div><div class="jc-back"></div></div><span class="hinge"></span>`;
 const CAM='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>';
-const capPlayTxt='<span style="display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;margin-top:4px">TAP COVER TO PLAY</span>';
+const capPlayTxt='<span style="display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:0;margin-top:4px">Tap cover to play</span>';
 const capPlay=capPlayTxt;
 function capWith(a,html){return html}
 let cfMine,cfFam;
@@ -2625,7 +2627,7 @@ function domTrack(){return domB()?[st.deck2,st.trackB]:[st.cur,st.track]}
 function renderInfo(){if(!st.cur)return;const[a,i]=domTrack(),tr=tracksOf(a)[i];
   $('#plTitle').textContent=tr.t;$('#plArtist').textContent=`${a.a} · ${a.t}`;
   const mine=st.src==='mine'&&a.rec&&!st.deck2;$('#player').classList.toggle('pressing',mine);
-  $('#plMeta').textContent=`${st.deck2?'DECK '+(domB()?'B':'A')+' · ':''}${mine?(a.f==='CD'?'MY COPY · RECORDED FROM CD · 44.1 kHz':(a.o==='you'||!MEMBERS[a.o]?'MY':MEMBERS[a.o].n.toUpperCase()+"'S")+' PRESSING · 24-bit/96 kHz'):'STUDIO · '+fmtMeta[a.f]} · ${a.cat} · ${a.y}`;
+  $('#plMeta').textContent=`${st.deck2?'Deck '+(domB()?'B':'A')+' · ':''}${mine?(a.f==='CD'?'My copy · recorded from CD · 44.1 kHz':(a.o==='you'||!MEMBERS[a.o]?'My':MEMBERS[a.o].n+"'s")+' pressing · 24-bit/96 kHz'):'Studio · '+fmtMeta[a.f]} · ${a.cat} · ${a.y}`;
   paintSrc(a);
   $('#tLen').textContent=fmtT(tr.d);$('#likeBtn').setAttribute('aria-pressed',isLiked(a,i));}
 function paintSrc(a){const row=$('#srcRow');if(!row||!a)return;const who=a.o==='you'||!a.o?'My':MEMBERS[a.o].n+"'s",lbl=a.f==='CD'?who+' copy':who+' pressing';
@@ -2830,14 +2832,14 @@ function howSVG(mode){const src=mode==='cd'?'CD player':'Turntable';
    <rect x="262" y="24" width="26" height="46" rx="4" fill="none" stroke="var(--fg)" stroke-width="2"/><circle cx="275" cy="38" r="5" fill="none" stroke="var(--fg)" stroke-width="2"/><circle cx="275" cy="56" r="8" fill="none" stroke="var(--fg)" stroke-width="2"/>
    <rect x="294" y="24" width="26" height="46" rx="4" fill="none" stroke="var(--fg)" stroke-width="2"/><circle cx="307" cy="38" r="5" fill="none" stroke="var(--fg)" stroke-width="2"/><circle cx="307" cy="56" r="8" fill="none" stroke="var(--fg)" stroke-width="2"/>
    <text x="291" y="92" text-anchor="middle" font-size="11" fill="var(--muted)" font-family="var(--font)">Your speakers</text>
-   <text x="170" y="12" text-anchor="middle" font-size="9.5" fill="var(--muted)" font-family="var(--mono)" letter-spacing=".08em">SOUND PASSES THROUGH · PUCK RECORDS YOUR COPY</text></svg>`}
+   <text x="170" y="12" text-anchor="middle" font-size="9.5" fill="var(--muted)" font-family="var(--mono)" letter-spacing=".08em">Sound passes through · Puck records your copy</text></svg>`}
 const PACKS=[
  {id:'solo',name:'Stack Puck',price:30,n:1,desc:'One Stack Puck for one turntable or CD player. Cables and a USB-C charger in the box.'},
  {id:'duo',name:'Stack Puck Duo',price:50,n:2,best:true,desc:'Two Stack Pucks, one for the turntable and one for the CD player. Save £10.'},
  {id:'fam',name:'Stack Puck Family Pack',price:75,n:3,desc:'Three Stack Pucks, enough for the whole house. Save £15.'}];
-const COLOURS=[['Black','#1d1c1a'],['Chalk','#E7E3DC'],['Orange','#EE9A2E']];
+const COLOURS=[['Black','#1d1c1a'],['White','#E7E3DC'],['Orange','#EE9A2E']];
 let puckCol=0;
-function renderPacks(){$('#packs').innerHTML=PACKS.map((p,i)=>`<button class="pack${p.best?' best':''}" data-pack="${i}"><span class="pk-img${p.n===1?' one':''}">${'<i></i>'.repeat(p.n)}</span><span class="tx">${p.best?'<span class="tag">MOST POPULAR</span>':''}<b>${p.name}</b><span>${p.desc}</span></span><span class="price"><b>£${p.price}</b><span>Buy</span></span></button>`).join('')}
+function renderPacks(){$('#packs').innerHTML=PACKS.map((p,i)=>`<button class="pack${p.best?' best':''}" data-pack="${i}"><span class="pk-img${p.n===1?' one':''}">${'<i></i>'.repeat(p.n)}</span><span class="tx">${p.best?'<span class="tag">Most popular</span>':''}<b>${p.name}</b><span>${p.desc}</span></span><span class="price"><b>£${p.price}</b><span>Buy</span></span></button>`).join('')}
 function openShop(i){const _cm=['black','white','orange'];closeSheet&&0;window.openStackProd('puck',(i==null||isNaN(i))?0:+i,_cm[puckCol]);return;const slot=$('#sheetSlot');let pk=(i==null||isNaN(i))?0:i,col=puckCol,q=1;
   const draw=()=>{const p=PACKS[pk],sub=p.price*q;
    slot.querySelector('#shopBody').innerHTML=`
@@ -2845,11 +2847,11 @@ function openShop(i){const _cm=['black','white','orange'];closeSheet&&0;window.o
     <div class="set-h">Colour</div><div class="opt-row">${COLOURS.map(([n,c],k)=>`<button class="opt" data-col="${k}" aria-pressed="${k===col}"><span class="sw-c" style="background:${c}"></span>${n}</button>`).join('')}</div>
     <div class="set-h">Quantity</div><div class="qty"><button data-q="-1" aria-label="One fewer">−</button><b>${q}</b><button data-q="1" aria-label="One more">+</button></div>
     <div class="sum"><div><span>${p.name} × ${q} · ${COLOURS[col][0]}</span><span>£${sub.toFixed(2)}</span></div><div><span>UK delivery · 2–3 working days</span><span>Free</span></div><div class="tot"><span>Total</span><span>£${sub.toFixed(2)}</span></div></div>
-    <button class="btn" id="shopGo">Place demo order</button><div class="demo-note">PROTOTYPE · NO PAYMENT IS TAKEN</div>`;
+    <button class="btn" id="shopGo">Place demo order</button><div class="demo-note">Prototype · no payment is taken</div>`;
    slot.querySelectorAll('[data-pk]').forEach(b=>b.onclick=()=>{pk=+b.dataset.pk;draw()});
    slot.querySelectorAll('[data-col]').forEach(b=>b.onclick=()=>{col=+b.dataset.col;draw()});
    slot.querySelectorAll('[data-q]').forEach(b=>b.onclick=()=>{q=Math.max(1,Math.min(5,q+(+b.dataset.q)));draw()});
-   $('#shopGo').onclick=()=>{slot.querySelector('#shopBody').innerHTML=`<div class="sent-ok"><div style="display:flex;justify-content:center;gap:6px;margin-bottom:14px">${'<span style="width:54px;height:54px;border-radius:50%;background:'+COLOURS[col][1]+';box-shadow:inset 0 0 0 1px rgba(0,0,0,.2),0 8px 16px -6px rgba(0,0,0,.4)"></span>'.repeat(Math.min(3,p.n*q))}</div><b>Order placed</b><span>${p.name} × ${q} in ${COLOURS[col][0]} · arriving in 2–3 days.<br>We'll email tracking details.</span></div><button class="btn ghost" id="shopDone">Done</button><div class="demo-note">DEMO ORDER · NOTHING WAS CHARGED</div>`;$('#shopDone').onclick=closeSheet}};
+   $('#shopGo').onclick=()=>{slot.querySelector('#shopBody').innerHTML=`<div class="sent-ok"><div style="display:flex;justify-content:center;gap:6px;margin-bottom:14px">${'<span style="width:54px;height:54px;border-radius:50%;background:'+COLOURS[col][1]+';box-shadow:inset 0 0 0 1px rgba(0,0,0,.2),0 8px 16px -6px rgba(0,0,0,.4)"></span>'.repeat(Math.min(3,p.n*q))}</div><b>Order placed</b><span>${p.name} × ${q} in ${COLOURS[col][0]} · arriving in 2–3 days.<br>We'll email tracking details.</span></div><button class="btn ghost" id="shopDone">Done</button><div class="demo-note">Demo order · nothing was charged</div>`;$('#shopDone').onclick=closeSheet}};
   slot.innerHTML=`<div class="scrim" id="shSc"></div><div class="sheet" style="max-height:90%"><div class="sheet-h"><h3>Get a Stack Puck</h3><button class="icon-btn" id="shX" aria-label="Close">${ICON.x}</button></div><div class="sheet-b" id="shopBody"></div></div>`;
   $('#shSc').onclick=$('#shX').onclick=closeSheet;draw()}
 document.addEventListener('click',e=>{const b=e.target.closest('[data-pack]');if(b)openShop(+b.dataset.pack)});
@@ -2909,10 +2911,10 @@ function recordCopy(a){scanning=true;const cd=a.f==='CD',sides=cd?['Disc']:a.f==
   goTab('add');$('#scanBtns').hidden=true;
   const draw=()=>{const side=sides[si];
     $('#devStatus').innerHTML=`<b>Record your copy</b><span>${a.t} · ${a.a}</span>`;
-    $('#foundBox').innerHTML=`<div class="recpanel"><div class="rec-top"><span class="rec-side">${side.toUpperCase()}</span><span class="rec-step">${si+1} of ${sides.length}</span></div>
+    $('#foundBox').innerHTML=`<div class="recpanel"><div class="rec-top"><span class="rec-side">${side}</span><span class="rec-step">${si+1} of ${sides.length}</span></div>
       <canvas class="wave" id="wave"></canvas><div class="bar"><i id="recFill"></i></div><div class="times"><span id="recT">0:00</span><span>${cd?'Full disc':side}</span></div>
       <p class="rec-hint" id="recHint">${cd?'Put the disc in your CD player, then press record and play.':si?'Flip the record over and drop the needle on '+side+'.':'Drop the needle on '+side+', then press record.'}</p>
-      <button class="btn" id="recGo">${si?'Record '+side:'Start recording'}</button><div class="demo-note">DEMO · RECORDING IS SPED UP</div></div>`;
+      <button class="btn" id="recGo">${si?'Record '+side:'Start recording'}</button><div class="demo-note">Demo · recording is sped up</div></div>`;
     $('#recGo').onclick=()=>run()};
   const run=()=>{const cv=$('#wave'),ctx=cv.getContext('2d'),r=cv.getBoundingClientRect(),dpr=Math.min(2,devicePixelRatio||1);cv.width=r.width/S*dpr;cv.height=r.height/S*dpr;ctx.scale(dpr,dpr);
     const w=r.width/S,h=r.height/S,bars=[],D=5200,t0=performance.now(),total=tracksOf(a).reduce((x,y)=>x+y.d,0)/sides.length;
@@ -2925,7 +2927,7 @@ function recordCopy(a){scanning=true;const cd=a.f==='CD',sides=cd?['Disc']:a.f==
   const done=()=>{$('#puckWrap').classList.remove('scanning');si++;if(si<sides.length)return draw();
     a.rec=true;a.recDate=new Date().toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});scanning=false;
     $('#devStatus').innerHTML=`<b>Your ${cd?'copy':'pressing'} is saved</b><span>${a.t} now plays as your own ${cd?'copy':'pressing'}, or the studio version.</span>`;
-    $('#foundBox').innerHTML=`<div class="found">${artHTML(a)}<div><b>${a.t}</b><span>${a.a}</span><div class="mono">${cd?'MY COPY':'MY PRESSING'} · RECORDED ${a.recDate.toUpperCase()}</div></div></div>
+    $('#foundBox').innerHTML=`<div class="found">${artHTML(a)}<div><b>${a.t}</b><span>${a.a}</span><div class="mono">${cd?'My copy':'My pressing'} · RECORDED ${a.recDate.toUpperCase()}</div></div></div>
       <div style="display:flex;gap:8px"><button class="btn ghost" id="recShelf">See it in my Stack</button><button class="btn" id="recPlay">Play my ${cd?'copy':'pressing'}</button></div>`;
     $('#recShelf').onclick=()=>showStack(a);
     $('#recPlay').onclick=()=>{st.src='mine';paintAdd();openRecord(a,null,'My Stack')}};
@@ -2934,7 +2936,7 @@ $('#scanBtn').onclick=async()=>{
   if(scanning)return;const found=nextFind();const ds=$('#devStatus');
   if(!found){ds.innerHTML='<b>All caught up</b><span>Every demo '+(addMode==='cd'?'CD':'record')+' is already in your Stack</span>';return}
   scanning=true;const cam=document.createElement('div');cam.className='cam';
-  cam.innerHTML=`<p>Line up the barcode on the back of the ${addMode==='cd'?'case':'sleeve'}</p><div class="vf"><div class="code"></div><span class="num">5 0${String(hash(found.id)).slice(0,5)} ${String(hash(found.id+'x')).slice(0,6)}</span><div class="laser"></div></div><p class="mono" style="font-size:11px;color:#888">CAMERA · DEMO</p>`;
+  cam.innerHTML=`<p>Line up the barcode on the back of the ${addMode==='cd'?'case':'sleeve'}</p><div class="vf"><div class="code"></div><span class="num">5 0${String(hash(found.id)).slice(0,5)} ${String(hash(found.id+'x')).slice(0,6)}</span><div class="laser"></div></div><p class="mono" style="font-size:11px;color:#888">Camera · demo</p>`;
   phone.appendChild(cam);await wait(1900);cam.querySelector('p').textContent='Got it';await wait(500);
   cam.animate([{opacity:1},{opacity:0}],{duration:250}).finished.then(()=>cam.remove());
   showFound(found,'Matched from the barcode. Choose how to add it.')};
@@ -2944,13 +2946,13 @@ $('#codeBtn').onclick=()=>{const slot=$('#sheetSlot');let qr='';let h=hash('stac
     if(on)qr+=`<rect x="${x}" y="${y}" width="1" height="1"/>`}
   slot.innerHTML=`<div class="scrim" id="tgSc"></div><div class="sheet" style="max-height:90%"><div class="sheet-h"><h3>Stack tags</h3><button class="icon-btn" id="tgX" aria-label="Close">${ICON.x}</button></div><div class="sheet-b">
    <div class="tag-card"><div class="tag-qr"><svg viewBox="-1 -1 23 23"><rect x="-1" y="-1" width="23" height="23" fill="#fff"/><g fill="#111">${qr}</g><circle cx="10.5" cy="10.5" r="3.4" fill="#fff"/></svg><svg class="tag-mark" viewBox="0 0 200 200" style="--cut:#fff"><use href="#mark"/></svg></div>
-    <div><span class="plan" style="display:inline-block;margin-bottom:6px">COMING WITH LAUNCH PARTNERS</span><b>Ownership, built into the sleeve</b><p class="sub">Partner labels print a one-time Stack tag inside the sleeve or CD booklet. Scan it and your ownership is verified instantly, with the studio version unlocked. Record your copy whenever you like.</p></div></div>
+    <div><span class="plan" style="display:inline-block;margin-bottom:6px">Coming with launch partners</span><b>Ownership, built into the sleeve</b><p class="sub">Partner labels print a one-time Stack tag inside the sleeve or CD booklet. Scan it and your ownership is verified instantly, with the studio version unlocked. Record your copy whenever you like.</p></div></div>
    <div class="steps" style="margin-top:6px"><div class="step"><i>1</i><span><b>Buy a partner release.</b> Look for the Stack tag sticker on the shrink wrap.</span></div><div class="step"><i>2</i><span><b>Scan the tag inside.</b> Each code works once, so a copy can only belong to one Stack.</span></div><div class="step"><i>3</i><span><b>Pass it on properly.</b> Selling the record? Transfer the tag to the buyer in the app.</span></div></div>
-   <button class="btn" id="tgTry" style="margin-top:16px">Try a demo tag</button><div class="demo-note">PROTOTYPE · NOT YET AVAILABLE</div></div></div>`;
+   <button class="btn" id="tgTry" style="margin-top:16px">Try a demo tag</button><div class="demo-note">Prototype · not yet available</div></div></div>`;
   $('#tgSc').onclick=$('#tgX').onclick=closeSheet;
   $('#tgTry').onclick=()=>{const f=nextFind();closeSheet();if(!f){$('#devStatus').innerHTML='<b>All caught up</b><span>Every demo record is already in your Stack</span>';return}addToStack(f);$('#scanBtns').hidden=true;
     $('#devStatus').innerHTML='<b>Verified by Stack tag</b><span>Ownership confirmed instantly. No recording needed to play it.</span>';
-    $('#foundBox').innerHTML=`<div class="found">${artHTML(f)}<div><b>${f.t}</b><span>${f.a}</span><div class="mono">VERIFIED · STACK TAG · ${f.y}</div></div></div><div style="display:flex;gap:8px"><button class="btn ghost" id="tgShelf">See it in my Stack</button><button class="btn" id="tgRec">Record my copy</button></div>`;
+    $('#foundBox').innerHTML=`<div class="found">${artHTML(f)}<div><b>${f.t}</b><span>${f.a}</span><div class="mono">Verified · Stack tag · ${f.y}</div></div></div><div style="display:flex;gap:8px"><button class="btn ghost" id="tgShelf">See it in my Stack</button><button class="btn" id="tgRec">Record my copy</button></div>`;
     $('#tgShelf').onclick=()=>showStack(f);$('#tgRec').onclick=()=>recordCopy(f)}};
 paintAdd();
 
@@ -3150,7 +3152,7 @@ function openAI(){const slot=$('#sheetSlot');$('#aiTab').classList.add('open');
 const SETTINGS={quality:'Lossless',visible:true,nowSpinning:true};
 $('#aiTab').onclick=openAI;
 function screenDiag(){try{const pr=document.createElement('div');pr.style.cssText='position:fixed;left:0;top:0;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px);visibility:hidden';document.body.appendChild(pr);const cs=getComputedStyle(pr),st=parseInt(cs.paddingTop),sb=parseInt(cs.paddingBottom);pr.remove();
-  const ph=$('#phone').getBoundingClientRect(),sa=(navigator.standalone||matchMedia('(display-mode: standalone)').matches)?'HOME SCREEN':'BROWSER';
+  const ph=$('#phone').getBoundingClientRect(),sa=(navigator.standalone||matchMedia('(display-mode: standalone)').matches)?'Home screen':'Browser';
   return `${sa} · SCREEN ${screen.width}×${screen.height} · WIN ${innerWidth}×${innerHeight} · APP ${Math.round(ph.top)}–${Math.round(ph.bottom)} · SAFE ${st}/${sb}`}catch(e){return ''}}
 
 /* keep the side panel lined up with the mock phone: same top, same bottom */
@@ -3186,7 +3188,7 @@ function forgottenMix(){const al=dusty().slice(0,4);const q=[];al.forEach(a=>{co
 
 /* ---------- Dust it off (My Stack) ---------- */
 function renderDust(){const slot=$('#dustSlot');if(!slot)return;const d=dusty()[0];if(!d||Date.now()-lastPlayed(d)<30*DAY){slot.innerHTML='';return}
-  slot.innerHTML=`<div class="dust">${artHTML(d,'',false)}<div class="tx"><small>DUST IT OFF</small><b>You haven't played ${d.t} in ${agoPlain(lastPlayed(d)||NOW-400*DAY)}</b>
+  slot.innerHTML=`<div class="dust">${artHTML(d,'',false)}<div class="tx"><small>Dust it off</small><b>You haven't played ${d.t} in ${agoPlain(lastPlayed(d)||NOW-400*DAY)}</b>
     <div class="acts"><button class="chipbtn on" id="dustPlay">Play it</button><button class="chipbtn" id="dustMix">Forgotten gems mix</button><button class="chipbtn" id="dustStats">Stats</button></div></div></div>`;
   $('#dustPlay').onclick=()=>openRecord(d,slot.querySelector('.art'),'Dust it off');
   $('#dustMix').onclick=()=>playQueue(forgottenMix(),0,'Forgotten gems');
@@ -3286,19 +3288,19 @@ function openStats(){const slot=$('#sheetSlot'),m=mine();const secs=m.reduce((n,
   slot.innerHTML=`<div class="scrim" id="stSc"></div><div class="sheet" style="max-height:92%"><div class="sheet-h"><h3>Your stats</h3><button class="icon-btn" id="stX" aria-label="Close">${ICON.x}</button></div><div class="sheet-b">
    <div class="st-tiles"><div class="st-tile"><b>${hrs}h</b><span>listened from your Stack</span></div><div class="st-tile"><b>${played} of ${m.length}</b><span>records played this month</span></div>
     <div class="st-tile"><b>${tt}</b><span>plays on your turntable</span></div><div class="st-tile"><b>${d?agoPlain(lastPlayed(d)||NOW-400*DAY):'–'}</b><span>since you played ${d?d.t:'everything'}</span></div></div>
-   <div class="st-h">MOST PLAYED</div>${top.slice(0,5).map((a,i)=>`<div class="st-top"><span class="n">${i+1}</span>${artHTML(a,'',false)}<div class="tx"><b>${a.t}</b><span>${a.a} · ${(HIST[a.id]||{}).plays||0} plays</span></div></div>`).join('')}
-   <div class="st-h">YOUR COLLECTION BY DECADE</div>${dk.map((k,i)=>`<div class="st-bar"><span>${k}</span><i style="width:${decs[k]/dmax*100}%;--c:${cols[i%cols.length]}"></i><em>${decs[k]}</em></div>`).join('')}
-   <div class="st-h">BY STYLE</div>${gk.map(([g,n],i)=>`<div class="st-bar"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${g}</span><i style="width:${n/gmax*100}%;--c:${cols[(i+2)%cols.length]}"></i><em>${n}</em></div>`).join('')}
-   <div class="st-h">STACK WRAPPED ${yr}</div>
-   <div class="wrapped"><small>STACK WRAPPED · ${yr}</small><h4>Your year on record</h4>
+   ${window.FR_COMPARE?window.FR_COMPARE():''}<div class="st-h">Most played</div>${top.slice(0,5).map((a,i)=>`<div class="st-top"><span class="n">${i+1}</span>${artHTML(a,'',false)}<div class="tx"><b>${a.t}</b><span>${a.a} · ${(HIST[a.id]||{}).plays||0} plays</span></div></div>`).join('')}
+   <div class="st-h">Your collection by decade</div>${dk.map((k,i)=>`<div class="st-bar"><span>${k}</span><i style="width:${decs[k]/dmax*100}%;--c:${cols[i%cols.length]}"></i><em>${decs[k]}</em></div>`).join('')}
+   <div class="st-h">By style</div>${gk.map(([g,n],i)=>`<div class="st-bar"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${g}</span><i style="width:${n/gmax*100}%;--c:${cols[(i+2)%cols.length]}"></i><em>${n}</em></div>`).join('')}
+   <div class="st-h">Stack Wrapped ${yr}</div>
+   <div class="wrapped"><small>Stack Wrapped · ${yr}</small><h4>Your year on record</h4>
     ${top[0]?`<div class="w-top">${artHTML(top[0],'',false)}<div><span>Your record of the year</span><b>${top[0].t}</b><span>${top[0].a} · ${(HIST[top[0].id]||{}).plays||0} plays</span></div></div>`:''}
     <div class="w-grid"><div><b>${hrs}h</b><span>of your own records</span></div><div><b>${topArtist?topArtist[0]:'–'}</b><span>top artist</span></div><div><b>${m.length}</b><span>records in your Stack</span></div><div><b>${tt}</b><span>turntable plays</span></div></div></div>
-   <button class="btn" id="stShare" style="margin-top:12px">Share your Wrapped</button><div class="demo-note">PROTOTYPE · LISTENING DATA IS PARTLY SIMULATED</div></div></div>`;
+   <button class="btn" id="stShare" style="margin-top:12px">Share your Wrapped</button><div class="demo-note">Prototype · listening data is partly simulated</div></div></div>`;
   $('#stSc').onclick=$('#stX').onclick=closeSheet;$('#stShare').onclick=e=>{e.currentTarget.textContent='Copied to share with friends';e.currentTarget.disabled=true}}
 
 /* ---------- Discogs import (demo) ---------- */
 let DG=LS('stack-dg',{done:false,user:'',pending:[]});
-function openDiscogs(){const slot=$('#sheetSlot');const draw=html=>{slot.innerHTML=`<div class="scrim" id="dgSc"></div><div class="sheet" style="max-height:90%"><div class="sheet-h"><h3>Import from Discogs</h3><button class="icon-btn" id="dgX" aria-label="Close">${ICON.x}</button></div><div class="sheet-b">${html}<div class="demo-note">PROTOTYPE · DISCOGS IMPORT IS SIMULATED</div></div></div>`;$('#dgSc').onclick=$('#dgX').onclick=closeSheet};
+function openDiscogs(){const slot=$('#sheetSlot');const draw=html=>{slot.innerHTML=`<div class="scrim" id="dgSc"></div><div class="sheet" style="max-height:90%"><div class="sheet-h"><h3>Import from Discogs</h3><button class="icon-btn" id="dgX" aria-label="Close">${ICON.x}</button></div><div class="sheet-b">${html}<div class="demo-note">Prototype · Discogs import is simulated</div></div></div>`;$('#dgSc').onclick=$('#dgX').onclick=closeSheet};
   draw(`<p class="sub" style="margin:0 0 10px">Already catalogue your records on Discogs? Bring your whole collection over in one go. You then verify each record with a quick barcode scan, so Stack knows it's really yours.</p>
    <div class="form-row"><label>Discogs username</label><input id="dgUser" value="${esc(DG.user||'harry_spins')}" autocomplete="off"></div><button class="btn" id="dgGo" style="margin-top:14px">Connect and import</button>`);
   $('#dgGo').onclick=async()=>{DG.user=$('#dgUser').value.trim()||'harry_spins';draw(`<div class="dg-step"><div class="ring"></div><b>Reading ${esc(DG.user)}'s collection…</b><p class="sub" id="dgN">Found 0 releases</p></div>`);
@@ -3345,12 +3347,12 @@ function openWelcome(force){if(!force&&LS('stack-welcomed',false))return;const p
      <div class="wl-bub" id="wlBub"></div>
      <div class="wl-sel" id="wlSel"><div class="rd-bot">${SEL_BODY}</div><i class="wl-sweat a"></i><i class="wl-sweat b"></i><div class="wl-stars"><i>✦</i><i>✦</i><i>✦</i></div></div></div></div>
    <div class="wl-copy"><div class="wl-txt" id="wlTxt"></div><div class="dots" id="wlDots"></div><div class="wl-btns" id="wlBtns"></div></div>
-   <div class="wl-tap">TAP TO SKIP</div>`;
+   <div class="wl-tap">Tap to skip</div>`;
   const sel=$('#wlSel'),disc=$('#wlDisc'),blur=$('#wlBlur'),rpmEl=$('#wlRpm'),bub=$('#wlBub');
   const arms=sel.querySelectorAll('.rd-arm'),legs=sel.querySelectorAll('.rd-leg'),head=sel.querySelector('.rd-head');
   const slides=[
-    {k:'WELCOME TO STACK',h:'Your records.<br><em>Everywhere.</em>',p:"Every LP and CD you own, on your phone, in the car, through the speakers. Buy the record, get the music. That's the deal.",pose:'wave'},
-    {k:'STEP ONE',h:'Scan it.<br>Spin it.<br><em>It\'s yours.</em>',p:"Point your camera at the barcode and it's in your Stack. Plug in the Stack Puck and it records your own pressing, crackle and all.",pose:'cheer'},
+    {k:'Welcome to Stack',h:'Your records.<br><em>Everywhere.</em>',p:"Every LP and CD you own, on your phone, in the car, through the speakers. Buy the record, get the music. That's the deal.",pose:'wave'},
+    {k:'Step one',h:'Scan it.<br>Spin it.<br><em>It\'s yours.</em>',p:"Point your camera at the barcode and it's in your Stack. Plug in the Stack Puck and it records your own pressing, crackle and all.",pose:'cheer'},
     {k:'AND ME?',h:'I\'m Selector.<br><em>I do the mixes.</em>',p:"Tell me a mood and I'll dig through your crate for the perfect mix. Only music you actually own. Promise. (I'll stay off the turntable.)",pose:'point'}];
   // little synth sounds, kept quiet
   const ac=()=>{if(!SFX_ON)return null;try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();if(AC.state==='suspended')AC.resume();return AC}catch(e){return null}};
@@ -3445,7 +3447,7 @@ const Crate=(()=>{let items=[],cur=0,sort='artist',q='',built=false;const DVC=['
   function render(){const box=$('#crateItems');if(!box)return;const prevId=items[cur]&&items[cur].a&&items[cur].a.id;items=list();
     let ni=items.findIndex(x=>x.a&&x.a.id===prevId);if(ni<0)ni=items.findIndex(x=>x.a);cur=Math.max(0,ni);
     box.innerHTML=items.length?items.map((x,i)=>x.a?`<div class="ck${x.a.f==='CD'?' cd':''}" data-ci="${i}">${artHTML(x.a,'',true)}<div class="ck-t">${x.a.t} <em>· ${x.a.a}</em></div></div>`
-      :`<div class="ck dv" data-ci="${i}" style="--dvc:${x.c};--tabx:calc(54% + ${(x.div.charCodeAt(0)*29)%70}px)"><b>${x.div}</b><span>${x.n} ${x.n===1?'RECORD':'RECORDS'}</span></div>`).join(''):'<div class="crate-empty">Nothing in your Stack matches that.</div>';
+      :`<div class="ck dv" data-ci="${i}" style="--dvc:${x.c};--tabx:calc(54% + ${(x.div.charCodeAt(0)*29)%70}px)"><b>${x.div}</b><span>${x.n} ${x.n===1?'Record':'Records'}</span></div>`).join(''):'<div class="crate-empty">Nothing in your Stack matches that.</div>';
     const n=items.filter(x=>x.a).length;$('#crateCount').textContent=`${n} ${n===1?'record':'records'}`;layout(true);if(!built)bind()}
   function geo(){const c=$('#crate');const cw=c?c.clientWidth:390;const W=Math.round(Math.min(320,Math.max(220,cw*.74)));const TOP=92,STRIP=27;
     if(c){c.style.setProperty('--cw',W+'px');c.style.height=(TOP+W+6+STRIP*5+40)+'px'}return{W,TOP,STRIP}}
@@ -3566,7 +3568,7 @@ function openGift(id){const m=MT.find(x=>x.id===id);if(!m)return;closeSheet();
   ov.innerHTML=`<button class="icon-btn x" aria-label="Close">${ICON.x}</button>
    <div class="env" id="env" role="button" aria-label="Open the envelope"><div class="env-back"></div><div class="env-tape">${tapeHTML(m)}</div><div class="env-front"></div>
     <div class="env-to">To Harry<br><small style="font-size:18px">love, ${m.from}</small></div><div class="env-stamp"><svg viewBox="0 0 200 200" style="--cut:#F6F0E3"><use href="#mark"/></svg></div><div class="env-flap"></div></div>
-   <div class="hint" id="envHint">TAP TO OPEN</div><div id="giftRest" style="display:contents"></div>`;
+   <div class="hint" id="envHint">Tap to open</div><div id="giftRest" style="display:contents"></div>`;
   phone.appendChild(ov);
   const env=ov.querySelector('#env');env.animate([{transform:'translateY(-120%) rotate(-10deg) scale(.8)',opacity:0},{transform:'translateY(4%) rotate(2deg)',opacity:1,offset:.7},{transform:'none',opacity:1}],{duration:700,easing:'cubic-bezier(.3,.7,.3,1)'});
   ov.querySelector('.x').onclick=()=>ov.remove();
@@ -3773,8 +3775,8 @@ function openAbout(){const slot=$('#sheetSlot');
     <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18v-6a8 8 0 0 1 16 0v6"/><rect x="3" y="15" width="4" height="6" rx="1.5"/><rect x="17" y="15" width="4" height="6" rx="1.5"/></svg><b>Stream</b>Play them anywhere</div>
    </div>
    <div class="about-bot"><span class="bh" style="--s:52px"><span class="bh-band"></span><span class="bh-cup l"></span><span class="bh-cup r"></span><span class="bh-head"><span class="bh-stripes"></span><span class="bh-face"><i class="bh-eye l"></i><i class="bh-eye r"></i><i class="bh-vu"><b></b><b></b><b></b><b></b><b></b></i></span></span></span><div><b>Meet DJ Selector</b><span>Your own crate-digging DJ. Tell him a mood, a moment or an artist, like "rainy Sunday", "cooking dinner" or "some Fleetwood Mac", and he digs through every record you and your family own to build a mix in seconds.</span></div></div>
-   <ul class="about-sel"><li><b>Only music you own.</b> Every song comes from a real record in your Stack, so every mix rewards collecting.</li><li><b>Mixes the whole family.</b> On Duo and Family plans he digs through everyone's records, not just yours.</li><li><b>Keep the good ones.</b> Play the mix straight away, shuffle again, or save it as a mixtape to send to a friend.</li></ul><p class="mono" style="font-size:10.5px;color:var(--muted);text-align:center;margin:14px 0 0;letter-spacing:.06em">PROTOTYPE BUILD · 19 OCT · 20:10</p><p class="mono" style="font-size:9.5px;color:var(--muted);text-align:center;margin:4px 0 0;letter-spacing:.04em;opacity:.8">${screenDiag()}</p>
-   <div class="about-foot">STACK 1.0 · FOR PEOPLE WHO STILL BUY RECORDS</div></div></div>`;
+   <ul class="about-sel"><li><b>Only music you own.</b> Every song comes from a real record in your Stack, so every mix rewards collecting.</li><li><b>Mixes the whole family.</b> On Duo and Family plans he digs through everyone's records, not just yours.</li><li><b>Keep the good ones.</b> Play the mix straight away, shuffle again, or save it as a mixtape to send to a friend.</li></ul><p class="mono" style="font-size:10.5px;color:var(--muted);text-align:center;margin:14px 0 0;letter-spacing:0">Prototype build · 19 Oct · 20:55</p><p class="mono" style="font-size:9.5px;color:var(--muted);text-align:center;margin:4px 0 0;letter-spacing:.04em;opacity:.8">${screenDiag()}</p>
+   <div class="about-foot">Stack 1.0 · for people who still buy records</div></div></div>`;
   $('#abSc').onclick=$('#abX').onclick=closeSheet;
 }
 $('#logoBtn').onclick=()=>{const sv=$('#logoBtn svg');sv.animate([{transform:'rotate(0)'},{transform:'rotate(-360deg)'}],{duration:600,easing:'cubic-bezier(.3,.7,.3,1)'});setTimeout(openAbout,250)};
@@ -3786,7 +3788,7 @@ function openPlans(pending){const slot=$('#sheetSlot');const cur=st.plan;
    ${Object.entries(PLANS).map(([k,pl])=>`<div class="plan-card${k===cur?' cur':''}"><div class="plan-top"><b>${pl.name}${k===cur?'<span class="cur-badge">Current</span>':''}</b><span class="pr">${fmtGBP(pl.price)}<small> /month</small></span></div><div class="who">${pl.who}</div>
      <ul>${pl.feats.map(f=>`<li>${f}</li>`).join('')}</ul>
      ${k===cur?'<span class="cur-tag">You’re on this plan</span>':pending===k?`<p class="plan-warn">${cur==='family'?'Your Family Stack will stop sharing, and Mum, Dad and Ellie will lose access to your records.':k==='family'?'You can invite up to 3 people to share your Family Stack.':'Your plan changes from your next bill.'} You'll pay ${fmtGBP(pl.price)} a month from your next bill.</p><div style="display:flex;gap:8px"><button class="btn ghost" data-plan-cancel>Cancel</button><button class="btn" data-plan-confirm="${k}">Confirm ${pl.name}</button></div>`:`<button class="btn ghost" data-plan="${k}">Switch to ${pl.name}</button>`}</div>`).join('')}
-   <div class="demo-note">PROTOTYPE · PLAN CHANGES ARE FOR DEMO ONLY</div></div></div>`;
+   <div class="demo-note">Prototype · plan changes are for demo only</div></div></div>`;
   $('#plSc').onclick=closeSheet;$('#plBack').onclick=openAccount;
   slot.querySelectorAll('[data-plan]').forEach(b=>b.onclick=()=>openPlans(b.dataset.plan));
   slot.querySelectorAll('[data-plan-cancel]').forEach(b=>b.onclick=()=>openPlans());
@@ -3866,7 +3868,7 @@ function introSound(){const ac=IAC;if(!ac||ac.state!=='running')return null;cons
 async function intro(){
   const run=++introRun,sp=$('#splash');
   sp.getAnimations().forEach(a=>a.cancel());sp.hidden=false;
-  sp.innerHTML=`<div class="sp-bg" id="spBg">${bgSVG()}</div><div class="sp-rec" id="spRec"><div class="sp-spin" id="spSpin"><div class="sp-vinyl"></div><svg class="sp-logo" viewBox="0 0 200 200"><use href="#mark"/><circle cx="100" cy="100" r="5" fill="#0b0b0b"/></svg><svg class="sp-logo sp-logo2" viewBox="0 0 200 200" style="--cut:var(--bg)"><use href="#mark"/></svg></div><div class="sp-sheen"></div></div><span class="sp-skip">TAP TO SKIP</span>`;
+  sp.innerHTML=`<div class="sp-bg" id="spBg">${bgSVG()}</div><div class="sp-rec" id="spRec"><div class="sp-spin" id="spSpin"><div class="sp-vinyl"></div><svg class="sp-logo" viewBox="0 0 200 200"><use href="#mark"/><circle cx="100" cy="100" r="5" fill="#0b0b0b"/></svg><svg class="sp-logo sp-logo2" viewBox="0 0 200 200" style="--cut:var(--bg)"><use href="#mark"/></svg></div><div class="sp-sheen"></div></div><span class="sp-skip">Tap to skip</span>`;
   const rec=$('#spRec'),spin=$('#spSpin');
   let ended=false;
   let snd=null,gatedI=false;
@@ -3875,8 +3877,8 @@ async function intro(){
   const wantFilm=!!window.FILM_FORCE&&!reduce&&typeof Film!=='undefined';window.FILM_FORCE=false;
   if(wantFilm)try{Film.loadThree().catch(()=>{})}catch(e){}
   const ac=introCtx();await wait(60);if(run!==introRun)return;
-  if(ac&&ac.state!=='running'&&!wantFilm){rec.style.transform='scale(3.6)';const sk=sp.querySelector('.sp-skip');sk.textContent=wantFilm?'TAP TO START':'TAP TO PUT THE RECORD ON';sk.classList.add('gate');gatedI=true;
-    await new Promise(res=>{sp.onclick=()=>{try{ac.resume()}catch(e){}res()}});if(run!==introRun)return;sk.classList.remove('gate');sk.textContent='TAP TO SKIP';rec.style.transform='';await wait(40)}
+  if(ac&&ac.state!=='running'&&!wantFilm){rec.style.transform='scale(3.6)';const sk=sp.querySelector('.sp-skip');sk.textContent=wantFilm?'Tap to start':'Tap to put the record on';sk.classList.add('gate');gatedI=true;
+    await new Promise(res=>{sp.onclick=()=>{try{ac.resume()}catch(e){}res()}});if(run!==introRun)return;sk.classList.remove('gate');sk.textContent='Tap to skip';rec.style.transform='';await wait(40)}
   if(wantFilm&&typeof Film!=='undefined'){rec.style.transform='scale(3.6)';const bgH=$('#spBg');if(bgH)bgH.style.visibility='hidden';const sk=sp.querySelector('.sp-skip');sk.style.opacity=0;
     const lg=rec.querySelector('.sp-logo');
     await Film.play(sp.parentNode,{frame:fe=>{const a=lg.getBoundingClientRect(),b=fe.getBoundingClientRect();if(!a.height||!b.height)return{frac:.41,dx:0,dy:0};return{frac:a.height/b.height,dx:((a.left+a.width/2)-(b.left+b.width/2))/b.height,dy:((a.top+a.height/2)-(b.top+b.height/2))/b.height}}});
@@ -4296,7 +4298,7 @@ function openProd(id,pk0,col0){const p=prod(id);let pk=pk0||0;let size=p.sizes?p
  draw()}
 window._openProd=openProd;window._sheet=sheet;window._mkToast=mkToast;window._sheetH=sheetH;
 function openBasket(){const sub=CART.reduce((n,l)=>n+l.p*l.q,0),del=!CART.length||sub>=50?0:3.95,tot=sub+del;
- const slot=sheet(`${sheetH('Your basket')}<div class="sheet-b">${CART.length?CART.map((l,i)=>`<div class="mk-line"><span class="ln-art">${prod(l.id)?prodArt(prod(l.id),'front',l.col):''}</span><div class="tx"><b>${esc(l.n)}</b><span>${money(l.p)}${l.pod?' · made to order':''}</span></div><div class="qty"><button data-q="${i}" data-d="-1" aria-label="Fewer">−</button><b>${l.q}</b><button data-q="${i}" data-d="1" aria-label="More">+</button></div></div>`).join('')+`<div class="mk-break"><div><span>Subtotal</span><b>${money(sub)}</b></div><div><span>Delivery</span><b>${del?money(del):'Free'}</b></div><div class="tot"><span>Total</span><b>${money(tot)}</b></div></div><button class="btn" data-place>Place demo order</button><p class="sub" style="margin:8px 0 0;text-align:center">Prototype: no payment is taken.</p>`:'<div class="empty">Your basket is empty.</div>'}</div>`);
+ const slot=sheet(`${sheetH('Your basket')}<div class="sheet-b">${CART.length?CART.map((l,i)=>`<div class="mk-line"><span class="ln-art">${prod(l.id)?prodArt(prod(l.id),'front',l.col):''}</span><div class="tx"><b>${esc(l.n)}</b><span>${money(l.p)}${l.pod?' · made to order':''}</span></div><div class="qty"><button data-q="${i}" data-d="-1" aria-label="Fewer">−</button><b>${l.q}</b><button data-q="${i}" data-d="1" aria-label="More">+</button></div></div>`).join('')+`<div class="mk-break"><div><span>Subtotal</span><b>${money(sub)}</b></div><div><span>Delivery</span><b>${del?money(del):'Free'}</b></div><div class="tot"><span>Total</span><b>${money(tot)}</b></div></div><button class="btn" data-place>Checkout (demo)</button><p class="sub" style="margin:8px 0 0;text-align:center">Prototype: no payment is taken.</p>`:'<div class="empty">Your basket is empty.</div>'}</div>`);
  slot.onclick=e=>{const t=e.target.closest('button');if(!t)return;if(t.dataset.q!==undefined){const l=CART[+t.dataset.q];l.q+=+t.dataset.d;if(l.q<1)CART.splice(+t.dataset.q,1);save();openBasket();if(pane==='shop')rShop()}
   else if('place' in t.dataset){SORD.unshift({oid:'S'+Date.now(),lines:CART.map(l=>({n:l.n,q:l.q})),total:tot,pod:CART.some(l=>l.pod),ts:Date.now()});CART=[];save();rShop();openOrders();mkToast('Order placed. Thank you')}}}
 
@@ -4500,6 +4502,9 @@ window.openStackProd=(id,pk,col)=>{goTab('wish');setTimeout(()=>{const b=documen
   if(b.dataset.ft)setTab(b.dataset.ft);else if(b.dataset.met){st.met=b.dataset.met;rLb()}else if(b.dataset.scope){st.scope=b.dataset.scope;rLb()}else if(b.dataset.art){st.artist=b.dataset.art;rLb()}else if(b.dataset.per){st.per=b.dataset.per;rLb()}
   else if(b.dataset.room!=null)openRoom(FRIENDS[+b.dataset.room]);else if('sharing' in b.dataset)openSharing();else if('inv' in b.dataset)invite();else if('chpick' in b.dataset)openPick()});
  setTab('act');window.FR_TAB=setTab;
+ window.FR_COMPARE=()=>{const L=FRIENDS.map(f=>({n:f.n,s:statsFor(f.n,f.ids.length)})),me={n:'You',s:statsFor('me-you',myIds().length)},all=[...L,me];
+  const rows=[['Records owned',p=>p.s.rec,v=>v],['Time listened this month',p=>p.s.hrs.m,v=>v+' hrs'],['Listening streak',p=>p.s.streak,v=>v+' days'],['Puck plays this month',p=>p.s.puck.m,v=>v]];
+  return `<div class="vs"><div class="vs-h"><b>You vs friends</b><button onclick="closeSheet();goTab('friends');FR_TAB('lb')">Leaderboards</button></div>${rows.map(([n,g,f])=>{const sorted=all.slice().sort((a,b)=>g(b)-g(a)),r=sorted.indexOf(me)+1,lead=sorted[0];return `<div class="vs-r"><span>${n}</span><em>${r===1?'Top of your friends':'Behind '+lead.n+' ('+f(g(lead))+')'}</em><i class="${r===1?'top':''}">#${r}</i></div>`}).join('')}</div>`};
 })();
 
 goTab('mine');{const q=location.search+location.hash;window.FILM_FORCE=!/[?&#]nofilm\b/.test(q);if(/[?&#]demo\b/.test(q))setTimeout(()=>{const iv=setInterval(()=>{if($('#splash').hidden){clearInterval(iv);openDemo()}},300)},500)}intro();
