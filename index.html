@@ -3904,7 +3904,7 @@ if(matchMedia('(pointer:coarse)').matches||'ontouchstart' in window){let sx=0,sy
  document.addEventListener('touchmove',e=>{if(e.touches.length>1){e.preventDefault();return}const t=e.touches[0],dx=t.clientX-sx,dy=t.clientY-sy;if(!canScroll(e.target,dx,dy)&&e.cancelable)e.preventDefault()},{passive:false});
  ['gesturestart','gesturechange'].forEach(g=>document.addEventListener(g,e=>e.preventDefault()));
  addEventListener('scroll',()=>{if(scrollX||scrollY)scrollTo(0,0)},{passive:true});}
-/* ===== Marketplace (second-hand records) + Stack Shop (70s merch) ===== */
+/* ===== Marketplace (second-hand records) + Stack Supply (70s merch) ===== */
 (function(){
 const P={cr:'#F4E4C1',or:'#E8742B',mu:'#F0A034',rd:'#C8452B',br:'#4A2415',av:'#7E8B35',dk:'#2A1810',bl:'#2E7DD1'};
 const FEE=0.08,POST=3.5;
@@ -4012,7 +4012,7 @@ const prodArt=(p,side,col)=>{const pc=prodPics(p,col),x=pc[side==='back'?Math.mi
 /* ---------- screen skeleton ---------- */
 const sc=document.getElementById('s-wish');
 sc.innerHTML=`<div class="glow"></div><div class="mk-head"><h2 class="big">Market</h2><div class="mk-ibs"><button class="icon-btn mk-ib" data-p="sell" aria-label="Sell a record"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg><b class="mk-ibn" id="mkN-sell" hidden></b></button><button class="icon-btn mk-ib" data-p="wish" aria-label="Wishlist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7.5-4.6-7.5-10A4.3 4.3 0 0 1 12 7.4 4.3 4.3 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10z"/></svg><b class="mk-ibn" id="mkN-wish" hidden></b></button><button class="icon-btn mk-ib" data-p="near" aria-label="Nearby shops"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6 7-11a7 7 0 0 0-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.4"/></svg><b class="mk-ibn" id="mkN-near" hidden></b></button><button class="icon-btn mk-ib" data-p="orders" aria-label="Orders"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l-1 13H7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg><b class="mk-ibn" id="mkN-orders" hidden></b></button></div></div>
-<div class="mk-seg" id="mkChips" role="tablist"><button data-p="browse" class="on">Marketplace</button><button data-p="shop">Stack Shop</button><i></i></div>
+<div class="mk-seg" id="mkChips" role="tablist"><button data-p="browse" class="on">Marketplace</button><button data-p="shop">Stack Supply</button><i></i></div>
 <div class="mk-back" id="mkBack" hidden><button data-p="browse">${ICON.x.replace('<svg','<svg width="14" height="14"')}</button><b id="mkBackT"></b></div>
 <div class="mk-pane" id="mk-browse"></div><div class="mk-pane" id="mk-sell" hidden></div>
 <div class="mk-pane" id="mk-wish" hidden><p class="sub" id="wishCount"></p><div style="height:10px"></div><div id="wishList"></div></div>
@@ -4135,7 +4135,7 @@ function openOrders(){const a=ORD.length||SORD.length;
   return `<div class="mk-order"><div class="mk-hero sm">${artHTML(r,'',false)}<div><b>${esc(r.t)}</b><span>${b?'Bought from '+esc(o.seller):'Sold to '+esc(o.buyer)} · ${money(o.price)}${b?' + '+money(o.post)+' postage':' · you get '+money(o.price*(1-FEE))}</span></div></div>${stepper(o)}
   <div class="mk-obtn">${b?(o.status==='paid'?`<button class="chipbtn" data-adv="${o.oid}">Demo: seller posts it</button>`:o.status==='posted'?`<button class="chipbtn on" data-adv="${o.oid}">It arrived: confirm</button>`:`<span class="mk-done">In your Stack. Digital copy unlocked${o.rec?', with the recorded pressing':''}.</span>`)
    :(o.status==='paid'?`<button class="chipbtn on" data-adv="${o.oid}">Mark as posted</button>`:o.status==='posted'?`<button class="chipbtn" data-adv="${o.oid}">Demo: buyer confirms arrival</button>`:`<span class="mk-done">Paid out ${money(o.price*(1-FEE))}. The digital copy${o.rec?' and your recorded pressing have':' has'} moved to ${esc(o.buyer)}.</span>`)}</div></div>`}).join('')}
-  ${SORD.map(o=>`<div class="mk-order"><div class="mk-hero sm"><div class="mk-sq">${o.lines.length}</div><div><b>Stack Shop order</b><span>${o.lines.map(l=>esc(l.n)).join(', ')}</span><span>${money(o.total)} · ${o.pod?'Made to order, ships in 5–7 days':'Ships in 2 days'}</span></div></div></div>`).join('')}</div>`);
+  ${SORD.map(o=>`<div class="mk-order"><div class="mk-hero sm"><div class="mk-sq">${o.lines.length}</div><div><b>Stack Supply order</b><span>${o.lines.map(l=>esc(l.n)).join(', ')}</span><span>${money(o.total)} · ${o.pod?'Made to order, ships in 5–7 days':'Ships in 2 days'}</span></div></div></div>`).join('')}</div>`);
  slot.onclick=e=>{const t=e.target.closest('[data-adv]');if(!t)return;advance(t.dataset.adv)}}
 function advance(oid){const o=ORD.find(x=>x.oid===oid);if(!o)return;o.status=o.status==='paid'?'posted':'delivered';const a=byId(o.rid);
  if(o.status==='delivered'){
@@ -4190,7 +4190,7 @@ function rNear(){try{renderRSD()}catch(e){}$('#mkShops').innerHTML=`<h3 class="m
 let shopCat='all';
 function cartN(){return CART.reduce((n,l)=>n+l.q,0)}
 function rShop(){const el=$('#mk-shop'),L=PRODUCTS.filter(p=>shopCat==='all'||p.k===shopCat);
- el.innerHTML=`<div class="shop-lb"><img src="${SHOP_IMG('lookbook')}" alt="Stack lookbook: the Selector Bomber, Sunset S Shirt, Knit Polo and Flares"></div>
+ el.innerHTML=`<div class="shop-lb"><img src="${SHOP_IMG('lookbook')}" alt="Stack lookbook: the Selector Bomber, Sunset S Shirt, Knit Polo and Flares"><div class="sh-tx"><b>Stack Supply</b></div></div>
  <div class="mk-top"><div class="shop-cats">${[['all','All'],['cloth','Clothing'],['acc','Accessories'],['puck','Puck']].map(([k,n])=>`<button data-cat="${k}" class="${shopCat===k?'on':''}">${n}</button>`).join('')}</div><button class="mk-orders" data-basket aria-label="Basket">${ICON_BAG}${cartN()?` <b>${cartN()}</b>`:''}</button></div>
  <div class="shop-grid">${L.map(p=>`<button class="shop-card" data-prod="${p.id}"><span class="sc-art">${prodArt(p)}${p.nw?'<i class="sc-new">New</i>':''}</span><b>${p.n}</b><span>${money(p.p)}${p.pod?' · made to order':''}</span></button>`).join('')}</div>
  <p class="sub" style="margin:12px 2px">Free delivery over £50. Prototype: no payment is taken.</p>`}
@@ -4223,7 +4223,7 @@ sc.addEventListener('click',e=>{const t=e.target.closest('button,[data-lid]');if
 /* demo shortcuts */
 function addJump(label,key,after){const list=document.getElementById('jumpList');if(!list)return;const b=document.createElement('button');b.dataset.jump=key;b.innerHTML=label+' <span></span>';const ref=list.querySelector('[data-jump="'+after+'"]');ref?ref.after(b):list.appendChild(b);
  b.onclick=async()=>{closeSheet();$('#side').classList.remove('open');if(!$('#player').hidden){$('#player').hidden=true;try{renderMini()}catch(e){}}goTab('wish');await new Promise(r=>setTimeout(r,60));setPane(key==='sell'?'sell':key==='shop'?'shop':'browse')}}
-addJump('Sell a record','sell','wish');addJump('Stack Shop','shop','sell');
+addJump('Sell a record','sell','wish');addJump('Stack Supply','shop','sell');
 {const w=document.querySelector('#jumpList [data-jump="wish"]');if(w){w.textContent='Marketplace ';w.innerHTML='Marketplace <span></span>';w.onclick=async()=>{closeSheet();goTab('wish');await new Promise(r=>setTimeout(r,60));setPane('browse')}}
  [...document.querySelectorAll('#jumpList [data-jump]')].forEach((b,i)=>{const s=b.querySelector('span');if(s)s.textContent=String(i+1).padStart(2,'0')})}
 const _gt=goTab;goTab=function(t){const r=_gt.apply(this,arguments);if(t==='wish')try{render()}catch(e){}return r};

@@ -16,7 +16,7 @@ On an iPhone, open it in Safari, then Share → Add to Home Screen to run it ful
 <tr><td align="center" valign="top" width="25%"><img src="docs/film-run.jpg" width="190"><br><sub>The opening film: the Selector runs along a spinning record</sub></td><td align="center" valign="top" width="25%"><img src="docs/film-puck.jpg" width="190"><br><sub>Explaining the Puck, the turntable accessory</sub></td><td align="center" valign="top" width="25%"><img src="docs/loading.jpg" width="190"><br><sub>The loading screen, a record label that spins in</sub></td><td align="center" valign="top" width="25%"><img src="docs/my-stack.jpg" width="190"><br><sub>My Stack: your records, with search, Liked songs and a notification bell</sub></td></tr>
 <tr><td align="center" valign="top" width="25%"><img src="docs/player.jpg" width="190"><br><sub>The turntable player</sub></td><td align="center" valign="top" width="25%"><img src="docs/vinyl-colours.jpg" width="190"><br><sub>Your copy: choose your vinyl colour</sub></td><td align="center" valign="top" width="25%"><img src="docs/two-decks.jpg" width="190"><br><sub>Two decks and a crossfader</sub></td><td align="center" valign="top" width="25%"><img src="docs/selector.jpg" width="190"><br><sub>The Selector, your robot DJ</sub></td></tr>
 <tr><td align="center" valign="top" width="25%"><img src="docs/family.jpg" width="190"><br><sub>Family Stack: one shared shelf</sub></td><td align="center" valign="top" width="25%"><img src="docs/friends.jpg" width="190"><br><sub>Friends: browse their stacks, you can only stream what you own</sub></td><td align="center" valign="top" width="25%"><img src="docs/stats.jpg" width="190"><br><sub>Your stats</sub></td><td align="center" valign="top" width="25%"><img src="docs/notifications.jpg" width="190"><br><sub>The notification bell keeps My Stack about the music</sub></td></tr>
-<tr><td align="center" valign="top" width="25%"><img src="docs/marketplace.jpg" width="190"><br><sub>Marketplace: second-hand records from other collectors</sub></td><td align="center" valign="top" width="25%"><img src="docs/market-buy.jpg" width="190"><br><sub>Buying: Stack holds the money until it arrives</sub></td><td align="center" valign="top" width="25%"><img src="docs/shop.jpg" width="190"><br><sub>The Stack Shop: clothing, record gear and the Puck</sub></td><td align="center" valign="top" width="25%"><img src="docs/shop-puck.jpg" width="190"><br><sub>The Stack Puck in black, orange or white</sub></td></tr>
+<tr><td align="center" valign="top" width="25%"><img src="docs/marketplace.jpg" width="190"><br><sub>Marketplace: second-hand records from other collectors</sub></td><td align="center" valign="top" width="25%"><img src="docs/market-buy.jpg" width="190"><br><sub>Buying: Stack holds the money until it arrives</sub></td><td align="center" valign="top" width="25%"><img src="docs/shop.jpg" width="190"><br><sub>Stack Supply: clothing, record gear and the Puck</sub></td><td align="center" valign="top" width="25%"><img src="docs/shop-puck.jpg" width="190"><br><sub>The Stack Puck in black, orange or white</sub></td></tr>
 </table>
 
 Screenshots are from the live demo. Album covers show as placeholder art in these screenshots; on the live site, official artwork loads from the Apple Music and Deezer APIs.
@@ -67,7 +67,7 @@ Stack is a design prototype. It explores the idea, the interface and the experie
 - **Wishlist:** records you want, with a "for sale now" alert when someone lists one.
 - **Nearby:** independent record shops near you, their events and Record Store Day.
 
-### The Stack Shop
+### Stack Supply
 Stack's own merch and record gear, all in the brand's 70s palette and finished with small details like woven S labels, a tiny embroidered Selector on the sleeve and three-stripe tabs.
 
 <table>
@@ -112,7 +112,7 @@ Rather than pretend a prototype answers everything, these are the questions behi
 
 ## Try it
 
-Open the live demo. On a phone, tap **Account → Demo shortcuts** to jump to any feature: the intro film, the loading screen, the player, two decks, lending, stats, the Selector, the Marketplace, selling a record, the Stack Shop and more. On a computer the shortcuts are in the panel beside the phone.
+Open the live demo. On a phone, tap **Account → Demo shortcuts** to jump to any feature: the intro film, the loading screen, the player, two decks, lending, stats, the Selector, the Marketplace, selling a record, Stack Supply and more. On a computer the shortcuts are in the panel beside the phone.
 
 Add `?nofilm` to the address to skip the intro film, or `?demo` to open the shortcuts straight away.
 
