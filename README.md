@@ -53,6 +53,10 @@ Stack is a design prototype. It explores the idea, the interface and the experie
 ### Sharing
 - **Family stack:** share a plan with the people you live with and see who owns what.
 - **Friends:** browse a friend's Stack, see what they are spinning, add to your wishlist.
+- **Activity:** see what friends are spinning right now, on vinyl, CD or digital, and join their listening room to react and see what Selector is lining up from everyone's shelves.
+- **Leaderboards:** records owned, time listened, streaks and Puck plays, against friends, your city, everyone, or fans of an artist. Collector badges sit on your profile.
+- **Taste match:** how much of your music overlaps with each friend, and the records you have in common.
+- **Sharing controls:** choose friends, everyone or only you, and switch collection, listening, stats and "spinning now" on or off.
 - **Lending:** lend a record to a friend. While it is lent it is theirs to play and not yours, just like the real thing, until they give it back.
 
 ### Discovery and insight

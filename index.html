@@ -1581,6 +1581,33 @@ html.rm .wl-sel,html.rm .wl-disc{transition:none!important}
 .film-ctl{position:absolute;left:50%;transform:translateX(-50%);bottom:calc(18px + env(safe-area-inset-bottom,0px));display:flex;gap:10px;z-index:5}
 .film-ctl button{width:42px;height:42px;border-radius:50%;border:0;display:grid;place-items:center;background:rgba(20,12,6,.45);color:#F6EEDC;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:0;cursor:pointer}
 .film-ctl svg{width:18px;height:18px}.film-ctl .i-pl{display:none}.film-ctl.paused .i-pl{display:block}.film-ctl.paused .i-pa{display:none}
+
+/* Friends upgrade */
+.fr-seg{grid-template-columns:1fr 1fr 1fr}.fr-seg i{width:calc(33.333% - 2.7px)}.fr-seg[data-i="1"] i{transform:translateX(100%)}.fr-seg[data-i="2"] i{transform:translateX(200%)}
+.fr-share{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:var(--muted);padding:6px 10px;border-radius:999px;background:var(--surface-2);margin:2px 0 4px}
+.fr-h{font-size:13px;font-weight:700;letter-spacing:.02em;color:var(--muted);margin:18px 0 8px;text-transform:uppercase}
+.fr-live{display:flex;align-items:center;gap:12px;padding:10px;border-radius:16px;background:var(--surface);box-shadow:0 1px 3px var(--shadow);margin-bottom:8px}
+.fr-live .fr-art{width:56px;height:56px;flex:none;border-radius:8px;overflow:hidden;display:block}.fr-live .fr-art>*{width:100%;height:100%}
+.fr-live .tx{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px}.fr-live .tx b{font-size:15px;display:flex;align-items:center;gap:6px}.fr-live .tx span{font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.fr-live .tx small{font-size:11.5px;color:var(--muted)}
+.btn.sm{padding:8px 12px;font-size:13px;width:auto;flex:none;border-radius:999px}
+.fr-feed{display:flex;flex-direction:column;gap:2px}.fr-it{display:flex;align-items:center;gap:10px;padding:8px 2px}.fr-it .avatar{width:34px;height:34px;flex:none;font-size:14px}.fr-it .tx{flex:1;display:flex;flex-direction:column;font-size:13.5px}.fr-it small{color:var(--muted);font-size:11.5px}.fr-mini{width:36px;height:36px;border-radius:6px;overflow:hidden;flex:none}.fr-mini>*{width:100%;height:100%}
+.fr-chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin:4px -2px 6px;padding:2px}.fr-chips::-webkit-scrollbar{display:none}.fr-chips .chipbtn{flex:none}
+.fr-per{display:flex;gap:4px;background:var(--surface-2);padding:3px;border-radius:10px;margin:4px 0 10px}.fr-per button{flex:1;padding:7px 0;font-size:12.5px;font-weight:600;color:var(--muted);border-radius:8px}.fr-per button.on{background:var(--surface);color:var(--fg);box-shadow:0 1px 2px var(--shadow)}
+.fr-you{display:flex;align-items:baseline;gap:8px;padding:12px 14px;border-radius:14px;background:linear-gradient(90deg,#F0A034,#E8762C 60%,#C8452B);color:#FFF6E8;margin:6px 0 10px}.fr-you b{font-size:24px;font-weight:800}.fr-you small{opacity:.9;margin-left:auto}.fr-you.off{background:var(--surface-2);color:var(--muted);font-size:13px}.fr-you.off:empty,.fr-you.off span:empty{display:none}
+.fr-lb{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}.fr-lb li{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:12px}.fr-lb li.me{background:color-mix(in srgb,#F0A034 18%,transparent)}
+.fr-lb .rk{width:22px;text-align:center;font-weight:700;font-size:13px;color:var(--muted);display:grid;place-items:center}.fr-lb .rk.t1{color:#E2A12B}.fr-lb .rk.t2{color:#A7A39C}.fr-lb .rk.t3{color:#B9733F}
+.fr-lb .avatar{width:32px;height:32px;font-size:13px;flex:none}.fr-lb b{flex:1;font-size:14px;font-weight:600;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.fr-lb .v{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.fr-badges{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.fr-bd{display:flex;flex-direction:column;align-items:center;text-align:center;gap:3px;padding:10px 6px;border-radius:14px;background:var(--surface)}.fr-bd i,.fr-bdx i{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;font-style:normal;font-weight:800;font-size:13px;color:#FFF6E8;background:conic-gradient(#F0A034,#E8762C,#C8452B,#7FA7B7,#F0A034)}.fr-bd b{font-size:12px}.fr-bd small{font-size:10.5px;color:var(--muted)}.fr-bd.lock{opacity:.4}.fr-bd.lock i{background:var(--surface-2);color:var(--muted)}
+.fr-match{display:flex;align-items:center;gap:10px;font-size:12.5px;color:var(--muted);margin:8px 0 2px}.fr-pct b{color:var(--fg);font-size:14px}.fr-bdx{margin-left:auto;display:flex;gap:4px}.fr-bdx i{width:24px;height:24px;font-size:9.5px}
+.fr-inv{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:16px;background:var(--surface);box-shadow:0 1px 3px var(--shadow);margin:6px 0 10px}.fr-inv div{flex:1;display:flex;flex-direction:column}.fr-inv b{font-size:14.5px}.fr-inv span{font-size:12.5px;color:var(--muted)}
+.fr-link{display:flex;align-items:center;gap:8px;padding:10px 12px;border-radius:12px;background:var(--surface-2);margin:8px 0}.fr-link span{flex:1;font-family:var(--mono);font-size:13px}
+.fr-tg{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line,rgba(0,0,0,.08))}.fr-tg span{flex:1;display:flex;flex-direction:column}.fr-tg small{color:var(--muted);font-size:12px}.fr-tg input{display:none}.fr-tg i{width:44px;height:26px;border-radius:13px;background:var(--surface-2);position:relative;flex:none;transition:background .2s}.fr-tg i:after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.3);transition:transform .2s}.fr-tg input:checked+i{background:#E8762C}.fr-tg input:checked+i:after{transform:translateX(18px)}
+.rm-deck{position:relative;display:grid;place-items:center;padding:10px 0 6px;overflow:hidden}.rm-rec{width:180px;height:180px;border-radius:50%;overflow:hidden;display:block;box-shadow:0 0 0 14px #1b1714,0 8px 24px rgba(0,0,0,.3);animation:rmspin 6s linear infinite}.rm-rec>*{width:100%;height:100%}@keyframes rmspin{to{transform:rotate(360deg)}}
+.rm-fly{position:absolute;bottom:10px;font-size:26px;animation:rmfly 1.6s ease-out forwards;pointer-events:none}@keyframes rmfly{to{transform:translateY(-170px) scale(1.3);opacity:0}}
+.rm-now{text-align:center;margin:14px 0 8px;display:flex;flex-direction:column}.rm-now small{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--muted)}.rm-now b{font-size:18px}.rm-now span{font-size:13px;color:var(--muted)}
+.rm-ppl{display:flex;align-items:center;justify-content:center;margin-bottom:10px}.rm-ppl .avatar{width:30px;height:30px;font-size:12px;margin-left:-8px;box-shadow:0 0 0 2px var(--surface)}.rm-ppl span{margin-left:10px;font-size:12.5px;color:var(--muted)}
+.rm-rx{display:flex;justify-content:center;gap:10px;margin-bottom:12px}.rm-rx button{width:44px;height:44px;border-radius:50%;background:var(--surface-2);font-size:20px}
+.rm-next{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.rm-next div{display:flex;flex-direction:column;font-size:11px;min-width:0}.rm-next div>:first-child{aspect-ratio:1;border-radius:6px;overflow:hidden}.rm-next b{margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.rm-next span{color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 </style>
 <style>[hidden]{display:none!important}body{margin:0}</style>
 </head>
@@ -1711,7 +1738,7 @@ html.rm .wl-sel,html.rm .wl-disc{transition:none!important}
         <section class="screen" id="s-friends" hidden>
           <div class="glow"></div>
           <h2 class="big">Friends</h2>
-          <p class="sub">Flick through their collections. You can only stream records you or your family own.</p>
+          <p class="sub">See what your friends are spinning, compare stacks and climb the leaderboards. You can only stream records you or your family own.</p>
           <div class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input type="search" id="fSearch" placeholder="Find people by name or @username" autocomplete="off" aria-label="Find people"></div>
           <div id="people"></div>
           <div id="friendsList"></div>
@@ -3574,7 +3601,7 @@ const DIRECTORY=[{n:'Maya Chen',u:'mayaspins',c:'#F28B82',r:214},{n:'Tom Fletche
 const REQ=new Set();
 function renderPeople(){const q=($('#fSearch').value||'').trim().toLowerCase().replace(/^@/,'');const box=$('#people');
   $$('#friendsList .friend').forEach((el,i)=>el.hidden=!!q&&!FRIENDS[i].n.toLowerCase().includes(q));
-  if(!q){box.innerHTML=`<div class="invite"><span class="tx">Invite friends to Stack<b>stack.app/i/harry</b></span><button id="invCopy">Copy link</button></div>`;
+  if(!q){box.innerHTML=`<div class="invite"><span class="tx">Invite a friend. You both get a month free<b>stack.app/i/harry</b></span><button id="invCopy">Copy link</button></div>`;
     $('#invCopy').onclick=async e=>{const b=e.currentTarget;try{await navigator.clipboard.writeText('https://stack.app/i/harry');b.textContent='Copied'}catch(err){b.textContent='stack.app/i/harry'}};return}
   const hits=DIRECTORY.filter(p=>p.n.toLowerCase().includes(q)||p.u.includes(q));
   const fr=FRIENDS.filter(f=>f.n.toLowerCase().includes(q));
@@ -4226,7 +4253,7 @@ function openProd(id,pk0,col0){const p=prod(id);let pk=pk0||0;let size=p.sizes?p
   slot.onclick=e=>{const t=e.target.closest('button');if(!t)return;if(t.dataset.pk){pk=+t.dataset.pk;draw()}else if(t.dataset.col){col=t.dataset.col;draw()}else if(t.dataset.size){size=t.dataset.size;draw()}
    else if('add' in t.dataset){const key=[p.id,col,size,p.packs?pk:''].join('|'),ex=CART.find(l=>l.key===key);ex?ex.q++:CART.push({key,id:p.id,col,n:p.n+(col?' · '+cn:'')+(size&&p.sizes.length>1?' · '+size:'')+(p.packs&&pk?' · '+p.packs[pk][1]:''),p:p.packs?p.packs[pk][2]:p.p,q:1,pod:!!p.pod});save();closeSheet();rShop();mkToast('Added to basket')}}};
  draw()}
-window._openProd=openProd;
+window._openProd=openProd;window._sheet=sheet;window._sheetH=sheetH;
 function openBasket(){const sub=CART.reduce((n,l)=>n+l.p*l.q,0),del=!CART.length||sub>=50?0:3.95,tot=sub+del;
  const slot=sheet(`${sheetH('Your basket')}<div class="sheet-b">${CART.length?CART.map((l,i)=>`<div class="mk-line"><span class="ln-art">${prod(l.id)?prodArt(prod(l.id),'front',l.col):''}</span><div class="tx"><b>${esc(l.n)}</b><span>${money(l.p)}${l.pod?' · made to order':''}</span></div><div class="qty"><button data-q="${i}" data-d="-1" aria-label="Fewer">−</button><b>${l.q}</b><button data-q="${i}" data-d="1" aria-label="More">+</button></div></div>`).join('')+`<div class="mk-break"><div><span>Subtotal</span><b>${money(sub)}</b></div><div><span>Delivery</span><b>${del?money(del):'Free'}</b></div><div class="tot"><span>Total</span><b>${money(tot)}</b></div></div><button class="btn" data-place>Place demo order</button><p class="sub" style="margin:8px 0 0;text-align:center">Prototype: no payment is taken.</p>`:'<div class="empty">Your basket is empty.</div>'}</div>`);
  slot.onclick=e=>{const t=e.target.closest('button');if(!t)return;if(t.dataset.q!==undefined){const l=CART[+t.dataset.q];l.q+=+t.dataset.d;if(l.q<1)CART.splice(+t.dataset.q,1);save();openBasket();if(pane==='shop')rShop()}
@@ -4271,6 +4298,91 @@ render();
 })();
 
 window.openStackProd=(id,pk,col)=>{goTab('wish');setTimeout(()=>{const b=document.querySelector('#mkChips [data-p=shop]');b&&b.click();setTimeout(()=>window._openProd(id,pk,col),120)},80)};
+
+/* ================= Friends upgrade: activity, leaderboards, taste match, badges, rooms, sharing ================= */
+(function(){
+ const sheet=h=>window._sheet(h),sheetH=t=>window._sheetH(t);
+ const fs=document.getElementById('s-friends');if(!fs)return;
+ const SHK='stack-share';let SH={who:'friends',col:1,lis:1,lb:1,live:1};try{Object.assign(SH,JSON.parse(localStorage.getItem(SHK)||'{}'))}catch(e){}
+ const saveSH=()=>{try{localStorage.setItem(SHK,JSON.stringify(SH))}catch(e){}};
+ const H=s=>{let h=2166136261;for(const c of s){h^=c.charCodeAt(0);h=Math.imul(h,16777619)}return h>>>0};const S_=(h,k)=>(h>>>k);
+ const myIds=()=>{try{return mine().map(a=>a.id)}catch(e){return []}};
+ const match=f=>{const m=new Set(myIds()),o=f.ids.filter(i=>m.has(i)).length;const u=new Set([...m,...f.ids]).size||1;return Math.round(30+70*o/Math.max(1,Math.min(m.size,f.ids.length)||1)*.85)};
+ const CITY='Leeds';
+ const STRANGERS=['cratedigger_92','wax_and_wane','needledrop.leeds','b-side_beth','lo-fi_lou','vinyl_ollie','DiscDad','spin_sister','groove_theory','33rpm_rich','side_b_sam','dustsleeve','mono_mia','the_run_out','hifi_hana','deadwax_dev','gatefold_gee','pressing_plant','tonearm_tom','platter_pat'];
+ const COLS=['#4C8DF0','#E85D75','#F0A034','#34C38F','#7A4FC9','#C8452B','#2FA37A','#D9752B'];
+ function statsFor(n,base){const h=H(n);return {rec:base!=null?base:40+h%380,hrs:{w:2+h%31,m:10+S_(h,3)%120,a:80+S_(h,5)%1400},streak:1+S_(h,7)%64,puck:{w:h%40,m:S_(h,4)%150,a:50+S_(h,6)%2400}}}
+ function people(scope,artist){const me={n:'You',me:1,c:'#F0A034',s:statsFor('me-you',myIds().length*9+31)};
+  let L=[];if(scope==='friends')L=FRIENDS.map(f=>({n:f.n,c:f.c,ak:'f:'+f.n,s:statsFor(f.n,f.ids.length*23+60)}));
+  else{const k=scope==='city'?14:20;L=STRANGERS.slice(0,k).map((n,i)=>({n,c:COLS[i%COLS.length],s:statsFor(n+scope+(artist||''))}));if(scope==='city')L=L.concat(FRIENDS.slice(0,2).map(f=>({n:f.n,c:f.c,ak:'f:'+f.n,s:statsFor(f.n,f.ids.length*23+60)})))}
+  if(SH.lb&&SH.who!=='me'&&(scope==='friends'||SH.who==='everyone'))L.push(me);return L}
+ const MET=[['rec','Records owned',v=>v+' records'],['hrs','Time listened',v=>v+' hrs'],['streak','Streak',v=>v+(v===1?' day':' days')],['puck','Puck plays',v=>v+' spins']];
+ let st={tab:'act',met:'rec',scope:'friends',per:'m',artist:null};
+ const val=(p)=>{const s=p.s[st.met];return typeof s==='object'?s[st.per]:s};
+ const av=p=>p.me?`<div class="avatar" ${avs('you','#F0A034')}>Y</div>`:`<div class="avatar" ${p.ak?avs(p.ak,p.c):`style="background:${p.c}"`}>${p.n[0].toUpperCase()}</div>`;
+ const BADGES=[['100','100 club','Own 100 records'],['first','First pressing','Own an original first pressing'],['rsd','Record Store Day regular','Bought on 3 Record Store Days'],['every','Every record spun','Played your whole Stack this year'],['night','Night owl','50 plays after midnight'],['digger','Crate digger','Records from 5 decades']];
+ const badgesFor=n=>{const h=H(n+'b');return BADGES.filter((_,i)=>(h>>i)&1)};
+ // ---- skeleton ----
+ const sub=fs.querySelector('.sub');
+ const top=document.createElement('div');top.innerHTML=`<div class="mk-seg fr-seg" id="frSeg"><button data-ft="act" class="on">Activity</button><button data-ft="lb">Leaderboards</button><button data-ft="ppl">Friends</button><i></i></div><div id="frAct"></div><div id="frLb" hidden></div>`;
+ sub.after(...top.children);
+ const pplEls=[fs.querySelector('.search'),document.getElementById('people'),document.getElementById('friendsList')];
+ const shareBtn=document.createElement('button');shareBtn.className='fr-share';shareBtn.setAttribute('data-sharing','');fs.querySelector('h2.big').after(shareBtn);
+ const paintShare=()=>{shareBtn.innerHTML=`<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/></svg>Sharing: ${({friends:'Friends',everyone:'Everyone',me:'Only me'})[SH.who]}`};paintShare();
+ function setTab(t){st.tab=t;fs.querySelectorAll('#frSeg button').forEach(b=>b.classList.toggle('on',b.dataset.ft===t));fs.querySelector('#frSeg').dataset.i={act:0,lb:1,ppl:2}[t];
+  document.getElementById('frAct').hidden=t!=='act';document.getElementById('frLb').hidden=t!=='lb';pplEls.forEach(e=>e&&(e.hidden=t!=='ppl'));if(t==='act')rAct();if(t==='lb')rLb();if(t==='ppl')decorate()}
+ // ---- activity ----
+ function rAct(){const el=document.getElementById('frAct');const live=FRIENDS.filter(f=>f.spin);
+  const feed=[];FRIENDS.forEach((f,i)=>{const h=H(f.n);if(f.added){const a=byId(f.added);feed.push(['add',f,`added <b>${esc(a.t)}</b> to their Stack`,'2h',a])}
+   const b=badgesFor(f.n)[0];if(b)feed.push(['badge',f,`earned the <b>${b[1]}</b> badge`,(1+h%9)+'h']);feed.push(['streak',f,`is on a <b>${statsFor(f.n).streak}-day</b> streak`,'today'])});
+  el.innerHTML=`<h4 class="fr-h">Spinning now</h4>${live.map(f=>{const a=byId(f.spin);return `<div class="fr-live"><span class="fr-art">${artHTML(a,'turn',false)}</span><div class="tx"><b>${f.n} <span class="eq"><i></i><i></i><i></i></span></b><span>${esc(a.t)} · ${esc(a.a)}</span><small>${fmtLabel[a.f]} · ${(H(f.n)%2)?'on the Puck':'digital'}</small></div><button class="btn sm" data-room="${FRIENDS.indexOf(f)}">Listen along</button></div>`}).join('')||'<p class="sub">No one is spinning right now.</p>'}
+  <h4 class="fr-h">Recent</h4><div class="fr-feed">${feed.map(([k,f,t,w,a])=>`<div class="fr-it">${av({n:f.n,c:f.c,ak:'f:'+f.n})}<div class="tx"><span><b>${f.n}</b> ${t}</span><small>${w}</small></div>${a?`<span class="fr-mini">${artHTML(a,'',false)}</span>`:''}</div>`).join('')}</div>`}
+ // ---- leaderboards ----
+ function rLb(){const el=document.getElementById('frLb');const m=MET.find(x=>x[0]===st.met),per=st.met==='hrs'||st.met==='puck';
+  let arts=[];try{const c={};mine().forEach(a=>c[a.a]=(c[a.a]||0)+1);arts=Object.keys(c).sort((a,b)=>c[b]-c[a]).slice(0,6)}catch(e){}
+  if(st.scope==='artist'&&!st.artist)st.artist=arts[0];
+  const L=people(st.scope,st.artist).map(p=>({...p,v:val(p)})).sort((a,b)=>b.v-a.v);
+  const meI=L.findIndex(p=>p.me);const myBad=badgesFor('me-you');
+  const hidden=!SH.lb||SH.who==='me'||(st.scope!=='friends'&&SH.who!=='everyone');
+  el.innerHTML=`<div class="fr-chips">${MET.map(x=>`<button class="chipbtn${x[0]===st.met?' on':''}" data-met="${x[0]}">${x[1]}</button>`).join('')}</div>
+  <div class="fr-chips sm">${[['friends','Friends'],['city',CITY],['all','Everyone'],['artist','Fans of an artist']].map(x=>`<button class="chipbtn${x[0]===st.scope?' on':''}" data-scope="${x[0]}">${x[1]}</button>`).join('')}</div>
+  ${st.scope==='artist'?`<div class="fr-chips sm">${arts.map(a=>`<button class="chipbtn${a===st.artist?' on':''}" data-art="${esc(a)}">${esc(a)}</button>`).join('')}</div>`:''}
+  ${per?`<div class="fr-per">${[['w','This week'],['m','This month'],['a','All time']].map(x=>`<button class="${x[0]===st.per?'on':''}" data-per="${x[0]}">${x[1]}</button>`).join('')}</div>`:''}
+  ${meI>=0?`<div class="fr-you"><span>Your rank</span><b>#${meI+1}</b><small>of ${L.length} · ${m[2](L[meI].v)}</small></div>`:`<div class="fr-you off"><span>${hidden?'You’re hidden from this leaderboard. Change it in Sharing.':''}</span></div>`}
+  <ol class="fr-lb">${L.map((p,i)=>`<li class="${p.me?'me':''}"><span class="rk${i<3?' t'+(i+1):''}">${i<3?'<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M3 8l4.5 4L12 5l4.5 7L21 8l-2 11H5z"/></svg>':i+1}</span>${av(p)}<b>${esc(p.n)}</b><span class="v">${m[2](p.v)}</span></li>`).join('')}</ol>
+  <h4 class="fr-h">Your badges</h4><div class="fr-badges">${BADGES.map(b=>`<div class="fr-bd${myBad.includes(b)?'':' lock'}"><i>${b[1].split(' ').map(w=>w[0]).join('').slice(0,2)}</i><b>${b[1]}</b><small>${b[2]}</small></div>`).join('')}</div>`}
+ // ---- friends list decoration: taste match + badges ----
+ function decorate(){document.querySelectorAll('#friendsList .friend').forEach((el,i)=>{const f=FRIENDS[i];if(!f||el.querySelector('.fr-match'))return;const p=match(f),both=f.ids.filter(x=>myIds().includes(x)).length;
+   const d=document.createElement('div');d.className='fr-match';d.innerHTML=`<span class="fr-pct"><b>${p}%</b> taste match</span><span>${both} in common</span><span class="fr-bdx">${badgesFor(f.n).slice(0,3).map(b=>`<i title="${b[1]}">${b[1].split(' ').map(w=>w[0]).join('').slice(0,2)}</i>`).join('')}</span>`;
+   el.querySelector('.friend-top').after(d)})}
+ const _rf=window.renderFriends;
+ new MutationObserver(()=>{if(st.tab==='ppl')decorate()}).observe(document.getElementById('friendsList'),{childList:true});
+ // ---- listening room ----
+ function openRoom(f){const a=byId(f.spin),own=myIds().includes(a.id),others=FRIENDS.filter(x=>x!==f&&x.spin).slice(0,2);
+  const shared=[...new Set([...myIds(),...f.ids])].filter(x=>x!==a.id).slice(0,4).map(byId).filter(Boolean);
+  const slot=sheet(`${sheetH(f.n+'’s room')}<div class="sheet-b"><div class="rm-deck"><span class="rm-rec">${artHTML(a,'',false)}</span></div>
+   <div class="rm-now"><small>NOW PLAYING</small><b>${esc(a.t)}</b><span>${esc(a.a)} · ${f.n}’s ${fmtLabel[a.f]}</span></div>
+   <div class="rm-ppl">${[{n:f.n,c:f.c,ak:'f:'+f.n},...others.map(o=>({n:o.n,c:o.c,ak:'f:'+o.n})),{n:'You',me:1}].map(av).join('')}<span>${2+others.length} listening</span></div>
+   <div class="rm-rx">${['🔥','🎶','👏','💿'].map(e=>`<button data-rx="${e}">${e}</button>`).join('')}</div>
+   ${own?`<button class="btn" data-join="${a.id}">Join with your copy</button>`:`<p class="sub" style="text-align:center;margin:6px 0 10px">You don’t own this one, so you can see the room but not stream it.</p><button class="btn ghost" data-wishadd="${a.id}">Add to wishlist</button>`}
+   <h4 class="fr-h">Up next, picked by Selector from everyone’s shelves</h4><div class="rm-next">${shared.map(x=>`<div>${artHTML(x,'',false)}<b>${esc(x.t)}</b><span>${esc(x.a)}</span></div>`).join('')}</div></div>`);
+  slot.addEventListener('click',e=>{const r=e.target.closest('[data-rx]');if(r){const s=document.createElement('span');s.className='rm-fly';s.textContent=r.dataset.rx;s.style.left=(20+Math.random()*60)+'%';slot.querySelector('.rm-deck').appendChild(s);setTimeout(()=>s.remove(),1600)}
+   const j=e.target.closest('[data-join]');if(j){try{playQueue([j.dataset.join+':0'],0,'Listening with '+f.n)}catch(_){}}
+   const w=e.target.closest('[data-wishadd]');if(w){mkToast('Added to your wishlist');closeSheet()}})}
+ // ---- sharing settings ----
+ function openSharing(){const draw=()=>{const slot=sheet(`${sheetH('Sharing')}<div class="sheet-b"><p class="sub" style="margin-top:0">Choose who can see your collection, listening and stats.</p>
+   <div class="form-row"><label>Who can see</label><div class="opt-row">${[['friends','Friends'],['everyone','Everyone'],['me','Only me']].map(x=>`<button class="chipbtn${SH.who===x[0]?' on':''}" data-who="${x[0]}">${x[1]}</button>`).join('')}</div></div>
+   ${[['col','Your collection','The records in your Stack'],['lis','What you listen to','Top artists, genres and recent plays'],['lb','Stats and leaderboards','Records owned, time listened, streaks and Puck plays'],['live','Spinning now','Show friends what you’re playing']].map(([k,n,d])=>`<label class="fr-tg"><span><b>${n}</b><small>${d}</small></span><input type="checkbox" data-sh="${k}" ${SH[k]?'checked':''}><i></i></label>`).join('')}
+   <p class="sub" style="font-size:12px">Children on a Family plan are always hidden from leaderboards.</p></div>`);
+   slot.querySelectorAll('[data-who]').forEach(b=>b.onclick=()=>{SH.who=b.dataset.who;saveSH();paintShare();draw();if(st.tab==='lb')rLb()});
+   slot.querySelectorAll('[data-sh]').forEach(c=>c.onchange=()=>{SH[c.dataset.sh]=c.checked?1:0;saveSH();if(st.tab==='lb')rLb()})};draw()}
+ function invite(){const link='stack.app/i/you-'+(H('you')%9000+1000);const slot=sheet(`${sheetH('Invite a friend')}<div class="sheet-b"><p class="sub" style="margin-top:0">When they join, you both get a month of Stack free.</p><div class="fr-link"><span>${link}</span><button class="btn sm" data-copy>Copy</button></div><div class="fr-chips">${['Messages','WhatsApp','Instagram','Email'].map(x=>`<button class="chipbtn" data-copy>${x}</button>`).join('')}</div></div>`);
+  slot.querySelectorAll('[data-copy]').forEach(b=>b.onclick=()=>{try{navigator.clipboard.writeText('https://'+link)}catch(e){}mkToast('Invite link copied')})}
+ fs.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+  if(b.dataset.ft)setTab(b.dataset.ft);else if(b.dataset.met){st.met=b.dataset.met;rLb()}else if(b.dataset.scope){st.scope=b.dataset.scope;rLb()}else if(b.dataset.art){st.artist=b.dataset.art;rLb()}else if(b.dataset.per){st.per=b.dataset.per;rLb()}
+  else if(b.dataset.room!=null)openRoom(FRIENDS[+b.dataset.room]);else if('sharing' in b.dataset)openSharing();else if('inv' in b.dataset)invite()});
+ setTab('act');window.FR_TAB=setTab;
+})();
 
 goTab('mine');{const q=location.search+location.hash;window.FILM_FORCE=!/[?&#]nofilm\b/.test(q);if(/[?&#]demo\b/.test(q))setTimeout(()=>{const iv=setInterval(()=>{if($('#splash').hidden){clearInterval(iv);openDemo()}},300)},500)}intro();
 </script>
