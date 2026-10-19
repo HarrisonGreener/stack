@@ -1570,7 +1570,7 @@ html.rm .wl-sel,html.rm .wl-disc{transition:none!important}
 .stats-card .acct-stats i{font-style:normal;background:var(--surface);border-radius:12px;padding:10px;text-align:center}
 
 /* Stack Supply look */
-.shop-lb{background:#3B2418;border-radius:20px}
+.shop-lb{background:#3B2418;border-radius:20px;overflow:hidden!important;isolation:isolate;transform:translateZ(0);-webkit-mask-image:-webkit-radial-gradient(white,black);clip-path:inset(0 round 20px)}.shop-lb img{border-radius:0!important}
 .shop-lb img{aspect-ratio:16/11!important;object-position:50% 18%}
 .shop-lb .sh-tx{position:static!important;background:#3B2418!important;padding:14px 16px 12px!important;max-width:none!important;display:flex;align-items:baseline;justify-content:space-between;gap:10px}
 .shop-lb .sh-tx b{font-family:var(--font)!important;font-weight:800!important;font-size:26px!important;letter-spacing:-.015em;color:#FFF3E0!important;margin:0!important;line-height:1.1;white-space:nowrap}
@@ -4200,7 +4200,7 @@ function rNear(){try{renderRSD()}catch(e){}$('#mkShops').innerHTML=`<h3 class="m
 let shopCat='all';
 function cartN(){return CART.reduce((n,l)=>n+l.q,0)}
 function rShop(){const el=$('#mk-shop'),L=PRODUCTS.filter(p=>shopCat==='all'||p.k===shopCat);
- el.innerHTML=`<div class="shop-lb"><img src="${SHOP_IMG('lookbook')}" alt="Stack lookbook: the Selector Bomber, Sunset S Shirt, Knit Polo and Flares"><div class="sh-tx"><b>Stack Supply</b><span>Clothing, record gear and the Puck</span></div><i class="sh-sun"></i></div>
+ el.innerHTML=`<div class="shop-lb"><img src="${SHOP_IMG('lookbook')}" alt="Stack lookbook: the Selector Bomber, Sunset S Shirt, Knit Polo and Flares"><div class="sh-tx"><b>Stack Supply</b></div><i class="sh-sun"></i></div>
  <div class="mk-top"><div class="shop-cats">${[['all','All'],['cloth','Clothing'],['acc','Accessories'],['puck','Puck']].map(([k,n])=>`<button data-cat="${k}" class="${shopCat===k?'on':''}">${n}</button>`).join('')}</div><button class="mk-orders" data-basket aria-label="Basket">${ICON_BAG}${cartN()?` <b>${cartN()}</b>`:''}</button></div>
  <div class="shop-grid">${L.map(p=>`<button class="shop-card" data-prod="${p.id}"><span class="sc-art">${prodArt(p)}${p.nw?'<i class="sc-new">New</i>':''}</span><b>${p.n}</b><span>${money(p.p)}${p.pod?' · made to order':''}</span></button>`).join('')}</div>
  <p class="sub" style="margin:12px 2px">Free delivery over £50. Prototype: no payment is taken.</p>`}
