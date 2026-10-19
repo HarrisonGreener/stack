@@ -851,7 +851,7 @@ h2.big{font-size:34px;font-weight:650;letter-spacing:-.035em;margin:6px 0 4px;te
 .mk-res{display:flex;justify-content:space-between;gap:8px;font-size:12px;color:var(--muted);margin:12px 2px 10px}.mk-res span{display:flex;gap:4px;align-items:center}
 .lc-list{display:flex;flex-direction:column;gap:16px}
 .lc{position:relative;border-radius:18px;overflow:hidden;background:var(--surface);border:1px solid var(--line);cursor:pointer}
-.g-host{position:relative}.pd-gal .pd-art{background:#EEE1CA!important}.sheet .pd-gal .pd-art .ph-img.ph-img{background-size:contain!important;background-position:50% 50%!important}.g-ar{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:30px;height:30px;border-radius:50%;border:0;display:grid;place-items:center;background:rgba(255,248,238,.88);color:#3B2418;box-shadow:0 2px 8px rgba(0,0,0,.18);cursor:pointer;padding:0}.g-ar.pv{left:8px}.g-ar.nx{right:8px}.g-ar[hidden]{display:none}.lc-strip{touch-action:pan-x pan-y;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}.lc-strip::-webkit-scrollbar{display:none}
+.g-host{position:relative}.pd-gal .pd-art{background:#EEE1CA!important}.sheet .pd-gal .pd-art .ph-img.fit{background-size:contain!important;background-position:50% 50%!important}.g-ar{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:30px;height:30px;border-radius:50%;border:0;display:grid;place-items:center;background:rgba(255,248,238,.88);color:#3B2418;box-shadow:0 2px 8px rgba(0,0,0,.18);cursor:pointer;padding:0}.g-ar.pv{left:8px}.g-ar.nx{right:8px}.g-ar[hidden]{display:none}.lc-strip{touch-action:pan-x pan-y;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}.lc-strip::-webkit-scrollbar{display:none}
 .lp-ph{position:relative;flex:none;width:100%;aspect-ratio:1;scroll-snap-align:start;overflow:hidden;background:var(--surface-2)}.lp-ph>img{display:block;width:100%;height:100%;object-fit:cover;pointer-events:none;user-select:none}
 .lp-k{position:absolute;left:0;top:0;width:720px;height:720px;transform-origin:0 0;isolation:isolate;pointer-events:none}
 .lp-cov{position:absolute;left:0;top:0;width:600px;height:600px;transform-origin:0 0;filter:brightness(.94) saturate(.92)}.lp-cov .art{position:absolute;inset:0;width:100%!important;height:100%!important;border-radius:0!important;box-shadow:none!important;background-size:cover}
@@ -1723,7 +1723,7 @@ html.rm .wl-sel,html.rm .wl-disc{transition:none!important}
           <div class="sec-h"><h3>Get a Stack Puck</h3></div>
           <div class="product">
             <div class="viewer" id="viewer"><canvas id="puckCanvas" aria-label="3D model of the Stack Puck. Drag to turn it."></canvas><span class="viewer-hint">DRAG TO SPIN</span></div>
-            <div class="prod-top"><div><b>Stack Puck</b><span>Records your own vinyl and CDs. One Stack Puck per player.</span></div><b class="prod-price">from £70</b></div>
+            <div class="prod-top"><div><b>Stack Puck</b><span>Records your own vinyl and CDs. One Stack Puck per player.</span></div><b class="prod-price">from £30</b></div>
             <div class="opt-row" id="puckCols"></div>
             <ul class="spec"><li><span>In the box</span>Stack Puck, RCA and 3.5mm cables, optical adapter, USB-C cable</li><li><span>Records</span>Up to 24-bit/96 kHz from vinyl, bit-perfect from CD</li><li><span>Size</span>9 cm across, 2.8 cm tall, 140 g</li><li><span>Power</span>USB-C, or the battery lasts about 2 weeks</li><li><span>Connects</span>Bluetooth to your phone, Wi-Fi to your Stack</li></ul>
           </div>
@@ -2745,13 +2745,13 @@ function howSVG(mode){const src=mode==='cd'?'CD player':'Turntable';
    <text x="291" y="92" text-anchor="middle" font-size="11" fill="var(--muted)" font-family="var(--font)">Your speakers</text>
    <text x="170" y="12" text-anchor="middle" font-size="9.5" fill="var(--muted)" font-family="var(--mono)" letter-spacing=".08em">SOUND PASSES THROUGH · PUCK RECORDS YOUR COPY</text></svg>`}
 const PACKS=[
- {id:'solo',name:'Stack Puck',price:70,n:1,desc:'One Stack Puck for one turntable or CD player. Cables and a USB-C charger in the box.'},
- {id:'duo',name:'Stack Puck Duo',price:100,n:2,best:true,desc:'Two Stack Pucks, one for the turntable and one for the CD player. Save £40.'},
- {id:'fam',name:'Stack Puck Family Pack',price:150,n:3,desc:'Three Stack Pucks plus 3 months of the Family plan free. Enough for the whole house.'}];
+ {id:'solo',name:'Stack Puck',price:30,n:1,desc:'One Stack Puck for one turntable or CD player. Cables and a USB-C charger in the box.'},
+ {id:'duo',name:'Stack Puck Duo',price:50,n:2,best:true,desc:'Two Stack Pucks, one for the turntable and one for the CD player. Save £10.'},
+ {id:'fam',name:'Stack Puck Family Pack',price:75,n:3,desc:'Three Stack Pucks, enough for the whole house. Save £15.'}];
 const COLOURS=[['Black','#1d1c1a'],['Chalk','#E7E3DC'],['Orange','#EE9A2E']];
 let puckCol=0;
 function renderPacks(){$('#packs').innerHTML=PACKS.map((p,i)=>`<button class="pack${p.best?' best':''}" data-pack="${i}"><span class="pk-img${p.n===1?' one':''}">${'<i></i>'.repeat(p.n)}</span><span class="tx">${p.best?'<span class="tag">MOST POPULAR</span>':''}<b>${p.name}</b><span>${p.desc}</span></span><span class="price"><b>£${p.price}</b><span>Buy</span></span></button>`).join('')}
-function openShop(i){const slot=$('#sheetSlot');let pk=(i==null||isNaN(i))?0:i,col=puckCol,q=1;
+function openShop(i){const _cm=['black','white','orange'];closeSheet&&0;window.openStackProd('puck',(i==null||isNaN(i))?0:+i,_cm[puckCol]);return;const slot=$('#sheetSlot');let pk=(i==null||isNaN(i))?0:i,col=puckCol,q=1;
   const draw=()=>{const p=PACKS[pk],sub=p.price*q;
    slot.querySelector('#shopBody').innerHTML=`
     <div class="set-h" style="margin-top:0">Pack</div><div class="opt-row">${PACKS.map((x,k)=>`<button class="opt" data-pk="${k}" aria-pressed="${k===pk}">${x.name}<span style="font-weight:500;color:var(--muted)">£${x.price}</span></button>`).join('')}</div>
@@ -3686,7 +3686,7 @@ function openAbout(){const slot=$('#sheetSlot');
     <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18v-6a8 8 0 0 1 16 0v6"/><rect x="3" y="15" width="4" height="6" rx="1.5"/><rect x="17" y="15" width="4" height="6" rx="1.5"/></svg><b>Stream</b>Play them anywhere</div>
    </div>
    <div class="about-bot"><span class="bh" style="--s:52px"><span class="bh-band"></span><span class="bh-cup l"></span><span class="bh-cup r"></span><span class="bh-head"><span class="bh-stripes"></span><span class="bh-face"><i class="bh-eye l"></i><i class="bh-eye r"></i><i class="bh-vu"><b></b><b></b><b></b><b></b><b></b></i></span></span></span><div><b>Meet DJ Selector</b><span>Your own crate-digging DJ. Tell him a mood, a moment or an artist, like "rainy Sunday", "cooking dinner" or "some Fleetwood Mac", and he digs through every record you and your family own to build a mix in seconds.</span></div></div>
-   <ul class="about-sel"><li><b>Only music you own.</b> Every song comes from a real record in your Stack, so every mix rewards collecting.</li><li><b>Mixes the whole family.</b> On Duo and Family plans he digs through everyone's records, not just yours.</li><li><b>Keep the good ones.</b> Play the mix straight away, shuffle again, or save it as a mixtape to send to a friend.</li></ul><p class="mono" style="font-size:10.5px;color:var(--muted);text-align:center;margin:14px 0 0;letter-spacing:.06em">PROTOTYPE BUILD · 19 OCT · 19:50</p><p class="mono" style="font-size:9.5px;color:var(--muted);text-align:center;margin:4px 0 0;letter-spacing:.04em;opacity:.8">${screenDiag()}</p>
+   <ul class="about-sel"><li><b>Only music you own.</b> Every song comes from a real record in your Stack, so every mix rewards collecting.</li><li><b>Mixes the whole family.</b> On Duo and Family plans he digs through everyone's records, not just yours.</li><li><b>Keep the good ones.</b> Play the mix straight away, shuffle again, or save it as a mixtape to send to a friend.</li></ul><p class="mono" style="font-size:10.5px;color:var(--muted);text-align:center;margin:14px 0 0;letter-spacing:.06em">PROTOTYPE BUILD · 19 OCT · 20:00</p><p class="mono" style="font-size:9.5px;color:var(--muted);text-align:center;margin:4px 0 0;letter-spacing:.04em;opacity:.8">${screenDiag()}</p>
    <div class="about-foot">STACK 1.0 · FOR PEOPLE WHO STILL BUY RECORDS</div></div></div>`;
   $('#abSc').onclick=$('#abX').onclick=closeSheet;
 }
@@ -4001,7 +4001,7 @@ const PRODUCTS=[
  {id:'plush',n:'Little Selector',p:30,k:'acc',single:1,d:'A 35cm soft Selector in fleece and corduroy, with embroidered eyes, VU-meter mouth and the S on his chest panel.',nw:1},
  {id:'slipmat',n:'Sunset Slipmat',p:18,k:'acc',d:'12" dense black felt slipmat with the Stack S in sunset colours and three thin rings. Non-slip underside and a woven S label.'},
  {id:'crate',n:'Birch Record Crate',p:48,k:'acc',single:1,d:'Holds about 60 LPs. Finger-jointed birch ply, engraved S, painted sunset stripes, antique-brass corners and a leather tab stamped with the S.'},
- {id:'puck',n:'The Stack Puck',p:79,k:'puck',cols:[['black','Black','#1C1C1C'],['orange','Orange','#D4642A'],['white','White','#E4E0D8']],d:'Sits between your turntable and speakers and records your own copy in hi-res, crackle and all. Knurled aluminium rim, amber status light, USB-C and RCA in and out. In black, orange or white.'}
+ {id:'puck',n:'The Stack Puck',p:30,k:'puck',packs:[[1,'One Puck',30],[2,'Two Pucks',50],[3,'Three Pucks',75]],cols:[['black','Black','#1C1C1C'],['orange','Orange','#D4642A'],['white','White','#E4E0D8']],d:'Sits between your turntable and speakers and records your own copy in hi-res, crackle and all. Knurled aluminium rim, amber status light, USB-C and RCA in and out. In black, orange or white.'}
 ];
 const SHOP_IMG=k=>(window.STACK_SHOP_IMG&&window.STACK_SHOP_IMG[k])||('shop/'+k+'.jpg');
 const prod=id=>PRODUCTS.find(p=>p.id===id);CART=CART.filter(l=>prod(l.id));
@@ -4195,16 +4195,18 @@ function rShop(){const el=$('#mk-shop'),L=PRODUCTS.filter(p=>shopCat==='all'||p.
  <div class="shop-grid">${L.map(p=>`<button class="shop-card" data-prod="${p.id}"><span class="sc-art">${prodArt(p)}${p.nw?'<i class="sc-new">New</i>':''}</span><b>${p.n}</b><span>${money(p.p)}${p.pod?' · made to order':''}</span></button>`).join('')}</div>
  <p class="sub" style="margin:12px 2px">Free delivery over £50. Prototype: no payment is taken.</p>`}
 const ICON_BAG='<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l-1 13H7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>';
-function openProd(id){const p=prod(id);let size=p.sizes?p.sizes[Math.min(1,p.sizes.length-1)]:null,col=p.cols?p.cols[0][0]:null;
- const draw=()=>{const cn=p.cols?p.cols.find(c=>c[0]===col)[1]:'',pc=prodPics(p,col);const slot=sheet(`${sheetH(p.n)}<div class="sheet-b"><div class="pd-gal"><div class="lc-strip" data-strip>${pc.map(x=>`<span class="pd-art"><span class="ph-img${p.imgs?' sq':''}" style="background-image:url('${x.src}');${x.st}"></span></span>`).join('')}</div>${pc.length>1?`<div class="lc-dots">${pc.map((_,i)=>`<i class="${i?'':'on'}"></i>`).join('')}</div>`:''}</div>
-  <div class="pd-top"><b>${money(p.p)}</b><span>${p.pod?'Made to order · ships in 5–7 days':'Ships in 2 days'}</span></div><p class="sub" style="margin:6px 0 10px">${p.d}</p>
+function openProd(id,pk0,col0){const p=prod(id);let pk=pk0||0;let size=p.sizes?p.sizes[Math.min(1,p.sizes.length-1)]:null,col=p.cols?(col0&&p.cols.some(c=>c[0]===col0)?col0:p.cols[0][0]):null;
+ const draw=()=>{const cn=p.cols?p.cols.find(c=>c[0]===col)[1]:'',pc=prodPics(p,col);const slot=sheet(`${sheetH(p.n)}<div class="sheet-b"><div class="pd-gal"><div class="lc-strip" data-strip>${pc.map(x=>`<span class="pd-art"><span class="ph-img${p.imgs?' sq':''}${/size/.test(x.st)?' fit':''}" style="background-image:url('${x.src}');${x.st}"></span></span>`).join('')}</div>${pc.length>1?`<div class="lc-dots">${pc.map((_,i)=>`<i class="${i?'':'on'}"></i>`).join('')}</div>`:''}</div>
+  <div class="pd-top"><b>${money(p.packs?p.packs[pk][2]:p.p)}</b><span>${p.pod?'Made to order · ships in 5–7 days':'Ships in 2 days'}</span></div><p class="sub" style="margin:6px 0 10px">${p.d}</p>
   ${p.cols?`<div class="form-row"><label>Colour · ${cn}</label><div class="vc-cols">${p.cols.map(c=>`<button data-col="${c[0]}" class="${c[0]===col?'on':''}" style="background:${c[2]}" aria-label="${c[1]}"></button>`).join('')}</div></div>`:''}
   ${p.sizes&&p.sizes.length>1?`<div class="form-row"><label>Size</label><div class="opt-row">${p.sizes.map(s=>`<button class="chipbtn${s===size?' on':''}" data-size="${s}">${s}</button>`).join('')}</div></div>`:''}
+  ${p.packs?`<div class="form-row"><label>Bundle</label><div class="opt-row">${p.packs.map((x,i)=>`<button class="chipbtn${i===pk?' on':''}" data-pk="${i}">${x[1]} · ${money(x[2])}</button>`).join('')}</div></div>`:''}
   <button class="btn" data-add style="margin-top:10px">Add to basket</button></div>`);
   const st=slot.querySelector('[data-strip]');st.addEventListener('scroll',()=>{const i=Math.round(st.scrollLeft/st.clientWidth);slot.querySelectorAll('.lc-dots i').forEach((d,k)=>d.classList.toggle('on',k===i))},{passive:true});
-  slot.onclick=e=>{const t=e.target.closest('button');if(!t)return;if(t.dataset.col){col=t.dataset.col;draw()}else if(t.dataset.size){size=t.dataset.size;draw()}
-   else if('add' in t.dataset){const key=[p.id,col,size].join('|'),ex=CART.find(l=>l.key===key);ex?ex.q++:CART.push({key,id:p.id,col,n:p.n+(col?' · '+cn:'')+(size&&p.sizes.length>1?' · '+size:''),p:p.p,q:1,pod:!!p.pod});save();closeSheet();rShop();mkToast('Added to basket')}}};
+  slot.onclick=e=>{const t=e.target.closest('button');if(!t)return;if(t.dataset.pk){pk=+t.dataset.pk;draw()}else if(t.dataset.col){col=t.dataset.col;draw()}else if(t.dataset.size){size=t.dataset.size;draw()}
+   else if('add' in t.dataset){const key=[p.id,col,size,p.packs?pk:''].join('|'),ex=CART.find(l=>l.key===key);ex?ex.q++:CART.push({key,id:p.id,col,n:p.n+(col?' · '+cn:'')+(size&&p.sizes.length>1?' · '+size:'')+(p.packs&&pk?' · '+p.packs[pk][1]:''),p:p.packs?p.packs[pk][2]:p.p,q:1,pod:!!p.pod});save();closeSheet();rShop();mkToast('Added to basket')}}};
  draw()}
+window._openProd=openProd;
 function openBasket(){const sub=CART.reduce((n,l)=>n+l.p*l.q,0),del=!CART.length||sub>=50?0:3.95,tot=sub+del;
  const slot=sheet(`${sheetH('Your basket')}<div class="sheet-b">${CART.length?CART.map((l,i)=>`<div class="mk-line"><span class="ln-art">${prod(l.id)?prodArt(prod(l.id),'front',l.col):''}</span><div class="tx"><b>${esc(l.n)}</b><span>${money(l.p)}${l.pod?' · made to order':''}</span></div><div class="qty"><button data-q="${i}" data-d="-1" aria-label="Fewer">−</button><b>${l.q}</b><button data-q="${i}" data-d="1" aria-label="More">+</button></div></div>`).join('')+`<div class="mk-break"><div><span>Subtotal</span><b>${money(sub)}</b></div><div><span>Delivery</span><b>${del?money(del):'Free'}</b></div><div class="tot"><span>Total</span><b>${money(tot)}</b></div></div><button class="btn" data-place>Place demo order</button><p class="sub" style="margin:8px 0 0;text-align:center">Prototype: no payment is taken.</p>`:'<div class="empty">Your basket is empty.</div>'}</div>`);
  slot.onclick=e=>{const t=e.target.closest('button');if(!t)return;if(t.dataset.q!==undefined){const l=CART[+t.dataset.q];l.q+=+t.dataset.d;if(l.q<1)CART.splice(+t.dataset.q,1);save();openBasket();if(pane==='shop')rShop()}
@@ -4247,6 +4249,8 @@ render();
  const scan=()=>document.querySelectorAll('[data-strip]').forEach(wire);
  new MutationObserver(scan).observe(document.body,{childList:true,subtree:true});scan();
 })();
+
+window.openStackProd=(id,pk,col)=>{goTab('wish');setTimeout(()=>{const b=document.querySelector('#mkChips [data-p=shop]');b&&b.click();setTimeout(()=>window._openProd(id,pk,col),120)},80)};
 
 goTab('mine');{const q=location.search+location.hash;window.FILM_FORCE=!/[?&#]nofilm\b/.test(q);if(/[?&#]demo\b/.test(q))setTimeout(()=>{const iv=setInterval(()=>{if($('#splash').hidden){clearInterval(iv);openDemo()}},300)},500)}intro();
 </script>
