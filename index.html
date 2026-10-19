@@ -1529,7 +1529,7 @@ html.rm .wl-sel,html.rm .wl-disc{transition:none!important}
 /* ===== intro film (3D) ===== */
 .film-card{position:absolute;left:50%;width:min(88%,400px);box-sizing:border-box;padding:22px 21px 20px;border-radius:18px;background:#F6EEDC;box-shadow:0 16px 34px -12px rgba(20,10,4,.55);overflow:hidden;pointer-events:none;visibility:hidden;opacity:0;transform-origin:50% 50%;z-index:2}
 .film-card.top{top:calc(48px + var(--sat,0px))}
-.film-card.bot{bottom:calc(8% + env(safe-area-inset-bottom,0px))}
+.film-card.bot{bottom:calc(8% + 58px + env(safe-area-inset-bottom,0px))}
 .film-card.free{left:0;top:0;width:340px;background:none;box-shadow:none;border-radius:0;padding-left:21px;padding-right:21px;transform-origin:0 0}
 .film-card .fc-st{position:absolute;left:0;right:0;top:0;height:12px;background:linear-gradient(#D9752B 0 33%,#E9B949 33% 66%,#B6452C 66%)}
 .film-card.free .fc-st{display:none}
@@ -1578,6 +1578,9 @@ html.rm .wl-sel,html.rm .wl-disc{transition:none!important}
 .shop-lb .sh-sun{display:block;height:14px;background:linear-gradient(#F0A034 0 25%,#E8762C 25% 50%,#C8452B 50% 75%,#7FA7B7 75%)}
 #s-wish.in-shop .glow{background:radial-gradient(120% 60% at 50% 0%,rgba(240,160,52,.35),rgba(232,118,44,.18) 45%,transparent 75%)!important}
 #s-wish.in-shop #mk-shop .shop-cats button.on{background:#C8452B;color:#FFF3E0}
+.film-ctl{position:absolute;left:50%;transform:translateX(-50%);bottom:calc(18px + env(safe-area-inset-bottom,0px));display:flex;gap:10px;z-index:5}
+.film-ctl button{width:42px;height:42px;border-radius:50%;border:0;display:grid;place-items:center;background:rgba(20,12,6,.45);color:#F6EEDC;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:0;cursor:pointer}
+.film-ctl svg{width:18px;height:18px}.film-ctl .i-pl{display:none}.film-ctl.paused .i-pl{display:block}.film-ctl.paused .i-pa{display:none}
 </style>
 <style>[hidden]{display:none!important}body{margin:0}</style>
 </head>
@@ -2070,7 +2073,7 @@ async function play(host,handoff){
   let T;try{T=await Promise.race([loadThree(),new Promise((_,r)=>setTimeout(()=>r(0),8000))])}catch(e){return false}
   try{await Promise.race([Promise.all([document.fonts.load('800 80px Geist'),document.fonts.load('400 40px Geist'),document.fonts.load('500 30px "Geist Mono"'),document.fonts.load('400 160px Shrikhand')]),new Promise(r=>setTimeout(r,1500))])}catch(e){}
   const el=document.createElement('div');el.className='film';host.appendChild(el);
-  el.innerHTML=`<div class="film-gl"></div><div class="film-vig"></div><div class="film-bars">${BEATS.map(()=>'<i><b></b></i>').join('')}</div><button class="film-skip">Skip</button><div class="film-rpm"><b>33</b> RPM</div><div class="film-snd off"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>Tap for sound</div><div class="film-title"><i class="ft-blur"></i><div class="ft-mark"><svg viewBox="0 0 200 200"><use href="#mark"/></svg><b>stack</b></div><span>Own it. Play it everywhere.</span></div>`;
+  el.innerHTML=`<div class="film-gl"></div><div class="film-vig"></div><div class="film-bars">${BEATS.map(()=>'<i><b></b></i>').join('')}</div><button class="film-skip">Skip</button><div class="film-ctl"><button data-fc="prev" aria-label="Previous section"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h2v14H7zM20 5v14L10 12z"/></svg></button><button data-fc="pause" aria-label="Pause"><svg class="i-pa" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg><svg class="i-pl" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button><button data-fc="next" aria-label="Next section"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M15 5h2v14h-2zM4 5v14l10-7z"/></svg></button></div><div class="film-rpm"><b>33</b> RPM</div><div class="film-snd off"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>Tap for sound</div><div class="film-title"><i class="ft-blur"></i><div class="ft-mark"><svg viewBox="0 0 200 200"><use href="#mark"/></svg><b>stack</b></div><span>Own it. Play it everywhere.</span></div>`;
   let W0;try{W0=build(T,el.querySelector('.film-gl'))}catch(e){el.remove();return false}
   const {R,scene,cam,recG,armLift,liftA,liftUp,STIP,RC,puck,ptopM,led,rings,sel,sun,tex}=W0;
   const size=()=>{const w=el.clientWidth||390,h=el.clientHeight||844;R.setSize(w,h,false);R.domElement.style.width='100%';R.domElement.style.height='100%';cam.aspect=w/h;cam.updateProjectionMatrix()};size();
@@ -2115,6 +2118,13 @@ async function play(host,handoff){
       window.FILM_CLEANUP=()=>{window.FILM_CLEANUP=null;try{R.dispose()}catch(e){}el.remove()};
       const go=()=>{el.style.display='none';if(!resolved){resolved=true;resolve(true)}setTimeout(()=>window.FILM_CLEANUP&&FILM_CLEANUP(),700)};
       el.animate([{opacity:1},{opacity:0}],{duration:handed?380:300,fill:'forwards'}).finished.then(go,go)};
+    let paused=false;const readRate=tt=>{for(const c of [...hcards,...cards]){const d=c.userData,a=d.t0+.5,b=d.t1-.05;if(tt>=a&&tt<b){const txt=(d.html||d.text).textContent,need=Math.max(2.5,txt.split(/\s+/).length/3.2);return Math.min(1,(b-a)/need)}}return 1};
+    const ctl=el.querySelector('.film-ctl');const seek=v=>{t=Math.max(0,v);prevT=t-.001;last=performance.now()};
+    ctl.onclick=e=>{e.stopPropagation();const b=e.target.closest('button');if(!b)return;const k=b.dataset.fc;
+      if(k==='pause'){paused=!paused;ctl.classList.toggle('paused',paused);b.setAttribute('aria-label',paused?'Play':'Pause')}
+      else if(k==='next'){const nb=BEATS.find(x=>x>t+.05);if(nb!=null&&nb<BEATS[6])seek(nb);else seek(BEATS[6]+.6)}
+      else{let i=BEATS.length-1;while(i>0&&BEATS[i]>t-.05)i--;if(t-BEATS[i]<1.2&&i>0)i--;seek(BEATS[i]);for(const k2 in landSnd)delete landSnd[k2]}};
+    ctl.addEventListener('pointerdown',e=>e.stopPropagation());
     el.querySelector('.film-skip').onclick=e=>{e.stopPropagation();el._wakeTap=false;t=Math.max(t,BEATS[6]+.6);last=performance.now()};
     const snd=el.querySelector('.film-snd');let soundOn=!ac||ac.state==='running';if(!soundOn)snd.classList.remove('off');
     const wake=()=>{if(soundOn)return false;soundOn=true;snd.classList.add('off');try{ac.resume()}catch(e){}try{typeof introCtx==='function'&&introCtx()}catch(e){}return true};
@@ -2126,7 +2136,7 @@ async function play(host,handoff){
       if(avg>.024&&qLvl===0){qLvl=1;R.setPixelRatio(1);size()}
       else if(avg>.024&&qLvl===1){qLvl=2;R.shadowMap.enabled=false;W0.key.castShadow=false;scene.traverse(o=>{if(o.material){[].concat(o.material).forEach(m=>m.needsUpdate=true)}})}
       else if(avg>.03&&qLvl===2){qLvl=3;R.setPixelRatio(.75);size()}}
-    function frame(now){if(done)return;let raw=(now-last)/1000,dt=Math.min(.12,raw);last=now;prevT=t;t+=dt;quality(raw);
+    function frame(now){if(done)return;let raw=(now-last)/1000,dt=Math.min(.12,raw);last=now;prevT=t;t+=paused?0:dt*readRate(t);quality(raw);
       if(window.FILM_SEEK!=null){t=window.FILM_SEEK;window.FILM_SEEK=null;prevT=t-.001}if(window.FILM_HOLD)t=prevT;window.FILM_T=t;
       if(t>=END){render();return finish(true)}
       // ---- record speed ----
@@ -3696,7 +3706,7 @@ function openAbout(){const slot=$('#sheetSlot');
     <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18v-6a8 8 0 0 1 16 0v6"/><rect x="3" y="15" width="4" height="6" rx="1.5"/><rect x="17" y="15" width="4" height="6" rx="1.5"/></svg><b>Stream</b>Play them anywhere</div>
    </div>
    <div class="about-bot"><span class="bh" style="--s:52px"><span class="bh-band"></span><span class="bh-cup l"></span><span class="bh-cup r"></span><span class="bh-head"><span class="bh-stripes"></span><span class="bh-face"><i class="bh-eye l"></i><i class="bh-eye r"></i><i class="bh-vu"><b></b><b></b><b></b><b></b><b></b></i></span></span></span><div><b>Meet DJ Selector</b><span>Your own crate-digging DJ. Tell him a mood, a moment or an artist, like "rainy Sunday", "cooking dinner" or "some Fleetwood Mac", and he digs through every record you and your family own to build a mix in seconds.</span></div></div>
-   <ul class="about-sel"><li><b>Only music you own.</b> Every song comes from a real record in your Stack, so every mix rewards collecting.</li><li><b>Mixes the whole family.</b> On Duo and Family plans he digs through everyone's records, not just yours.</li><li><b>Keep the good ones.</b> Play the mix straight away, shuffle again, or save it as a mixtape to send to a friend.</li></ul><p class="mono" style="font-size:10.5px;color:var(--muted);text-align:center;margin:14px 0 0;letter-spacing:.06em">PROTOTYPE BUILD · 19 OCT · 20:00</p><p class="mono" style="font-size:9.5px;color:var(--muted);text-align:center;margin:4px 0 0;letter-spacing:.04em;opacity:.8">${screenDiag()}</p>
+   <ul class="about-sel"><li><b>Only music you own.</b> Every song comes from a real record in your Stack, so every mix rewards collecting.</li><li><b>Mixes the whole family.</b> On Duo and Family plans he digs through everyone's records, not just yours.</li><li><b>Keep the good ones.</b> Play the mix straight away, shuffle again, or save it as a mixtape to send to a friend.</li></ul><p class="mono" style="font-size:10.5px;color:var(--muted);text-align:center;margin:14px 0 0;letter-spacing:.06em">PROTOTYPE BUILD · 19 OCT · 20:10</p><p class="mono" style="font-size:9.5px;color:var(--muted);text-align:center;margin:4px 0 0;letter-spacing:.04em;opacity:.8">${screenDiag()}</p>
    <div class="about-foot">STACK 1.0 · FOR PEOPLE WHO STILL BUY RECORDS</div></div></div>`;
   $('#abSc').onclick=$('#abX').onclick=closeSheet;
 }
