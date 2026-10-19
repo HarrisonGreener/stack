@@ -1568,6 +1568,16 @@ html.rm .wl-sel,html.rm .wl-disc{transition:none!important}
 .stats-card .sc-h span{display:flex;align-items:center;gap:2px;font-size:13px;color:var(--rose);font-weight:600}.stats-card .sc-h svg{width:14px;height:14px}
 .stats-card .acct-stats{margin:0;position:relative;z-index:1}
 .stats-card .acct-stats i{font-style:normal;background:var(--surface);border-radius:12px;padding:10px;text-align:center}
+
+/* Stack Supply look */
+.shop-lb{background:#3B2418;border-radius:20px}
+.shop-lb img{aspect-ratio:16/11!important;object-position:50% 18%}
+.shop-lb .sh-tx{position:static!important;background:#3B2418!important;padding:14px 16px 12px!important;max-width:none!important;display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.shop-lb .sh-tx b{font-family:var(--font)!important;font-weight:800!important;font-size:26px!important;letter-spacing:-.015em;color:#FFF3E0!important;margin:0!important;line-height:1.1;white-space:nowrap}
+.shop-lb .sh-tx span{font-size:11.5px;color:#E9CFA8;opacity:1;text-align:right}
+.shop-lb .sh-sun{display:block;height:14px;background:linear-gradient(#F0A034 0 25%,#E8762C 25% 50%,#C8452B 50% 75%,#7FA7B7 75%)}
+#s-wish.in-shop .glow{background:radial-gradient(120% 60% at 50% 0%,rgba(240,160,52,.35),rgba(232,118,44,.18) 45%,transparent 75%)!important}
+#s-wish.in-shop #mk-shop .shop-cats button.on{background:#C8452B;color:#FFF3E0}
 </style>
 <style>[hidden]{display:none!important}body{margin:0}</style>
 </head>
@@ -4021,7 +4031,7 @@ const tabBtn=document.querySelector('.tab[data-tab="wish"]');
 if(tabBtn){tabBtn.innerHTML=`<span class="tab-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="M4 9l1.5-4.5h13L20 9"/><path d="M4 9a2.7 2.7 0 0 0 5.3 0 2.7 2.7 0 0 0 5.4 0A2.7 2.7 0 0 0 20 9"/><path d="M5.5 12v7.5h13V12"/><path d="M10 19.5V15h4v4.5"/></svg><b class="wbadge"></b></span>Market`}
 document.querySelectorAll('[data-jump="wish"]').forEach(b=>b.firstChild.textContent='Marketplace ');
 let pane='browse';
-function setPane(p){if(p==='orders'){openOrders();return}pane=p;const main=p==='browse'||p==='shop';$('#mkChips').hidden=!main;$('#mkBack').hidden=main;$('#mkBackT').textContent={sell:'Sell a record',wish:'Wishlist',near:'Nearby shops'}[p]||'';
+function setPane(p){if(p==='orders'){openOrders();return}pane=p;sc.classList.toggle('in-shop',p==='shop');const main=p==='browse'||p==='shop';$('#mkChips').hidden=!main;$('#mkBack').hidden=main;$('#mkBackT').textContent={sell:'Sell a record',wish:'Wishlist',near:'Nearby shops'}[p]||'';
  $('#mkChips').classList.toggle('r',p==='shop');$$('#mkChips button').forEach(b=>b.classList.toggle('on',b.dataset.p===p));$$('.mk-ib').forEach(b=>b.classList.toggle('on',b.dataset.p===p));$$('.mk-pane').forEach(x=>x.hidden=x.id!=='mk-'+p);render();sc.scrollTop=0}
 sc.querySelector('.mk-head').onclick=$('#mkChips').onclick=$('#mkBack').onclick=e=>{const b=e.target.closest('[data-p]');if(b)setPane(b.dataset.p)};
 function render(){({browse:rBrowse,sell:rSell,wish:()=>{try{renderWish()}catch(e){}},near:rNear,shop:rShop})[pane]();badge()}
@@ -4190,7 +4200,7 @@ function rNear(){try{renderRSD()}catch(e){}$('#mkShops').innerHTML=`<h3 class="m
 let shopCat='all';
 function cartN(){return CART.reduce((n,l)=>n+l.q,0)}
 function rShop(){const el=$('#mk-shop'),L=PRODUCTS.filter(p=>shopCat==='all'||p.k===shopCat);
- el.innerHTML=`<div class="shop-lb"><img src="${SHOP_IMG('lookbook')}" alt="Stack lookbook: the Selector Bomber, Sunset S Shirt, Knit Polo and Flares"><div class="sh-tx"><b>Stack Supply</b></div></div>
+ el.innerHTML=`<div class="shop-lb"><img src="${SHOP_IMG('lookbook')}" alt="Stack lookbook: the Selector Bomber, Sunset S Shirt, Knit Polo and Flares"><div class="sh-tx"><b>Stack Supply</b><span>Clothing, record gear and the Puck</span></div><i class="sh-sun"></i></div>
  <div class="mk-top"><div class="shop-cats">${[['all','All'],['cloth','Clothing'],['acc','Accessories'],['puck','Puck']].map(([k,n])=>`<button data-cat="${k}" class="${shopCat===k?'on':''}">${n}</button>`).join('')}</div><button class="mk-orders" data-basket aria-label="Basket">${ICON_BAG}${cartN()?` <b>${cartN()}</b>`:''}</button></div>
  <div class="shop-grid">${L.map(p=>`<button class="shop-card" data-prod="${p.id}"><span class="sc-art">${prodArt(p)}${p.nw?'<i class="sc-new">New</i>':''}</span><b>${p.n}</b><span>${money(p.p)}${p.pod?' · made to order':''}</span></button>`).join('')}</div>
  <p class="sub" style="margin:12px 2px">Free delivery over £50. Prototype: no payment is taken.</p>`}
