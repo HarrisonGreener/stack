@@ -1631,6 +1631,7 @@ html.rm .wl-sel,html.rm .wl-disc{transition:none!important}
 .ov-search{margin:6px 0 8px}.ov-seg{display:flex;margin:6px 0 12px}.ov-seg button{flex:1}
 .phone:has(#miniSlot:not(:empty)) .screen{padding-bottom:240px}
 .vs{margin:14px 0 4px;padding:12px 14px;border-radius:16px;background:var(--surface)}.vs-h{display:flex;justify-content:space-between;align-items:baseline}.vs-h b{font-size:15px}.vs-h button{font-size:12.5px;font-weight:700;color:#C8452B}.vs-r{display:flex;align-items:center;gap:10px;padding:7px 0;border-top:1px solid var(--surface-2);font-size:13.5px}.vs-r:first-of-type{border-top:0}.vs-r span{flex:1}.vs-r em{font-style:normal;color:var(--muted);font-size:12.5px}.vs-r i{font-style:normal;font-weight:800;min-width:34px;text-align:right}.vs-r i.top{color:#E8762C}
+#xf{touch-action:none}.fader{touch-action:none}
 </style>
 <style>[hidden]{display:none!important}body{margin:0}</style>
 </head>
@@ -2145,6 +2146,8 @@ async function play(host,handoff){
   const C3=mkCard('The Stack Puck','Your pressing, captured.','Plug the Puck between your turntable and speakers. Play a side and it records your own copy in hi-res, crackle and all.',{t0:15.3,t1:19.5,y:.5});
   const C4=mkCard('Why Stack','Owning music is worth it again.','Streaming made music something you rent. Stack turns the records you love into a library you can play anywhere, share with family and swap with friends.',{t0:19.6,t1:26.5,world:true,topPad:150});
   const C5=mkCard('Meet Selector','Your DJ, digging through your crate.','Tell him a mood and he finds the perfect mix. Only music you actually own.',{t0:27.4,t1:31.5,y:-.52});
+  {const all=[...hcards].map(c=>c.userData).sort((x,y)=>x.t0-y.t0),starts=[C1,C2,C3,C4,C5].map(c=>c.userData.t0).sort((x,y)=>x-y);
+   all.forEach(d=>{const txt=d.html.textContent,need=Math.max(2.5,txt.split(/\s+/).length/3.2),nx=starts.find(v=>v>d.t0+.01);const cap=nx!=null?nx-.35:END-1;d.t1=Math.max(d.t1,Math.min(cap,d.t0+.5+need))})}
   // card 4 stands on the table, left of the turntable
   const C4W=1.7,C4H=C4W/C4.userData.aspect,C4P=new T.Vector3(-2.85,-.33+C4H/2+.02,1.25);C4.position.copy(C4P);C4.rotation.y=.18;C4.scale.setScalar(C4W);
   const c4top=new T.Vector3(.18*C4W,C4H/2,.02).applyEuler(C4.rotation).add(C4P);
@@ -2187,7 +2190,7 @@ async function play(host,handoff){
       if(avg>.024&&qLvl===0){qLvl=1;R.setPixelRatio(1);size()}
       else if(avg>.024&&qLvl===1){qLvl=2;R.shadowMap.enabled=false;W0.key.castShadow=false;scene.traverse(o=>{if(o.material){[].concat(o.material).forEach(m=>m.needsUpdate=true)}})}
       else if(avg>.03&&qLvl===2){qLvl=3;R.setPixelRatio(.75);size()}}
-    function frame(now){if(done)return;let raw=(now-last)/1000,dt=Math.min(.12,raw);last=now;prevT=t;t+=paused?0:dt*readRate(t);quality(raw);
+    function frame(now){if(done)return;let raw=(now-last)/1000,dt=Math.min(.12,raw);last=now;prevT=t;t+=paused?0:dt;quality(raw);
       if(window.FILM_SEEK!=null){t=window.FILM_SEEK;window.FILM_SEEK=null;prevT=t-.001}if(window.FILM_HOLD)t=prevT;window.FILM_T=t;
       if(t>=END){render();return finish(true)}
       // ---- record speed ----
@@ -2762,6 +2765,11 @@ function setXf(v){st.xf=+v;const t=st.xf/100;
     $('#pA').style.opacity=1-.55*t;$('#pB').style.opacity=.45+.55*t;}else{$('#pA').style.opacity='';$('#pB').style.opacity=''}
   $('#lvlA').style.width=(Math.cos(t*Math.PI/2)*100)+'%';$('#lvlB').style.width=(Math.sin(t*Math.PI/2)*100)+'%';renderInfo()}
 $('#xf').oninput=e=>setXf(e.target.value);
+{const xf=$('#xf');const setFrom=e=>{const r=xf.getBoundingClientRect(),v=Math.round(Math.max(0,Math.min(1,(e.clientX-r.left)/r.width))*100);xf.value=v;setXf(v)};
+ xf.addEventListener('pointerdown',e=>{e.stopPropagation();e.preventDefault();try{xf.setPointerCapture(e.pointerId)}catch(_){}xf._drag=1;setFrom(e)});
+ xf.addEventListener('pointermove',e=>{if(!xf._drag)return;e.stopPropagation();e.preventDefault();setFrom(e)});
+ const end=e=>{xf._drag=0;try{xf.releasePointerCapture(e.pointerId)}catch(_){}};xf.addEventListener('pointerup',end);xf.addEventListener('pointercancel',end);
+ ['touchstart','touchmove'].forEach(ev=>xf.addEventListener(ev,e=>e.stopPropagation(),{passive:true}))}
 let fadeAnim=null;
 $('#autoFade').onclick=()=>{if(fadeAnim)return;const from=st.xf,to=from>50?0:100,t0=performance.now(),dur=5000;
   const step=now=>{const k=Math.min(1,(now-t0)/dur),e=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2;const v=from+(to-from)*e;$('#xf').value=v;setXf(v);if(k<1)fadeAnim=requestAnimationFrame(step);else fadeAnim=null};fadeAnim=requestAnimationFrame(step)};
