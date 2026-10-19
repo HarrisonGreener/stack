@@ -56,6 +56,7 @@ Stack is a design prototype. It explores the idea, the interface and the experie
 - **Activity:** see what friends are spinning right now, on vinyl, CD or digital, and join their listening room to react and see what Selector is lining up from everyone's shelves.
 - **Leaderboards:** records owned, time listened, streaks and Puck plays, against friends, your city or everyone. Collector badges sit on your profile.
 - **Profiles:** tap any friend to see their bio, stats, badges, top artists, desert island record and the records you both own. Edit your own bio, username, location and desert island record.
+- **Crate challenge:** a new theme every month, like "a perfect Sunday morning record". Search any album to answer, whether you own it or not, and your picks build up on your profile.
 - **Taste match:** how much of your music overlaps with each friend, and the records you have in common.
 - **Sharing controls:** choose friends, everyone or only you, and switch collection, listening, stats and "spinning now" on or off.
 - **Lending:** lend a record to a friend. While it is lent it is theirs to play and not yours, just like the real thing, until they give it back.
