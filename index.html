@@ -834,6 +834,61 @@ h2.big{font-size:34px;font-weight:650;letter-spacing:-.035em;margin:6px 0 4px;te
   background:radial-gradient(circle,#111 0 33%,transparent 33.5%),repeating-radial-gradient(circle,#181818 0 1.1px,#0a0a0a 1.1px 2.4px);
   box-shadow:0 22px 44px -12px rgba(0,0,0,.55)}
 /* ---------- marketplace + stack shop ---------- */
+/* marketplace v2 */
+.mk-head{display:flex;align-items:center;justify-content:space-between;gap:8px}.mk-head .big{margin:0}
+.mk-ibs{display:flex;gap:6px}.mk-ib{position:relative;width:38px;height:38px}.mk-ib svg{width:19px;height:19px}.mk-ib.on{background:var(--fg);color:var(--bg)}
+.mk-ibn{position:absolute;top:-3px;right:-3px;min-width:17px;height:17px;padding:0 4px;border-radius:9px;background:var(--accent,#E8744F);color:#fff;font:700 10.5px/17px var(--font);text-align:center;box-sizing:border-box}
+.mk-seg{position:relative;display:grid;grid-template-columns:1fr 1fr;margin:14px 0 12px;padding:4px;border-radius:14px;background:var(--surface-2)}
+.mk-seg button{position:relative;z-index:1;padding:10px 0;font-size:14.5px;font-weight:650;color:var(--muted);border-radius:10px}.mk-seg button.on{color:var(--fg)}
+.mk-seg i{position:absolute;top:4px;bottom:4px;left:4px;width:calc(50% - 4px);border-radius:10px;background:var(--surface);box-shadow:0 1px 3px var(--shadow);transition:transform .3s cubic-bezier(.3,.7,.3,1)}.mk-seg.r i{transform:translateX(100%)}
+.mk-back{display:flex;align-items:center;gap:10px;margin:14px 0 12px}.mk-back button{width:32px;height:32px;border-radius:50%;background:var(--surface-2);display:grid;place-items:center;color:var(--fg)}.mk-back b{font-size:17px}
+.mk-search{position:relative;display:flex;align-items:center;gap:8px;padding:0 6px 0 12px;height:46px;border-radius:14px;background:var(--surface);border:1px solid var(--line)}
+.mk-search>svg{width:18px;height:18px;color:var(--muted);flex:none}.mk-search input{flex:1;min-width:0;border:0;background:none;color:var(--fg);font:inherit;font-size:16px;outline:none}
+.mk-fbtn{position:relative;width:36px;height:36px;border-radius:10px;display:grid;place-items:center;color:var(--fg)}.mk-fbtn svg{width:19px;height:19px}.mk-fbtn.on{background:var(--fg);color:var(--bg)}.mk-fbtn b{position:absolute;top:-4px;right:-4px;min-width:16px;height:16px;border-radius:8px;background:var(--accent,#E8744F);color:#fff;font:700 10px/16px var(--font)}
+.mk-sugg{margin-top:8px;padding:10px 12px;border-radius:14px;background:var(--surface);border:1px solid var(--line)}.mk-sugg small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:2px 0 6px}
+.mk-sugg div{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:6px}.mk-sugg button{display:inline-flex;gap:5px;align-items:center;font-size:13px;padding:6px 11px;border-radius:999px;background:var(--surface-2);color:var(--fg)}
+.mk-fc{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.mk-fc button{font-size:12.5px;font-weight:600;padding:6px 11px;border-radius:999px;background:var(--fg);color:var(--bg)}
+.mk-res{display:flex;justify-content:space-between;gap:8px;font-size:12px;color:var(--muted);margin:12px 2px 10px}.mk-res span{display:flex;gap:4px;align-items:center}
+.lc-list{display:flex;flex-direction:column;gap:16px}
+.lc{position:relative;border-radius:18px;overflow:hidden;background:var(--surface);border:1px solid var(--line);cursor:pointer}
+.lc-strip{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}.lc-strip::-webkit-scrollbar{display:none}
+.lp-ph{position:relative;flex:none;width:100%;aspect-ratio:1;scroll-snap-align:start;overflow:hidden;background:var(--surface-2)}.lp-ph>img{display:block;width:100%;height:100%;object-fit:cover;pointer-events:none;user-select:none}
+.lp-k{position:absolute;left:0;top:0;width:720px;height:720px;transform-origin:0 0;isolation:isolate;pointer-events:none}
+.lp-cov{position:absolute;left:0;top:0;width:600px;height:600px;transform-origin:0 0;filter:brightness(.94) saturate(.92)}.lp-cov .art{position:absolute;inset:0;width:100%!important;height:100%!important;border-radius:0!important;box-shadow:none!important;background-size:cover}
+.lp-sh{position:absolute;left:0;top:0;width:720px;height:720px;mix-blend-mode:soft-light}
+.lp-fall{display:grid;place-items:center;background:linear-gradient(160deg,var(--surface-2),var(--surface))}.lp-fall .art{width:62%;height:62%;border-radius:4px;box-shadow:0 14px 30px -8px rgba(0,0,0,.4)}
+.lc-dots{position:absolute;left:0;right:0;display:flex;justify-content:center;gap:5px;margin-top:-22px;pointer-events:none}.lc-dots i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.55);box-shadow:0 0 2px rgba(0,0,0,.4)}.lc-dots i.on{background:#fff}
+.lc-cnt{position:absolute;top:10px;right:10px;font-size:11px;font-weight:600;padding:4px 8px;border-radius:999px;background:rgba(20,12,8,.6);color:#fff;backdrop-filter:blur(6px)}
+.lc-b{padding:12px 14px 14px;display:flex;flex-direction:column;gap:7px}
+.lc-t{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.lc-t b{display:block;font-size:16.5px;line-height:1.2}.lc-t span{display:block;font-size:12.5px;color:var(--muted);margin-top:2px}.lc-t strong{font-size:20px;flex:none}
+.lc-g{display:flex;flex-wrap:wrap;gap:6px}.lc-g span{font-size:11.5px;padding:3px 8px;border-radius:7px;background:var(--surface-2);color:var(--muted)}.lc-g b{color:var(--fg)}
+.lc-s{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--muted)}.lc-s i,.lp-seller i,.sp-hd i{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;color:#fff;font-style:normal;font-weight:700;font-size:11px;flex:none}.lc-s em{margin-left:auto;font-style:normal}
+.lp{padding-top:0}.lp-gal{position:relative;margin:0 -20px 12px}.lp-gal .lp-ph{aspect-ratio:1}
+.lp-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.lp-top b{display:block;font-size:19px}.lp-top span{display:block;font-size:12.5px;color:var(--muted);margin-top:3px}.lp-top strong{font-size:24px}
+.lp-h{font-size:12px;font-family:var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:18px 2px 8px;font-weight:500}
+.lp-card{display:block;width:100%;text-align:left;padding:12px 14px;border-radius:14px;background:var(--surface);border:1px solid var(--line);color:var(--fg)}
+.mk-gr{display:flex;align-items:center;gap:10px;padding:4px 0;font-size:13.5px}.mk-gr span{width:52px;color:var(--muted)}.mk-gr div{flex:1;display:flex;gap:4px}.mk-gr i{flex:1;height:7px;border-radius:4px;background:var(--surface-2)}.mk-gr i.on{background:linear-gradient(90deg,#F2AE3D,#C8452B)}.mk-gr b{width:34px;text-align:right}
+.lp-gt{font-size:12px;color:var(--muted);margin:6px 0 0}.lp-note{font-size:13.5px;line-height:1.45;margin:10px 0 0;padding-top:10px;border-top:1px solid var(--line)}.lp-note span{display:block;font-size:12px;color:var(--muted);margin-top:3px}
+.lp-seller{display:flex;align-items:center;gap:12px}.lp-seller i,.sp-hd i{width:42px;height:42px;font-size:17px}.lp-seller div{flex:1}.lp-seller b{display:block;font-size:14.5px}.lp-seller span{display:block;font-size:12px;color:var(--muted);margin-top:2px}.lp-seller em{font-style:normal;font-size:22px;color:var(--muted)}
+.mk-spark{display:block;width:100%;height:56px}.lp-ph2{display:flex;justify-content:space-between;gap:8px;font-size:12.5px;color:var(--muted);margin-top:6px}.lp-ph2 b{color:var(--fg)}.lp-ph2 .good{color:#2FA37A}
+.lp-cta{display:flex;flex-direction:column;gap:8px}.lp-cta>div{display:grid;grid-template-columns:1fr 1fr;gap:8px}.lp-wl{font-size:13px;font-weight:600;color:var(--muted);padding:6px}
+.ch-ctx{display:flex;gap:10px;align-items:center;padding:8px;border-radius:12px;background:var(--surface-2)}.ch-ctx .art{width:40px;height:40px;border-radius:4px;flex:none}.ch-ctx span{font-size:12.5px;color:var(--muted)}.ch-ctx b{display:block;color:var(--fg);font-size:13.5px}
+.ch-msgs{display:flex;flex-direction:column;gap:6px;margin:12px 0;max-height:260px;overflow-y:auto}.ch-m{align-self:flex-start;max-width:78%;padding:8px 12px;border-radius:16px 16px 16px 4px;background:var(--surface-2);font-size:14px}.ch-m.me{align-self:flex-end;border-radius:16px 16px 4px 16px;background:var(--accent,#E8744F);color:#fff}
+.ch-q{margin-bottom:8px}.ch-in{display:flex;gap:8px}.ch-in input{flex:1;min-width:0;height:44px;padding:0 14px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--fg);font:inherit;font-size:16px}.ch-in .btn{width:auto;padding:0 18px}
+.sp-hd{display:flex;gap:12px;align-items:center}.sp-hd b{display:block;font-size:17px}.sp-hd span{display:block;font-size:12.5px;color:var(--muted);margin-top:2px}
+.sp-rev{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:14px -20px 0;padding:0 20px}.sp-rev p{flex:none;width:200px;margin:0;padding:10px 12px;border-radius:12px;background:var(--surface);border:1px solid var(--line);font-size:13px}.sp-rev span{display:block;color:#E9B949;margin-top:4px}
+.sl-steps{display:flex;gap:6px;margin-bottom:12px}.sl-steps span{flex:1;font-size:11.5px;font-weight:600;text-align:center;padding:6px 0;border-radius:8px;background:var(--surface-2);color:var(--muted)}.sl-steps .on{background:var(--fg);color:var(--bg)}
+.sl-ph{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.sl-ph button{position:relative;aspect-ratio:1;border-radius:12px;border:1.5px dashed var(--line);background:var(--surface);color:var(--muted);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;overflow:hidden}
+.sl-ph svg{width:26px;height:26px}.sl-ph small{font-size:10.5px;text-align:center;line-height:1.2;padding:0 4px}.sl-ph .got{border-style:solid}.sl-ph .got small{position:absolute;bottom:4px;left:4px;right:4px;color:#fff;text-shadow:0 1px 3px #000}
+.sl-img{position:absolute;inset:0}.sl-img .art{width:100%;height:100%}.sl-ph em{position:absolute;top:5px;right:5px;width:20px;height:20px;border-radius:50%;background:#2FA37A;color:#fff;font-style:normal;font-size:12px;display:grid;place-items:center}.sl-ph .flash{animation:slf .22s}@keyframes slf{50%{background:#fff}}
+.shop-lb{position:relative;border-radius:18px;overflow:hidden;margin-bottom:12px}.shop-lb img{display:block;width:100%;aspect-ratio:1024/757;object-fit:cover}
+.shop-lb .sh-tx{position:absolute;left:0;right:0;bottom:0;padding:40px 16px 14px;background:linear-gradient(transparent,rgba(30,16,8,.78));color:#F4E4C1;max-width:none}
+.shop-cats{display:flex;flex-wrap:wrap;gap:5px}.shop-cats button{font-size:12.5px;font-weight:600;padding:6px 11px;border-radius:999px;color:var(--muted);border:1px solid var(--line)}.shop-cats button.on{color:var(--bg);background:var(--fg);border-color:var(--fg)}
+.mk-orders{display:inline-flex;align-items:center;gap:3px}
+.sc-art{position:relative}.sc-new{position:absolute;top:8px;left:8px;font-style:normal;font-size:10.5px;font-weight:700;padding:3px 8px;border-radius:999px;background:var(--accent,#E8744F);color:#fff}
+.ph-img.sq{background-size:contain!important;background-position:center!important;background-color:#EFE6D6}
+.pd-gal{position:relative;margin:0 -20px}.pd-gal .pd-art{flex:none;width:100%!important;max-width:none!important;margin:0!important;border-radius:0;scroll-snap-align:start;aspect-ratio:1}
+
 .mk-chips button.shopchip:not(.on){background:linear-gradient(135deg,#F2AE3D,#C8452B);color:#fff;border-color:transparent}
 .shop-promo{position:relative;overflow:hidden;display:flex;align-items:center;gap:10px;width:100%;text-align:left;padding:14px 14px;border-radius:16px;background:#4A2415;color:#F4E4C1;margin-bottom:10px}
 .shop-promo .sp-r{position:absolute;right:-34px;top:-30px;width:130px;height:130px;border-radius:50%;background:radial-gradient(circle,#4A2415 0 22%,#F4E4C1 22% 32%,#F0A034 32% 46%,#E8742B 46% 60%,#C8452B 60% 74%,transparent 74%);opacity:.9}
@@ -3631,7 +3686,7 @@ function openAbout(){const slot=$('#sheetSlot');
     <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18v-6a8 8 0 0 1 16 0v6"/><rect x="3" y="15" width="4" height="6" rx="1.5"/><rect x="17" y="15" width="4" height="6" rx="1.5"/></svg><b>Stream</b>Play them anywhere</div>
    </div>
    <div class="about-bot"><span class="bh" style="--s:52px"><span class="bh-band"></span><span class="bh-cup l"></span><span class="bh-cup r"></span><span class="bh-head"><span class="bh-stripes"></span><span class="bh-face"><i class="bh-eye l"></i><i class="bh-eye r"></i><i class="bh-vu"><b></b><b></b><b></b><b></b><b></b></i></span></span></span><div><b>Meet DJ Selector</b><span>Your own crate-digging DJ. Tell him a mood, a moment or an artist, like "rainy Sunday", "cooking dinner" or "some Fleetwood Mac", and he digs through every record you and your family own to build a mix in seconds.</span></div></div>
-   <ul class="about-sel"><li><b>Only music you own.</b> Every song comes from a real record in your Stack, so every mix rewards collecting.</li><li><b>Mixes the whole family.</b> On Duo and Family plans he digs through everyone's records, not just yours.</li><li><b>Keep the good ones.</b> Play the mix straight away, shuffle again, or save it as a mixtape to send to a friend.</li></ul><p class="mono" style="font-size:10.5px;color:var(--muted);text-align:center;margin:14px 0 0;letter-spacing:.06em">PROTOTYPE BUILD · 17 OCT · 23:05</p><p class="mono" style="font-size:9.5px;color:var(--muted);text-align:center;margin:4px 0 0;letter-spacing:.04em;opacity:.8">${screenDiag()}</p>
+   <ul class="about-sel"><li><b>Only music you own.</b> Every song comes from a real record in your Stack, so every mix rewards collecting.</li><li><b>Mixes the whole family.</b> On Duo and Family plans he digs through everyone's records, not just yours.</li><li><b>Keep the good ones.</b> Play the mix straight away, shuffle again, or save it as a mixtape to send to a friend.</li></ul><p class="mono" style="font-size:10.5px;color:var(--muted);text-align:center;margin:14px 0 0;letter-spacing:.06em">PROTOTYPE BUILD · 19 OCT · 20:30</p><p class="mono" style="font-size:9.5px;color:var(--muted);text-align:center;margin:4px 0 0;letter-spacing:.04em;opacity:.8">${screenDiag()}</p>
    <div class="about-foot">STACK 1.0 · FOR PEOPLE WHO STILL BUY RECORDS</div></div></div>`;
   $('#abSc').onclick=$('#abX').onclick=closeSheet;
 }
@@ -3862,9 +3917,30 @@ let ORD=LS('stack-mk-orders',[]),MYL=LS('stack-mk-listings',[]),BAL=LS('stack-mk
 const save=()=>{SS('stack-mk-orders',ORD);SS('stack-mk-listings',MYL);SS('stack-mk-bal',BAL);SS('stack-mk-bought',BOUGHT);SS('stack-mk-sold',SOLD);SS('stack-shop-cart',CART);SS('stack-shop-orders',SORD);SS('stack-mk-verified',VERIFIED)};
 
 /* ---------- sellers + seeded listings ---------- */
-const SELLERS=[{n:'Jordan',c:'#4C8DF0',d:'1.2 mi',r:'4.9',k:41},{n:'Priya',c:'#E85D75',d:'3.4 mi',r:'5.0',k:18},{n:'Sam',c:'#F0A034',d:'0.8 mi',r:'4.8',k:63},{n:'Ade',c:'#34C38F',d:'5.1 mi',r:'4.9',k:27},{n:'vinyl_ollie',c:'#7A4FC9',d:'12 mi',r:'4.7',k:109},{n:'Maya R',c:'#C8452B',d:'2.2 mi',r:'5.0',k:9},{n:'DiscDad',c:'#2FA37A',d:'8 mi',r:'4.8',k:84}];
-const SEED=[['gra',3,22,'VG+','UK pressing',0],['kob',2,26,'NM','Reissue',1],['pr',2,24,'VG','Original UK pressing',0],['hol',1,19,'NM','UK pressing',1],['pet',4,28,'VG+','Reissue, stereo',0],['dmb',5,9,'NM','CD, first edition',0],['mgl',6,7,'VG+','CD',0],['pkl',3,8,'NM','CD',0],['wlo',4,12,'VG+','7in, UK pressing',0],['lwt',2,11,'VG','7in single',0],['jtr',1,6,'VG+','CD, remastered',0]];
-function seedListings(){return SEED.map((s,i)=>({id:'S'+i,rid:s[0],seller:SELLERS[s[1]],price:s[2],cond:s[3],press:s[4],rec:!!s[5],mine:false}))}
+const SELLERS=[{n:'Jordan',c:'#4C8DF0',d:'1.2 mi',r:'4.9',k:41,ship:2,since:2023},{n:'Priya',c:'#E85D75',d:'3.4 mi',r:'5.0',k:18,ship:1,since:2024},{n:'Sam',c:'#F0A034',d:'0.8 mi',r:'4.8',k:63,ship:2,since:2022},{n:'Ade',c:'#34C38F',d:'5.1 mi',r:'4.9',k:27,ship:3,since:2023},{n:'vinyl_ollie',c:'#7A4FC9',d:'12 mi',r:'4.7',k:109,ship:2,since:2021},{n:'Maya R',c:'#C8452B',d:'2.2 mi',r:'5.0',k:9,ship:1,since:2025},{n:'DiscDad',c:'#2FA37A',d:'8 mi',r:'4.8',k:84,ship:3,since:2022}];
+const QUADS={"L1": [[154.0, 154.7], [562.5, 151.9], [582.9, 568.8], [138.5, 570.9]], "L2": [[175.8, 232.7], [537.9, 232.0], [611.7, 547.7], [102.7, 547.0]], "L3": [[118.1, 114.6], [592.7, 116.7], [562.5, 552.7], [145.5, 552.7]], "L4": [[75.9, 144.1], [615.9, 83.0], [658.1, 562.5], [110.4, 655.3]], "L5": [[132.2, 131.5], [587.1, 135.7], [586.4, 587.8], [128.0, 585.7]], "L6": [[163.1, 153.3], [582.2, 153.3], [592.0, 566.0], [161.7, 566.0]], "L7": [[216.6, 203.9], [521.7, 203.9], [521.7, 522.4], [216.6, 497.8]], "L8": [[184.2, 184.2], [547.0, 184.2], [566.0, 539.3], [182.8, 539.3]], "L9": [[160.3, 161.0], [563.9, 161.0], [568.1, 568.1], [156.1, 568.1]], "L10": [[140.6, 173.0], [547.0, 170.9], [608.9, 587.8], [67.5, 583.6]]};
+/* [record, seller, price, sleeve grade, media grade, pressing, recorded pressing, photo set, seller note, days listed] */
+const SEED=[['gra',3,22,'VG+','VG+','UK pressing',0,'L1:abc','Light shelf wear on the bottom corner and a soft crease. Plays clean, a few faint scuffs that don’t affect sound.',2],
+ ['kob',2,18,'NM','NM','Reissue, 180g',1,'L2:abc','Bought new, played twice. Original inner sleeve. Comes with my Stack recording.',1],
+ ['pr',2,14,'VG','VG','Original UK pressing',0,'L3:abc','Ring wear on the sleeve and a small split on the top seam. Hairline marks, light crackle on side A intro.',5],
+ ['hol',1,24,'NM','NM','UK pressing',1,'L4:abc','Kept in a protective outer sleeve since day one. Basically mint.',3],
+ ['pet',4,28,'VG+','VG+','Reissue, stereo',0,'L5:ab','Spine slightly sun-faded, record plays beautifully.',8],
+ ['dmb',5,9,'NM','NM','CD, first edition',0,'L6:abc','Disc spotless, case and booklet perfect.',1],
+ ['mgl',6,6,'VG','VG+','CD',0,'L7:abc','Disc has a few light scuffs, plays fine. Case hinge is cracked, easy to swap.',12],
+ ['pkl',3,8,'NM','NM','CD',0,'L8:abc','Barely played, booklet like new.',4],
+ ['wlo',4,12,'VG+','VG+','7", UK pressing',0,'L9:ab','Picture sleeve has light edge wear. Great copy.',6],
+ ['lwt',2,5,'VG','VG','7" single',0,'L10:ab','Played a lot, light surface marks, still sounds great. Priced to go.',9],
+ ['jtr',1,6,'VG+','VG+','CD, remastered',0,'',"Light scuffs on the case, disc is clean.",2]];
+function seedListings(){return SEED.map((s,i)=>{const[p,sets]=(s[7]||':').split(':');return {id:'S'+i,rid:s[0],seller:SELLERS[s[1]],price:s[2],cond:s[4],sleeve:s[3],media:s[4],press:s[5],rec:!!s[6],photos:[...(sets||'')].map(c=>p+'-'+c),note:s[8],days:s[9],mine:false}})}
+const LIST_IMG=k=>(window.STACK_LIST_IMG&&window.STACK_LIST_IMG[k])||('listing/'+k+'.jpg');
+function h3d(w,h,q){const[x0,y0]=q[0],[x1,y1]=q[1],[x2,y2]=q[2],[x3,y3]=q[3];const dx1=x1-x2,dx2=x3-x2,dy1=y1-y2,dy2=y3-y2,sx=x0-x1+x2-x3,sy=y0-y1+y2-y3;let g=0,k=0;
+ if(sx||sy){const det=dx1*dy2-dx2*dy1;g=(sx*dy2-dx2*sy)/det;k=(dx1*sy-sx*dy1)/det}
+ const A=(x1-x0+g*x1)/w,B=(x3-x0+k*x3)/h,D=(y1-y0+g*y1)/w,E=(y3-y0+k*y3)/h;return `matrix3d(${A},${D},0,${g/w},${B},${E},0,${k/h},0,0,1,0,${x0},${y0},0,1)`}
+function photoHTML(l,code){const a=byId(l.rid);if(!code)return `<div class="lp-ph lp-fall">${artHTML(a,'',false)}</div>`;
+ const q=QUADS[code.split('-')[0]];const comp=code.endsWith('-a')&&q;
+ return `<div class="lp-ph"><img src="${LIST_IMG(code)}" alt="" loading="lazy" draggable="false">${comp?`<div class="lp-k"><div class="lp-cov" style="transform:${h3d(600,600,q)}">${artHTML(a,'',false)}</div><img class="lp-sh" src="${LIST_IMG(code+'-shade').replace('.jpg','.png')}" alt=""></div>`:''}</div>`}
+const fitK=()=>$$('.lp-ph').forEach(p=>{const k=p.querySelector('.lp-k');if(k)k.style.transform=`scale(${p.clientWidth/720})`});
+new ResizeObserver(fitK).observe(document.body);
 let LIST=[];
 function allListings(){return seedListings().filter(l=>!ORD.some(o=>o.type==='buy'&&o.lid===l.id)).concat(MYL.filter(l=>l.status==='live'))}
 
@@ -3914,21 +3990,30 @@ const ART={
  bundle:()=>tile(`<g transform="translate(70 62)">${slip(0,0,44).replace(/<svg x="[^"]*" y="[^"]*"/,'<svg x="-13" y="-13"')}</g>${puckArt(122,108,.9)}<g transform="rotate(-28 70 150)"><rect x="32" y="140" width="76" height="14" rx="6" fill="${P.br}" stroke="${P.dk}" stroke-width="2"/><rect x="32" y="146" width="76" height="3" fill="${P.or}"/></g><rect x="118" y="20" width="62" height="22" rx="11" fill="${P.rd}"/><text x="149" y="35" text-anchor="middle" font-size="11" font-weight="700" fill="${P.cr}" font-family="Geist,system-ui,sans-serif">SAVE £12</text>`,P.mu)
 };
 const PRODUCTS=[
+ {id:'jacket',n:'Selector Bomber',p:120,k:'cloth',pod:0,sizes:['S','M','L','XL'],imgs:['jacket-1','jacket-2'],d:'Brown wool-blend bomber with orange-piped cargo pockets, a felt S patch, sky-blue and sunset rib trims and the big sunset S across the back.',nw:1},
+ {id:'shirt',n:'Sunset S Shirt',p:68,k:'cloth',pod:1,sizes:['S','M','L','XL'],imgs:['shirt-1','shirt-2','shirt-3','shirt-4','shirt-5'],d:'Cream cotton overshirt printed edge to edge with a huge sunset S. Woven stack label, S-stamp collar tape, corozo buttons.',nw:1},
+ {id:'polo',n:'Selector Knit Polo',p:58,k:'cloth',pod:0,sizes:['S','M','L','XL'],imgs:['polo-1','polo-2'],d:'Rib-knit burnt-orange polo with 70s striped collar and cuffs, an embroidered Selector on the chest and a tonal sunset S on the back.',nw:1},
+ {id:'flares',n:'Selector Flares',p:75,k:'cloth',pod:0,sizes:['28','30','32','34','36'],imgs:['flares-1','flares-2','flares-3','flares-4'],d:'Chocolate twill flares with cord knee panels, S-monogram pocket bags, a stitched stack down the leg and the Selector on the back pocket.',nw:1},
  {id:'tee',n:'Selector Tee',p:32,k:'cloth',pod:1,sizes:['S','M','L','XL'],cols:[['black','Washed black','#1E1C1B'],['oatmeal','Oatmeal','#D6CAB2'],['chocolate','Chocolate','#462C1E'],['rust','Rust','#96422C']],d:'Heavyweight washed tee. A small S on the chest, the Selector in a 70s sunset across the back, a tiny embroidered Selector on the sleeve and a woven S neck tag.'},
  {id:'hoodie',n:'Sunset S Hoodie',p:62,k:'cloth',pod:1,sizes:['S','M','L','XL'],d:'450gsm garment-dyed chocolate hoodie. Embroidered S on the chest, a washed record print on the back over three record-spine stripes, a tiny Selector stitched on the cuff, a woven S neck label and orange-tipped drawcords.'},
  {id:'cap',n:'Corduroy S Cap',p:28,k:'cloth',sizes:['One size'],d:'Washed black six-panel corduroy cap. Embroidered S on the front, burnt-orange under-brim, contrast brim stitching, brass slide buckle and a three-stripe tab on the back.'},
+ {id:'belt',n:'S Buckle Belt',p:45,k:'cloth',sizes:['S','M','L'],imgs:['belt-1','belt-2','belt-3'],d:'Tan leather belt with a sculpted S buckle in brushed bronze.',nw:1},
+ {id:'plush',n:'Little Selector',p:30,k:'col',imgs:['plush-1'],d:'A 35cm soft Selector in fleece and corduroy, with embroidered eyes, VU-meter mouth and the S on his chest panel.',nw:1},
  {id:'slipmat',n:'Sunset Slipmat',p:18,k:'acc',d:'12" dense black felt slipmat with the Stack S in sunset colours and three thin rings. Non-slip underside and a woven S label.'},
  {id:'crate',n:'Birch Record Crate',p:48,k:'acc',single:1,d:'Holds about 60 LPs. Finger-jointed birch ply, engraved S, painted sunset stripes, antique-brass corners and a leather tab stamped with the S.'},
  {id:'puck',n:'The Stack Puck',p:79,k:'puck',cols:[['black','Black','#1C1C1C'],['orange','Orange','#D4642A'],['white','White','#E4E0D8']],d:'Sits between your turntable and speakers and records your own copy in hi-res, crackle and all. Knurled aluminium rim, amber status light, USB-C and RCA in and out. In black, orange or white.'}
 ];
 const SHOP_IMG=k=>(window.STACK_SHOP_IMG&&window.STACK_SHOP_IMG[k])||('shop/'+k+'.jpg');
 const prod=id=>PRODUCTS.find(p=>p.id===id);CART=CART.filter(l=>prod(l.id));
-const prodArt=(p,side,col)=>`<span class="ph-img" style="background-image:url('${SHOP_IMG(p.cols?p.id+'-'+(col||p.cols[0][0]):p.id)}');${p.single?'background-size:cover;background-position:50% 50%':`background-position:${side==='back'?'100%':'0%'} 50%`}" role="img" aria-label="${p.n}, ${side==='back'?'back':'front'}"></span>`;
+function prodPics(p,col){if(p.imgs)return p.imgs.map(k=>({src:SHOP_IMG(k),st:'background-size:contain'}));const src=SHOP_IMG(p.cols?p.id+'-'+(col||p.cols[0][0]):p.id);
+ if(p.single)return [{src,st:'background-size:cover'}];return [{src,st:'background-position:0% 50%'},{src,st:'background-position:100% 50%'}]}
+const prodArt=(p,side,col)=>{const pc=prodPics(p,col),x=pc[side==='back'?Math.min(1,pc.length-1):0];return `<span class="ph-img${p.imgs?' sq':''}" style="background-image:url('${x.src}');${x.st}" role="img" aria-label="${p.n}"></span>`};
 
 /* ---------- screen skeleton ---------- */
 const sc=document.getElementById('s-wish');
-sc.innerHTML=`<div class="glow"></div><h2 class="big">Marketplace</h2><p class="sub" id="mkSub">Buy, sell and swap records, and shop Stack merch.</p>
-<div class="mk-chips" id="mkChips" role="tablist"><button data-p="browse" class="on">Records</button><button data-p="shop" class="shopchip">Stack Shop</button><button data-p="sell">Sell</button><button data-p="wish">Wishlist</button><button data-p="near">Nearby</button></div>
+sc.innerHTML=`<div class="glow"></div><div class="mk-head"><h2 class="big">Market</h2><div class="mk-ibs"><button class="icon-btn mk-ib" data-p="sell" aria-label="Sell a record"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg><b class="mk-ibn" id="mkN-sell" hidden></b></button><button class="icon-btn mk-ib" data-p="wish" aria-label="Wishlist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7.5-4.6-7.5-10A4.3 4.3 0 0 1 12 7.4 4.3 4.3 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10z"/></svg><b class="mk-ibn" id="mkN-wish" hidden></b></button><button class="icon-btn mk-ib" data-p="near" aria-label="Nearby shops"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6 7-11a7 7 0 0 0-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.4"/></svg><b class="mk-ibn" id="mkN-near" hidden></b></button><button class="icon-btn mk-ib" data-p="orders" aria-label="Orders"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l-1 13H7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg><b class="mk-ibn" id="mkN-orders" hidden></b></button></div></div>
+<div class="mk-seg" id="mkChips" role="tablist"><button data-p="browse" class="on">Records</button><button data-p="shop">Stack Shop</button><i></i></div>
+<div class="mk-back" id="mkBack" hidden><button data-p="browse">${ICON.x.replace('<svg','<svg width="14" height="14"')}</button><b id="mkBackT"></b></div>
 <div class="mk-pane" id="mk-browse"></div><div class="mk-pane" id="mk-sell" hidden></div>
 <div class="mk-pane" id="mk-wish" hidden><p class="sub" id="wishCount"></p><div style="height:10px"></div><div id="wishList"></div></div>
 <div class="mk-pane" id="mk-near" hidden><div id="rsdSlot"></div><div id="mkShops"></div></div><div class="mk-pane" id="mk-shop" hidden></div>`;
@@ -3936,41 +4021,108 @@ const tabBtn=document.querySelector('.tab[data-tab="wish"]');
 if(tabBtn){tabBtn.innerHTML=`<span class="tab-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="M4 9l1.5-4.5h13L20 9"/><path d="M4 9a2.7 2.7 0 0 0 5.3 0 2.7 2.7 0 0 0 5.4 0A2.7 2.7 0 0 0 20 9"/><path d="M5.5 12v7.5h13V12"/><path d="M10 19.5V15h4v4.5"/></svg><b class="wbadge"></b></span>Market`}
 document.querySelectorAll('[data-jump="wish"]').forEach(b=>b.firstChild.textContent='Marketplace ');
 let pane='browse';
-function setPane(p){pane=p;$$('#mkChips button').forEach(b=>b.classList.toggle('on',b.dataset.p===p));$$('.mk-pane').forEach(x=>x.hidden=x.id!=='mk-'+p);render()}
-$('#mkChips').onclick=e=>{const b=e.target.closest('[data-p]');if(b)setPane(b.dataset.p)};
+function setPane(p){if(p==='orders'){openOrders();return}pane=p;const main=p==='browse'||p==='shop';$('#mkChips').hidden=!main;$('#mkBack').hidden=main;$('#mkBackT').textContent={sell:'Sell a record',wish:'Wishlist',near:'Nearby shops'}[p]||'';
+ $('#mkChips').classList.toggle('r',p==='shop');$$('#mkChips button').forEach(b=>b.classList.toggle('on',b.dataset.p===p));$$('.mk-ib').forEach(b=>b.classList.toggle('on',b.dataset.p===p));$$('.mk-pane').forEach(x=>x.hidden=x.id!=='mk-'+p);render();sc.scrollTop=0}
+sc.querySelector('.mk-head').onclick=$('#mkChips').onclick=$('#mkBack').onclick=e=>{const b=e.target.closest('[data-p]');if(b)setPane(b.dataset.p)};
 function render(){({browse:rBrowse,sell:rSell,wish:()=>{try{renderWish()}catch(e){}},near:rNear,shop:rShop})[pane]();badge()}
-function badge(){const n=[...WISH].filter(id=>allListings().some(l=>l.rid===id)).length;$$('.wbadge').forEach(b=>{b.textContent=n;b.hidden=!n})}
+function badge(){const n=[...WISH].filter(id=>allListings().some(l=>l.rid===id)).length;$$('.wbadge').forEach(b=>{b.textContent=n;b.hidden=!n});const w=$('#mkN-wish');if(w){w.textContent=n;w.hidden=!n}const o=$('#mkN-orders'),on=ORD.filter(x=>x.status!=='delivered').length+SORD.filter(x=>!x.done).length;if(o){o.textContent=on;o.hidden=!on}}
 
-/* ---------- browse ---------- */
-let fmt='all';
+/* ---------- browse: search, filters, big photo cards ---------- */
+let F={q:'',fmt:'all',cond:'any',max:0,sort:'new'};let RECENT=LS('stack-mk-recent',['Oasis','under £15']);
 const pill=(t,c)=>`<span class="mk-pill ${c||''}">${t}</span>`;
-function condChip(l){return `${l.cond}`}
-function rBrowse(){const el=$('#mk-browse'),all=allListings();let L=all.filter(l=>{const a=byId(l.rid);if(!a||a.o==='you')return false;return fmt==='all'||(fmt==='CD'?a.f==='CD':fmt==='rec'?l.rec:a.f!=='CD')});
- const open=ORD.filter(o=>o.status!=='delivered').length+SORD.filter(o=>!o.done).length;
- el.innerHTML=`<div class="mk-top"><div class="mk-fmt">${[['all','All'],['LP','Vinyl'],['CD','CDs'],['rec','Recorded pressings']].map(([k,n])=>`<button data-fmt="${k}" class="${fmt===k?'on':''}">${n}</button>`).join('')}</div><button class="mk-orders" data-orders>Orders${open?` <b>${open}</b>`:''}</button></div>
- <button class="shop-promo" data-goshop><span class="sp-r"></span><span class="sp-t"><small>THE STACK SHOP</small><b>Wear the record.</b><span>Selector merch, vinyl care and the Puck</span></span><span class="sp-go">Shop</span></button>
- <div class="mk-note"><b>Buy it, own it.</b> Pay Stack, we hold the money until the record arrives, then the digital copy moves to you.</div>
- <div class="mk-list">${L.length?L.map(l=>{const a=byId(l.rid),wl=WISH.has(l.rid);return `<button class="mk-card" data-lid="${l.id}">${artHTML(a,'',false)}<span class="tx"><b>${esc(a.t)}</b><span>${esc(a.a)} · ${fmtLabel[a.f]} · ${a.y}</span><span class="mk-meta">${condChip(l)} · ${esc(l.press)}</span><span class="mk-sell"><i style="background:${l.seller.c}">${l.seller.n[0]}</i>${esc(l.seller.n)} · ${l.seller.d}${l.promo?' '+pill('Promoted','pr'):''}</span><span class="mk-tags">${wl?pill('On your wishlist','wl'):''}${l.rec?pill('Recorded pressing','rc'):''}</span></span><span class="mk-price">${money(l.price)}</span></button>`}).join(''):'<div class="empty">Nothing listed for that filter yet.</div>'}</div>`}
+const GR=['M','NM','VG+','VG','G'],grIdx=g=>GR.indexOf(g);
+function matches(l){const a=byId(l.rid);if(!a||a.o==='you')return false;const q=F.q.trim().toLowerCase();
+ if(q){const m=q.match(/under\s*£?(\d+)/);if(m){if(l.price>+m[1])return false}else if(![a.t,a.a,fmtLabel[a.f],l.press,l.seller.n,String(a.y)].join(' ').toLowerCase().includes(q))return false}
+ if(F.fmt!=='all'&&(F.fmt==='CD'?a.f!=='CD':F.fmt==='7in'?a.f!=='7in':a.f!=='LP'))return false;
+ if(F.cond!=='any'&&grIdx(l.media)>grIdx(F.cond))return false;if(F.max&&l.price>F.max)return false;return true}
+function sorted(L){const by={new:(x,y)=>(x.days??0)-(y.days??0),low:(x,y)=>x.price-y.price,high:(x,y)=>y.price-x.price,near:(x,y)=>parseFloat(x.seller.d)-parseFloat(y.seller.d)}[F.sort];return L.slice().sort(by)}
+const SORTN={new:'Newest',low:'Price: low to high',high:'Price: high to low',near:'Nearest'};
+function filterChips(){const c=[];if(F.fmt!=='all')c.push(['fmt',{LP:'Vinyl LP',CD:'CD','7in':'7" single'}[F.fmt]]);if(F.cond!=='any')c.push(['cond',F.cond+' or better']);if(F.max)c.push(['max','Under '+money(F.max)]);if(F.sort!=='new')c.push(['sort',SORTN[F.sort]]);return c}
+function strip(l){const ph=l.photos&&l.photos.length?l.photos:[''];return `<div class="lc-strip" data-strip>${ph.map(c=>photoHTML(l,c)).join('')}</div>${ph.length>1?`<div class="lc-dots">${ph.map((_,i)=>`<i class="${i?'':'on'}"></i>`).join('')}</div>`:''}`}
+function card(l){const a=byId(l.rid),wl=WISH.has(l.rid);return `<article class="lc" data-lid="${l.id}">${strip(l)}<span class="lc-cnt">${(l.photos||[]).length||1} photo${(l.photos||[]).length===1?'':'s'}</span>
+ <div class="lc-b"><div class="lc-t"><div><b>${esc(a.t)}</b><span>${esc(a.a)} · ${fmtLabel[a.f]} · ${a.y}</span></div><strong>${money(l.price)}</strong></div>
+ <div class="lc-g"><span>Sleeve <b>${l.sleeve||l.cond}</b></span><span>${a.f==='CD'?'Disc':'Vinyl'} <b>${l.media||l.cond}</b></span><span>${esc(l.press)}</span></div>
+ <div class="lc-s"><i style="background:${l.seller.c}">${l.seller.n[0]}</i><span>${esc(l.seller.n)} · ★ ${l.seller.r} · ${l.seller.d}</span>${l.days!=null?`<em>${l.days?l.days+'d ago':'Today'}</em>`:''}</div>
+ ${wl||l.rec||l.promo?`<div class="mk-tags">${wl?pill('On your wishlist','wl'):''}${l.rec?pill('Recorded pressing included','rc'):''}${l.promo?pill('Promoted','pr'):''}</div>`:''}</div></article>`}
+function rBrowse(){const el=$('#mk-browse');const L=sorted(allListings().filter(matches)),fc=filterChips();
+ el.innerHTML=`<div class="mk-search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></svg><input id="mkQ" type="search" placeholder="Search albums, artists, sellers" value="${esc(F.q)}" autocomplete="off"><button class="mk-fbtn${fc.length?' on':''}" data-filters aria-label="Filters"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg>${fc.length?`<b>${fc.length}</b>`:''}</button></div>
+ <div class="mk-sugg" id="mkSugg" hidden></div>
+ ${fc.length?`<div class="mk-fc">${fc.map(([k,t])=>`<button data-clr="${k}">${t} ✕</button>`).join('')}</div>`:''}
+ <div class="mk-res">${F.q||fc.length?`${L.length} result${L.length===1?'':'s'}`:`${L.length} records from collectors near you`}<span>Buyer protection on every order</span></div>
+ <div class="lc-list">${L.length?L.map(card).join(''):`<div class="empty">Nothing matches that yet.<br>Try a different search, or add it to your wishlist and we'll tell you when one's listed.</div>`}</div>`;
+ const q=$('#mkQ');q.oninput=()=>{F.q=q.value;clearTimeout(q._t);q._t=setTimeout(()=>{const pos=q.selectionStart;rBrowse();const n=$('#mkQ');n.focus();n.setSelectionRange(pos,pos);showSugg()},250)};
+ q.onfocus=showSugg;q.onkeydown=e=>{if(e.key==='Enter'){addRecent(q.value);q.blur();$('#mkSugg').hidden=true}};q.onblur=()=>setTimeout(()=>{const g=$('#mkSugg');if(g)g.hidden=true},180);
+ el.querySelectorAll('[data-strip]').forEach(st=>st.addEventListener('scroll',()=>{const i=Math.round(st.scrollLeft/st.clientWidth);st.parentNode.querySelectorAll('.lc-dots i').forEach((d,k)=>d.classList.toggle('on',k===i))},{passive:true}));
+ requestAnimationFrame(fitK)}
+function addRecent(t){t=(t||'').trim();if(!t)return;RECENT=[t,...RECENT.filter(x=>x.toLowerCase()!==t.toLowerCase())].slice(0,5);SS('stack-mk-recent',RECENT)}
+function showSugg(){const g=$('#mkSugg');if(!g)return;if(F.q){g.hidden=true;return}const wl=[...WISH].map(byId).filter(Boolean).map(a=>a.a);
+ const sug=[...new Set([...wl,'7" singles','under £10','Pink Floyd','Blur'])].slice(0,6);
+ g.innerHTML=`${RECENT.length?`<small>Recent</small><div>${RECENT.map(t=>`<button data-sq="${esc(t)}">${ICON_CLOCK}${esc(t)}</button>`).join('')}</div>`:''}<small>Suggested${wl.length?' · from your wishlist':''}</small><div>${sug.map(t=>`<button data-sq="${esc(t)}">${esc(t)}</button>`).join('')}</div>`;g.hidden=false}
+const ICON_CLOCK='<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg>';
+function openFilters(){const g=(k,opts)=>`<div class="opt-row" data-f="${k}">${opts.map(([v,n])=>`<button class="chipbtn${String(F[k])===String(v)?' on':''}" data-v="${v}">${n}</button>`).join('')}</div>`;
+ const slot=sheet(`${sheetH('Filter and sort')}<div class="sheet-b">
+  <div class="form-row"><label>Format</label>${g('fmt',[['all','All'],['LP','Vinyl LP'],['7in','7" single'],['CD','CD']])}</div>
+  <div class="form-row"><label>Condition (vinyl or disc)</label>${g('cond',[['any','Any'],['NM','NM or better'],['VG+','VG+ or better'],['VG','VG or better']])}</div>
+  <div class="form-row"><label>Price</label>${g('max',[[0,'Any'],[10,'Under £10'],[15,'Under £15'],[25,'Under £25']])}</div>
+  <div class="form-row"><label>Sort by</label>${g('sort',Object.entries(SORTN))}</div>
+  <div class="mk-btns" style="flex-direction:row"><button class="btn ghost" data-reset style="flex:1">Reset</button><button class="btn" data-apply style="flex:2">Show results</button></div></div>`);
+ slot.onclick=e=>{const b=e.target.closest('button');if(!b)return;const r=b.closest('[data-f]');if(r&&b.dataset.v!=null){const k=r.dataset.f;F[k]=k==='max'?+b.dataset.v:b.dataset.v;r.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b))}
+  if('reset' in b.dataset){F={...F,fmt:'all',cond:'any',max:0,sort:'new'};closeSheet();rBrowse()}if('apply' in b.dataset){closeSheet();rBrowse()}}}
 
 /* ---------- listing sheet + buying ---------- */
 function sheet(html){const slot=$('#sheetSlot');slot.innerHTML=`<div class="scrim" id="mkSc"></div><div class="sheet" style="max-height:92%">${html}</div>`;$('#mkSc').onclick=()=>closeSheet();const x=slot.querySelector('[data-close]');if(x)x.onclick=()=>closeSheet();return slot}
 const sheetH=t=>`<div class="sheet-h"><h3>${t}</h3><button class="icon-btn" data-close aria-label="Close">${ICON.x}</button></div>`;
 function findL(id){return allListings().find(l=>l.id===id)||seedListings().find(l=>l.id===id)}
-function openListing(id){const l=findL(id);if(!l)return;const a=byId(l.rid),own=l.mine,total=l.price+POST;
- const slot=sheet(`${sheetH(own?'Your listing':'Buy this record')}<div class="sheet-b"><div class="mk-hero">${artHTML(a,'',false)}<div><b>${esc(a.t)}</b><span>${esc(a.a)} · ${fmtLabel[a.f]} · ${a.y}</span><div class="mk-tags">${pill(l.cond+' condition')}${l.rec?pill('Recorded pressing included','rc'):''}${l.vstyle&&l.vstyle!=='black'?pill((l.colour||'Coloured')+' vinyl'):''}${WISH.has(l.rid)?pill('On your wishlist','wl'):''}</div></div></div>
- <div class="mk-row"><span>Pressing</span><b>${esc(l.press)}</b></div>
- <div class="mk-row"><span>Seller</span><b><i class="mk-av" style="background:${l.seller.c}">${l.seller.n[0]}</i> ${esc(l.seller.n)} · ★ ${l.seller.r} (${l.seller.k}) · ${l.seller.d}</b></div>
- ${own?`<div class="mk-row"><span>You receive</span><b>${money(l.price*(1-FEE))} after the ${Math.round(FEE*100)}% Stack fee</b></div><div class="mk-row"><span>Promotion</span><b>${l.promo?'Promoted for 7 days':'Not promoted'}</b></div>
-   <div class="mk-btns"><button class="btn" data-promo="${l.id}" ${l.promo?'disabled':''}>Promote for £1.99</button><button class="btn ghost" data-demo-buy="${l.id}">Demo: someone buys it</button><button class="btn ghost" data-unlist="${l.id}">Remove listing</button></div>`
+function history(l){const h=hash(l.id+'h'),pts=[...Array(6)].map((_,i)=>Math.round(l.price*(0.82+((h>>>(i*3))%9)/30)));pts.push(l.price);return pts}
+function spark(p){const mn=Math.min(...p),mx=Math.max(...p),W=280,H=56,xs=i=>8+i*(W-16)/(p.length-1),ys=v=>H-8-(v-mn)/(mx-mn||1)*(H-16);
+ return `<svg viewBox="0 0 ${W} ${H}" class="mk-spark"><path d="${p.map((v,i)=>(i?'L':'M')+xs(i)+' '+ys(v)).join(' ')}" fill="none" stroke="var(--accent,#E8744F)" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>${p.map((v,i)=>`<circle cx="${xs(i)}" cy="${ys(v)}" r="${i===p.length-1?4.5:2.6}" fill="${i===p.length-1?'var(--fg)':'var(--accent,#E8744F)'}"/>`).join('')}</svg>`}
+function gradeBar(lbl,g){const i=grIdx(g);return `<div class="mk-gr"><span>${lbl}</span><div>${GR.slice().reverse().map((x,k)=>`<i class="${4-k>=i?'on':''}"></i>`).join('')}</div><b>${g}</b></div>`}
+const GRADE_TXT={M:'Mint: still sealed or untouched',NM:'Near Mint: looks and plays like new',"VG+":'Very Good Plus: light signs of play, plays great',VG:'Very Good: visible wear, some surface noise',G:'Good: heavy wear, still plays'};
+function openListing(id){const l=findL(id);if(!l)return;const a=byId(l.rid),own=l.mine,total=l.price+POST,ph=l.photos&&l.photos.length?l.photos:[''],hi=history(l),lo=Math.min(...hi.slice(0,-1)),top=Math.max(...hi.slice(0,-1));
+ const slot=sheet(`${sheetH(own?'Your listing':esc(a.t))}<div class="sheet-b lp">
+ <div class="lp-gal"><div class="lc-strip" data-strip>${ph.map(c=>photoHTML(l,c)).join('')}</div>${ph.length>1?`<div class="lc-dots">${ph.map((_,i)=>`<i class="${i?'':'on'}"></i>`).join('')}</div>`:''}</div>
+ <div class="lp-top"><div><b>${esc(a.t)}</b><span>${esc(a.a)} · ${fmtLabel[a.f]} · ${a.y} · ${esc(l.press)}</span></div><strong>${money(l.price)}</strong></div>
+ <div class="mk-tags">${l.rec?pill('Recorded pressing included','rc'):''}${WISH.has(l.rid)?pill('On your wishlist','wl'):''}${l.vstyle&&l.vstyle!=='black'?pill((l.colour||'Coloured')+' vinyl'):''}</div>
+ <h4 class="lp-h">Condition</h4><div class="lp-card">${gradeBar('Sleeve',l.sleeve||l.cond)}${gradeBar(a.f==='CD'?'Disc':'Vinyl',l.media||l.cond)}<p class="lp-gt">${GRADE_TXT[l.media||l.cond]||''}</p>${l.note?`<p class="lp-note">“${esc(l.note)}”<span>— ${esc(l.seller.n)}</span></p>`:''}</div>
+ <h4 class="lp-h">Seller</h4><button class="lp-card lp-seller" data-seller="${esc(l.seller.n)}"><i style="background:${l.seller.c}">${l.seller.n[0]}</i><div><b>${esc(l.seller.n)}${l.seller.k>50?' <span class="mk-pill wl">Top seller</span>':''}</b><span>★ ${l.seller.r} · ${l.seller.k} sales · on Stack since ${l.seller.since||2024}</span><span>${l.seller.d} away · usually posts within ${l.seller.ship||2} day${(l.seller.ship||2)>1?'s':''}</span></div><em>›</em></button>
+ <h4 class="lp-h">Recently sold on Stack</h4><div class="lp-card">${spark(hi)}<div class="lp-ph2"><span>This pressing sold for <b>${money(lo)}–${money(top)}</b> recently</span><span>${l.price<=(lo+top)/2?'<b class="good">Good price</b>':'Fair price'}</span></div></div>
+ ${own?`<div class="mk-row"><span>You receive</span><b>${money(l.price*(1-FEE))} after the ${Math.round(FEE*100)}% Stack fee</b></div>
+   <div class="mk-btns"><button class="btn" data-promo="${l.id}" ${l.promo?'disabled':''}>${l.promo?'Promoted for 7 days':'Promote for £1.99'}</button><button class="btn ghost" data-demo-buy="${l.id}">Demo: someone buys it</button><button class="btn ghost" data-unlist="${l.id}">Remove listing</button></div>`
  :`<div class="mk-break"><div><span>Record</span><b>${money(l.price)}</b></div><div><span>Postage</span><b>${money(POST)}</b></div><div class="tot"><span>Total</span><b>${money(total)}</b></div></div>
- <div class="mk-escrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg><span><b>Stack holds your payment.</b> The seller is paid when you confirm it arrived. At that moment ${esc(l.seller.n)} loses the digital copy${l.rec?' and the recorded pressing moves to you':''}, and it becomes yours to play anywhere.</span></div>
- <button class="btn" data-buy="${l.id}">Buy for ${money(total)}</button>${WISH.has(l.rid)?'':`<button class="btn ghost" data-wishadd="${l.rid}" style="margin-top:8px">Add to wishlist</button>`}`}</div>`);
+ <div class="mk-escrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg><span><b>Stack holds your payment.</b> ${esc(l.seller.n)} is paid when you confirm it arrived. Then the digital copy${l.rec?' and the recorded pressing move':' moves'} to you.</span></div>
+ <div class="lp-cta"><button class="btn" data-buy="${l.id}">Buy · ${money(total)}</button><div><button class="btn ghost" data-offer="${l.id}">Make offer</button><button class="btn ghost" data-chat="${l.id}">Message</button></div>${WISH.has(l.rid)?'':`<button class="lp-wl" data-wishadd="${l.rid}">♡ Add to wishlist</button>`}</div>`}</div>`);
+ const st=slot.querySelector('[data-strip]');st.addEventListener('scroll',()=>{const i=Math.round(st.scrollLeft/st.clientWidth);slot.querySelectorAll('.lc-dots i').forEach((d,k)=>d.classList.toggle('on',k===i))},{passive:true});requestAnimationFrame(fitK);
  slot.onclick=e=>{const t=e.target.closest('button');if(!t)return;
-  if(t.dataset.buy){buy(t.dataset.buy)}
+  if(t.dataset.buy){buy(t.dataset.buy)}if(t.dataset.offer)openOffer(t.dataset.offer);if(t.dataset.chat)openChat(t.dataset.chat);if(t.dataset.seller)openSeller(t.dataset.seller);
   if(t.dataset.wishadd){WISH.add(t.dataset.wishadd);mkToast('Added to wishlist');openListing(id);render()}
   if(t.dataset.promo){const L=MYL.find(x=>x.id===t.dataset.promo);L.promo=true;BAL.promo+=1.99;save();mkToast('Promoted for 7 days · £1.99');openListing(id)}
   if(t.dataset.unlist){const L=MYL.find(x=>x.id===t.dataset.unlist);L.status='removed';save();closeSheet();render()}
   if(t.dataset.demoBuy){demoBuy(t.dataset.demoBuy)}}}
+let OFFERS=LS('stack-mk-offers',{}),CHATS=LS('stack-mk-chats',{});
+function openOffer(id){const l=findL(id),o=OFFERS[id];const sug=[.9,.85,.8].map(k=>Math.round(l.price*k));
+ const slot=sheet(`${sheetH('Make an offer')}<div class="sheet-b"><p class="sub" style="margin:0 0 10px">${esc(l.seller.n)} is asking ${money(l.price)}. Offers are binding: if they accept, you're charged automatically.</p>
+ ${o?`<div class="lp-card"><b>Your last offer: ${money(o.amt)}</b><span class="sub">${o.st==='acc'?'Accepted. The price has been updated for you.':o.st==='ctr'?`${esc(l.seller.n)} countered with ${money(o.ctr)}`:'Declined'}</span></div>`:''}
+ <div class="opt-row" id="ofS">${sug.map(v=>`<button class="chipbtn" data-v="${v}">${money(v)}</button>`).join('')}</div>
+ <div class="form-row"><label>Your offer</label><input id="ofA" type="number" inputmode="decimal" value="${sug[0]}"></div><button class="btn" id="ofGo" style="margin-top:12px">Send offer</button></div>`);
+ $('#ofS').onclick=e=>{const b=e.target.closest('[data-v]');if(b)$('#ofA').value=b.dataset.v};
+ $('#ofGo').onclick=()=>{const v=+$('#ofA').value||0;const r=v/l.price;const st=r>=.88?'acc':r>=.7?'ctr':'dec';const ctr=Math.round(l.price*.93);OFFERS[id]={amt:v,st,ctr};SS('stack-mk-offers',OFFERS);
+  if(st==='acc'&&!l.mine){l.price=v;const s=SEED.find((x,i)=>'S'+i===id);if(s)s[2]=v}
+  mkToast(st==='acc'?`${l.seller.n} accepted ${money(v)}`:st==='ctr'?`${l.seller.n} countered: ${money(ctr)}`:`${l.seller.n} declined`);
+  const T=CHATS[id]||(CHATS[id]=[]);T.push({me:1,t:`Offered ${money(v)}`});T.push({me:0,t:st==='acc'?'Deal! Buy it and I’ll post tomorrow 👍':st==='ctr'?`Could do ${money(ctr)}?`:'Sorry, that’s a bit low for this one.'});SS('stack-mk-chats',CHATS);openListing(id)}}
+const REPLIES=['Yes, still available!','No skips at all, played it last week.','I can post tomorrow, Royal Mail tracked.','Happy to send more photos of the vinyl.','I pack records in a proper LP mailer with board.'];
+function openChat(id){const l=findL(id),a=byId(l.rid),T=CHATS[id]||(CHATS[id]=[]);
+ const draw=()=>{const slot=sheet(`${sheetH(esc(l.seller.n))}<div class="sheet-b"><div class="ch-ctx">${artHTML(a,'',false)}<span><b>${esc(a.t)}</b>${money(l.price)} · ${l.media||l.cond}</span></div>
+  <div class="ch-msgs">${T.length?T.map(m=>`<div class="ch-m ${m.me?'me':''}">${esc(m.t)}</div>`).join(''):'<p class="sub" style="text-align:center">Ask about condition, postage or more photos.</p>'}</div>
+  <div class="opt-row ch-q">${['Is this still available?','Any skips or jumps?','Can you post this week?'].map(q=>`<button class="chipbtn" data-q="${q}">${q}</button>`).join('')}</div>
+  <div class="ch-in"><input id="chI" placeholder="Message ${esc(l.seller.n)}"><button class="btn" id="chS">Send</button></div></div>`);
+  const send=t=>{if(!t.trim())return;T.push({me:1,t});SS('stack-mk-chats',CHATS);draw();setTimeout(()=>{T.push({me:0,t:REPLIES[(T.length+hash(id))%REPLIES.length]});SS('stack-mk-chats',CHATS);if($('#chI'))draw()},900)};
+  slot.querySelector('.ch-q').onclick=e=>{const b=e.target.closest('[data-q]');if(b)send(b.dataset.q)};$('#chS').onclick=()=>send($('#chI').value);$('#chI').onkeydown=e=>{if(e.key==='Enter')send(e.target.value)};
+  const m=slot.querySelector('.ch-msgs');m.scrollTop=m.scrollHeight};draw()}
+function openSeller(n){const s=SELLERS.find(x=>x.n===n)||{n,c:'#F0A034',r:'5.0',k:0,d:'',ship:2};const L=allListings().filter(l=>l.seller.n===n);
+ const slot=sheet(`${sheetH(esc(n))}<div class="sheet-b"><div class="sp-hd"><i style="background:${s.c}">${n[0]}</i><div><b>${esc(n)}</b><span>★ ${s.r} · ${s.k} sales · ${s.d} away</span><span>Usually posts within ${s.ship||2} days · on Stack since ${s.since||2024}</span></div></div>
+ <div class="sp-rev">${['Packed really well, exactly as described.','Quick to post and lovely to deal with.','Better condition than the photos!'].map((t,i)=>`<p>“${t}”<span>${'★'.repeat(5-(i===2&&+s.r<4.9?1:0))}</span></p>`).join('')}</div>
+ <h4 class="lp-h">${L.length} for sale</h4><div class="lc-list">${L.map(card).join('')}</div></div>`);requestAnimationFrame(fitK);
+ slot.onclick=e=>{const c=e.target.closest('[data-lid]');if(c)openListing(c.dataset.lid)}}
 function buy(id){const l=findL(id),a=byId(l.rid);ORD.unshift({oid:'O'+Date.now(),type:'buy',lid:l.id,rid:l.rid,price:l.price,post:POST,seller:l.seller.n,status:'paid',rec:l.rec,press:l.press,cond:l.cond,vstyle:l.vstyle,vcol:l.vcol,colour:l.colour,ts:Date.now()});save();render();openOrders();mkToast('Paid · Stack is holding it until it arrives')}
 function demoBuy(lid){const L=MYL.find(x=>x.id===lid);if(!L)return;L.status='sold';const buyers=['Noah','Leah','Kit','Tom','Ana'],b=buyers[hash(lid)%buyers.length];
  ORD.unshift({oid:'O'+Date.now(),type:'sell',lid,rid:L.rid,price:L.price,post:POST,buyer:b,status:'paid',rec:L.rec,ts:Date.now()});save();render();openOrders();mkToast(b+' bought it. Post it and mark it sent')}
@@ -4002,17 +4154,33 @@ function rSell(){const el=$('#mk-sell'),ms=mine().filter(a=>!LENT[a.id]&&!MYL.so
  <h3 class="mk-h">Your listings</h3>${live.length?live.map(l=>{const a=byId(l.rid);return `<button class="mk-card" data-lid="${l.id}">${artHTML(a,'',false)}<span class="tx"><b>${esc(a.t)}</b><span>${esc(a.a)} · ${l.cond}</span><span class="mk-tags">${pill('Live','rc')}${l.promo?pill('Promoted','pr'):''}${VERIFIED?pill('Verified','wl'):''}</span></span><span class="mk-price">${money(l.price)}</span></button>`}).join(''):'<div class="empty small">Nothing listed. Pick a record below to sell it.</div>'}
  <h3 class="mk-h">Sell from your Stack</h3><p class="sub" style="margin:0 0 8px">When it arrives, the buyer gets the digital copy and your recorded pressing. You lose both, like selling the real record.</p>
  ${ms.length?`<div class="mk-list">${ms.map(a=>`<button class="mk-card" data-sell="${a.id}">${artHTML(a,'',false)}<span class="tx"><b>${esc(a.t)}</b><span>${esc(a.a)} · ${fmtLabel[a.f]}</span><span class="mk-meta">Suggested ${money(suggest(a))}</span></span><span class="mk-cta">Sell</span></button>`).join('')}</div>`:'<div class="empty small">Nothing to sell.</div>'}${LENT&&Object.keys(LENT).length?'<p class="sub">Lent records can\'t be sold until they come back.</p>':''}`}
-function openSell(id){const a=byId(id),c=COPY[id]||{},sg=suggest(a);
- const slot=sheet(`${sheetH('Sell '+esc(a.t))}<div class="sheet-b"><div class="mk-hero">${artHTML(a,'',false)}<div><b>${esc(a.t)}</b><span>${esc(a.a)} · ${fmtLabel[a.f]} · ${a.y}</span><div class="mk-tags">${c.cond?pill(c.cond+' condition'):''}${c.press?pill(esc(c.press)):''}${c.vstyle&&c.vstyle!=='black'?pill(esc(c.colour)+' vinyl'):''}</div></div></div>
- <div class="form-row"><label>Your price</label><input id="mkPrice" type="number" inputmode="decimal" min="1" value="${sg}"></div>
+function openSell(id){const a=byId(id),c=COPY[id]||{},sg=suggest(a);let ph=[0,0,0],sl=c.cond||'VG+',md=c.cond||'VG+',step=0;
+ const SLOTS=['Front of sleeve','Record or disc','Any wear'];
+ const draw=()=>{const done=ph.filter(Boolean).length;const slot=sheet(`${sheetH(step?'Sell '+esc(a.t):'Add photos')}<div class="sheet-b">
+ <div class="sl-steps"><span class="${step===0?'on':''}">1 Photos</span><span class="${step===1?'on':''}">2 Condition</span><span class="${step===2?'on':''}">3 Price</span></div>
+ ${step===0?`<p class="sub" style="margin:0 0 10px">Buyers trust real photos. Take at least the front, the record itself and any wear.</p>
+  <div class="sl-ph">${SLOTS.map((t,i)=>`<button data-shot="${i}" class="${ph[i]?'got':''}">${ph[i]?`<span class="sl-img">${artHTML(a,'',false)}</span><em>✓</em>`:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>`}<small>${t}</small></button>`).join('')}</div>
+  <button class="btn" data-next ${done<1?'disabled':''} style="margin-top:14px">${done?`Next · ${done} photo${done>1?'s':''}`:'Add a photo to continue'}</button>`
+ :step===1?`<div class="mk-hero sm">${artHTML(a,'',false)}<div><b>${esc(a.t)}</b><span>${esc(a.a)} · ${fmtLabel[a.f]}</span></div></div>
+  <div class="form-row"><label>Sleeve</label><div class="opt-row" data-g="sl">${GR.map(g=>`<button class="chipbtn${g===sl?' on':''}" data-v="${g}">${g}</button>`).join('')}</div></div>
+  <div class="form-row"><label>${a.f==='CD'?'Disc':'Vinyl'}</label><div class="opt-row" data-g="md">${GR.map(g=>`<button class="chipbtn${g===md?' on':''}" data-v="${g}">${g}</button>`).join('')}</div></div>
+  <p class="lp-gt">${GRADE_TXT[md]}</p>
+  <div class="form-row"><label>Note for buyers</label><textarea id="slN" rows="2" placeholder="e.g. light ring wear, plays clean">${esc(c.notes||'')}</textarea></div>
+  <button class="btn" data-next style="margin-top:12px">Next</button>`
+ :`<div class="form-row"><label>Your price</label><input id="mkPrice" type="number" inputmode="decimal" min="1" value="${sg}"></div>
  <div class="mk-break"><div><span>Buyer pays you</span><b id="mkP1">${money(sg)}</b></div><div><span>Stack fee (${Math.round(FEE*100)}%)</span><b id="mkP2">-${money(sg*FEE)}</b></div><div class="tot"><span>You receive</span><b id="mkP3">${money(sg*(1-FEE))}</b></div></div>
- <p class="sub" style="margin:8px 0 0">Buyer covers ${money(POST)} postage. Similar copies sold for ${money(sg-3)}–${money(sg+4)}.</p>
+ <p class="sub" style="margin:8px 0 0">Buyer covers ${money(POST)} postage. ${md} copies sold for ${money(sg-3)}–${money(sg+4)} recently.</p>
  ${a.rec?`<div class="set-row"><span>Include my recorded pressing</span><button class="sw" role="switch" id="mkRec" aria-checked="true"></button></div>`:''}
  <div class="mk-escrow warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.01"/></svg><span><b>You will lose access.</b> Once the buyer confirms it arrived, the digital copy${a.rec?' and your recorded pressing move':' moves'} to them. You keep it until then.</span></div>
- <button class="btn" id="mkList">List it</button></div>`);
- const pr=()=>{const v=Math.max(1,+$('#mkPrice').value||1);$('#mkP1').textContent=money(v);$('#mkP2').textContent='-'+money(v*FEE);$('#mkP3').textContent=money(v*(1-FEE))};$('#mkPrice').oninput=pr;
- const rb=$('#mkRec');if(rb)rb.onclick=e=>e.currentTarget.setAttribute('aria-checked',e.currentTarget.getAttribute('aria-checked')!=='true');
- $('#mkList').onclick=()=>{const v=Math.max(1,+$('#mkPrice').value||sg);MYL.unshift({id:'M'+Date.now(),rid:id,seller:{n:'You',c:'#F0A034',d:'here',r:'5.0',k:3},price:v,cond:c.cond||'VG+',press:c.press||(a.f==='CD'?'CD':'Your copy'),vstyle:c.vstyle,vcol:c.vcol,colour:c.colour,rec:!!(a.rec&&(!rb||rb.getAttribute('aria-checked')==='true')),mine:true,status:'live',ts:Date.now()});save();closeSheet();setPane('sell');mkToast('Listed for '+money(v))}}
+ <button class="btn" id="mkList">List it</button>`}</div>`);
+  slot.onclick=e=>{const b=e.target.closest('button');if(!b)return;
+   if(b.dataset.shot!=null){const i=+b.dataset.shot;b.classList.add('flash');setTimeout(()=>{ph[i]=1;draw()},220)}
+   const g=b.closest('[data-g]');if(g&&b.dataset.v){g.dataset.g==='sl'?sl=b.dataset.v:md=b.dataset.v;const n=$('#slN');c.notes=n?n.value:c.notes;draw()}
+   if('next' in b.dataset&&!b.disabled){if(step===1){const n=$('#slN');c.notes=n?n.value:''}step++;draw()}};
+  if(step===2){const pr=()=>{const v=Math.max(1,+$('#mkPrice').value||1);$('#mkP1').textContent=money(v);$('#mkP2').textContent='-'+money(v*FEE);$('#mkP3').textContent=money(v*(1-FEE))};$('#mkPrice').oninput=pr;
+   const rb=$('#mkRec');if(rb)rb.onclick=e=>{e.stopPropagation();e.currentTarget.setAttribute('aria-checked',e.currentTarget.getAttribute('aria-checked')!=='true')};
+   $('#mkList').onclick=()=>{const v=Math.max(1,+$('#mkPrice').value||sg);MYL.unshift({id:'M'+Date.now(),rid:id,seller:{n:'You',c:'#F0A034',d:'here',r:'5.0',k:3},price:v,cond:md,sleeve:sl,media:md,note:c.notes||'',photos:[],days:0,press:c.press||(a.f==='CD'?'CD':'Your copy'),vstyle:c.vstyle,vcol:c.vcol,colour:c.colour,rec:!!(a.rec&&(!rb||rb.getAttribute('aria-checked')==='true')),mine:true,status:'live',ts:Date.now()});save();closeSheet();setPane('sell');mkToast('Listed for '+money(v))}}};
+ draw()}
 
 /* ---------- nearby shops ---------- */
 const SHOPN=[{n:'Second Spin Records',d:'0.4 mi',h:'Open until 6pm',s:'1,240 records',sp:1,e:'Record Store Day: Saturday 18 Apr'},{n:'Groove Exchange',d:'1.1 mi',h:'Open until 5:30pm',s:'860 records'},{n:'The Vinyl Cellar',d:'2.3 mi',h:'Opens 10am',s:'2,100 records'},{n:'Needle & Groove',d:'3.6 mi',h:'Open until 7pm',s:'540 records',e:'Listening party Friday'}];
@@ -4022,18 +4190,19 @@ function rNear(){try{renderRSD()}catch(e){}$('#mkShops').innerHTML=`<h3 class="m
 let shopCat='all';
 function cartN(){return CART.reduce((n,l)=>n+l.q,0)}
 function rShop(){const el=$('#mk-shop'),L=PRODUCTS.filter(p=>shopCat==='all'||p.k===shopCat);
- el.innerHTML=`<div class="shop-hero"><div class="sh-rings"></div><div class="sh-tx"><small>THE STACK SHOP</small><b>Wear the record.</b><span>Clothing, record gear and the Puck.</span></div></div>
- <div class="mk-top"><div class="mk-fmt">${[['all','All'],['cloth','Clothing'],['acc','For your records'],['puck','The Puck']].map(([k,n])=>`<button data-cat="${k}" class="${shopCat===k?'on':''}">${n}</button>`).join('')}</div><button class="mk-orders" data-basket>Basket${cartN()?` <b>${cartN()}</b>`:''}</button></div>
- <div class="shop-grid">${L.map(p=>`<button class="shop-card" data-prod="${p.id}"><span class="sc-art">${prodArt(p)}</span><b>${p.n}</b><span>${money(p.p)}${p.pod?' · made to order':''}</span></button>`).join('')}</div>
- <p class="sub" style="margin:12px 2px">Tees and hoodies are made to order. Everything else ships in 2 days. Free delivery over £50. Prototype: no payment is taken.</p>`}
-function openProd(id){const p=prod(id);let size=p.sizes?p.sizes[Math.min(1,p.sizes.length-1)]:null,side='front',col=p.cols?p.cols[0][0]:null;
- const draw=()=>{const cn=p.cols?p.cols.find(c=>c[0]===col)[1]:'';const slot=sheet(`${sheetH(p.n)}<div class="sheet-b"><div class="pd-art">${prodArt(p,side,col)}</div>
-  ${p.single?'':`<div class="mk-fmt c"><button data-side="front" class="${side==='front'?'on':''}">Front</button><button data-side="back" class="${side==='back'?'on':''}">Back</button></div>`}
+ el.innerHTML=`<div class="shop-lb"><img src="${SHOP_IMG('lookbook')}" alt="Stack lookbook: the Selector Bomber, Sunset S Shirt, Knit Polo and Flares"><div class="sh-tx"><small>THE STACK SHOP · AW26</small><b>Wear the record.</b></div></div>
+ <div class="mk-top"><div class="shop-cats">${[['all','All'],['cloth','Clothing'],['acc','Records'],['col','Selector'],['puck','Puck']].map(([k,n])=>`<button data-cat="${k}" class="${shopCat===k?'on':''}">${n}</button>`).join('')}</div><button class="mk-orders" data-basket aria-label="Basket">${ICON_BAG}${cartN()?` <b>${cartN()}</b>`:''}</button></div>
+ <div class="shop-grid">${L.map(p=>`<button class="shop-card" data-prod="${p.id}"><span class="sc-art">${prodArt(p)}${p.nw?'<i class="sc-new">New</i>':''}</span><b>${p.n}</b><span>${money(p.p)}${p.pod?' · made to order':''}</span></button>`).join('')}</div>
+ <p class="sub" style="margin:12px 2px">Free delivery over £50. Prototype: no payment is taken.</p>`}
+const ICON_BAG='<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l-1 13H7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>';
+function openProd(id){const p=prod(id);let size=p.sizes?p.sizes[Math.min(1,p.sizes.length-1)]:null,col=p.cols?p.cols[0][0]:null;
+ const draw=()=>{const cn=p.cols?p.cols.find(c=>c[0]===col)[1]:'',pc=prodPics(p,col);const slot=sheet(`${sheetH(p.n)}<div class="sheet-b"><div class="pd-gal"><div class="lc-strip" data-strip>${pc.map(x=>`<span class="pd-art"><span class="ph-img${p.imgs?' sq':''}" style="background-image:url('${x.src}');${x.st}"></span></span>`).join('')}</div>${pc.length>1?`<div class="lc-dots">${pc.map((_,i)=>`<i class="${i?'':'on'}"></i>`).join('')}</div>`:''}</div>
   <div class="pd-top"><b>${money(p.p)}</b><span>${p.pod?'Made to order · ships in 5–7 days':'Ships in 2 days'}</span></div><p class="sub" style="margin:6px 0 10px">${p.d}</p>
   ${p.cols?`<div class="form-row"><label>Colour · ${cn}</label><div class="vc-cols">${p.cols.map(c=>`<button data-col="${c[0]}" class="${c[0]===col?'on':''}" style="background:${c[2]}" aria-label="${c[1]}"></button>`).join('')}</div></div>`:''}
   ${p.sizes&&p.sizes.length>1?`<div class="form-row"><label>Size</label><div class="opt-row">${p.sizes.map(s=>`<button class="chipbtn${s===size?' on':''}" data-size="${s}">${s}</button>`).join('')}</div></div>`:''}
   <button class="btn" data-add style="margin-top:10px">Add to basket</button></div>`);
-  slot.onclick=e=>{const t=e.target.closest('button');if(!t)return;if(t.dataset.side){side=t.dataset.side;draw()}else if(t.dataset.col){col=t.dataset.col;draw()}else if(t.dataset.size){size=t.dataset.size;draw()}
+  const st=slot.querySelector('[data-strip]');st.addEventListener('scroll',()=>{const i=Math.round(st.scrollLeft/st.clientWidth);slot.querySelectorAll('.lc-dots i').forEach((d,k)=>d.classList.toggle('on',k===i))},{passive:true});
+  slot.onclick=e=>{const t=e.target.closest('button');if(!t)return;if(t.dataset.col){col=t.dataset.col;draw()}else if(t.dataset.size){size=t.dataset.size;draw()}
    else if('add' in t.dataset){const key=[p.id,col,size].join('|'),ex=CART.find(l=>l.key===key);ex?ex.q++:CART.push({key,id:p.id,col,n:p.n+(col?' · '+cn:'')+(size&&p.sizes.length>1?' · '+size:''),p:p.p,q:1,pod:!!p.pod});save();closeSheet();rShop();mkToast('Added to basket')}}};
  draw()}
 function openBasket(){const sub=CART.reduce((n,l)=>n+l.p*l.q,0),del=!CART.length||sub>=50?0:3.95,tot=sub+del;
@@ -4042,8 +4211,9 @@ function openBasket(){const sub=CART.reduce((n,l)=>n+l.p*l.q,0),del=!CART.length
   else if('place' in t.dataset){SORD.unshift({oid:'S'+Date.now(),lines:CART.map(l=>({n:l.n,q:l.q})),total:tot,pod:CART.some(l=>l.pod),ts:Date.now()});CART=[];save();rShop();openOrders();mkToast('Order placed. Thank you')}}}
 
 /* ---------- events ---------- */
-sc.addEventListener('click',e=>{const t=e.target.closest('button');if(!t)return;
- if(t.dataset.fmt){fmt=t.dataset.fmt;rBrowse()}else if(t.dataset.cat){shopCat=t.dataset.cat;rShop()}
+sc.addEventListener('click',e=>{const t=e.target.closest('button,[data-lid]');if(!t)return;
+ if(t.dataset.sq!=null){F.q=t.dataset.sq;addRecent(F.q);rBrowse();return}if(t.dataset.clr){const k=t.dataset.clr;F[k]={fmt:'all',cond:'any',max:0,sort:'new'}[k];rBrowse();return}if('filters' in t.dataset){openFilters();return}
+ if(t.dataset.cat){shopCat=t.dataset.cat;rShop()}
  else if(t.dataset.lid)openListing(t.dataset.lid);else if(t.dataset.sell)openSell(t.dataset.sell);else if('orders' in t.dataset)openOrders();else if('basket' in t.dataset)openBasket();else if(t.dataset.prod)openProd(t.dataset.prod);
  else if('verify' in t.dataset){VERIFIED=!VERIFIED;save();rSell();mkToast(VERIFIED?'Verified seller · £2.99 a month':'Verification cancelled')}
  else if('goshop' in t.dataset){setPane('shop');sc.scrollTop=0}
