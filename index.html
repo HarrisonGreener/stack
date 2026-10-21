@@ -2418,7 +2418,7 @@ try{const t=localStorage.getItem('stack-theme');if(t&&t!=='system')document.docu
 /* state */
 const st={src:'studio',plan:'family',trackB:0,tB:0,tab:'mine',view:'spines',filter:'all',cur:null,from:'My Stack',track:0,t:0,playing:false,deck2:null,xf:0};
 const mine=()=>ALBUMS.filter(a=>a.o==='you');
-const PLAN_MEMBERS={free:['you'],solo:['you'],duo:['you','ellie'],family:['you','mum','dad','ellie']};
+const PLAN_MEMBERS={solo:['you'],duo:['you','ellie'],family:['you','mum','dad','ellie']};
 const activeM=()=>PLAN_MEMBERS[st.plan];
 const canPlay=a=>!!(a&&((a.o&&activeM().includes(a.o))||(window.BORROW&&window.BORROW[a.id])));
 const family=()=>ALBUMS.filter(canPlay);
@@ -3731,9 +3731,8 @@ $('#plMore').onclick=()=>{const a=dominant();if(!a)return;const slot=$('#pickSlo
 
 /* account */
 
-const PLANS={free:{name:'Solo',price:0,who:'Just you, free',feats:['Your whole collection, stats and the Marketplace','Stream records you own in standard quality, with short ads','Friends, leaderboards and Record Club']},
- solo:{name:'Solo Plus',price:4,who:'Just you, no limits',feats:['Everything in Solo','Lossless audio and no ads','Selector, mixtapes and offline listening']},
- duo:{name:'Duo',price:7,who:'2 people, one home',feats:['Everything in Solo Plus','Two people, one shared Stack','See and play each other\'s mixtapes']},
+const PLANS={solo:{name:'Solo',price:0,who:'Just you, free for good',feats:['Stream every record you own, anywhere, in lossless','Selector, mixtapes, liked songs and stats','Friends, leaderboards, Record Club and the Marketplace']},
+ duo:{name:'Duo',price:7,who:'2 people, one home',feats:['Everything in Solo','Two people, one shared Stack','See and play each other\'s mixtapes']},
  family:{name:'Family',price:14.99,who:'Up to 4 people',feats:['Everything in Duo, for up to four','Family Stack: everyone streams everyone\'s records','Family mixtapes, plus separate likes for each person']}};
 const fmtGBP=n=>n===0?'Free':'£'+(Number.isInteger(n)?n:n.toFixed(2));
 const CHEVR='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>';
@@ -3793,7 +3792,7 @@ $('#famUpgrade').onclick=()=>openPlans();
 document.addEventListener('click',e=>{const b=e.target.closest('[data-fmt]');if(b)openMixtape(b.dataset.fmt)});
 function openPlans(pending){const slot=$('#sheetSlot');const cur=st.plan;
   slot.innerHTML=`<div class="scrim" id="plSc" style="animation:none"></div><div class="sheet" style="animation:none;max-height:90%"><div class="sheet-h"><h3>Change plan</h3><button class="icon-btn" id="plBack" aria-label="Back to account">${ICON.x}</button></div><div class="sheet-b">
-   <p class="sub" style="margin:0 0 14px">Solo is free. Every plan streams only the records you own, so paid plans cost a fraction of a streaming subscription. Change or cancel any time.</p>
+   <p class="sub" style="margin:0 0 14px">Your own music is free to play. You only pay to share your Stack with the people you live with. Change or cancel any time.</p>
    ${Object.entries(PLANS).map(([k,pl])=>`<div class="plan-card${k===cur?' cur':''}"><div class="plan-top"><b>${pl.name}${k===cur?'<span class="cur-badge">Current</span>':''}</b><span class="pr">${fmtGBP(pl.price)}${pl.price?'<small> /month</small>':''}</span></div><div class="who">${pl.who}</div>
      <ul>${pl.feats.map(f=>`<li>${f}</li>`).join('')}</ul>
      ${k===cur?'<span class="cur-tag">You’re on this plan</span>':pending===k?`<p class="plan-warn">${cur==='family'?'Your Family Stack will stop sharing, and Mum, Dad and Ellie will lose access to your records.':k==='family'?'You can invite up to 3 people to share your Family Stack.':'Your plan changes from your next bill.'} ${pl.price?`You'll pay ${fmtGBP(pl.price)} a month from your next bill.`:'You won’t be charged from your next bill.'}</p><div style="display:flex;gap:8px"><button class="btn ghost" data-plan-cancel>Cancel</button><button class="btn" data-plan-confirm="${k}">Confirm ${pl.name}</button></div>`:`<button class="btn ghost" data-plan="${k}">Switch to ${pl.name}</button>`}</div>`).join('')}
