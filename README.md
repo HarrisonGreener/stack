@@ -15,13 +15,13 @@ On an iPhone, open it in Safari, then Share → Add to Home Screen to run it ful
 ## A look inside
 
 <table>
-<tr><td align="center" valign="top" width="25%"><img src="docs/film-run.jpg" width="190"><br><sub>The opening film: the Selector runs along a spinning record</sub></td><td align="center" valign="top" width="25%"><img src="docs/film-puck.jpg" width="190"><br><sub>Explaining the Puck, the turntable accessory</sub></td><td align="center" valign="top" width="25%"><img src="docs/loading.jpg" width="190"><br><sub>The loading screen, a record label that spins in</sub></td><td align="center" valign="top" width="25%"><img src="docs/my-stack.jpg" width="190"><br><sub>My Stack: your records, with search, Liked songs and a notification bell</sub></td></tr>
-<tr><td align="center" valign="top" width="25%"><img src="docs/player.jpg" width="190"><br><sub>The turntable player</sub></td><td align="center" valign="top" width="25%"><img src="docs/vinyl-colours.jpg" width="190"><br><sub>Your copy: choose your vinyl colour</sub></td><td align="center" valign="top" width="25%"><img src="docs/two-decks.jpg" width="190"><br><sub>Two decks and a crossfader</sub></td><td align="center" valign="top" width="25%"><img src="docs/selector.jpg" width="190"><br><sub>The Selector, your robot DJ</sub></td></tr>
+<tr><td align="center" valign="top" width="25%"><img src="docs/film-run.jpg" width="190"><br><sub>The opening film: DJ Selector runs along a spinning record</sub></td><td align="center" valign="top" width="25%"><img src="docs/film-puck.jpg" width="190"><br><sub>Explaining the Puck, the turntable accessory</sub></td><td align="center" valign="top" width="25%"><img src="docs/loading.jpg" width="190"><br><sub>The loading screen, a record label that spins in</sub></td><td align="center" valign="top" width="25%"><img src="docs/my-stack.jpg" width="190"><br><sub>My Stack: your records, with search, Liked songs and a notification bell</sub></td></tr>
+<tr><td align="center" valign="top" width="25%"><img src="docs/player.jpg" width="190"><br><sub>The turntable player</sub></td><td align="center" valign="top" width="25%"><img src="docs/vinyl-colours.jpg" width="190"><br><sub>Your copy: choose your vinyl colour</sub></td><td align="center" valign="top" width="25%"><img src="docs/two-decks.jpg" width="190"><br><sub>Two decks and a crossfader</sub></td><td align="center" valign="top" width="25%"><img src="docs/selector.jpg" width="190"><br><sub>DJ Selector, your robot DJ</sub></td></tr>
 <tr><td align="center" valign="top" width="25%"><img src="docs/family-crate.jpg" width="190"><br><sub>Family Stack, here in crate view</sub></td><td align="center" valign="top" width="25%"><img src="docs/friends-activity.jpg" width="190"><br><sub>Friends: Record Club and who's spinning now</sub></td><td align="center" valign="top" width="25%"><img src="docs/leaderboards.jpg" width="190"><br><sub>Leaderboards and badges</sub></td><td align="center" valign="top" width="25%"><img src="docs/profile.jpg" width="190"><br><sub>A friend's profile</sub></td></tr>
 <tr><td align="center" valign="top" width="25%"><img src="docs/listening-room.jpg" width="190"><br><sub>Listening along in a friend's room</sub></td><td align="center" valign="top" width="25%"><img src="docs/stats.jpg" width="190"><br><sub>Your stats, with you vs friends</sub></td><td align="center" valign="top" width="25%"><img src="docs/marketplace.jpg" width="190"><br><sub>Marketplace: second-hand records from other collectors</sub></td><td align="center" valign="top" width="25%"><img src="docs/listing.jpg" width="190"><br><sub>A listing: photos, grading and the seller's note</sub></td></tr>
 </table>
 
-Screenshots are from the live demo. Album covers show as placeholder colours in these screenshots; on the live site, official artwork loads from the Apple Music and Deezer APIs.
+Screenshots are from the live demo. Album artwork shown in screenshots belongs to the artists and labels and is used for demonstration only; on the live site it loads from the Apple Music and Deezer APIs.
 
 ---
 
@@ -58,7 +58,7 @@ Stack is a design prototype. It explores the idea, the interface and the experie
 
 ### Friends
 - **Activity:** see what friends are spinning right now, on vinyl, CD or digital, plus a feed of new records, badges and streaks.
-- **Listening rooms:** join a friend's room to listen along, send reactions and see what the Selector is lining up from everyone's shelves. You can only stream records you or your family own.
+- **Listening rooms:** join a friend's room to listen along, send reactions and see what DJ Selector is lining up from everyone's shelves. You can only stream records you or your family own.
 - **Record Club:** a theme every month, like "the perfect Halloween record" in October. Search any album to answer, whether you own it or not, and your picks build up on your profile.
 - **Leaderboards:** records owned, time listened, streaks and Puck plays, against friends, your city or everyone.
 - **Badges:** collector milestones such as the 100 club, first pressing and crate digger, earned from your real stats.
@@ -67,7 +67,7 @@ Stack is a design prototype. It explores the idea, the interface and the experie
 - **Sharing controls:** choose friends, everyone or only you, and switch your collection, listening, stats and "spinning now" on or off.
 
 ### Discovery and insight
-- **The Selector:** a cel-shaded robot DJ who digs through your crate. Ask it for a mood or an idea and it builds a queue from records you own.
+- **DJ Selector:** a cel-shaded robot DJ who digs through your crate. Ask it for a mood or an idea and it builds a queue from records you own.
 - **Stats and Wrapped:** what you play most, how you compare with your friends, and a year-end recap.
 - **Dust it off:** a nudge to play the record you have not touched in months.
 
@@ -86,7 +86,7 @@ Stack's own shop for clothing, record gear and the Puck, inside the Market tab. 
 A small device that sits between your turntable and speakers. It records your own copy of each record in hi-res, crackle and all, and logs what you play, so a physical spin counts toward your stats just like a digital one. It comes in black, white or orange, from £30, or in packs of two and three. In this prototype it is simulated.
 
 ### The opening film
-The first thing you see is a short real-time 3D film, rendered live in the browser with Three.js. The Selector runs along a spinning record, explains what Stack is and how the Puck works, and gets flung off, and the camera dives into the record label and hands over to the loading screen. You can pause it and skip back or forward between sections.
+The first thing you see is a short real-time 3D film, rendered live in the browser with Three.js. DJ Selector runs along a spinning record, explains what Stack is and how the Puck works, and gets flung off, and the camera dives into the record label and hands over to the loading screen. You can pause it and skip back or forward between sections.
 
 ---
 
@@ -105,8 +105,8 @@ The first thing you see is a short real-time 3D film, rendered live in the brows
 
 ## Copyright and credits
 
-- **Design:** the Stack app, brand, logo, the Selector character, the Puck and the merchandise designs are by Harrison Greener.
-- **Album artwork and audio** belong to their artists and labels. Nothing copyrighted is stored in this repository. Artwork and 30-second previews are loaded at the moment you view or play them, from the public Apple Music (iTunes Search) and Deezer APIs, for demonstration only.
+- **Design:** the Stack app, brand, logo, DJ Selector character, the Puck and the merchandise designs are by Harrison Greener.
+- **Album artwork and audio** belong to their artists and labels. The app itself stores no artwork or audio: artwork and 30-second previews are loaded at the moment you view or play them, from the public Apple Music (iTunes Search) and Deezer APIs, for demonstration only.
 - **Marketplace photos** of records are AI-generated scenes. The album cover in each one is placed on top in the browser at runtime from the APIs above, so the repository holds no cover art.
 - **Product and lookbook images** are AI-generated mockups of my own designs, made for this project.
 - **Names:** artist names, album titles and Discogs, Apple Music and Deezer belong to their owners. Stack is not affiliated with, or endorsed by, any of them. Shops, sellers and users in the demo are fictional.
@@ -127,7 +127,7 @@ Rather than pretend a prototype answers everything, these are the questions behi
 
 ## Try it
 
-Open the live demo. On a phone, tap **Account → Demo shortcuts** to jump to any feature: the intro film, the loading screen, the player, two decks, lending, stats, the Selector, the Marketplace, selling a record and more. On a computer the shortcuts are in the panel beside the phone.
+Open the live demo. On a phone, tap **Account → Demo shortcuts** to jump to any feature: the intro film, the loading screen, the player, two decks, lending, stats, DJ Selector, the Marketplace, selling a record and more. On a computer the shortcuts are in the panel beside the phone.
 
 Add `?nofilm` to the address to skip the intro film, or `?demo` to open the shortcuts straight away.
 
