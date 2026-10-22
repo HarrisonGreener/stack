@@ -3732,8 +3732,8 @@ $('#plMore').onclick=()=>{const a=dominant();if(!a)return;const slot=$('#pickSlo
 /* account */
 
 const PLANS={solo:{name:'Solo',price:0,who:'Just you, free for good',feats:['Stream every record you own, anywhere, in lossless','Selector, mixtapes, liked songs and stats','Friends, leaderboards, Record Club and the Marketplace']},
- duo:{name:'Duo',price:7,who:'2 people, one home',feats:['Everything in Solo','Two people, one shared Stack','See and play each other\'s mixtapes']},
- family:{name:'Family',price:14.99,who:'Up to 4 people',feats:['Everything in Duo, for up to four','Family Stack: everyone streams everyone\'s records','Family mixtapes, plus separate likes for each person']}};
+ duo:{name:'Duo',price:10,who:'2 people, one home',feats:['Everything in Solo','Two people, one shared Stack','See and play each other\'s mixtapes']},
+ family:{name:'Family',price:19.99,who:'Up to 4 people',feats:['Everything in Duo, for up to four','Family Stack: everyone streams everyone\'s records','Family mixtapes, plus separate likes for each person']}};
 const fmtGBP=n=>n===0?'Free':'£'+(Number.isInteger(n)?n:n.toFixed(2));
 const CHEVR='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>';
 function openAccount(){const slot=$('#sheetSlot'),m=mine(),fresh=!$('#acctSheet');
